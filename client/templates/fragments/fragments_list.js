@@ -12,19 +12,6 @@ Template.fragmentsList.helpers({
   }
 });
 
-Template.fragmentsList.events({
-  'click .load-more': function (event, instance) {
-    event.preventDefault();
-
-    // get current value for limit, i.e. how many posts are currently displayed
-    var limit = instance.limit.get();
-
-    // increase limit
-    limit += pageSize;
-    instance.limit.set(limit);
-  }
-});
-
 var $window = $(window);
 var bindScroll = function (event) {
   var instance = event.data,
@@ -39,7 +26,7 @@ var bindScroll = function (event) {
       viewportHeight = $window.height(),
       contentHeight = parseInt($list.height() || $list.css('height'));
 
-  if ( offset < ( contentHeight - viewportHeight - viewportPrefetchHeight ) ) {
+  if (offset < (contentHeight - viewportHeight - viewportPrefetchHeight)) {
     return;
   }
 
