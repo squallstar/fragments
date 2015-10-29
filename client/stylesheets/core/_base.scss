@@ -1,0 +1,92 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.5rem;
+}
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+  font-family: $font-primary;
+  background: #EEE;
+}
+
+input, textarea, select {
+  font-family: $font-primary;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $medium;
+}
+
+strong {
+  font-weight: $bold;
+}
+
+a {
+  color: #000;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.row {
+  @extend %clear;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 $grid-side-padding;
+
+  .stretch {
+    margin-left: -$grid-side-padding;
+    margin-right: -$grid-side-padding;
+  }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.table {
+  width: 100%;
+  display: table;
+}
+
+.table-row {
+  width: 100%;
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
+.vertical {
+  display: table;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  > div {
+    display: table-cell;
+    vertical-align: middle;
+
+    > div {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

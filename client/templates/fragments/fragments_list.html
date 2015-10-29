@@ -1,0 +1,11 @@
+<template name="fragmentsList">
+  {{> fragmentSubmit}}
+
+  <div class="fragments-list">
+    {{#each fragments}}
+      {{> fragmentItem}}
+    {{/each}}
+  </div>
+
+  {{#if isBusy}}<div class="loading">Loading</div>{{/if}}
+</template>
