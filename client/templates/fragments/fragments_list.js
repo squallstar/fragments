@@ -15,7 +15,7 @@ Template.fragmentsList.helpers({
 var $window = $(window);
 var bindScroll = function (event) {
   var instance = event.data,
-      $list = instance.$('.fragments-list'),
+      $list = instance.$masonry,
       listHeight = $list.height();
 
   if (instance.isBusy.get()) {
@@ -60,7 +60,9 @@ Template.fragmentsList.onCreated(function () {
     var limit = instance.limit.get();
 
     // subscribe to the posts publication
-    var subscription = instance.subscribe('fragments', { sort: { created_at: -1 }, limit: limit });
+    var subscription = instance.subscribe('fragments', { sort: { created_at: -1 }, limit: limit }, function () {
+      instance.$masonry.masonry('reloadItems').masonry('layout');
+    });
 
     // if subscription is ready, set limit to newLimit
     if (subscription.ready()) {
@@ -77,10 +79,36 @@ Template.fragmentsList.onCreated(function () {
   }
 
   // 4. UI Events
-  UIEvents.window.on('scroll', instance, bindScroll);
+  $(window).on('scroll', instance, bindScroll);
 });
 
 Template.fragmentsList.onDestroyed(function () {
   // 1. UI Events
-  UIEvents.window.off('scroll', bindScroll);
+  $(window).off('scroll', bindScroll);
+});
+
+Template.fragmentsList.onRendered(function () {
+  // setup masonry
+  var selector = '.fragments-list',
+      $masonry = this.$(selector);
+  this.$masonry = $masonry;
+
+  $masonry.masonry({
+    itemSelector: '.fragment-item',
+    transitionDuration: 0
+  });
+
+  this.find(selector)._uihooks = {
+    insertElement: function (node, next) {
+      var $node = $(node);
+
+      $node
+        .insertBefore(next);
+
+      $masonry.masonry('reloadItems').masonry('layout');
+    },
+    removeElement: function(node) {
+      $masonry.masonry('remove', node);
+    }
+  }
 });
