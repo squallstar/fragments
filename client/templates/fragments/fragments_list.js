@@ -1,5 +1,6 @@
 const pageSize = 15; // items per page
 const viewportPrefetchHeight = 350; // px
+const scrollThrottle = 100; // ms
 
 Template.fragmentsList.helpers({
   // the fragments cursor
@@ -38,7 +39,9 @@ var onWindowScroll = function (event) {
   // increase limit
   limit += pageSize;
   instance.limit.set(limit);
-}
+};
+
+var throttledScroll = _.throttle(onWindowScroll, scrollThrottle);
 
 Template.fragmentsList.onCreated(function () {
 
@@ -67,7 +70,6 @@ Template.fragmentsList.onCreated(function () {
     if (subscription.ready()) {
       instance.loaded.set(limit);
       instance.isBusy.set(false);
-      onWindowScroll({ data: instance });
     }
   });
 
@@ -78,12 +80,12 @@ Template.fragmentsList.onCreated(function () {
   }
 
   // 4. UI Events
-  $(window).on('scroll', instance, onWindowScroll);
+  $(window).on('scroll', instance, throttledScroll);
 });
 
 Template.fragmentsList.onDestroyed(function () {
   // 1. UI Events
-  $(window).off('scroll', onWindowScroll);
+  $(window).off('scroll', throttledScroll);
 });
 
 Template.fragmentsList.onRendered(function () {
@@ -105,7 +107,6 @@ Template.fragmentsList.onRendered(function () {
 
       $masonry.masonry('reloadItems').masonry('layout');
       $node.removeClass('appearing');
-      console.log('reloading masonry');
     },
     removeElement: function(node) {
       $masonry.masonry('remove', node);
