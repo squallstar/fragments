@@ -1,9 +1,12 @@
 <template name="fragmentSubmit">
-  <form name="fragment">
-    <div class="group">
-        <label for="body">URL</label>
-        <input type="text" name="url" placeholder="e.g. example.org"/>
+  <div class="fragment-item submit">
+    <div class="wrapper">
+      <div class="content">
+        <form>
+          <input type="text" name="url" placeholder="e.g. example.org" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" />
+          <label for="body">Save new link</label>
+        </form>
+      </div>
     </div>
-    <button type="submit">Add</button>
-  </form>
+  </div>
 </template>

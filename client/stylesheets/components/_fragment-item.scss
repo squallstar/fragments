@@ -159,7 +159,7 @@
 
       .link {
         @extend %ellipsis;
-        display: inline-block;
+        display: block;
         font-size: 1rem;
         text-decoration: none;
         color: #2578EE;
@@ -187,6 +187,32 @@
           font-size: 1rem;
           padding: 0.4rem 1rem;
           margin: 0 0.4rem 0.7rem 0;
+        }
+      }
+    }
+  }
+
+  &.submit {
+    z-index: 1;
+
+    .wrapper {
+
+      &:hover {
+        cursor: default;
+      }
+
+      .content {
+
+        input {
+          border: 0;
+          width: 100%;
+          font-size: 2rem;
+          margin-bottom: 1rem;
+          color: #666;
+        }
+
+        label {
+          font-size: 1rem;
         }
       }
     }
