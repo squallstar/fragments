@@ -48,11 +48,14 @@ function parseLinkContent (link, item) {
     'title',
     'description',
     'url',
-    'provider_display',
     'provider_name'
   ].forEach(function (field) {
     link[field] = item[field];
   });
+
+  if (item.provider_display) {
+    link.domain = item.provider_display;
+  }
 
   // trim long titles
   if (item.title) {
