@@ -50,6 +50,11 @@ p {
     margin-left: -$grid-side-padding;
     margin-right: -$grid-side-padding;
   }
+
+  .stretch-half {
+    margin-left: -$grid-side-padding/2;
+    margin-right: -$grid-side-padding/2;
+  }
 }
 
 .left {
