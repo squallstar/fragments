@@ -20,8 +20,8 @@
             {{/each}}
           </div>
         {{/if}}
-        <a class="link" href=url target="_blank">{{domain}}</a>
-        <div class="date">{{created_at}}</div>
+        <a class="link" href={{url}} target="_blank">{{domain}}</a>
+        <div class="date">{{timeAgo created_at}}</div>
       </div>
     </div>
   </div>
