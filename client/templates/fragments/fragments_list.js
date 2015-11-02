@@ -13,7 +13,7 @@ Template.fragmentsList.helpers({
 });
 
 var $window = $(window);
-var bindScroll = function (event) {
+var onWindowScroll = function (event) {
   var instance = event.data,
       $list = instance.$masonry,
       listHeight = $list.height();
@@ -55,7 +55,6 @@ Template.fragmentsList.onCreated(function () {
 
   // will re-run when the "limit" reactive variables changes
   instance.autorun(function () {
-
     // get the limit
     var limit = instance.limit.get();
 
@@ -68,7 +67,7 @@ Template.fragmentsList.onCreated(function () {
     if (subscription.ready()) {
       instance.loaded.set(limit);
       instance.isBusy.set(false);
-      bindScroll({ data: instance });
+      onWindowScroll({ data: instance });
     }
   });
 
@@ -79,12 +78,12 @@ Template.fragmentsList.onCreated(function () {
   }
 
   // 4. UI Events
-  $(window).on('scroll', instance, bindScroll);
+  $(window).on('scroll', instance, onWindowScroll);
 });
 
 Template.fragmentsList.onDestroyed(function () {
   // 1. UI Events
-  $(window).off('scroll', bindScroll);
+  $(window).off('scroll', onWindowScroll);
 });
 
 Template.fragmentsList.onRendered(function () {
@@ -102,9 +101,11 @@ Template.fragmentsList.onRendered(function () {
     insertElement: function (node, next) {
       var $node = $(node);
 
-      $node.insertBefore(next);
+      $node.addClass('appearing').insertBefore(next);
 
       $masonry.masonry('reloadItems').masonry('layout');
+      $node.removeClass('appearing');
+      console.log('reloading masonry');
     },
     removeElement: function(node) {
       $masonry.masonry('remove', node);

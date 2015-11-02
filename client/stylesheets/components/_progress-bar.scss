@@ -1,0 +1,64 @@
+.progress-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #ECEFF0;
+
+  &.top {
+    bottom: auto;
+    top: 0;
+  }
+
+  &.fixed {
+    position: fixed;
+    z-index: 5;
+  }
+
+  .bar {
+    content: "";
+    display: inline;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 50%;
+    text-align: center;
+  }
+
+  .bar:nth-child(1) {
+    background-color: #2EAC62;
+    @include animation('loading 2s linear infinite');
+  }
+
+  .bar:nth-child(2) {
+    background-color: #E9685E;
+    @include animation('loading 2s linear 1s infinite');
+  }
+
+  .bar:nth-child(3) {
+    background-color: #ECEFF0;
+    @include animation('loading 2s linear 2s infinite');
+  }
+
+  @-webkit-keyframes loading {
+    from {left: 50%; width: 0;z-index:100;}
+    33.3333% {left: 0; width: 100%;z-index: 10;}
+    to {left: 0; width: 100%;}
+  }
+  @-moz-keyframes loading {
+    from {left: 50%; width: 0;z-index:100;}
+    33.3333% {left: 0; width: 100%;z-index: 10;}
+    to {left: 0; width: 100%;}
+  }
+  @-o-keyframes loading {
+    from {left: 50%; width: 0;z-index:100;}
+    33.3333% {left: 0; width: 100%;z-index: 10;}
+    to {left: 0; width: 100%;}
+  }
+  @keyframes loading {
+    from {left: 50%; width: 0;z-index:100;}
+    33.3333% {left: 0; width: 100%;z-index: 10;}
+    to {left: 0; width: 100%;}
+  }
+}

@@ -1,5 +1,5 @@
 <template name="fragmentItem">
-  <div class="fragment-item {{#if isNull fetched_at}}is-fetching{{/if}}">
+  <div class="fragment-item {{#if isFetching}}is-fetching{{/if}}">
     <div class="wrapper">
       {{#if images}}
         <div class="images">
@@ -9,8 +9,10 @@
         </div>
       {{/if}}
       <div class="content">
+        {{#if isFetching}}{{> progressBar}}{{/if}}
+
         <h2>{{title}}</h2>
-        <p>{{description}}</p>
+        <p>{{{description}}}</p>
         {{#if entities}}
           <div class="tags">
             {{#each entities}}

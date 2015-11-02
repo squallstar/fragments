@@ -34,7 +34,7 @@ function fetchUrlSync(url) {
   }
   catch (err) {
     data.title = 'Not found';
-    console.log('Error while fetching URL', url, err, err.stack);
+    console.log('Error while fetching URL', url, err);
   }
   finally {
     return data;

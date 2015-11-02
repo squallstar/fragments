@@ -27,11 +27,11 @@ Template.fragmentSubmit.events({
       return Session.set('fragmentSubmitErrors', errors);
     }
 
+    $url.val('');
+
     Meteor.call('fragmentInsert', fragment, function (error, fragmentId) {
       if (error) {
         console.error(error.reason);
-      } else {
-        $url.val('');
       }
     });
   }
