@@ -1,5 +1,9 @@
 @import "core/reset";
 @import "core/config";
+
+@import "core/mixins";
+@import "core/placeholders";
+
 @import "core/base";
 
 @import "components/main";

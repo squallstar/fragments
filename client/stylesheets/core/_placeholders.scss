@@ -1,0 +1,41 @@
+%appareance {
+  -moz-appareance: none;
+  -o-appareance: none;
+  -webkit-appearance: none;
+  appareance: none;
+}
+
+%vertically-centered {
+  text-align: center;
+  height: 100%;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+
+%not-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+%ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+%clear {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

@@ -1,11 +1,26 @@
 <template name="fragmentItem">
-  <div class="fragment-item">
-    <div class="content">
-      <h3>{{title}}</h3>
-      <p>{{domain}}</p>
-      {{#if isNull fetched_at}}
-        <p>Fetching content...</p>
+  <div class="fragment-item {{#if isNull fetched_at}}is-fetching{{/if}}">
+    <div class="wrapper">
+      {{#if images}}
+        <div class="images">
+          {{#each images}}
+            <div class="img" data-url=url></div>
+          {{/each}}
+        </div>
       {{/if}}
+      <div class="content">
+        <h2>{{title}}</h2>
+        <p>{{description}}</p>
+        {{#if entities}}
+          <div class="tags">
+            {{#each entities}}
+              <li>{{this}}</li>
+            {{/each}}
+          </div>
+        {{/if}}
+        <a class="link" href=url target="_blank">{{provider_display}}</a>
+        <div class="date">{{created_at}}</div>
+      </div>
     </div>
   </div>
 </template>
