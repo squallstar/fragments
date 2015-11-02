@@ -4,7 +4,7 @@
       {{#if images}}
         <div class="images">
           {{#each images}}
-            <div class="img" data-url=url></div>
+            <div class="img {{#if equals ../lead_image url}}lead{{/if}}" data-url={{url}}, style="{{#if equals ../lead_image url}}background-image:url({{url}}){{/if}}"></div>
           {{/each}}
         </div>
       {{/if}}
@@ -20,7 +20,7 @@
             {{/each}}
           </div>
         {{/if}}
-        <a class="link" href=url target="_blank">{{provider_display}}</a>
+        <a class="link" href=url target="_blank">{{domain}}</a>
         <div class="date">{{created_at}}</div>
       </div>
     </div>

@@ -1,5 +1,5 @@
-const pageSize = 10; // items per page
-const viewportPrefetchHeight = 50; // px
+const pageSize = 15; // items per page
+const viewportPrefetchHeight = 350; // px
 
 Template.fragmentsList.helpers({
   // the fragments cursor

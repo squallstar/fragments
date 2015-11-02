@@ -54,7 +54,7 @@ function parseLinkContent (link, item) {
   });
 
   if (item.provider_display) {
-    link.domain = item.provider_display;
+    link.domain = item.provider_display.replace(/^www\./, '');
   }
 
   // trim long titles
