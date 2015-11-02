@@ -1,7 +1,11 @@
 <template name="fragmentItem">
   <div class="fragment-item">
     <div class="content">
+      <h3>{{title}}</h3>
       <p>{{url}}</p>
+      {{#if isNull fetched_at}}
+        <p>Fetching content...</p>
+      {{/if}}
     </div>
   </div>
 </template>

@@ -102,8 +102,7 @@ Template.fragmentsList.onRendered(function () {
     insertElement: function (node, next) {
       var $node = $(node);
 
-      $node
-        .insertBefore(next);
+      $node.insertBefore(next);
 
       $masonry.masonry('reloadItems').masonry('layout');
     },
