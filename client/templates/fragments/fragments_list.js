@@ -5,7 +5,22 @@ const scrollThrottle = 100; // ms
 Template.fragmentsList.helpers({
   // the fragments cursor
   fragments: function () {
-    return Template.instance().fragments();
+    var instance = Template.instance();
+    var cursor = Template.instance().fragments();
+
+    cursor.observe({
+      changedAt: function () {
+        if (typeof instance.recollect === 'undefined') {
+          return;
+        }
+
+        Meteor.setTimeout(function () {
+          instance.recollect();
+        }, 1);
+      }
+    });
+
+    return cursor;
   },
   // are there more fragments to show?
   isLoadingMore: function () {
@@ -98,16 +113,21 @@ Template.fragmentsList.onRendered(function () {
     itemSelector: '.fragment-item'
   });
 
+  this.recollect = function () {
+    $masonry.masonry('reloadItems').masonry('layout');
+  };
+
   this.find(selector)._uihooks = {
-    insertElement: function (node, next) {
+    insertElement: (node, next) => {
       var $node = $(node);
 
       $node.addClass('appearing').insertBefore(next);
 
-      $masonry.masonry('reloadItems').masonry('layout');
+      this.recollect();
       $node.removeClass('appearing');
     },
     removeElement: function(node) {
+      $(node).addClass('removing');
       $masonry.masonry('remove', node);
     }
   }
