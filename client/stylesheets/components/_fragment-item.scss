@@ -1,12 +1,18 @@
+.fragments-list {
+  position: relative;
+}
+
 .fragment-item {
-  @include transition(opacity 1s);
-  top: 150%;
-  left: 40%;
+  @include transition(opacity 0.5s, transform 0.2s);
+  position: absolute;
+  top: 0;
+  left: 0;
   padding: $grid-side-padding / 2;
   width: 20%;
 
   &.appearing, &.removing {
     opacity: 0;
+    transform: scale(0.5);
   }
 
   @include below (1150px) {

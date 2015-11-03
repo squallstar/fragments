@@ -14,7 +14,7 @@ Template.fragmentsList.helpers({
           return;
         }
 
-        Meteor.setTimeout(function () {
+        setTimeout(function () {
           instance.recollect();
         }, 1);
       }
@@ -110,7 +110,8 @@ Template.fragmentsList.onRendered(function () {
   this.$masonry = $masonry;
 
   $masonry.masonry({
-    itemSelector: '.fragment-item'
+    itemSelector: '.fragment-item',
+    transitionDuration: 0
   });
 
   this.recollect = function () {
@@ -124,6 +125,7 @@ Template.fragmentsList.onRendered(function () {
       $node.addClass('appearing').insertBefore(next);
 
       this.recollect();
+
       $node.removeClass('appearing');
     },
     removeElement: function(node) {
