@@ -95,8 +95,7 @@ Template.fragmentsList.onRendered(function () {
   this.$masonry = $masonry;
 
   $masonry.masonry({
-    itemSelector: '.fragment-item',
-    transitionDuration: 0
+    itemSelector: '.fragment-item'
   });
 
   this.find(selector)._uihooks = {

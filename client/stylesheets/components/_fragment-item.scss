@@ -1,27 +1,27 @@
 .fragment-item {
-  @include transition(opacity 0.5s, transform 0.3s);
+  @include transition(opacity 1s);
+  top: 95%;
+  left: 45%;
   padding: $grid-side-padding / 2;
-  width: 25%;
+  width: 20%;
 
   &.appearing {
     opacity: 0;
-    transform: scale(0.5);
   }
 
-  @include below (1050px) {
+  @include below (1150px) {
+    width: 25%;
+  }
+
+  @include below (900px) {
     width: 33.33%;
   }
 
-  @include below (700px) {
-    width: 50%;
-  }
-
   @include below ($break-phone) {
-    width: 100%;
-
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
+    width: 50%;
+    // position: relative !important;
+    // top: auto !important;
+    // left: auto !important;
   }
 
   .wrapper {
@@ -178,12 +178,13 @@
       }
 
       .tags {
-        margin: 1rem 0;
+        margin: 1.2rem 0 1rem;
 
         li {
           display: inline-block;
-          background: #EEE;
-          border-radius: 3px;
+          border: 1px solid #BBB;
+          color: #888;
+          border-radius: 10px;
           font-size: 1rem;
           padding: 0.4rem 1rem;
           margin: 0 0.4rem 0.7rem 0;

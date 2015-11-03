@@ -45,8 +45,6 @@ function fetchUrlSync(url) {
 // Parse the content from Embedly
 function parseLinkContent (link, item) {
   [
-    'title',
-    'description',
     'url',
     'provider_name'
   ].forEach(function (field) {
@@ -60,6 +58,8 @@ function parseLinkContent (link, item) {
   // trim long titles
   if (item.title) {
     link.title = item.title.length > titleMaxLength ? item.title.substr(0, titleMaxLength) + '…' : item.title;
+  } else {
+    link.title = 'Untitled';
   }
 
   // trim long descriptions
