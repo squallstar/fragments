@@ -2,7 +2,9 @@
   <div id="font-loader">
     <strong>x</strong><span>y</span><h6>z</h6>
   </div>
-  <div class="container">
+
+  <div class="container {{#if withModal}}with-modal{{/if}}">
+    {{> modal}}
     {{> header}}
     <div id="main">
       {{> yield}}

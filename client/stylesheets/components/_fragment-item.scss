@@ -224,4 +224,28 @@
       }
     }
   }
+
+  &.in-modal {
+    z-index: 4;
+
+    .wrapper {
+      cursor: default;
+      box-shadow: 1px 1px 22px rgba(0,0,0,0.15);
+
+      .content {
+
+        h2:hover, p:hover {
+          cursor: text;
+        }
+
+        h2, p {
+          background-color: #FAFAFA;
+
+          &:before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
 }

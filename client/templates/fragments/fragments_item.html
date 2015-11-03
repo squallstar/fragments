@@ -1,5 +1,5 @@
 <template name="fragmentItem">
-  <div class="fragment-item {{#if isFetching}}is-fetching{{/if}}">
+  <div class="fragment-item {{#if isFetching}}is-fetching{{/if}} {{#if isEditing}}in-modal{{/if}}">
     <div class="wrapper">
       {{#if images}}
         <div class="images">
