@@ -41,6 +41,13 @@ p {
   line-height: 1.5;
 }
 
+#font-loader {
+  position: absolute;
+  visibility: hidden;
+  top: -9999px;
+  left: -9999px;
+}
+
 .row {
   @extend %clear;
   position: relative;

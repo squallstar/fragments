@@ -1,11 +1,11 @@
 .fragment-item {
   @include transition(opacity 1s);
-  top: 95%;
-  left: 45%;
+  top: 150%;
+  left: 40%;
   padding: $grid-side-padding / 2;
   width: 20%;
 
-  &.appearing {
+  &.appearing, &.removing {
     opacity: 0;
   }
 
