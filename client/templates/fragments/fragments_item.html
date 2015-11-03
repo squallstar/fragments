@@ -1,5 +1,5 @@
 <template name="fragmentItem">
-  <div class="fragment-item {{#if isFetching}}is-fetching{{/if}} {{#if isEditing}}in-modal{{/if}}">
+  <div class="fragment-item {{#if isEditing}}in-modal{{/if}}">
     <div class="wrapper">
       {{#if images}}
         <div class="images">
@@ -11,8 +11,8 @@
       <div class="content">
         {{#if isFetching}}{{> progressBar}}{{/if}}
 
-        <h2>{{{title}}}</h2>
-        <p>{{{description}}}</p>
+        <h2 data-title contenteditable={{isEditing}}>{{{title}}}</h2>
+        <p data-description contenteditable={{isEditing}}>{{{description}}}</p>
         {{#if entities}}
           <div class="tags">
             {{#each entities}}
@@ -23,6 +23,7 @@
         <a class="link" href={{url}} target="_blank">{{domain}}</a>
         <div class="date">{{timeAgo created_at}}</div>
       </div>
+      {{#if isEditing}}<a href="#" data-delete>+</a>{{/if}}
     </div>
   </div>
 </template>

@@ -15,12 +15,22 @@ Template.fragmentItem.onRendered(function () {
   this.autorun(() => {
     if (this.isEditing.get() && !Session.get('modal')) {
       this.isEditing.set(false);
+      saveChanges.call(this);
     }
   });
 });
 
+function saveChanges () {
+  var updatedData = {
+    title: this.$('[data-title]').text(),
+    description: this.$('[data-description]').text()
+  };
+
+  Meteor.call('fragmentUpdate', this.data._id, updatedData);
+};
+
 Template.fragmentItem.events({
-  'click .wrapper' : function (event) {
+  'click .wrapper': function (event) {
     var instance = Template.instance();
 
     event.preventDefault();
@@ -31,5 +41,11 @@ Template.fragmentItem.events({
 
     instance.isEditing.set(true);
     Session.set('modal', true);
+  },
+  'click [data-delete]': function (event) {
+    event.preventDefault();
+    Session.set('modal', false);
+
+    Meteor.call('fragmentDelete', Template.instance().data._id);
   }
 });
