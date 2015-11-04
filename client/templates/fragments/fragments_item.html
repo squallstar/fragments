@@ -21,13 +21,14 @@
 
         <h2 data-title contenteditable={{isEditing}}>{{{title}}}</h2>
         <p data-description contenteditable={{isEditing}}>{{{description}}}</p>
-        {{#if entities}}
-          <div class="tags">
-            {{#each entities}}
-              <li>{{this}}</li>
-            {{/each}}
-          </div>
-        {{/if}}
+        <div class="tags">
+          {{#each entities}}
+            <a class="tag" href="#">{{this}}</a>
+          {{/each}}
+          {{#if isEditing}}
+            <a href="#" class="tag add">+ Tag</a>
+          {{/if}}
+        </div>
         <a class="link" href={{url}} target="_blank">{{domain}}</a>
         <div class="date">{{timeAgo created_at}}</div>
       </div>
