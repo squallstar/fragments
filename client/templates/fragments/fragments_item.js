@@ -117,8 +117,6 @@ Template.fragmentItem.events({
       return;
     }
 
-    $field.text('');
-
     var entities = this.entities.slice(0);
     entities.push(tag);
 
@@ -126,6 +124,8 @@ Template.fragmentItem.events({
 
     Meteor.call('fragmentUpdate', fragmentId, {
       entities: entities
+    }, function () {
+      $field.text('');
     });
   }
 });
