@@ -19,14 +19,18 @@
       <div class="content">
         {{#if isFetching}}{{> progressBar}}{{/if}}
 
-        <h2 data-title contenteditable={{isEditing}}>{{{title}}}</h2>
-        <p data-description contenteditable={{isEditing}}>{{{description}}}</p>
+        <h2 data-title data-save-on-return contenteditable={{isEditing}}>{{{title}}}</h2>
+        <p data-description data-save-on-return contenteditable={{isEditing}}>{{{description}}}</p>
         <div class="tags">
           {{#each entities}}
             <a class="tag" href="#">{{this}}</a>
           {{/each}}
-          {{#if isEditing}}
-            <a href="#" class="tag add">+ Tag</a>
+          {{#if isAddingTag}}
+            <span class="tag" data-new-tag contenteditable=true></span>
+          {{else}}
+            {{#if isEditing}}
+              <a href="#" class="tag add" data-add-tag>+ Tag</a>
+            {{/if}}
           {{/if}}
         </div>
         <a class="link" href={{url}} target="_blank">{{domain}}</a>

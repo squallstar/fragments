@@ -4,17 +4,22 @@ Template.fragmentItem.helpers({
   },
   isEditing: function () {
     return Template.instance().isEditing.get();
+  },
+  isAddingTag: function () {
+    return Template.instance().isAddingTag.get();
   }
 });
 
 Template.fragmentItem.onCreated(function () {
   this.isEditing = new ReactiveVar(false);
+  this.isAddingTag = new ReactiveVar(false);
 });
 
 Template.fragmentItem.onRendered(function () {
   this.autorun(() => {
     if (this.isEditing.get() && !Session.get('modal')) {
       this.isEditing.set(false);
+      this.isAddingTag.set(false);
       saveChanges.call(this);
     }
   });
@@ -41,6 +46,12 @@ Template.fragmentItem.events({
 
     instance.isEditing.set(true);
     Session.set('modal', true);
+  },
+  'keydown [data-save-on-return]': function (event) {
+    if ([13].indexOf(event.keyCode) !== -1) {
+      event.preventDefault();
+      Session.set('modal', false);
+    }
   },
   'click [data-delete]': function (event) {
     event.preventDefault();
@@ -79,6 +90,42 @@ Template.fragmentItem.events({
         lead_image: null,
         images: []
       });
+    });
+  },
+  'click [data-add-tag]': function (event) {
+    var instance = Template.instance();
+    event.preventDefault();
+    instance.isAddingTag.set(true);
+    setTimeout(function () {
+      instance.$('[data-new-tag]').focus();
+    }, 10);
+
+  },
+  'keydown [data-new-tag]': function (event) {
+    if ([9, 13, 188].indexOf(event.keyCode) === -1) {
+      return;
+    }
+
+    event.preventDefault();
+
+    var instance = Template.instance(),
+        $field = instance.$('[data-new-tag]'),
+        tag = $field.text();
+
+    if (!tag) {
+      Template.instance().isAddingTag.set(false);
+      return;
+    }
+
+    $field.text('');
+
+    var entities = this.entities.slice(0);
+    entities.push(tag);
+
+    var fragmentId = instance.data._id;
+
+    Meteor.call('fragmentUpdate', fragmentId, {
+      entities: entities
     });
   }
 });

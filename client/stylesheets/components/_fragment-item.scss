@@ -195,6 +195,16 @@
           font-size: 1rem;
           padding: 0.4rem 1rem;
           margin: 0 0.4rem 0.7rem 0;
+
+          &.add {
+            font-weight: $bold;
+          }
+
+          &[data-new-tag] {
+            color: #555;
+            border-color: #555;
+            font-weight: $bold;
+          }
         }
       }
     }
