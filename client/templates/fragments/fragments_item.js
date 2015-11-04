@@ -53,5 +53,32 @@ Template.fragmentItem.events({
     setTimeout(() => {
       Meteor.call('fragmentDelete', fragmentId);
     }, 0);
+  },
+  'click [data-next-thumbnail]': function (event) {
+    event.preventDefault();
+
+    var instance = Template.instance(),
+        images = instance.data.images,
+        fragmentId = instance.data._id;
+
+    for (var i = 0, len = instance.data.images.length; i < len; i++) {
+      if (instance.data.lead_image === images[i].url) {
+        return Meteor.call('fragmentUpdate', fragmentId, {
+          lead_image: images[i+1 < len? i+1 : 0].url
+        });
+      }
+    }
+  },
+  'click [data-remove-thumbnail]': function (event) {
+    event.preventDefault();
+
+    var fragmentId = Template.instance().data._id;
+
+    Template.instance().$('.images').slideUp(300, function () {
+      Meteor.call('fragmentUpdate', fragmentId, {
+        lead_image: null,
+        images: []
+      });
+    });
   }
 });

@@ -6,6 +6,14 @@
           {{#each images}}
             <div class="img {{#if equals ../lead_image url}}lead{{/if}}" data-url={{url}}, style="{{#if equals ../lead_image url}}background-image:url({{url}}){{/if}}"></div>
           {{/each}}
+          {{#if isEditing}}
+            <div class="actions">
+              {{#if hasMany images}}
+                <a href="#" data-next-thumbnail>Next image</a>
+              {{/if}}
+              <a href="#" data-remove-thumbnail>Remove preview</a>
+            </div>
+          {{/if}}
         </div>
       {{/if}}
       <div class="content">
