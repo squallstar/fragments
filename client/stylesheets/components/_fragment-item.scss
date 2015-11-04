@@ -3,7 +3,7 @@
 }
 
 .fragment-item {
-  @include transition(opacity 0.5s, transform 0.2s);
+  @include transition(top 0.2s, left 0.2s, opacity 0.5s, transform 0.2s);
   position: absolute;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@
 
   &.appearing, &.removing {
     opacity: 0;
-    transform: scale(0.5);
+    transform: scale(0.4);
   }
 
   @include below (1150px) {

@@ -46,6 +46,12 @@ Template.fragmentItem.events({
     event.preventDefault();
     Session.set('modal', false);
 
-    Meteor.call('fragmentDelete', Template.instance().data._id);
+    var fragmentId = Template.instance().data._id;
+
+    // Wait for events to pop before destroying this item
+    // https://github.com/meteor/meteor/issues/2981
+    setTimeout(() => {
+      Meteor.call('fragmentDelete', fragmentId);
+    }, 0);
   }
 });

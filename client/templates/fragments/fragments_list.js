@@ -1,6 +1,8 @@
-const pageSize = 15; // items per page
-const viewportPrefetchHeight = 350; // px
-const scrollThrottle = 100; // ms
+const PAGE_SIZE = 15; // items per page
+const PREFETCH_HEIGHT = 350; // px
+const SCROLL_THROTTLE = 100; // ms
+const APPEAR_DELAY = 150; // ms
+const DISAPPEAR_DELAY = 450; // ms
 
 Template.fragmentsList.helpers({
   // the fragments cursor
@@ -42,7 +44,7 @@ var onWindowScroll = function (event) {
       viewportHeight = $window.height(),
       contentHeight = parseInt($list.height() || $list.css('height'));
 
-  if (offset < (contentHeight - viewportHeight - viewportPrefetchHeight)) {
+  if (offset < (contentHeight - viewportHeight - PREFETCH_HEIGHT)) {
     return;
   }
 
@@ -52,11 +54,11 @@ var onWindowScroll = function (event) {
   var limit = instance.limit.get();
 
   // increase limit
-  limit += pageSize;
+  limit += PAGE_SIZE;
   instance.limit.set(limit);
 };
 
-var throttledScroll = _.throttle(onWindowScroll, scrollThrottle);
+var throttledScroll = _.throttle(onWindowScroll, SCROLL_THROTTLE);
 
 Template.fragmentsList.onCreated(function () {
 
@@ -67,7 +69,7 @@ Template.fragmentsList.onCreated(function () {
   // initialize the reactive variables
   instance.isBusy = new ReactiveVar(true);
   instance.loaded = new ReactiveVar(0);
-  instance.limit = new ReactiveVar(pageSize);
+  instance.limit = new ReactiveVar(PAGE_SIZE);
 
   // 2. Autorun
 
@@ -126,11 +128,18 @@ Template.fragmentsList.onRendered(function () {
 
       this.recollect();
 
-      $node.removeClass('appearing');
+      setTimeout(() => {
+        $node.removeClass('appearing');
+      }, !this.loaded.get() ? 0 : APPEAR_DELAY);
     },
-    removeElement: function(node) {
+    removeElement: (node) => {
+      var $node = $(node);
       $(node).addClass('removing');
-      $masonry.masonry('remove', node);
+
+      setTimeout(() => {
+        $node.remove();
+        this.recollect();
+      }, DISAPPEAR_DELAY);
     }
   }
 });
