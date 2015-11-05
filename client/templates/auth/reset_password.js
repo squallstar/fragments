@@ -1,26 +1,19 @@
-const KEY_PASSWORD_TOKEN = 'resetPasswordToken';
-const KEY_PASSWORD_EMAIL = 'resetPasswordEmailSent';
-
 Template.reset_password.helpers({
-  token: function () {
-    return Template.instance().token.get();
-  },
   emailHasBeenSent: function () {
     return Template.instance().emailHasBeenSent.get();
+  },
+  passwordHasBeenReset: function () {
+    return Template.instance().passwordHasBeenReset.get();
   }
 });
 
 Template.reset_password.onCreated(function () {
-  this.token = new ReactiveVar(false);
   this.emailHasBeenSent = new ReactiveVar(false);
-
-  if (Accounts._resetPasswordToken) {
-    this.token.set(Accounts._resetPasswordToken);
-  }
+  this.passwordHasBeenReset = new ReactiveVar(false);
 });
 
 Template.reset_password.events({
-  'submit form' : function (event, template) {
+  'submit form[name="reset_password"]' : function (event, template) {
     event.preventDefault();
 
     var email = template.$('input[type="email"]').val().trim();
@@ -32,6 +25,19 @@ Template.reset_password.events({
       }
 
       emailHasBeenSent.set(true);
+    });
+  },
+  'submit form[name="new_password"]' : function (event, template) {
+    event.preventDefault();
+
+    var password = template.$('input[type="password"]').val();
+
+    Accounts.resetPassword(template.data.token, password, (err) => {
+      if (err) {
+        return console.log('err', err);
+      }
+
+      template.passwordHasBeenReset.set(true);
     });
   }
 });
