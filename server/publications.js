@@ -3,5 +3,5 @@ Meteor.publish('fragments', function(options) {
     sort: Object,
     limit: Number
   });
-  return Fragments.find({}, options);
+  return Fragments.find({ user: this.userId }, options);
 });
