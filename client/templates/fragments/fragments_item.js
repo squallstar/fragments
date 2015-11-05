@@ -101,8 +101,11 @@ Template.fragmentItem.events({
     }, 10);
 
   },
-  'keydown [data-new-tag]': function (event) {
-    if ([9, 13, 188].indexOf(event.keyCode) === -1) {
+  'click [data-new-tag]': function (event) {
+    document.execCommand('selectAll', false, null);
+  },
+  'keydown [data-new-tag], blur [data-new-tag]': function (event) {
+    if (event.keyCode && [9, 13, 188].indexOf(event.keyCode) === -1) {
       return;
     }
 
@@ -125,7 +128,12 @@ Template.fragmentItem.events({
     Meteor.call('fragmentUpdate', fragmentId, {
       entities: entities
     }, function () {
-      $field.text('');
+      if (event.keyCode) {
+        $field.text('');
+      } else {
+        // This happens when the action was triggered by the "blur" event
+        instance.isAddingTag.set(false);
+      }
     });
   }
 });

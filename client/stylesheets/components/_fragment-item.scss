@@ -196,7 +196,7 @@
           padding: 0.4rem 1rem;
           margin: 0 0.4rem 0.7rem 0;
 
-          &.add {
+          &[data-add-tag] {
             font-weight: $bold;
           }
 
@@ -204,6 +204,7 @@
             color: #555;
             border-color: #555;
             font-weight: $bold;
+            cursor: text;
           }
         }
       }
