@@ -120,7 +120,7 @@ Template.fragmentItem.events({
       return;
     }
 
-    var entities = this.entities.slice(0);
+    var entities = this.entities ? this.entities.slice(0) : [];
     entities.push(tag);
 
     var fragmentId = instance.data._id;
