@@ -3,7 +3,21 @@
   height: $header-height;
   top: 0;
   width: 100%;
-  background-color: #808DD3;
-  color: #FFF;
-  z-index: 10;
+  background-color: #FFF;
+  z-index: 2;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+
+  .user {
+    position: relative;
+
+    .handle {
+      $size: 3.5rem;
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+      background-color: #DDD;
+      margin: 1.2rem 0 0 0;
+      display: block;
+    }
+  }
 }
