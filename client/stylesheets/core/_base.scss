@@ -48,6 +48,13 @@ p {
   left: -9999px;
 }
 
+#container {
+
+  &.with-header {
+    padding-top: $header-height;
+  }
+}
+
 .row {
   @extend %clear;
   position: relative;
