@@ -1,9 +1,13 @@
 <template name="layout">
   {{> font_loader}}
 
-  <div class="container {{#if withModal}}with-modal{{/if}}">
+  <div class="container {{#if withModal}}with-modal{{/if}} {{#if currentUser}}with-header{{/if}}">
     {{> modal}}
-    {{> header}}
+
+    {{#if currentUser}}
+      {{> header}}
+    {{/if}}
+
     <div id="main">
       {{> yield}}
     </div>
