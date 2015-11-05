@@ -26,3 +26,4 @@ http
 momentjs:moment
 accounts-base
 accounts-password
+accounts-google

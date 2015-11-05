@@ -1,5 +1,5 @@
 Template.login.events({
-  'submit form' : function (event, template) {
+  'submit form': function (event, template) {
     event.preventDefault();
 
     var email = template.$('input[type="email"]').val().trim(),
@@ -11,6 +11,17 @@ Template.login.events({
       }
 
       Router.go('home');
+    });
+  },
+  'click a[data-google]': function (event, template) {
+    event.preventDefault();
+
+    Meteor.loginWithGoogle({
+      requestPermissions: ['email']
+    }, function (err) {
+      if (err) {
+        console.log('err', err);
+      }
     });
   }
 });
