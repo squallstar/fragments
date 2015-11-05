@@ -10,8 +10,12 @@ Template.register.events({
         password = template.$('input[name="password"]').val(),
         confirmPassword = template.$('input[name="confirm_password"]').val();
 
-    if (!isValidPassword(password) || password !== confirmPassword) {
-      return console.log('password too short or mismatch');
+    if (!isValidPassword(password)) {
+      return console.log('password too short');
+    }
+
+    if (password !== confirmPassword) {
+      return console.log('passwords confirmation does not match password');
     }
 
     Accounts.createUser({ email: email, password : password }, function (err) {
