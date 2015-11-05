@@ -24,3 +24,5 @@ matb33:collection-hooks
 reactive-var
 http
 momentjs:moment
+accounts-base
+accounts-password
