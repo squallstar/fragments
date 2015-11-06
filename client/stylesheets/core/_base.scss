@@ -18,7 +18,7 @@ html, body {
   height: 100%;
   min-height: 100%;
   font-family: $font-primary;
-  background: #EEE;
+  background: #EDEDED;
 }
 
 input, textarea, select {
@@ -70,6 +70,11 @@ p {
     margin-left: -$grid-side-padding/2;
     margin-right: -$grid-side-padding/2;
   }
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
 }
 
 .left {

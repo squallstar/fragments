@@ -1,9 +1,17 @@
 <template name="header">
   <header id="header">
-    <div class="row">
-      <div class="right">
-        <div class="user">
-          <a href="#" class="handle" alt="{{displayName}}" style="background-image: url({{profilePicture}})"></a>
+    <div class="row flex">
+      <div class="left-section title-bar">
+        <h1>SectionName</h1>
+      </div>
+      <div class="middle-section">
+        {{> header_search_bar}}
+      </div>
+      <div class="right-section">
+        <div>
+          <div class="user">
+            <a href="#" class="handle" alt="{{displayName}}" style="background-image: url({{profilePicture}})"></a>
+          </div>
         </div>
       </div>
     </div>
