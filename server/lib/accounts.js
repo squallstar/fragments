@@ -22,8 +22,6 @@ Meteor.startup(function() {
       user.profile.picture = '/assets/img/default-avatar.png';
     }
 
-    console.log('user', user);
-
     return user;
   });
 
