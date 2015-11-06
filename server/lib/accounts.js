@@ -16,10 +16,15 @@ Meteor.startup(function() {
 
     if (user.services.google !== undefined) {
       user.profile.picture = user.services.google.picture;
+      user.profile.name = user.services.google.name;
     }
 
     if (!user.profile.picture) {
       user.profile.picture = '/assets/img/default-avatar.png';
+    }
+
+    if (!user.profile.name) {
+      user.profile.name = user.emails[0].address;
     }
 
     return user;

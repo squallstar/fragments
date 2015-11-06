@@ -1,5 +1,17 @@
 <template name="header_user_tooltip">
   <div class="user-tooltip">
-    <a href={{pathFor 'logout'}}>Log out</a>
+    <div class="flex">
+      <div class="pic">
+        <img src="{{currentUser.profile.picture}}" />
+      </div>
+      <div class="details">
+        <h3>{{currentUser.profile.name}}</h3>
+        <p>Hello world</p>
+        <a href="#" class="button primary">Account</a>
+      </div>
+    </div>
+    <div class="actions flex">
+      <a class="button" href={{pathFor 'logout'}}>Log out</a>
+    </div>
   </div>
 </template>

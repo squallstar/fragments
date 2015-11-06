@@ -1,0 +1,15 @@
+.button {
+  display: inline-block;
+  background: #EEE;
+  border: 1px solid #DEDEDE;
+  text-decoration: none;
+  padding: 0.9rem 1rem;
+  font-size: 1.2rem;
+  font-weight: $medium;
+
+  &.primary {
+    background-color: #2196F3;
+    color: #FFF;
+    border-color: #1565C0;
+  }
+}

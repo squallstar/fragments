@@ -95,9 +95,49 @@
 
   .user-tooltip {
     position: absolute;
-    top: 0;
+    top: $header-height - 2rem;
     right: 0;
     background: #FFF;
-    border: 1px solid #EEE;
+    border: 1px solid #DFDFDF;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    max-width: 300px;
+
+    .flex {
+      padding: 1.5rem 2rem;
+    }
+
+    .pic {
+      flex: 0 1 auto;
+      padding-right: 2rem;
+
+      img {
+        $size: 70px;
+        width: $size;
+        height: $size;
+        border-radius: 50%;
+      }
+    }
+
+    .details {
+      min-width: 100px;
+      flex: 1;
+      text-align: left;
+      white-space: nowrap;
+
+      h3 {
+        font-size: 1.7rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .actions {
+      background-color: #FAFAFA;
+      border-top: 1px solid #EFEFEF;
+    }
   }
 }
