@@ -2,6 +2,12 @@ Template.fragmentSubmit.onCreated(function() {
   Session.set('fragmentSubmitErrors', {});
 });
 
+Template.fragmentSubmit.onRendered(function () {
+  if (!Meteor.isTouch) {
+    this.$('input').focus();
+  }
+});
+
 Template.fragmentSubmit.helpers({
   errorMessage: function(field) {
     return Session.get('fragmentSubmitErrors')[field];
