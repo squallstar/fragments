@@ -18,7 +18,10 @@ Template.register.events({
       return console.log('passwords confirmation does not match password');
     }
 
-    Accounts.createUser({ email: email, password : password }, function (err) {
+    Accounts.createUser({
+      email: email,
+      password : password
+    }, function (err) {
       if (err) {
         return console.log('err');
       }

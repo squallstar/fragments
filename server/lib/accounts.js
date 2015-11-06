@@ -10,12 +10,19 @@ Meteor.startup(function() {
   });
 
   Accounts.onCreateUser(function (options, user) {
+    if (!user.profile) {
+      user.profile = {};
+    }
+
     if (user.services.google !== undefined) {
-      if (!user.profile) {
-        user.profile = {};
-      }
       user.profile.picture = user.services.google.picture;
     }
+
+    if (!user.profile.picture) {
+      user.profile.picture = '/assets/img/default-avatar.png';
+    }
+
+    console.log('user', user);
 
     return user;
   });
