@@ -92,4 +92,12 @@
       display: block;
     }
   }
+
+  .user-tooltip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #FFF;
+    border: 1px solid #EEE;
+  }
 }

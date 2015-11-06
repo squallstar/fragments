@@ -10,7 +10,10 @@
       <div class="right-section">
         <div>
           <div class="user">
-            <a href="#" class="handle" alt="{{displayName}}" style="background-image: url({{profilePicture}})"></a>
+            <a href="#" data-toggle-tooltip class="handle" alt="{{displayName}}" style="background-image: url({{profilePicture}})"></a>
+            {{#if userTooltipIsOpen}}
+              {{> header_user_tooltip}}
+            {{/if}}
           </div>
         </div>
       </div>
