@@ -1,5 +1,6 @@
 {
   "embedlyApiKey": "your_embedly_api_key",
   "googleClientId": "your_google_client_id",
-  "googleClientSecret": "your_google_secret_key"
+  "googleClientSecret": "your_google_secret_key",
+  "kadiraKey": "your_kadira_key"
 }
