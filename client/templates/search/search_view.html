@@ -6,4 +6,16 @@
       {{/each}}
     </ul>
   </div>
+  <div class="box middle-box">
+    <ul class="list">
+      {{#if hasHistory}}
+        <li>
+          <a href="#" data-clear>Clear search history</a>
+        </li>
+      {{/if}}
+      <li>
+        <a href="/">Close search</a>
+      </li>
+    </ul>
+  </div>
 </template>

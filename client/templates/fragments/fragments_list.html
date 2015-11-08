@@ -1,6 +1,6 @@
 <template name="fragmentsList">
   <div class="fragments-list stretch-half">
-    {{> fragmentSubmit }}
+    {{#if shouldDisplayAddForm}}{{> fragmentSubmit }}{{/if}}
     {{#each fragments}}
       {{> fragmentItem}}
     {{/each}}

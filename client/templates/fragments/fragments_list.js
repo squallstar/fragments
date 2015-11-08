@@ -27,6 +27,9 @@ Template.fragmentsList.helpers({
   // are there more fragments to show?
   isLoadingMore: function () {
     return Template.instance().isBusy.get();
+  },
+  shouldDisplayAddForm: function () {
+    return this.textQuery === undefined;
   }
 });
 
