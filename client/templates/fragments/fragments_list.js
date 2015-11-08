@@ -116,7 +116,7 @@ Template.fragmentsList.onCreated(function () {
 });
 
 Template.fragmentsList.onDestroyed(function () {
-  // 1. UI Events
+  this.$masonry.masonry('destroy');
   $(window).off('scroll', throttledScroll);
 });
 
