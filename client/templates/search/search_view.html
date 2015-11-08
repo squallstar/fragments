@@ -1,0 +1,9 @@
+<template name="searchView">
+  <div class="box middle-box">
+    <ul class="list">
+      {{#each searchHistory}}
+        {{> searchHistoryItem}}
+      {{/each}}
+    </ul>
+  </div>
+</template>

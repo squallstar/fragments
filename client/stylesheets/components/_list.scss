@@ -1,0 +1,65 @@
+ul.list {
+
+  li {
+
+    a {
+      @include transition(transform 0.2s);
+      display: block;
+      border-bottom: 1px solid #EEE;
+      padding: 1.3rem 1rem;
+      text-decoration: none;
+
+      h4 {
+        color: #999;
+      }
+
+      &.with-icon {
+        position: relative;
+        padding-left: 5.5rem;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 8px;
+          left: 15px;
+          width: 24px;
+          height: 24px;
+          opacity: 0.3;
+        }
+
+        &.icon-tag:before {
+          background: url(/assets/img/search-history.png) no-repeat center;
+          background-size: contain;
+        }
+      }
+
+      &:hover {
+        box-shadow: 0 0 8px rgba(0,0,0,0.15);
+        border-radius: 4px;
+        background-color: #FFF;
+        transform: scale(1.02);
+
+        h4 {
+          color: #000;
+        }
+      }
+    }
+
+    &:first-child {
+
+      a {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+    }
+
+    &:last-child {
+
+      a {
+        border-bottom: 0;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+  }
+}
