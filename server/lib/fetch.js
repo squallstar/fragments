@@ -4,6 +4,10 @@ const embedlyKey = Meteor.settings.embedlyApiKey;
 const titleMaxLength = 100; // characters
 const descriptionMaxLength = 140; // characters
 
+if (!embedlyKey) {
+  throw new Error('embedlyApiKey not set');
+}
+
 Meteor.methods({
   fragmentFetch: function (fragmentId) {
     check(fragmentId, String);

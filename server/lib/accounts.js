@@ -27,6 +27,8 @@ Meteor.startup(function() {
       user.profile.name = user.emails[0].address;
     }
 
+    Meteor.call('createTutorial', user);
+
     return user;
   });
 
