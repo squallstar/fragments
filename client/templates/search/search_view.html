@@ -4,17 +4,20 @@
       {{#each searchHistory}}
         {{> searchHistoryItem}}
       {{/each}}
+      {{#if hasHistory}}
+        <li>
+          <a href="#" data-clear class="with-icon">
+            {{> icon_bin}}
+            <h4>Clear search history</h4>
+          </a>
+        </li>
+      {{/if}}
     </ul>
   </div>
   <div class="box middle-box">
     <ul class="list">
-      {{#if hasHistory}}
-        <li>
-          <a href="#" data-clear>Clear search history</a>
-        </li>
-      {{/if}}
       <li>
-        <a href="/">Close search</a>
+        <a href="/" class="with-icon"><h4>Close search</h4></a>
       </li>
     </ul>
   </div>

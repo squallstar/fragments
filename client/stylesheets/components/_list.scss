@@ -31,6 +31,13 @@ ul.list {
           background: url(/assets/img/search-history.png) no-repeat center;
           background-size: contain;
         }
+
+        svg {
+          position: absolute;
+          top: 8px;
+          left: 15px;
+          fill: #AAA;
+        }
       }
 
       &:hover {
