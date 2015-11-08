@@ -1,4 +1,5 @@
 <template name="fragmentsList">
+  {{#if isBusy}}{{> loading}}{{/if}}
   <div class="fragments-list stretch-half">
     {{#if shouldDisplayAddForm}}{{> fragmentSubmit }}{{/if}}
     {{#each fragments}}
@@ -6,5 +7,4 @@
     {{/each}}
   </div>
 
-  {{#if isBusy}}<div class="loading">Loading</div>{{/if}}
 </template>

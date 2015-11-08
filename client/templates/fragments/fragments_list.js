@@ -25,7 +25,7 @@ Template.fragmentsList.helpers({
     return cursor;
   },
   // are there more fragments to show?
-  isLoadingMore: function () {
+  isBusy: function () {
     return Template.instance().isBusy.get();
   },
   shouldDisplayAddForm: function () {
