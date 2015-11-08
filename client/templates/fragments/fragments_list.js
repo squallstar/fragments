@@ -28,8 +28,11 @@ Template.fragmentsList.helpers({
   isBusy: function () {
     return Template.instance().isBusy.get();
   },
-  shouldDisplayAddForm: function () {
-    return !Session.get(CURRENT_SEARCH_KEY);
+  textSearch: function () {
+    return Session.get(CURRENT_SEARCH_KEY);
+  },
+  isEmpty: function () {
+    return !Template.instance().fragments().count();
   }
 });
 

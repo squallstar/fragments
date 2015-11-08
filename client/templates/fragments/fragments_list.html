@@ -1,7 +1,18 @@
 <template name="fragmentsList">
-  {{#if isBusy}}{{> loading}}{{/if}}
+  {{#if isBusy}}
+    {{> loading}}
+  {{else}}
+    {{#if textSearch}}
+      {{#if isEmpty}}
+        <div class="middle-box box padded message-box">
+          <h2>No results</h2>
+          <p>Unfortunately we have found no results for <strong>{{textSearch}}</strong>.</p>
+        </div>
+      {{/if}}
+    {{/if}}
+  {{/if}}
   <div class="fragments-list stretch-half">
-    {{#if shouldDisplayAddForm}}{{> fragmentSubmit }}{{/if}}
+    {{#unless textSearch}}{{> fragmentSubmit }}{{/unless}}
     {{#each fragments}}
       {{> fragmentItem}}
     {{/each}}
