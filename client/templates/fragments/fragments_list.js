@@ -1,6 +1,6 @@
 const PAGE_SIZE = 15; // items per page
 const PREFETCH_HEIGHT = 350; // px
-const SCROLL_THROTTLE = 100; // ms
+const SCROLL_THROTTLE = 300; // ms
 const APPEAR_DELAY = 150; // ms
 const DISAPPEAR_DELAY = 450; // ms
 
@@ -29,7 +29,7 @@ Template.fragmentsList.helpers({
     return Template.instance().isBusy.get();
   },
   shouldDisplayAddForm: function () {
-    return this.textQuery === undefined;
+    return !Session.get(CURRENT_SEARCH_KEY);
   }
 });
 
@@ -66,7 +66,6 @@ var throttledScroll = _.throttle(onWindowScroll, SCROLL_THROTTLE);
 Template.fragmentsList.onCreated(function () {
 
   // 1. Initialization
-
   var instance = this;
 
   // initialize the reactive variables
@@ -76,13 +75,23 @@ Template.fragmentsList.onCreated(function () {
 
   // 2. Autorun
 
-  // will re-run when the "limit" reactive variables changes
+  // will re-run when the reactive variables changes
   instance.autorun(function () {
-    // get the limit
-    var limit = instance.limit.get();
+    var limit = instance.limit.get(),
+        textQuery = Session.get(CURRENT_SEARCH_KEY),
+        options = {
+          sort: {
+            created_at: -1
+          },
+          limit: limit
+        };
+
+    if (textQuery) {
+      options.text = textQuery;
+    }
 
     // subscribe to the posts publication
-    var subscription = instance.subscribe('fragments', { sort: { created_at: -1 }, limit: limit }, function () {
+    var subscription = instance.subscribe('fragments', options, function () {
       instance.$masonry.masonry('reloadItems').masonry('layout');
     });
 

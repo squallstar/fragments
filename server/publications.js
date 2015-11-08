@@ -1,9 +1,22 @@
 Meteor.publish('fragments', function (options) {
   check(options, {
-    sort: Object,
-    limit: Number
+    sort: Match.Optional(Object),
+    limit: Match.Optional(Number),
+    text: Match.Optional(String)
   });
-  return Fragments.find({ user: this.userId }, options);
+
+  var query = {
+    user: this.userId
+  };
+
+  if (options.text) {
+    query.$text = { $search: options.text };
+  }
+
+  return Fragments.find(query, {
+    sort: options.sort,
+    limit: options.limit
+  });
 });
 
 Meteor.publish('searchHistory', function (options) {

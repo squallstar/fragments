@@ -2,6 +2,15 @@
 Meteor.startup(function () {
   Fragments._ensureIndex({ 'user': 1 });
 
+  Fragments._ensureIndex({
+    title: 'text',
+    description: 'text',
+    url: 'text',
+    tags: 'text'
+  }, {
+    name: 'text_index'
+  });
+
   SearchHistory._ensureIndex({ 'user': 1 });
   SearchHistory._ensureIndex({ 'query': 1 });
 });
