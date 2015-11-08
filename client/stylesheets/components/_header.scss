@@ -38,6 +38,10 @@
     h1 {
       font-weight: $medium;
       font-size: 2.1rem;
+
+      a {
+        text-decoration: none;
+      }
     }
   }
 
