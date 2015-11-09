@@ -13,7 +13,7 @@ Meteor.methods({
     check(fragmentId, String);
 
     var fragment = Fragments.findOne(fragmentId);
-    var data = fetchUrlSync(fragment.url);
+    var data = fetchUrlSync(fragment);
 
     data.fetched_at = Date.now();
 
@@ -23,22 +23,22 @@ Meteor.methods({
   }
 });
 
-function fetchUrlSync(url) {
+function fetchUrlSync(fragment) {
   var data = {};
 
   try {
     result = Meteor.http.get(extractBaseUrl, {
       params: {
         key: embedlyKey,
-        url: url
+        url: fragment.url
       }
     });
 
-    parseLinkContent(data, result.data);
+    parseLinkContent(fragment, data, result.data);
   }
   catch (err) {
     data.title = 'Not found';
-    console.log('Error while fetching URL', url, err);
+    console.log('Error while fetching URL', fragment.url, err);
   }
   finally {
     return data;
@@ -47,34 +47,34 @@ function fetchUrlSync(url) {
 
 // -------------------------------------------------------
 // Parse the content from Embedly
-function parseLinkContent (link, item) {
+function parseLinkContent (fragment, newData, item) {
   [
     'url',
     'provider_name'
   ].forEach(function (field) {
-    link[field] = item[field];
+    newData[field] = item[field];
   });
 
   if (item.provider_display) {
-    link.domain = item.provider_display.replace(/^www\./, '');
+    newData.domain = item.provider_display.replace(/^www\./, '');
   }
 
   // trim long titles
   if (item.title) {
-    link.title = item.title.length > titleMaxLength ? item.title.substr(0, titleMaxLength) + '…' : item.title;
+    newData.title = item.title.length > titleMaxLength ? item.title.substr(0, titleMaxLength) + '…' : item.title;
   } else {
-    link.title = 'Untitled';
+    newData.title = 'Untitled';
   }
 
   // trim long descriptions
   if (item.description) {
-    link.description = item.description.length > descriptionMaxLength ? item.description.substr(0, descriptionMaxLength) + '…' : item.description;
+    newData.description = item.description.length > descriptionMaxLength ? item.description.substr(0, descriptionMaxLength) + '…' : item.description;
   }
 
-  link.images = [];
+  newData.images = [];
 
   item.images.forEach(function (image) {
-    if (link.images.length >= 6) {
+    if (newData.images.length >= 6) {
       return;
     }
 
@@ -84,7 +84,7 @@ function parseLinkContent (link, item) {
 
     var firstColor = image.colors && image.colors.length ? image.colors[0] : null;
 
-    link.images.push({
+    newData.images.push({
       url: image.url,
       width: image.width,
       height: image.height,
@@ -92,20 +92,22 @@ function parseLinkContent (link, item) {
     });
   });
 
-  if (link.images && link.images.length) {
-    link.lead_image = link.images[0].url;
+  if (newData.images && newData.images.length) {
+    newData.lead_image = newData.images[0].url;
   }
 
-  link.tags = [];
+  newData.tags = fragment.tags || [];
 
   item.entities.forEach(function (entity) {
-    if (link.tags.length >= 6) {
+    if (newData.tags.length >= 6) {
       return;
     }
 
-    if (entity.count > 1) {
-      link.tags.push(entity.name);
-    }
+    newData.tags.push(entity.name);
+
+    // if (entity.count > 1) {
+    //   newData.tags.push(entity.name);
+    // }
   });
 }
 

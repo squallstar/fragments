@@ -24,11 +24,16 @@ Template.fragmentSubmit.events({
     var $url = $(event.target).find('[name=url]');
 
     var fragment = {
-      url: $url.val(),
+      url: $url.val()
     };
 
+    var currentTag = Session.get(CURRENT_TAG_KEY);
+    if (currentTag) {
+      fragment.tags = [currentTag];
+    }
+
     var errors = {};
-    if (! fragment.url) {
+    if (!fragment.url) {
       errors.url = "Please type a url";
       return Session.set('fragmentSubmitErrors', errors);
     }
