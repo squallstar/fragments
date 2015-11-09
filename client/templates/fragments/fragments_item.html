@@ -33,7 +33,9 @@
             {{/if}}
           {{/if}}
         </div>
-        <a class="link" href={{url}} target="_blank">{{domain}}</a>
+        {{#if url}}
+          <a class="link" href={{url}} target="_blank">{{domain}}</a>
+        {{/if}}
         <div class="date">{{timeAgo created_at}}</div>
       </div>
       {{#if isEditing}}<a href="#" data-delete>+</a>{{/if}}

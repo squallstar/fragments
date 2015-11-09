@@ -58,6 +58,7 @@ Template.fragmentItem.events({
   },
   'click [data-delete]': function (event) {
     event.preventDefault();
+    event.stopPropagation();
     Session.set('modal', false);
 
     var fragmentId = Template.instance().data._id;
@@ -105,6 +106,7 @@ Template.fragmentItem.events({
   },
   'click .tag.can-be-removed': function (event) {
     event.preventDefault();
+    event.stopPropagation();
     var tag = $(event.currentTarget).data('value');
     var fragmentId = Template.instance().data._id;
 
