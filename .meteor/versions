@@ -53,6 +53,8 @@ logging@1.0.8
 matb33:collection-hooks@0.8.1
 meteor@1.1.10
 meteor-base@1.0.1
+meteorhacks:aggregate@1.3.0
+meteorhacks:collection-utils@1.2.0
 meteorhacks:kadira@2.26.1
 meteorhacks:meteorx@1.4.1
 minifiers@1.1.7
