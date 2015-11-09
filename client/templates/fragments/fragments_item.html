@@ -22,7 +22,7 @@
         <h2 data-title data-save-on-return contenteditable={{isEditing}}>{{{title}}}</h2>
         <p data-description data-save-on-return contenteditable={{isEditing}}>{{{description}}}</p>
         <div class="tags">
-          {{#each entities}}
+          {{#each tags}}
             <a class="tag" href="#">{{this}}</a>
           {{/each}}
           {{#if isAddingTag}}

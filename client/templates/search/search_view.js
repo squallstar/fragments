@@ -14,6 +14,13 @@ Template.searchView.events({
   'click [data-clear]': function (event) {
     event.preventDefault();
     Meteor.call('clearSearchHistory');
+  },
+  'click .tags a': function (event) {
+    var tag = $(event.currentTarget).html();
+    event.preventDefault();
+
+    Session.set(CURRENT_TAG_KEY, tag);
+    Router.go('/');
   }
 });
 

@@ -14,10 +14,21 @@
       {{/if}}
     </ul>
   </div>
+  {{#if tagsLoaded}}
+    <div class="box middle-box tags-list">
+      <h3>Filter by your tags</h3>
+      <p>Click on any tag to view your fragments tagged with such tag.</p>
+      <div class="tags">
+        {{#each tags}}
+          <a href="#">{{_id}}</a>
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
   <div class="box middle-box">
     <ul class="list">
       <li>
-        <a href="/" class="with-icon"><h4>Close search</h4></a>
+        <a href="/"><h4>Close search</h4></a>
       </li>
     </ul>
   </div>

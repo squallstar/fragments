@@ -1,6 +1,9 @@
 Template.header_search_bar.helpers({
   currentSearch: function () {
     return Session.get(CURRENT_SEARCH_KEY);
+  },
+  currentTag: function () {
+    return Session.get(CURRENT_TAG_KEY);
   }
 });
 
@@ -27,5 +30,8 @@ Template.header_search_bar.events({
     Router.go('searchResults', {
       text: query
     });
+  },
+  'click [data-remove-tag]': function () {
+    Session.set(CURRENT_TAG_KEY, undefined);
   }
 });

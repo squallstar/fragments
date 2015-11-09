@@ -96,15 +96,15 @@ function parseLinkContent (link, item) {
     link.lead_image = link.images[0].url;
   }
 
-  link.entities = [];
+  link.tags = [];
 
   item.entities.forEach(function (entity) {
-    if (link.entities.length >= 6) {
+    if (link.tags.length >= 6) {
       return;
     }
 
     if (entity.count > 1) {
-      link.entities.push(entity.name);
+      link.tags.push(entity.name);
     }
   });
 }

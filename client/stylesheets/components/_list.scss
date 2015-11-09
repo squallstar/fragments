@@ -36,6 +36,8 @@ ul.list {
           position: absolute;
           top: 8px;
           left: 15px;
+          width: 25px;
+          height: 25px;
           fill: #AAA;
         }
       }
@@ -66,6 +68,24 @@ ul.list {
         border-bottom: 0;
         border-bottom-left-radius: 4px;
         border-bottom-right-radius: 4px;
+      }
+    }
+  }
+}
+
+.tags-list {
+  padding: 1rem 1rem 0.5rem;
+
+  .tags {
+
+    a {
+      @extend %tag;
+      font-size: 1.1rem;
+
+      &:hover {
+        border-color: #999;
+        background-color: #BBB;
+        color: #FFF;
       }
     }
   }

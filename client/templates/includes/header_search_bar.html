@@ -3,6 +3,11 @@
     <div class="search-icon">
       {{> icon_search}}
     </div>
+    {{#if currentTag}}
+      <div class="tag">
+        <a href="#" data-remove-tag>{{currentTag}}</a>
+      </div>
+    {{/if}}
     <div class="input">
       <input type="text" placeholder="Search" value={{currentSearch}} />
     </div>

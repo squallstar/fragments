@@ -39,3 +39,14 @@
     clear: both;
   }
 }
+
+%tag {
+  display: inline-block;
+  border: 1px solid #BBB;
+  text-decoration: none;
+  color: #888;
+  border-radius: 15px;
+  font-size: 1rem;
+  padding: 0.4rem 1rem;
+  margin: 0 0.4rem 0.7rem 0;
+}

@@ -13,7 +13,7 @@ Meteor.methods({
       images: [
         { url: '/assets/img/tutorial/welcome.png' } /* Temporary asset */
       ],
-      entities: ['Tutorial', 'Welcome']
+      tags: ['Tutorial', 'Welcome']
     });
 
     SearchHistory.insert({

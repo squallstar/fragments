@@ -120,13 +120,13 @@ Template.fragmentItem.events({
       return;
     }
 
-    var entities = this.entities ? this.entities.slice(0) : [];
-    entities.push(tag);
+    var tags = this.tags ? this.tags.slice(0) : [];
+    tags.push(tag);
 
     var fragmentId = instance.data._id;
 
     Meteor.call('fragmentUpdate', fragmentId, {
-      entities: entities
+      tags: tags
     }, function () {
       if (event.keyCode) {
         $field.text('');

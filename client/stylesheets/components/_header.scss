@@ -79,6 +79,16 @@
         font-weight: $medium;
       }
     }
+
+    .tag {
+      padding: 0.8rem 0.3rem 0 0;
+
+      a {
+        @extend %tag;
+        background: #FFF;
+        font-size: 1.5rem;
+      }
+    }
   }
 
   .user {
