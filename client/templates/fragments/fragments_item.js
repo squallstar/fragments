@@ -99,7 +99,13 @@ Template.fragmentItem.events({
     setTimeout(function () {
       instance.$('[data-new-tag]').focus();
     }, 10);
+  },
+  'click .tag.can-be-removed': function (event) {
+    event.preventDefault();
+    var tag = $(event.currentTarget).data('value');
+    var fragmentId = Template.instance().data._id;
 
+    Meteor.call('fragmentApplyChanges', fragmentId, 'pull', 'tags', [tag]);
   },
   'click [data-new-tag]': function (event) {
     document.execCommand('selectAll', false, null);
@@ -120,14 +126,9 @@ Template.fragmentItem.events({
       return;
     }
 
-    var tags = this.tags ? this.tags.slice(0) : [];
-    tags.push(tag);
-
     var fragmentId = instance.data._id;
 
-    Meteor.call('fragmentUpdate', fragmentId, {
-      tags: tags
-    }, function () {
+    Meteor.call('fragmentApplyChanges', fragmentId, 'addToSet', 'tags', [tag], function () {
       if (event.keyCode) {
         $field.text('');
       } else {

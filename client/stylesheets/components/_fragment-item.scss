@@ -194,6 +194,25 @@
           @extend %tag;
           max-width: 80%;
 
+          &.can-be-removed {
+            position: relative;
+            padding-right: 1.6rem;
+
+            span {
+              @include transform(rotate(45deg));
+              position: absolute;
+              font-size: 1.8rem;
+              top: 1px;
+              right: 5px;
+            }
+
+            &:hover {
+              border-color: #E9685E;
+              background-color: #E9685E;
+              color: #FFF;
+            }
+          }
+
           &[data-add-tag] {
             font-weight: $bold;
           }

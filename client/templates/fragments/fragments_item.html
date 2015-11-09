@@ -23,7 +23,7 @@
         <p data-description data-save-on-return contenteditable={{isEditing}}>{{{description}}}</p>
         <div class="tags">
           {{#each tags}}
-            <a class="tag" href="#">{{this}}</a>
+            <a class="tag {{#if isEditing}}can-be-removed{{/if}}" href="#" data-value={{this}}>{{this}}{{#if isEditing}}<span>+</span>{{/if}}</a>
           {{/each}}
           {{#if isAddingTag}}
             <span class="tag" data-new-tag contenteditable=true></span>
