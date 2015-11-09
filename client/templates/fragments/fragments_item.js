@@ -105,7 +105,7 @@ Template.fragmentItem.events({
     var tag = $(event.currentTarget).data('value');
     var fragmentId = Template.instance().data._id;
 
-    Meteor.call('fragmentApplyChanges', fragmentId, 'pull', 'tags', [tag]);
+    Meteor.call('fragmentApplyChanges', fragmentId, 'pull', 'tags', tag);
   },
   'click [data-new-tag]': function (event) {
     document.execCommand('selectAll', false, null);
@@ -128,7 +128,7 @@ Template.fragmentItem.events({
 
     var fragmentId = instance.data._id;
 
-    Meteor.call('fragmentApplyChanges', fragmentId, 'addToSet', 'tags', [tag], function () {
+    Meteor.call('fragmentApplyChanges', fragmentId, 'addToSet', 'tags', tag, function () {
       if (event.keyCode) {
         $field.text('');
       } else {

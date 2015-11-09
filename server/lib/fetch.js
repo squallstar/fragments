@@ -110,6 +110,8 @@ function parseLinkContent (fragment, newData, item) {
     //   newData.tags.push(entity.name);
     // }
   });
+
+  newData.tags = _.uniq(newData.tags);
 }
 
 // -------------------------------------------------------
