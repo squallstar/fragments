@@ -105,6 +105,7 @@ function parseLinkContent (fragment, newData, item) {
 
     newData.tags.push(entity.name);
 
+    // Temporarily removed to use the above condition
     // if (entity.count > 1) {
     //   newData.tags.push(entity.name);
     // }

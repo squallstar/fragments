@@ -14,6 +14,9 @@ Template.fragmentSubmit.helpers({
   },
   errorClass: function (field) {
     return !!Session.get('fragmentSubmitErrors')[field] ? 'has-error' : '';
+  },
+  currentTag: function () {
+    return Session.get(CURRENT_TAG_KEY);
   }
 });
 

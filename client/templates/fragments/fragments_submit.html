@@ -4,7 +4,15 @@
       <div class="content">
         <form>
           <input type="text" name="url" placeholder="e.g. example.org" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" />
-          <label for="body">Save new link</label>
+          {{#if currentTag}}
+            <ul class="tags">
+              <li class="tag">+ {{currentTag}}</li>
+            </ul>
+          {{else}}
+            <label for="body">
+              Save new link
+            </label>
+          {{/if}}
         </form>
       </div>
     </div>
