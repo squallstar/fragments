@@ -35,6 +35,9 @@ function saveChanges () {
 };
 
 Template.fragmentItem.events({
+  'click .link': function (event) {
+    event.stopPropagation();
+  },
   'click .wrapper': function (event) {
     var instance = Template.instance();
 
