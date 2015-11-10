@@ -39,3 +39,7 @@ Meteor.publish('searchHistory', function (options) {
 
   return SearchHistory.find({ user: this.userId }, options);
 });
+
+Meteor.publish('collections', function () {
+  return Collections.find({ user: this.userId });
+});

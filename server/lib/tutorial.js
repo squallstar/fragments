@@ -11,25 +11,28 @@ Meteor.methods({
         fetched_at: Date.now(),
         title: data.title,
         description: data.description,
-        images: [
-          { url: data.image } /* Temporary asset */
-        ],
-        tags: data.tags
+        images: [ { url: data.image } ],
+        tags: data.tags,
+        collections: data.collections
       });
     }
+
+    var tutorialCollection = Meteor.call('collectionInsert', { name: 'Tutorial' });
 
     insertFragment({
       title: 'Tag your fragments',
       description: 'You can add as many tags as you want on each fragment, and filter your results by one or more. Click here to get started editing this card!',
       image: '/assets/img/tutorial/tags.jpg',
-      tags: ['Tutorial', 'Cute stuff']
+      tags: ['Tutorial', 'Cute stuff'],
+      collections: [tutorialCollection._id]
     });
 
     insertFragment({
       title: 'Infinite storage',
       description: 'Limited space? We have never heard of that, so you should probably not really worry about saving here all your fragments.',
       image: '/assets/img/tutorial/storage.png',
-      tags: ['Tutorial', 'Storage']
+      tags: ['Tutorial', 'Storage'],
+      collections: [tutorialCollection._id]
     });
 
     insertFragment({
