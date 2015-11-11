@@ -40,7 +40,7 @@
     &:hover {
       box-shadow: 1px 1px 20px rgba(0,0,0,0.1);
       border-bottom-color: #CCC;
-      cursor: pointer;
+      /*cursor: pointer;*/
     }
 
     .images {
@@ -226,6 +226,51 @@
         }
       }
     }
+
+    .collections {
+
+      li {
+        flex: 0 1 auto;
+        @include transition(padding 0.4s);
+        min-height: 3px;
+        text-align: center;
+        display: block;
+
+        .name {
+          @include transition(transform 0.15s);
+          display: none;
+          text-decoration: none;
+          font-size: 1rem;
+          text-transform: uppercase;
+          line-height: 1;
+          color: rgba(0,0,0,0.5);
+        }
+
+        &:last-child {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+
+        &:hover {
+
+          .name {
+            font-weight: $bold;
+            @include transform(scale(1.1));
+          }
+        }
+      }
+
+      &:hover {
+
+        li {
+          padding: 0.4rem 2rem;
+
+          .name {
+            display: block;
+          }
+        }
+      }
+    }
   }
 
   &.submit {
@@ -272,6 +317,21 @@
 
           &:before {
             opacity: 1;
+          }
+        }
+      }
+
+      .collections {
+
+        li {
+          padding: 0.4rem 2rem;
+
+          &:last-child {
+            margin-bottom: -1px;
+          }
+
+          .name {
+            display: block;
           }
         }
       }

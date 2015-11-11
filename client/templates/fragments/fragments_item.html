@@ -38,6 +38,11 @@
         {{/if}}
         <div class="date">{{timeAgo created_at}}</div>
       </div>
+      <ul class="collections">
+        {{#each collections}}
+          <li style="background-color:{{color}}"><a class="name" href="#">{{name}}</a></li>
+        {{/each}}
+      </ul>
       {{#if isEditing}}<a href="#" data-delete>+</a>{{/if}}
     </div>
   </div>

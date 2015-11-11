@@ -1,10 +1,11 @@
 const extractBaseUrl = 'http://api.embed.ly/1/extract';
-const embedlyKey = Meteor.settings.embedlyApiKey;
+
+const { embedlyApiKey } = Meteor.settings;
 
 const titleMaxLength = 100; // characters
 const descriptionMaxLength = 140; // characters
 
-if (!embedlyKey) {
+if (!embedlyApiKey) {
   throw new Error('embedlyApiKey not set');
 }
 
@@ -29,7 +30,7 @@ function fetchUrlSync(fragment) {
   try {
     result = Meteor.http.get(extractBaseUrl, {
       params: {
-        key: embedlyKey,
+        key: embedlyApiKey,
         url: fragment.url
       }
     });

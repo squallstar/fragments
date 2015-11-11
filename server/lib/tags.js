@@ -1,5 +1,7 @@
 Meteor.methods({
-  'getTags': function () {
+  getTags: function () {
+    check(this.userId, String);
+
     return Fragments.aggregate([
       { $match: { user: this.userId } },
       { $unwind: '$tags' },

@@ -10,7 +10,7 @@ Meteor.startup(function() {
   });
 
   Accounts.onCreateUser(function (options, user) {
-    if (!user.profile) {
+    if (typeof user.profile !== 'object') {
       user.profile = {};
     }
 

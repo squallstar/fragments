@@ -141,5 +141,9 @@ Template.fragmentItem.events({
         instance.isAddingTag.set(false);
       }
     });
+  },
+  'click .collections .name': function (event) {
+    event.preventDefault();
+    event.stopPropagation();
   }
 });

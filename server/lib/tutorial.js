@@ -3,7 +3,9 @@ Meteor.methods({
     check(user, Object);
     check(user._id, String);
     check(user.profile, Object);
-    check(user.profile.name, String);
+    check(user.profile.name, Match.OneOf(String, undefined));
+
+    var displayName = user.profile.name ? user.profile.name.split(' ')[0] : '';
 
     function insertFragment (data) {
       Fragments.insert({
@@ -17,14 +19,30 @@ Meteor.methods({
       });
     }
 
-    var tutorialCollection = Meteor.call('collectionInsert', { name: 'Tutorial' });
+    var stuffCollection = Collections.mini(
+      Collections.findOne(
+        Meteor.call('collectionInsert', {
+      user: user._id,
+      name: 'Stuff',
+      color: '#ff9e9d'
+    })));
+
+    var interestingCollection = Collections.mini(
+      Collections.findOne(
+        Meteor.call('collectionInsert', {
+      user: user._id,
+      name: 'Interesting',
+      color: '#f9d423'
+    })));
+
+    console.log('creating tutorial', stuffCollection);
 
     insertFragment({
       title: 'Tag your fragments',
       description: 'You can add as many tags as you want on each fragment, and filter your results by one or more. Click here to get started editing this card!',
       image: '/assets/img/tutorial/tags.jpg',
       tags: ['Tutorial', 'Cute stuff'],
-      collections: [tutorialCollection._id]
+      collections: [interestingCollection, stuffCollection]
     });
 
     insertFragment({
@@ -32,11 +50,11 @@ Meteor.methods({
       description: 'Limited space? We have never heard of that, so you should probably not really worry about saving here all your fragments.',
       image: '/assets/img/tutorial/storage.png',
       tags: ['Tutorial', 'Storage'],
-      collections: [tutorialCollection._id]
+      collections: [stuffCollection]
     });
 
     insertFragment({
-      title: 'Hey ' + user.profile.name.split(' ')[0] + '!',
+      title: ['Hey', displayName + '!'].join(' '),
       description: 'Welcome to Fragments! This is your very first fragment, displayed here as a tutorial card. To dismiss it, click here and find the cross icon in the top right of the card.',
       image: '/assets/img/tutorial/welcome.png',
       tags: ['Tutorial']
