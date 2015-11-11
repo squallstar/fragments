@@ -12,6 +12,7 @@
   }
 
   .left-section {
+    display: flex;
     flex: 0 1 auto;
     min-width: 30%;
     padding-right: 1rem;
@@ -36,8 +37,9 @@
     line-height: $header-height;
 
     h1 {
-      font-weight: $medium;
-      font-size: 2.1rem;
+      flex: 1;
+      display: inline-block;
+      font-size: 2.3rem;
 
       a {
         text-decoration: none;

@@ -1,4 +1,4 @@
-Template.header_search_bar.helpers({
+Template.headerSearchBar.helpers({
   currentSearch: function () {
     return Session.get(CURRENT_SEARCH_KEY);
   },
@@ -7,7 +7,7 @@ Template.header_search_bar.helpers({
   }
 });
 
-Template.header_search_bar.events({
+Template.headerSearchBar.events({
   'focus input': function () {
     if (Router.current().route.getName() !== 'search') {
       Router.go('search');

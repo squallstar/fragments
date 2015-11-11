@@ -1,14 +1,14 @@
-Template.header_user_tooltip.events({
+Template.headerUserTooltip.events({
   'click': function (event) {
     event.stopPropagation();
   }
 });
 
-Template.header_user_tooltip.onRendered(function () {
+Template.headerUserTooltip.onRendered(function () {
   $('body').on('click', Template.instance(), onBlur);
 });
 
-Template.header_user_tooltip.onDestroyed(function () {
+Template.headerUserTooltip.onDestroyed(function () {
   $('body').off('click', onBlur);
 });
 

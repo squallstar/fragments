@@ -2,19 +2,20 @@
   <header id="header">
     <div class="row flex">
       <div class="left-section title-bar">
+        <a href="#" class="nav-toggle {{#if hasBackArrow}}open{{/if}}" data-nav-toggle><span></span></a>
         <h1>
           <a href="/">Fragments</a>
         </h1>
       </div>
       <div class="middle-section">
-        {{> header_search_bar}}
+        {{> headerSearchBar}}
       </div>
       <div class="right-section">
         <div>
           <div class="user">
             <a href="#" data-toggle-tooltip class="handle" alt="{{currentUser.profile.name}}" style="background-image: url({{currentUser.profile.picture}})"></a>
             {{#if userTooltipIsOpen}}
-              {{> header_user_tooltip}}
+              {{> headerUserTooltip}}
             {{/if}}
           </div>
         </div>
