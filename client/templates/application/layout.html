@@ -6,12 +6,11 @@
 
     {{#if currentUser}}
       {{> header}}
+      {{> sidebar}}
     {{/if}}
 
     <div id="main">
       {{> yield}}
     </div>
-
-    {{> sidebar}}
   </div>
 </template>

@@ -22,20 +22,28 @@ Meteor.methods({
     var stuffCollection = Collections.mini(
       Collections.findOne(
         Meteor.call('collectionInsert', {
-      user: user._id,
-      name: 'Stuff',
-      color: '#ff9e9d'
-    })));
+          user: user._id,
+          name: 'Stuff',
+          color: '#ff9e9d'
+        })
+      )
+    );
 
     var interestingCollection = Collections.mini(
       Collections.findOne(
         Meteor.call('collectionInsert', {
-      user: user._id,
-      name: 'Interesting',
-      color: '#f9d423'
-    })));
+          user: user._id,
+          name: 'Interesting',
+          color: '#f9d423'
+        })
+      )
+    );
 
-    console.log('creating tutorial', stuffCollection);
+    Meteor.call('collectionInsert', {
+      user: user._id,
+      name: 'Work',
+      color: '#16c1c8'
+    });
 
     insertFragment({
       title: 'Tag your fragments',
