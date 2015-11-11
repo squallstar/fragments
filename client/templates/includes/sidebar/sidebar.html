@@ -1,0 +1,9 @@
+<template name="sidebar">
+  <section id="sidebar" class="{{#if isOpen}}open{{/if}}">
+    <ul class="collections">
+      {{#each collections}}
+        <li>{{name}}</li>
+      {{/each}}
+    </ul>
+  </section>
+</template>

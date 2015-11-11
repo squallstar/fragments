@@ -17,7 +17,7 @@ Template.fragmentItem.onCreated(function () {
 
 Template.fragmentItem.onRendered(function () {
   this.autorun(() => {
-    if (this.isEditing.get() && !Session.get('modal')) {
+    if (this.isEditing.get() && !Session.get(MODAL_VISIBLE_KEY)) {
       this.isEditing.set(false);
       this.isAddingTag.set(false);
       saveChanges.call(this);
@@ -48,18 +48,18 @@ Template.fragmentItem.events({
     }
 
     instance.isEditing.set(true);
-    Session.set('modal', true);
+    Session.set(MODAL_VISIBLE_KEY, true);
   },
   'keydown [data-save-on-return]': function (event) {
     if ([13].indexOf(event.keyCode) !== -1) {
       event.preventDefault();
-      Session.set('modal', false);
+      Session.set(MODAL_VISIBLE_KEY, false);
     }
   },
   'click [data-delete]': function (event) {
     event.preventDefault();
     event.stopPropagation();
-    Session.set('modal', false);
+    Session.set(MODAL_VISIBLE_KEY, false);
 
     var fragmentId = Template.instance().data._id;
 

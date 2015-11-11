@@ -3,7 +3,7 @@ Template.header.helpers({
     return Session.get(USER_TOOLTIP_KEY);
   },
   hasBackArrow: function () {
-    return Session.get(HAS_BACK_ARROW);
+    return Session.get(HAS_BACK_ARROW_KEY);
   }
 });
 
@@ -15,11 +15,12 @@ Template.header.events({
   'click [data-nav-toggle]': function (event) {
     var $el = $(event.currentTarget);
     event.preventDefault();
+    event.stopPropagation();
 
-    if (Session.get(HAS_BACK_ARROW)) {
+    if (Session.get(HAS_BACK_ARROW_KEY)) {
       history.back();
     } else {
-      // Open menu
+      Session.set(SIDEBAR_OPEN_KEY, true);
     }
   }
 });

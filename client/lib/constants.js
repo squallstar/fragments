@@ -1,4 +1,7 @@
-USER_TOOLTIP_KEY = 'userTooltip';
-CURRENT_SEARCH_KEY = 'currentSearch';
-CURRENT_TAG_KEY = 'currentTag';
-HAS_BACK_ARROW = 'hasBackArrow';
+// Session keys
+USER_TOOLTIP_KEY   = 1;
+CURRENT_SEARCH_KEY = 2;
+CURRENT_TAG_KEY    = 3;
+HAS_BACK_ARROW_KEY = 4;
+SIDEBAR_OPEN_KEY   = 5;
+MODAL_VISIBLE_KEY  = 6;

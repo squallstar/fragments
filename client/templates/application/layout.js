@@ -1,5 +1,5 @@
 Template.layout.helpers({
   withModal: function () {
-    return Session.get('modal');
+    return Session.get(MODAL_VISIBLE_KEY);
   }
 });

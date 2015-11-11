@@ -1,18 +1,21 @@
 @import "core/reset";
 @import "core/fonts";
 @import "core/config";
-
 @import "core/mixins";
 @import "core/placeholders";
-
 @import "core/base";
 
+// Generic components
 @import "components/button";
 @import "components/main";
 @import "components/progress-bar";
 @import "components/modal";
-@import "components/header/index";
 @import "components/box";
 @import "components/list";
 
+// Core UI Elements
+@import "components/header/index";
+@import "components/sidebar/index";
+
+// UI Elements
 @import "components/fragment-item";

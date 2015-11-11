@@ -1,5 +1,5 @@
 Template.modal.events({
   'click': function () {
-    Session.set('modal', false);
+    Session.set(MODAL_VISIBLE_KEY, false);
   }
 });
