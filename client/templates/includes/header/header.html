@@ -1,5 +1,5 @@
 <template name="header">
-  <header id="header">
+  <header id="header" class="{{#if collection}}with-collection{{/if}} {{#if theme}}theme-{{theme.theme}}{{/if}}" style="{{#if collection}}background-color:{{collection.color}}{{/if}}">
     <div class="row flex">
       <div class="left-section title-bar">
         <a href="#" class="nav-toggle {{#if hasBackArrow}}open{{/if}}" data-nav-toggle><span></span></a>

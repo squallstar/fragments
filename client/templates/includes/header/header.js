@@ -4,6 +4,15 @@ Template.header.helpers({
   },
   hasBackArrow: function () {
     return Session.get(HAS_BACK_ARROW_KEY);
+  },
+  collection: function () {
+    return Session.get(CURRENT_COLLECTION_KEY);
+  },
+  theme: function () {
+    var collection = Session.get(CURRENT_COLLECTION_KEY);
+    if (collection) {
+      return COLOR_THEMES[collection.color];
+    }
   }
 });
 

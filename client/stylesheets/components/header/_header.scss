@@ -166,4 +166,11 @@
       border-top: 1px solid #EFEFEF;
     }
   }
+
+  &.theme-light {
+
+    h1 a, .nav-toggle {
+      opacity: 0.4;
+    }
+  }
 }

@@ -3,7 +3,7 @@
     <ul class="collections nav-list">
       {{#each collections}}
         <li>
-          <a href="#">
+          <a href={{pathFor route='collection' data=this}}>
             <span style="background-color:{{color}}"></span>
             <h4>{{name}}</h4>
           </a>
