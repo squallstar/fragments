@@ -1,8 +1,13 @@
 <template name="sidebar">
   <section id="sidebar" class="{{#if isOpen}}open{{/if}}">
-    <ul class="collections">
+    <ul class="collections nav-list">
       {{#each collections}}
-        <li>{{name}}</li>
+        <li>
+          <a href="#">
+            <span style="background-color:{{color}}"></span>
+            <h4>{{name}}</h4>
+          </a>
+        </li>
       {{/each}}
     </ul>
   </section>

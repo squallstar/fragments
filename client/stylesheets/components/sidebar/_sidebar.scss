@@ -10,10 +10,47 @@
   visibility: hidden;
   z-index: 5;
   background-color: #FFF;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
   &.open {
     left: 0;
     visibility: visible;
+  }
+
+  ul.nav-list {
+
+    li {
+      $height: 45px;
+      height: $height;
+      border-bottom: 1px solid #EEE;
+
+      a {
+        display: flex;
+        height: 100%;
+        text-decoration: none;
+
+        span {
+          @include transition(width 0.2s);
+          flex: 0 1 auto;
+          width: 4px;
+          height: 100%;
+        }
+
+        h4 {
+          @extend %ellipsis;
+          flex: 1;
+          height: 100%;
+          line-height: $height;
+          padding-left: 1rem;
+        }
+
+        &:hover {
+
+          span {
+            width: 8px;
+          }
+        }
+      }
+    }
   }
 }
