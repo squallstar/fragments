@@ -105,7 +105,7 @@ Template.fragmentsList.onCreated(function () {
 
     // subscribe to the posts publication
     var subscription = instance.subscribe('fragments', options, function () {
-      instance.$masonry.masonry('reloadItems').masonry('layout');
+      instance.recollect();
     });
 
     // if subscription is ready, set limit to newLimit
@@ -127,13 +127,16 @@ Template.fragmentsList.onCreated(function () {
 
 Template.fragmentsList.onDestroyed(function () {
   this.$masonry.masonry('destroy');
+  delete this.$masonry;
   $(window).off('scroll', throttledScroll);
 });
 
 Template.fragmentsList.onRendered(function () {
   // setup masonry
   var selector = '.fragments-list',
-      $masonry = this.$(selector);
+      $masonry = this.$(selector),
+      instance = Template.instance();
+
   this.$masonry = $masonry;
 
   $masonry.masonry({
@@ -142,7 +145,9 @@ Template.fragmentsList.onRendered(function () {
   });
 
   this.recollect = function () {
-    $masonry.masonry('reloadItems').masonry('layout');
+    if (instance.$masonry) {
+      instance.$masonry.masonry('reloadItems').masonry('layout');
+    }
   };
 
   this.find(selector)._uihooks = {
