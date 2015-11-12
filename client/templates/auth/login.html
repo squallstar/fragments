@@ -4,6 +4,9 @@
       <input type="email" placeholder="Email"/>
       <input type="password" placeholder="Password" />
       <a href={{pathFor 'reset_password'}}>Forgot password</a>
+      {{#if error}}
+        <p class="error">{{error}}</p>
+      {{/if}}
       <input type="submit" value="Sign in" />
     </form>
     <hr />

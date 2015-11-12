@@ -1,3 +1,6 @@
+// UI Hooks
+UI.setErrors(Template.login);
+
 Template.login.events({
   'submit form': function (event, template) {
     event.preventDefault();
@@ -5,9 +8,18 @@ Template.login.events({
     var email = template.$('input[type="email"]').val().trim(),
         password = template.$('input[type="password"]').val();
 
+    if (!email || !password) {
+      return;
+    }
+
     Meteor.loginWithPassword(email, password, function (err) {
       if (err) {
-        return console.log('err', err);
+        switch (err.error) {
+          case 403:
+            return template.error.set('We don’t seem to recognise your details. Either your email or password are incorrect. Please try again.');
+          default:
+            return template.error.set(err.reason);
+        }
       }
 
       Router.go('home');

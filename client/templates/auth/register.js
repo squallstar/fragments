@@ -1,6 +1,8 @@
-var isValidPassword = function (val) {
-  return val.length >= 6;
-}
+// Constants
+const USER_MIN_PASSWORD_LENGTH = 6;
+
+// UI Hooks
+UI.setErrors(Template.register);
 
 Template.register.events({
   'submit form' : function (event, template) {
@@ -10,12 +12,16 @@ Template.register.events({
         password = template.$('input[name="password"]').val(),
         confirmPassword = template.$('input[name="confirm_password"]').val();
 
-    if (!isValidPassword(password)) {
-      return console.log('password too short');
+    if (!password) {
+      return template.error.set('Password is required.');
+    }
+
+    if (password.length < USER_MIN_PASSWORD_LENGTH) {
+      return template.error.set('Password should be at least ' + USER_MIN_PASSWORD_LENGTH + ' chatacters.');
     }
 
     if (password !== confirmPassword) {
-      return console.log('passwords confirmation does not match password');
+      return template.error.set('Passwords confirmation does not match the password.');
     }
 
     Accounts.createUser({
@@ -23,10 +29,13 @@ Template.register.events({
       password : password
     }, function (err) {
       if (err) {
-        return console.log('err');
+        switch (err.error) {
+          default:
+            return template.error.set(err.reason);
+        }
       }
 
-      Router.go('login');
+      Router.go('home');
     });
   }
 });
