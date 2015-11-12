@@ -1,7 +1,13 @@
 UI.setAutofocus = function (template, sessionKey) {
   template.events({
     'click': function (event) {
+      event.preventDefault();
       event.stopPropagation();
+
+      var href = $(event.currentTarget).attr('href');
+      if (href && href.substr(0,1) === '/') {
+        Router.go(href);
+      }
     }
   });
 
@@ -14,8 +20,6 @@ UI.setAutofocus = function (template, sessionKey) {
   });
 
   function onBlur (event) {
-    event.preventDefault();
-    event.stopPropagation();
     Session.set(sessionKey, false);
   }
 }
