@@ -11,8 +11,13 @@ Meteor.startup(function() {
 
   Accounts.onCreateUser(function (options, user) {
     // Check whether the email address has already been used
-    if (Meteor.users.findOne({ 'emails.address': user.emails[0] })) {
-      throw new Meteor.Error('The email address ' + email + ' has already being used in our systems!');
+    var email = user.email || user.services[_.keys(user.services)[0]].email;
+
+    var emailExists = Meteor.users.findOne({ 'emails.address': email })
+      || Meteor.users.findOne({ 'services.google.email': email });
+
+    if (emailExists) {
+      throw new Meteor.Error(409, 'The email address ' + email + ' has already being used.');
     }
 
     if (typeof user.profile !== 'object') {
