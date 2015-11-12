@@ -11,7 +11,7 @@ Meteor.startup(function() {
 
   Accounts.onCreateUser(function (options, user) {
     // Check whether the email address has already been used
-    var email = user.email || user.services[_.keys(user.services)[0]].email;
+    var email = options.email || user.services[_.keys(user.services)[0]].email;
 
     var emailExists = Meteor.users.findOne({ 'emails.address': email })
       || Meteor.users.findOne({ 'services.google.email': email });
@@ -20,8 +20,8 @@ Meteor.startup(function() {
       throw new Meteor.Error(409, 'The email address ' + email + ' has already being used.');
     }
 
-    if (typeof user.profile !== 'object') {
-      user.profile = {};
+    if (!user.profile) {
+      user.profile = options.profile || {};
     }
 
     // Grab name and thumbnail from Google Account

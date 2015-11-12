@@ -8,9 +8,18 @@ Template.register.events({
   'submit form' : function (event, template) {
     event.preventDefault();
 
-    var email = template.$('input[type="email"]').val().trim(),
+    var name = template.$('input[name="name"]').val().trim(),
+        email = template.$('input[type="email"]').val().trim(),
         password = template.$('input[name="password"]').val(),
         confirmPassword = template.$('input[name="confirm_password"]').val();
+
+    if (!name) {
+      return template.error.set('Name is required.');
+    }
+
+    if (!email) {
+      return template.error.set('Email is required.');
+    }
 
     if (!password) {
       return template.error.set('Password is required.');
@@ -25,6 +34,9 @@ Template.register.events({
     }
 
     Accounts.createUser({
+      profile: {
+        name: name
+      },
       email: email,
       password : password
     }, function (err) {
