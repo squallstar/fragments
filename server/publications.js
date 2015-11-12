@@ -3,7 +3,8 @@ Meteor.publish('fragments', function (options) {
     sort: Match.Optional(Object),
     limit: Match.Optional(Number),
     text: Match.Optional(String),
-    tag: Match.Optional(String)
+    tag: Match.Optional(String),
+    collection: Match.Optional(String)
   });
 
   var query = {
@@ -12,6 +13,10 @@ Meteor.publish('fragments', function (options) {
 
   if (options.text) {
     query.$text = { $search: options.text };
+  }
+
+  if (options.collection) {
+    query['collections._id'] = options.collection;
   }
 
   if (options.tag) {

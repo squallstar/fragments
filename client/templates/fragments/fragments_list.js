@@ -83,6 +83,7 @@ Template.fragmentsList.onCreated(function () {
     var limit = instance.limit.get(),
         textQuery = Session.get(CURRENT_SEARCH_KEY),
         tag = Session.get(CURRENT_TAG_KEY),
+        collection = Session.get(CURRENT_COLLECTION_KEY),
         options = {
           sort: {
             created_at: -1
@@ -92,6 +93,10 @@ Template.fragmentsList.onCreated(function () {
 
     if (textQuery) {
       options.text = textQuery;
+    }
+
+    if (collection) {
+      options.collection = collection._id;
     }
 
     if (tag) {

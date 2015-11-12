@@ -1,13 +1,11 @@
 <template name="sidebar">
   <section id="sidebar" class="{{#if isOpen}}open{{/if}}">
-    <ul class="collections nav-list">
+    <ul class=" nav-list">
+      <li>
+        <a href={{pathFor 'home'}}><span></span><h4>All collections</h4></a>
+      </li>
       {{#each collections}}
-        <li>
-          <a href={{pathFor route='collection' data=this}}>
-            <span style="background-color:{{color}}"></span>
-            <h4>{{name}}</h4>
-          </a>
-        </li>
+        {{> sidebarCollection}}
       {{/each}}
     </ul>
   </section>

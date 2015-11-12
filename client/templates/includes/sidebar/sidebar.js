@@ -1,11 +1,15 @@
-UI.setAutofocus(Template.sidebar, SIDEBAR_OPEN_KEY);
-
 Template.sidebar.helpers({
   isOpen: function () {
     return Session.get(SIDEBAR_OPEN_KEY);
   },
   collections: function () {
     return Template.instance().collections;
+  }
+});
+
+Template.sidebar.events({
+  'click a': function () {
+    Session.set(SIDEBAR_OPEN_KEY, false);
   }
 });
 
