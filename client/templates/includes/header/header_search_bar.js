@@ -1,3 +1,5 @@
+var searchRouteName = 'search';
+
 Template.headerSearchBar.helpers({
   currentSearch: function () {
     return Session.get(CURRENT_SEARCH_KEY);
@@ -9,8 +11,8 @@ Template.headerSearchBar.helpers({
 
 Template.headerSearchBar.events({
   'focus input': function () {
-    if (Router.current().route.getName() !== 'search') {
-      Router.go('search');
+    if (Router.current().route.getName() !== searchRouteName) {
+      Router.go(searchRouteName);
       Template.instance().$('input').select();
     }
   },
@@ -24,14 +26,23 @@ Template.headerSearchBar.events({
         query = $field.val();
 
     if (!query) {
-      return Router.go('/');
+      return Router.goToRelevant();
     }
 
     Router.go('searchResults', {
       text: query
     });
   },
-  'click [data-remove-tag]': function () {
+  'click [data-remove-tag]': function (event) {
+    event.preventDefault();
     Session.set(CURRENT_TAG_KEY, undefined);
+  },
+  'click [data-clear-search]': function (event) {
+    event.preventDefault();
+
+    //Template.instance().$('input').val('');
+    Session.set(CURRENT_SEARCH_KEY, undefined);
+
+    Router.goToRelevant();
   }
 });
