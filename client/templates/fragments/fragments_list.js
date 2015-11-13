@@ -31,6 +31,9 @@ Template.fragmentsList.helpers({
   textSearch: function () {
     return Session.get(CURRENT_SEARCH_KEY);
   },
+  currentCollection: function () {
+    return Session.get(CURRENT_COLLECTION_KEY);
+  },
   isEmpty: function () {
     return !Template.instance().fragments().count();
   }
