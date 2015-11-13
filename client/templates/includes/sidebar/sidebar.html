@@ -1,7 +1,10 @@
 <template name="sidebar">
   <section id="sidebar" class="{{#if isOpen}}open{{/if}}">
-    <ul class=" nav-list">
-      <li>
+    <div class="title">
+      <h1>Fragments</h1>
+    </div>
+    <ul class="nav-list">
+      <li class="{{#unless hasActiveCollection}}current{{/unless}}">
         <a href={{pathFor 'home'}}><span></span><h4>All collections</h4></a>
       </li>
       {{#each collections}}

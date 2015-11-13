@@ -17,6 +17,23 @@
     visibility: visible;
   }
 
+  .title {
+    height: $header-height;
+    padding-left: 1.2rem;
+    border-bottom: 1px solid #EEE;
+
+    h1 {
+      font-size: 2.3rem;
+      height: 100%;
+      line-height: $header-height;
+    }
+  }
+
+  hr {
+    margin: 2rem 0;
+    border-top-color: #EEE;
+  }
+
   ul.nav-list {
 
     li {
@@ -44,11 +61,22 @@
           line-height: $height;
           padding-left: 1rem;
         }
+      }
 
-        &:hover {
+      &.current a.collection span, a:hover span {
+        width: 8px;
+      }
 
-          span {
-            width: 8px;
+      &.current {
+
+        a {
+
+          h4 {
+            font-weight: $bold;
+          }
+
+          &:hover {
+            cursor: default;
           }
         }
       }

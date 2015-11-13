@@ -4,6 +4,9 @@ Template.sidebar.helpers({
   },
   collections: function () {
     return Template.instance().collections;
+  },
+  hasActiveCollection: function () {
+    return Session.get(CURRENT_COLLECTION_KEY);
   }
 });
 

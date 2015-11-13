@@ -1,6 +1,6 @@
 <template name="sidebarCollection">
-  <li>
-    <a href={{pathFor route='collection' data=this}}>
+  <li class="{{#if isCurrent}}current{{/if}}">
+    <a class="collection" href={{pathFor route='collection' data=this}}>
       <span style="background-color:{{color}}"></span>
       <h4>{{name}}</h4>
     </a>
