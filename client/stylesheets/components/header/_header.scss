@@ -16,6 +16,10 @@
     flex: 0 1 auto;
     min-width: 30%;
     padding-right: 1rem;
+
+    @include below ($break-phone) {
+      min-width: auto;
+    }
   }
 
   .middle-section {
@@ -27,6 +31,11 @@
     flex: 0 1 auto;
     min-width: 30%;
     text-align: right;
+    padding-left: 1rem;
+
+    @include below ($break-phone) {
+      min-width: auto;
+    }
 
     > div {
       float: right;
@@ -40,6 +49,10 @@
       flex: 1;
       display: inline-block;
       font-size: 2.3rem;
+
+      @include below ($break-phone) {
+        display: none;
+      }
 
       a {
         text-decoration: none;

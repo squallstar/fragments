@@ -24,10 +24,11 @@
   }
 
   @include below ($break-phone) {
-    width: 50%;
-    // position: relative !important;
-    // top: auto !important;
-    // left: auto !important;
+    width: 100%;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    padding-top: 0;
   }
 
   .wrapper {

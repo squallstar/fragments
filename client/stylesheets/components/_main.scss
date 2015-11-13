@@ -1,4 +1,8 @@
 #main {
   @extend .row;
   padding-top: $grid-side-padding / 2;
+
+  @include below ($break-phone) {
+    padding: 1rem;
+  }
 }
