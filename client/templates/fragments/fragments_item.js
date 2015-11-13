@@ -38,7 +38,7 @@ Template.fragmentItem.events({
   'click .link': function (event) {
     event.stopPropagation();
   },
-  'click .wrapper': function (event) {
+  'click [data-edit]': function (event) {
     var instance = Template.instance();
 
     event.preventDefault();

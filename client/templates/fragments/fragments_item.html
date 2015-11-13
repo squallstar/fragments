@@ -19,8 +19,8 @@
       <div class="content">
         {{#if isFetching}}{{> progressBar}}{{/if}}
 
-        <h2 data-title data-save-on-return contenteditable={{isEditing}}>{{{title}}}</h2>
-        <p data-description data-save-on-return contenteditable={{isEditing}}>{{{description}}}</p>
+        <h2 data-title data-edit data-save-on-return contenteditable={{isEditing}}>{{{title}}}</h2>
+        <p data-description data-edit data-save-on-return contenteditable={{isEditing}}>{{{description}}}</p>
         <div class="tags">
           {{#each tags}}
             <a class="tag {{#if isEditing}}can-be-removed{{/if}}" href="#" data-value={{this}}>{{this}}{{#if isEditing}}<span>+</span>{{/if}}</a>
@@ -40,7 +40,7 @@
       </div>
       <ul class="collections">
         {{#each collections}}
-          <li style="background-color:{{color}}"><a class="name" href="#">{{name}}</a></li>
+          {{> fragmentItemCollection}}
         {{/each}}
       </ul>
       {{#if isEditing}}<a href="#" data-delete>+</a>{{/if}}

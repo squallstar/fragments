@@ -11,10 +11,20 @@
           {{else}}
             <label for="body">
               Save new link
+              {{#if currentCollection}}
+                under <strong>{{currentCollection.name}}</strong>
+              {{/if}}
             </label>
           {{/if}}
         </form>
       </div>
+      {{#if currentCollection}}
+      <ul class="collections">
+        {{#with currentCollection}}
+          {{> fragmentItemCollection}}
+        {{/with}}
+      </ul>
+      {{/if}}
     </div>
   </div>
 </template>

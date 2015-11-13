@@ -17,6 +17,9 @@ Template.fragmentSubmit.helpers({
   },
   currentTag: function () {
     return Session.get(CURRENT_TAG_KEY);
+  },
+  currentCollection: function () {
+    return Session.get(CURRENT_COLLECTION_KEY);
   }
 });
 
@@ -33,6 +36,11 @@ Template.fragmentSubmit.events({
     var currentTag = Session.get(CURRENT_TAG_KEY);
     if (currentTag) {
       fragment.tags = [currentTag];
+    }
+
+    var currentCollection = Session.get(CURRENT_COLLECTION_KEY);
+    if (currentCollection) {
+      fragment.collections = [currentCollection];
     }
 
     var errors = {};
