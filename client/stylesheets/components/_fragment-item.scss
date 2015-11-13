@@ -51,6 +51,10 @@
       height: 160px;
       overflow: hidden;
 
+      @include below ($break-phone) {
+        height: 190px;
+      }
+
       .img {
         position: absolute;
         top: 0;
