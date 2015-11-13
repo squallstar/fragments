@@ -104,14 +104,11 @@
         position: relative;
         background: #FFF;
         font-size: 1.5rem;
-        padding-right: 1.8rem;
 
-        span {
-          @include transform(rotate(45deg));
-          position: absolute;
-          font-size: 2rem;
-          top: 2px;
-          right: 5px;
+        svg {
+          width: 10px;
+          height: 10px;
+          fill: rgba(0,0,0,0.3);
         }
       }
     }
