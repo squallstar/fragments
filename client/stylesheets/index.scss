@@ -1,6 +1,7 @@
 @import "core/reset";
 @import "core/fonts";
 @import "core/config";
+@import "core/colors";
 @import "core/mixins";
 @import "core/placeholders";
 @import "core/base";
@@ -10,6 +11,7 @@
 @import "components/button";
 @import "components/main";
 @import "components/progress-bar";
+@import "components/notification";
 @import "components/modal";
 @import "components/box";
 @import "components/list";

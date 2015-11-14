@@ -1,6 +1,7 @@
 .button {
+  @include transition(background-color 0.1s, transform 0.2s);
   display: inline-block;
-  background: #EEE;
+  background: $color-default;
   border: 0;
   border-radius: 4px;
   text-decoration: none;
@@ -21,29 +22,56 @@
     font-size: 1.6rem;
   }
 
+  &.left-icon {
+    position: relative;
+
+    svg {
+      fill: #FFF;
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      width: 30px;
+      height: 30px;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 1px;
+      top: 0;
+      left: 46px;
+      background-color: rgba(0,0,0,0.1);
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
   &.primary {
-    background-color: #2196F3;
+    background-color: $color-primary;
     color: #FFF;
 
     &:hover {
-      background-color: #2e9ef6;
+      background-color: lighten($color-primary, 5%);
     }
 
     &:active {
-      background-color: #238ee3;
+      background-color: darken($color-primary, 5%);
     }
   }
 
   &.google {
-    background-color: #f65e51;
+    background-color: $color-google;
     color: #FFF;
 
     &:hover {
-      background-color: #f86c60;
+      background-color: lighten($color-google, 5%);
     }
 
     &:active {
-      background-color: #ea5448;
+      background-color: darken($color-google, 5%);
     }
   }
 }

@@ -16,7 +16,11 @@
         <input type="submit" value="Sign in" class="button big block primary" />
       </div>
       <hr />
-      <a href="#" data-google class="button big block google">Sign in with Google</a>
+      <div class="group">
+        <a href="#" data-google class="button big block google left-icon">
+          {{> iconGooglePlus}}
+          Sign in with Google</a>
+      </div>
       <hr />
       <div class="group center">
         <p>No account? <a href={{pathFor 'register'}}>Sign up</a></p>

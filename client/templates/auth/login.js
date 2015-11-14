@@ -14,12 +14,17 @@ Template.login.events({
 
     Meteor.loginWithPassword(email, password, function (err) {
       if (err) {
+        let message;
+
         switch (err.error) {
           case 403:
-            return template.error.set('We don’t seem to recognise your details. Either your email or password are incorrect. Please try again.');
+            message = 'We don’t seem to recognise your details. Either your email or password are incorrect. Please try again.';
+            break;
           default:
-            return template.error.set(err.reason);
+            message = err.reason;
         }
+
+        return UI.Notification.error(message);
       }
 
       Router.go('home');
