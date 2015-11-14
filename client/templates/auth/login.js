@@ -12,6 +12,8 @@ Template.login.events({
       return;
     }
 
+    Notifications.clear();
+
     Meteor.loginWithPassword(email, password, function (err) {
       if (err) {
         let message;
