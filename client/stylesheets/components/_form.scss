@@ -1,0 +1,42 @@
+.form {
+
+  .group {
+    @extend %clear;
+    margin-bottom: 2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    input[type="email"], input[type="text"], input[type="password"] {
+      display: block;
+      width: 100%;
+      border: 1px solid #EEE;
+      padding: 1.4rem 1.1rem;
+      font-size: 1.4rem;
+      font-weight: $medium;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      display: block;
+      width: 100%;
+      cursor: pointer;
+    }
+
+
+
+    .note {
+      display: inline-block;
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+      text-decoration: none;
+      color: #AAA;
+
+      &:hover {
+        color: #555;
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,13 +1,19 @@
 <template name="login">
   <div class="box middle-box padded">
-    <form>
-      <input type="email" placeholder="Email"/>
-      <input type="password" placeholder="Password" />
-      <a href={{pathFor 'reset_password'}}>Forgot password</a>
+    <form class="form">
+      <div class="group">
+        <input type="email" placeholder="Email"/>
+      </div>
+      <div class="group">
+        <input type="password" placeholder="Password" />
+        <a class="note right" href={{pathFor 'reset_password'}}>Forgot password</a>
+      </div>
       {{#if error}}
         <p class="error">{{error}}</p>
       {{/if}}
-      <input type="submit" value="Sign in" />
+      <div class="group">
+        <input type="submit" value="Sign in" class="button" />
+      </div>
     </form>
     <hr />
     <a href="#" data-google>Sign in with Google</a>
