@@ -24,7 +24,7 @@ Template.login.events({
             message = err.reason;
         }
 
-        return UI.Notification.error(message);
+        return Notifications.error(message);
       }
 
       Router.go('home');
