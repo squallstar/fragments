@@ -1,15 +1,54 @@
 .button {
   display: inline-block;
   background: #EEE;
-  border: 1px solid #DEDEDE;
+  border: 0;
+  border-radius: 4px;
   text-decoration: none;
   padding: 0.9rem 1rem;
   font-size: 1.2rem;
   font-weight: $medium;
+  cursor: pointer;
+
+  &.block {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  &.big {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size: 1.6rem;
+  }
 
   &.primary {
     background-color: #2196F3;
     color: #FFF;
-    border-color: #1565C0;
+
+    &:hover {
+      background-color: #2e9ef6;
+    }
+
+    &:active {
+      background-color: #238ee3;
+    }
   }
+
+  &.google {
+    background-color: #f65e51;
+    color: #FFF;
+
+    &:hover {
+      background-color: #f86c60;
+    }
+
+    &:active {
+      background-color: #ea5448;
+    }
+  }
+}
+
+input[type="submit"].button.block.big {
+  padding-top: 1.4rem;
+  padding-bottom: 1.4rem;
 }

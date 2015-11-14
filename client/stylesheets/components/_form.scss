@@ -1,5 +1,12 @@
 .form {
 
+  h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: $light;
+    margin-bottom: 3rem;
+  }
+
   .group {
     @extend %clear;
     margin-bottom: 2rem;
@@ -8,23 +15,30 @@
       margin-bottom: 0;
     }
 
+    &.center {
+      text-align: center;
+    }
+
     input[type="email"], input[type="text"], input[type="password"] {
       display: block;
       width: 100%;
-      border: 1px solid #EEE;
-      padding: 1.4rem 1.1rem;
+      border: 2px solid #EEE;
+      padding: 1.3rem 1.1rem;
       font-size: 1.4rem;
       font-weight: $medium;
       border-radius: 4px;
     }
 
-    input[type="submit"] {
-      display: block;
-      width: 100%;
-      cursor: pointer;
+    p {
+      color: #888;
+
+      a {
+
+        &:hover {
+          color: #000;
+        }
+      }
     }
-
-
 
     .note {
       display: inline-block;

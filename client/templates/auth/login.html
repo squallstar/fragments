@@ -1,6 +1,7 @@
 <template name="login">
-  <div class="box middle-box padded">
+  <div class="box middle-box padded margins">
     <form class="form">
+      <h1>Login with your account</h1>
       <div class="group">
         <input type="email" placeholder="Email"/>
       </div>
@@ -12,12 +13,14 @@
         <p class="error">{{error}}</p>
       {{/if}}
       <div class="group">
-        <input type="submit" value="Sign in" class="button" />
+        <input type="submit" value="Sign in" class="button big block primary" />
+      </div>
+      <hr />
+      <a href="#" data-google class="button big block google">Sign in with Google</a>
+      <hr />
+      <div class="group center">
+        <p>No account? <a href={{pathFor 'register'}}>Sign up</a></p>
       </div>
     </form>
-    <hr />
-    <a href="#" data-google>Sign in with Google</a>
-    <hr />
-    <a href={{pathFor 'register'}}>Sign up</a>
   </div>
 </template>
