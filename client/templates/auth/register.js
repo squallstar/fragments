@@ -47,6 +47,8 @@ Template.register.events({
         }
       }
 
+      Notifications.success('Your new account has been created!');
+
       Router.go('home');
     });
   }

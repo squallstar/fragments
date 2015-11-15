@@ -9,7 +9,7 @@
       </div>
     {{/if}}
     <div class="input">
-      <input type="text" placeholder="Search" value={{currentSearch}} />
+      <input type="text" placeholder="Search{{#if currentCollection}} this collection{{/if}}" value={{currentSearch}} />
     </div>
     {{#if currentSearch}}
       <a href="#" class="clear-search" data-clear-search>

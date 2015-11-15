@@ -6,6 +6,9 @@ Template.headerSearchBar.helpers({
   },
   currentTag: function () {
     return Session.get(CURRENT_TAG_KEY);
+  },
+  currentCollection: function () {
+    return Session.get(CURRENT_COLLECTION_KEY);
   }
 });
 

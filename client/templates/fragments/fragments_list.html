@@ -7,7 +7,7 @@
         <div class="middle-box box padded message-box">
           <img src="/assets/img/bigs/no-results.png" class="lead-icon"/>
           <h2>No results</h2>
-          <p>Unfortunately we have found no results for <strong>{{textSearch}}</strong>{{#if currentCollection}}in the {{currentCollection.name}} collection{{/if}}.</p>
+          <p>Unfortunately we have found no results for <strong>{{textSearch}}</strong>{{#if currentCollection}} under <strong style="color: {{currentCollection.color}}">{{currentCollection.name}}</strong>{{/if}}.</p>
         </div>
       {{/if}}
     {{/if}}
