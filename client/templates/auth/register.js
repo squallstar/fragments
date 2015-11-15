@@ -14,23 +14,23 @@ Template.register.events({
         confirmPassword = template.$('input[name="confirm_password"]').val();
 
     if (!name) {
-      return template.error.set('Name is required.');
+      return Notifications.error('Your name is required');
     }
 
     if (!email) {
-      return template.error.set('Email is required.');
+      return Notifications.error('Your email address is required');
     }
 
     if (!password) {
-      return template.error.set('Password is required.');
+      return Notifications.error('You have to choose a password.');
     }
 
     if (password.length < USER_MIN_PASSWORD_LENGTH) {
-      return template.error.set('Password should be at least ' + USER_MIN_PASSWORD_LENGTH + ' chatacters.');
+      return Notifications.error('Your new password should be at least ' + USER_MIN_PASSWORD_LENGTH + ' chatacters.');
     }
 
     if (password !== confirmPassword) {
-      return template.error.set('Passwords confirmation does not match the password.');
+      return Notifications.error('The passwords confirmation does not match the password you have chosen.');
     }
 
     Accounts.createUser({
@@ -43,7 +43,7 @@ Template.register.events({
       if (err) {
         switch (err.error) {
           default:
-            return template.error.set(err.reason);
+            return Notifications.error(err.reason);
         }
       }
 
