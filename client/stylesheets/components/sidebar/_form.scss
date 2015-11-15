@@ -1,0 +1,26 @@
+#sidebar form {
+  padding: 1.5rem;
+  background-color: #EEE;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+
+  .group {
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    input[type="text"] {
+      padding-top: 1.1rem;
+      padding-bottom: 1.1rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    color: #AAA;
+    cursor: default;
+  }
+}

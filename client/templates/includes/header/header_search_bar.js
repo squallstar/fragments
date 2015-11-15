@@ -32,6 +32,8 @@ Template.headerSearchBar.events({
       return Router.goToRelevant();
     }
 
+    $field.blur();
+
     Router.go('searchResults', {
       text: query
     });

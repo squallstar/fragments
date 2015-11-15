@@ -5,18 +5,23 @@
     </div>
     <ul class="nav-list">
       <li class="{{#unless hasActiveCollection}}current{{/unless}}">
-        <a href={{pathFor 'home'}}><span></span><h4>All collections</h4></a>
+        <a href={{pathFor 'home'}} data-close><span></span><h4>All collections</h4></a>
       </li>
       {{#each collections}}
         {{> sidebarCollection}}
       {{/each}}
-      <li>
-        <a href="#" class="action">
-          <span></span>
-          <h4>Add new collection</h4>
-          {{> iconAdd}}
-        </a>
-      </li>
+      {{#unless isAddingNewCollection}}
+        <li>
+          <a href="#" class="action" data-add-collection>
+            <span></span>
+            <h4>Add new collection</h4>
+            {{> iconAdd}}
+          </a>
+        </li>
+      {{/unless}}
     </ul>
+    {{#if isAddingNewCollection}}
+      {{> sidebarAddCollection}}
+    {{/if}}
   </section>
 </template>
