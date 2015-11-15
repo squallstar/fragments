@@ -7,6 +7,9 @@ Template.searchView.helpers({
   },
   tags: function () {
     return Template.instance().tags || [];
+  },
+  collection: function () {
+    return Session.get(CURRENT_COLLECTION_KEY);
   }
 });
 
@@ -29,7 +32,14 @@ Template.searchView.onCreated(function () {
 });
 
 Template.searchView.onRendered(function () {
-  Meteor.call('getTags', (err, tags) => {
+  var collection = Session.get(CURRENT_COLLECTION_KEY),
+      options = {};
+
+  if (collection) {
+    options.collection = collection._id;
+  }
+
+  Meteor.call('getTags', options, (err, tags) => {
     this.tags = tags;
     this.tagsLoaded.set(true);
   });

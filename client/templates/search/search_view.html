@@ -17,7 +17,7 @@
   {{#if tagsLoaded}}
     {{#if tags.length}}
       <div class="box middle-box tags-list">
-        <h3>Filter by your tags</h3>
+        <h3>Filter by {{#if collection}}this collection{{else}}your{{/if}} tags</h3>
         <p>Click on any tag to view your fragments tagged with such tag.</p>
         <div class="tags">
           {{#each tags}}
@@ -30,7 +30,7 @@
   <div class="box middle-box">
     <ul class="list">
       <li>
-        <a href="/"><h4>Close search</h4></a>
+        <a href="{{#if collection}}{{pathFor route='collection' data=collection}}{{else}}/{{/if}}"><h4>Close search</h4></a>
       </li>
     </ul>
   </div>
