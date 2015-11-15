@@ -4,7 +4,11 @@
       <div class="left-section title-bar">
         <a href="#" class="nav-toggle {{#if hasBackArrow}}open{{/if}}" data-nav-toggle><span></span></a>
         <h1>
-          <a href="/">Fragments</a>
+          {{#if collection}}
+            <a href={{pathFor route='collection' data=collection}}>{{collection.name}}</a>
+          {{else}}
+            <a href="/">Fragments</a>
+          {{/if}}
         </h1>
       </div>
       <div class="middle-section">

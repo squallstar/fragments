@@ -11,6 +11,7 @@
   z-index: 100;
   background-color: #FFF;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  overflow-y: auto;
 
   &.open {
     left: 0;
@@ -43,6 +44,7 @@
       margin-bottom: -1px;
 
       a {
+        position: relative;
         display: flex;
         height: 100%;
         text-decoration: none;
@@ -60,6 +62,54 @@
           height: 100%;
           line-height: $height;
           padding-left: 1rem;
+        }
+
+        svg {
+          display: none;
+          fill: rgba(0,0,0,0.2);
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          top: 14px;
+          right: 8px;
+
+          &.icon-cog {
+            width: 16px;
+            height: 16px;
+          }
+
+          &:hover {
+            fill: rgba(0,0,0,0.5);
+          }
+        }
+
+        &.action {
+
+          svg {
+            display: block;
+          }
+
+          h4 {
+            color: #AAA;
+          }
+
+          &:hover {
+
+            svg {
+              fill: rgba(0,0,0,0.5);
+            }
+
+            h4 {
+              color: #666;
+            }
+          }
+        }
+
+        &:hover {
+
+          svg {
+            display: block;
+          }
         }
       }
 

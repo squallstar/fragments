@@ -6,6 +6,7 @@ UI.setAutofocus = function (template, sessionKey) {
 
       var href = $(event.currentTarget).attr('href');
       if (href && href.substr(0,1) === '/') {
+        Session.set(sessionKey, false);
         Router.go(href);
       }
     }
