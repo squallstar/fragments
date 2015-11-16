@@ -1,14 +1,11 @@
 Meteor.startup(function() {
-  Accounts.loginServiceConfiguration.remove({
-    service: 'google'
-  });
-
-  Accounts.loginServiceConfiguration.insert({
-    service: 'google',
+  // Configure keys for Google accounts
+  ServiceConfiguration.configurations.upsert({ service: 'google' }, { $set: {
     clientId: Meteor.settings.googleClientId,
     secret: Meteor.settings.googleClientSecret
-  });
+  }});
 
+  // Hooks and checks when creating a user
   Accounts.onCreateUser(function (options, user) {
     // Check whether the email address has already been used
     var email = options.email || user.services[_.keys(user.services)[0]].email;
@@ -46,6 +43,7 @@ Meteor.startup(function() {
     return user;
   });
 
+  // Overrides the reset password url
   Accounts.urls.resetPassword = function (token) {
     return Router.url('reset_password', { token: token });
   };
