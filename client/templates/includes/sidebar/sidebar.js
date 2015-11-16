@@ -24,7 +24,7 @@ Template.sidebar.events({
 });
 
 Template.sidebar.onCreated(function () {
-  this.collections = Collections.find();
+  this.collections = Collections.find({}, { sort: { slug: 1 } });
 
   Tracker.autorun(function () {
     Session.set(MODAL_VISIBLE_KEY, Session.get(SIDEBAR_OPEN_KEY));

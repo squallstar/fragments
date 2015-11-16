@@ -46,9 +46,5 @@ Meteor.publish('searchHistory', function (options) {
 });
 
 Meteor.publish('collections', function () {
-  var options = {
-    sort: { name: 1 }
-  };
-
-  return Collections.find({ user: this.userId }, options);
+  return Collections.find({ user: this.userId });
 });

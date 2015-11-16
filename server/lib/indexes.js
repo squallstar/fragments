@@ -13,7 +13,6 @@ Meteor.startup(function () {
   });
 
   Collections._ensureIndex({ 'user': 1 });
-  Collections._ensureIndex({ 'name': 1 });
 
   SearchHistory._ensureIndex({ 'user': 1 });
   SearchHistory._ensureIndex({ 'query': 1 });
