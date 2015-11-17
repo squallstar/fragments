@@ -39,7 +39,18 @@ Template.login.events({
       requestPermissions: ['email']
     }, function (err) {
       if (err) {
-        console.log('err', err);
+        Notifications.error(err);
+      }
+    });
+  },
+  'click a[data-twitter]': function (event, template) {
+    event.preventDefault();
+
+    Meteor.loginWithTwitter({
+      requestPermissions: ['email']
+    }, function (err) {
+      if (err) {
+        Notifications.error(err);
       }
     });
   }

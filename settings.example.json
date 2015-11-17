@@ -2,5 +2,7 @@
   "embedlyApiKey": "your_embedly_api_key",
   "googleClientId": "your_google_client_id",
   "googleClientSecret": "your_google_secret_key",
+  "twitterConsumerId": "your_twitter_consumer_id",
+  "twitterConsumerSecret": "your_twitter_consumer_secret",
   "kadiraKey": "your_kadira_key"
 }

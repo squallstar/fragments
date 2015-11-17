@@ -2,6 +2,7 @@ accounts-base@1.2.2
 accounts-google@1.0.6
 accounts-oauth@1.1.8
 accounts-password@1.1.4
+accounts-twitter@1.0.6
 audit-argument-checks@1.0.4
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
@@ -68,6 +69,7 @@ mongo-livedata@1.0.9
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 oauth@1.1.6
+oauth1@1.1.5
 oauth2@1.1.5
 observe-sequence@1.0.7
 ordered-dict@1.0.4
@@ -89,6 +91,7 @@ standard-minifiers@1.0.2
 templating@1.1.5
 templating-tools@1.0.0
 tracker@1.0.9
+twitter@1.1.5
 ui@1.0.8
 underscore@1.0.4
 url@1.0.5

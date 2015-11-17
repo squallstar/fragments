@@ -79,6 +79,26 @@
       background-color: darken($color-google, 5%);
     }
   }
+
+  &.twitter {
+    background-color: $color-twitter;
+    color: #FFF;
+
+    &:hover {
+      background-color: lighten($color-twitter, 5%);
+    }
+
+    &:active {
+      background-color: darken($color-twitter, 5%);
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      top: 11px;
+      left: 12px;
+    }
+  }
 }
 
 input[type="submit"].button.block.big {

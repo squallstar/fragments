@@ -5,13 +5,22 @@ Meteor.startup(function() {
     secret: Meteor.settings.googleClientSecret
   }});
 
+  // Configure keys for Twitter accounts
+  ServiceConfiguration.configurations.upsert({ service: 'twitter' }, { $set: {
+    consumerKey: Meteor.settings.twitterConsumerId,
+    secret: Meteor.settings.twitterConsumerSecret
+  }});
+
   // Hooks and checks when creating a user
   Accounts.onCreateUser(function (options, user) {
     // Check whether the email address has already been used
     var email = options.email || user.services[_.keys(user.services)[0]].email;
+    var emailExists;
 
-    var emailExists = Meteor.users.findOne({ 'emails.address': email })
+    if (email) {
+      emailExists = Meteor.users.findOne({ 'emails.address': email })
       || Meteor.users.findOne({ 'services.google.email': email });
+    }
 
     if (emailExists) {
       throw new Meteor.Error(409, 'The email address ' + email + ' has already being used.');
@@ -25,6 +34,11 @@ Meteor.startup(function() {
     if (user.services.google !== undefined) {
       user.profile.picture = user.services.google.picture;
       user.profile.name = user.services.google.name;
+    }
+    // Grab name and thumbnail from Google Account
+    else if (user.services.twitter !== undefined) {
+      user.profile.picture = user.services.twitter.profile_image_url;
+      user.profile.name = user.services.twitter.screenName;
     }
 
     // Set up default avatar
