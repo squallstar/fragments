@@ -144,11 +144,10 @@
 
   .user-tooltip {
     position: absolute;
-    top: $header-height - 2rem;
+    top: -0.2rem;
     right: 0;
     background: #FFF;
-    border: 1px solid #DFDFDF;
-    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    box-shadow: 0 0 5px rgba(0,0,0,0.15);
     max-width: 300px;
 
     .flex {
@@ -176,11 +175,13 @@
       h3 {
         font-size: 1.7rem;
         margin-bottom: 0.5rem;
+        cursor: default;
       }
 
       p {
         font-size: 1.3rem;
         margin-bottom: 1rem;
+        cursor: default;
       }
     }
 

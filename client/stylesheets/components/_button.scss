@@ -45,8 +45,13 @@
     }
   }
 
+  &:hover {
+    background-color: darken($color-default, 5%);
+  }
+
   &:active {
     transform: scale(0.98);
+    background-color: darken($color-default, 10%);
   }
 
   &.primary {

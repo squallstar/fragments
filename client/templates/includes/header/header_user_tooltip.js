@@ -1,2 +1,4 @@
 // UI Bindings and helpers
-UI.setAutofocus(Template.headerUserTooltip, USER_TOOLTIP_KEY);
+UI.setAutofocus(Template.headerUserTooltip, {
+  sessionKey: USER_TOOLTIP_KEY
+});
