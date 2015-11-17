@@ -29,7 +29,7 @@ Meteor.startup(function() {
 
     // Set up default avatar
     if (!user.profile.picture) {
-      user.profile.picture = '/assets/img/default-avatar.png';
+      user.profile.picture = Meteor.absoluteUrl('/assets/img/default-avatar.png');
     }
 
     // Set up default name
