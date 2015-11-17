@@ -1,3 +1,6 @@
+// UI Hooks
+UI.setScrollBoundaries(Template.sidebar, '#sidebar');
+
 Template.sidebar.helpers({
   isOpen: function () {
     return Session.get(SIDEBAR_OPEN_KEY);
@@ -29,4 +32,4 @@ Template.sidebar.onCreated(function () {
   Tracker.autorun(function () {
     Session.set(MODAL_VISIBLE_KEY, Session.get(SIDEBAR_OPEN_KEY));
   });
-})
+});
