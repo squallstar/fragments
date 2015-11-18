@@ -7,9 +7,7 @@ Meteor.publish('fragments', function (options) {
     collection: Match.Optional(String)
   });
 
-  var query = {
-    user: this.userId
-  };
+  var query = {};
 
   if (options.text) {
     query.$text = { $search: options.text };
@@ -17,6 +15,8 @@ Meteor.publish('fragments', function (options) {
 
   if (options.collection) {
     query['collections._id'] = options.collection;
+  } else {
+    query.user = this.userId;
   }
 
   if (options.tag) {
@@ -47,4 +47,9 @@ Meteor.publish('searchHistory', function (options) {
 
 Meteor.publish('collections', function () {
   return Collections.find({ user: this.userId });
+});
+
+Meteor.publish('collection', function (id) {
+  check(id, String);
+  return Collections.find(id);
 });
