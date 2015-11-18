@@ -4,3 +4,11 @@ Template.sidebarCollection.helpers({
     return currentCollection && currentCollection._id === this._id;
   }
 });
+
+Template.sidebarCollection.events({
+  // Temporary
+  'click .icon-cog': function (event) {
+    event.preventDefault();
+    Router.go('collectionSettings', this);
+  }
+});
