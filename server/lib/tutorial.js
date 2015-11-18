@@ -19,7 +19,7 @@ Meteor.methods({
       });
     }
 
-    var stuffCollection = Collections.mini(
+    var stuffCollection = Collections.shrink(
       Collections.findOne(
         Meteor.call('collectionInsert', {
           user: user._id,
@@ -29,7 +29,7 @@ Meteor.methods({
       )
     );
 
-    var interestingCollection = Collections.mini(
+    var interestingCollection = Collections.shrink(
       Collections.findOne(
         Meteor.call('collectionInsert', {
           user: user._id,
@@ -71,6 +71,6 @@ Meteor.methods({
     SearchHistory.insert({
       user: user._id,
       query: 'tutorial'
-    })
+    });
   }
 });

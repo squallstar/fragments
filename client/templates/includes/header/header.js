@@ -2,6 +2,9 @@ Template.header.helpers({
   userTooltipIsOpen: function () {
     return Session.get(USER_TOOLTIP_KEY);
   },
+  hasSearchBar: function () {
+    return Session.get(HIDE_SEARCH_BAR) !== true;
+  },
   hasBackArrow: function () {
     return Session.get(HAS_BACK_ARROW_KEY);
   },

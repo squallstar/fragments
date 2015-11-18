@@ -12,7 +12,9 @@
         </h1>
       </div>
       <div class="middle-section">
-        {{> headerSearchBar}}
+        {{#if hasSearchBar}}
+          {{> headerSearchBar}}
+        {{/if}}
       </div>
       <div class="right-section">
         <div>
