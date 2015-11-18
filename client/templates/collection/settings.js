@@ -1,0 +1,3 @@
+Template.collectionSettings.onCreated(function () {
+
+});
