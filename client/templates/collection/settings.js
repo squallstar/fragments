@@ -16,5 +16,16 @@ Template.collectionSettings.events({
 
       Router.go('collection', collection);
     });
+  },
+  'click [data-delete]': function (event) {
+    event.preventDefault();
+    Meteor.call('collectionDelete', this.collection._id, function (error) {
+      if (error) {
+        return Notifications.error(error.reason);
+      }
+
+      Notifications.success('The collection has been deleted');
+      Router.go('/');
+    });
   }
 });

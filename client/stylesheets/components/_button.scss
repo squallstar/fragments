@@ -67,6 +67,19 @@
     }
   }
 
+  &.danger {
+    background-color: $color-danger;
+    color: #FFF;
+
+    &:hover {
+      background-color: lighten($color-danger, 5%);
+    }
+
+    &:active {
+      background-color: darken($color-danger, 5%);
+    }
+  }
+
   &.google {
     background-color: $color-google;
     color: #FFF;
