@@ -1,5 +1,22 @@
 <template name="collectionSettings">
   <div class="box middle-box padded">
-    <p>{{collection.name}}</p>
+    <form class="form">
+      <h1>Collection settings</h1>
+      <hr />
+      <div class="group">
+        <label>Collection name</label>
+        <input type="text" name="name" value={{collection.name}} placeholder="Collection name" />
+      </div>
+      <div class="group">
+        <label>Collection colour</label>
+        <div class="colors-list bordered">
+          {{> collectionColors current=collection.color}}
+        </div>
+      </div>
+      <hr />
+      <div class="group">
+        <input type="submit" class="button primary big" value="Save changes"/>
+      </div>
+    </form>
   </div>
 </template>

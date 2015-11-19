@@ -19,11 +19,20 @@
       text-align: center;
     }
 
+    label {
+      color: #AAA;
+      font-weight: $bold;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
     input[type="email"], input[type="text"], input[type="password"] {
       @include transition(border-color 0.2s);
       display: block;
       width: 100%;
-      border: 2px solid #EEE;
+      border: 2px solid $color-borders;
       padding: 1.3rem 1.1rem;
       font-size: 1.4rem;
       font-weight: $medium;

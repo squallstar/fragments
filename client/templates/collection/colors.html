@@ -1,0 +1,11 @@
+<template name="collectionColors">
+  <ul>
+    {{#each colors}}
+      <li>
+        <label for="color-{{this}}" style="background-color:{{this}}">
+          <input type="radio" name="color" value="{{this}}" id="color-{{this}}" checked="{{#if equals this current}}checked{{/if}}" />
+        </label>
+      </li>
+    {{/each}}
+  </ul>
+</template>

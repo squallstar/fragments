@@ -7,15 +7,7 @@
     <div class="group">
       <div class="colors-list">
         <h4>Collection color</h4>
-        <ul>
-          {{#each colors}}
-            <li>
-              <label for="color-{{this}}" style="background-color:{{this}}">
-                <input type="radio" name="color" value="{{this}}" id="color-{{this}}" />
-              </label>
-            </li>
-          {{/each}}
-        </ul>
+        {{> collectionColors}}
       </div>
     </div>
     <div class="group">
