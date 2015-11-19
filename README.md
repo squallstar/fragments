@@ -1,20 +1,22 @@
-# Fragments [Work in progress]
+# フラグメント [Work in progress]
 
-## Setup
+メテオで構築。
 
-Copy from the default settings and update as required:
+## セットアップ
+
+デフォルトの設定をコピーします。
 
 ```
 cp settings.example.json settings.json
 ```
 
-## Run
+## 実行
 
 ```
 $ meteor --settings settings.json
 ```
 
-## Build for production
+## ビルド
 
 ```
 $ meteor build path/to/dir
