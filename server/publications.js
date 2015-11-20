@@ -16,7 +16,15 @@ Meteor.publish('fragments', function (options) {
   if (options.collection) {
     query['collections._id'] = options.collection;
   } else {
-    query.user = this.userId;
+    check(this.userId, String);
+
+    let collectionsIds = Collections
+      .find({ user: this.userId, hide_from_dashboard: true })
+      .map(function (collection) { return collection._id });
+
+    if (collectionsIds.length) {
+      query['collections._id'] = { $nin: collectionsIds };
+    }
   }
 
   if (options.tag) {

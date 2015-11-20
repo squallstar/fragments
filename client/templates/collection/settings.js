@@ -1,3 +1,9 @@
+Template.collectionSettings.helpers({
+  showInDashboard: function() {
+    return !this.collection.hide_from_dashboard;
+  }
+});
+
 Template.collectionSettings.events({
   'submit form': function (event, template) {
     event.preventDefault();
@@ -7,7 +13,7 @@ Template.collectionSettings.events({
     var attributes = {
       name: template.$('input[name="name"]').val().trim(),
       color: $('input[name="color"]:checked').val(),
-      in_dashboard: $('input[name="in_dashboard"]').is(':checked')
+      hide_from_dashboard: !$('input[name="show_in_dashboard"]').is(':checked')
     };
 
     Meteor.call('collectionUpdate', collection._id, attributes, (error) => {
