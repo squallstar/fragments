@@ -17,6 +17,7 @@ Meteor.publish('fragments', function (options) {
     query['collections._id'] = options.collection;
   } else {
     check(this.userId, String);
+    query.user = this.userId;
 
     let collectionsIds = Collections
       .find({ user: this.userId, hide_from_dashboard: true })
