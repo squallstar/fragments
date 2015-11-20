@@ -36,3 +36,18 @@ Template.header.events({
     }
   }
 });
+
+Template.header.onRendered(function () {
+  this.find('.middle-section')._uihooks = {
+    insertElement: (node, next) => {
+      var $node = $(node);
+      $node.hide().insertBefore(next).fadeIn(250);
+    },
+    removeElement: (node) => {
+      var $node = $(node);
+      $node.fadeOut(250, function () {
+        $node.remove();
+      });
+    }
+  }
+});
