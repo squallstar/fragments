@@ -45,7 +45,7 @@ Template.fragmentsList.helpers({
     }
 
     // Don't display when fragments are filtered by a search
-    return !!Session.get(CURRENT_SEARCH_KEY);
+    return !Session.get(CURRENT_SEARCH_KEY);
   }
 });
 
