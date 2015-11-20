@@ -69,6 +69,14 @@
       }
     }
 
+    .description {
+
+      label + p {
+        margin-top: 1rem;
+        font-size: 1.3rem;
+      }
+    }
+
     .note {
       display: inline-block;
       margin: 0.5rem 0;

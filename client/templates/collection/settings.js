@@ -6,7 +6,8 @@ Template.collectionSettings.events({
 
     var attributes = {
       name: template.$('input[name="name"]').val().trim(),
-      color: $('input[name="color"]:checked').val()
+      color: $('input[name="color"]:checked').val(),
+      in_dashboard: $('input[name="in_dashboard"]').is(':checked')
     };
 
     Meteor.call('collectionUpdate', collection._id, attributes, (error) => {

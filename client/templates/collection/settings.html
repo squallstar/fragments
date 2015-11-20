@@ -14,6 +14,17 @@
         </div>
       </div>
       <hr />
+      <div class="group flex">
+        <div class="description">
+          <label>Show in dashboard</label>
+          <p>Choose whether this collection fragments will be shown under all collections.</p>
+        </div>
+        <div class="toggle">
+          <input id="in_dashboard" name="in_dashboard" type="checkbox" checked={{collection.in_dashboard}} />
+          <label for="in_dashboard"></label>
+        </div>
+      </div>
+      <hr />
       <div class="group">
         <input type="submit" class="button primary" value="Save changes"/>
         <button class="button danger" data-delete onclick="return confirm('Are you sure?')">Delete collection</button>

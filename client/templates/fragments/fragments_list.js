@@ -36,6 +36,16 @@ Template.fragmentsList.helpers({
   },
   isEmpty: function () {
     return !Template.instance().fragments().count();
+  },
+  displaySubmitForm: function () {
+    var collection = Session.get(CURRENT_COLLECTION_KEY);
+    if (collection) {
+      // Don't display when the user is not the owner
+      return collection.user === Meteor.userId();
+    }
+
+    // Don't display when fragments are filtered by a search
+    return !!Session.get(CURRENT_SEARCH_KEY);
   }
 });
 

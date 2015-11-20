@@ -13,7 +13,7 @@
     {{/if}}
   {{/if}}
   <div class="fragments-list stretch-half">
-    {{#unless textSearch}}{{> fragmentSubmit }}{{/unless}}
+    {{#if displaySubmitForm}}{{> fragmentSubmit }}{{/if}}
     {{#each fragments}}
       {{> fragmentItem}}
     {{/each}}
