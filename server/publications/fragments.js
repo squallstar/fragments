@@ -20,7 +20,7 @@ Meteor.publish('fragments', function (options) {
     query.user = this.userId;
 
     let collectionsIds = Collections
-      .find({ user: this.userId, hide_from_dashboard: true })
+      .find({ user: this.userId, hidden: true })
       .map(function (collection) { return collection._id });
 
     if (collectionsIds.length) {
