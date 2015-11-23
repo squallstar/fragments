@@ -48,7 +48,7 @@ Meteor.methods({
     insertFragment({
       title: 'Tag your fragments',
       description: 'You can add as many tags as you want on each fragment, and filter your results by one or more. Click here to get started editing this card!',
-      image: '/assets/img/tutorial/tags.jpg',
+      image: Meteor.absoluteUrl('/assets/img/tutorial/tags.jpg'),
       tags: ['Tutorial', 'Cute stuff'],
       collections: [interestingCollection, stuffCollection]
     });
@@ -56,7 +56,7 @@ Meteor.methods({
     insertFragment({
       title: 'Infinite storage',
       description: 'Limited space? We have never heard of that, so you should probably not really worry about saving here all your fragments.',
-      image: '/assets/img/tutorial/storage.png',
+      image: Meteor.absoluteUrl('/assets/img/tutorial/storage.png'),
       tags: ['Tutorial', 'Storage'],
       collections: [stuffCollection]
     });
@@ -64,7 +64,7 @@ Meteor.methods({
     insertFragment({
       title: ['Hey', displayName + '!'].join(' '),
       description: 'Welcome to Fragments! This is your very first fragment, displayed here as a tutorial card. To dismiss it, click here and find the cross icon in the top right of the card.',
-      image: '/assets/img/tutorial/welcome.png',
+      image: Meteor.absoluteUrl('/assets/img/tutorial/welcome.png'),
       tags: ['Tutorial']
     });
 
