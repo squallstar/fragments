@@ -81,6 +81,7 @@ ul.list {
     a {
       @extend %tag;
       font-size: 1.1rem;
+      max-width: 60%;
 
       &:hover {
         border-color: #999;
