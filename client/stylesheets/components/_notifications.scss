@@ -17,9 +17,17 @@
       background-color: $color-success;
     }
 
+    &.progress {
+      background-color: $color-progress;
+    }
+
     p {
       color: #FFF;
       text-align: center;
+
+      a {
+        color: #FFF;
+      }
     }
   }
 }
