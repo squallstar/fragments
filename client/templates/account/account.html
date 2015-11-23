@@ -2,7 +2,17 @@
   <div class="box middle-box padded">
 
     <div class="form">
-      <a href="#" class="button primary" data-export>Export all fragments</a>
+      <div class="group">
+        <a href="#" class="button primary" data-export>Export data</a>
+      </div>
+      <hr />
+      <div class="group">
+        <div class="input-file">
+          <label for="import_data" class="button primary">Import data
+            <input type="file" id="import_data" name="file" accept="application/json, text/json" data-import />
+          </label>
+        </div>
+      </div>
     </div>
   </div>
 </template>

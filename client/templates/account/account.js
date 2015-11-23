@@ -17,5 +17,43 @@ Template.account.events({
       a.download = 'export.json';
       a.click();
     });
+  },
+  'change [data-import]': function (event) {
+    var file = $(event.target)[0].files[0];
+
+    if (!file) {
+      return;
+    }
+
+    var notification = Notifications.progress('Importing your data...');
+
+    readFile(file, function (contents) {
+      Notifications.remove(notification);
+
+      if (!contents) {
+        return Notifications.error('Could not parse file');
+      }
+
+      Meteor.call('importData', contents, function (err, imported) {
+        if (err) {
+          return Notifications.error(err.reason || err);
+        }
+
+        Notifications.success([
+          imported.collections.toString(),
+          'collections and',
+          imported.fragments.toString(),
+          'fragment have been imported.'
+        ].join(' '));
+
+        // Go back to homepage
+        Router.go('/');
+
+        // If new collections have been imported, let's display the sidebar
+        if (imported.collections > 0) {
+          Session.set(SIDEBAR_OPEN_KEY, true);
+        }
+      });
+    });
   }
 });

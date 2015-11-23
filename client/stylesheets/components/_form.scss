@@ -43,6 +43,20 @@
       }
     }
 
+    .input-file {
+
+      label {
+        display: inline-block;
+        text-transform: none;
+        font-weight: $medium;
+        color: #FFF;
+      }
+
+      input {
+        display: none;
+      }
+    }
+
     hr {
       margin: 2rem 0;
     }
