@@ -48,11 +48,6 @@ Template.account.events({
 
         // Go back to homepage
         Router.go('/');
-
-        // If new collections have been imported, let's display the sidebar
-        if (imported.collections > 0) {
-          Session.set(SIDEBAR_OPEN_KEY, true);
-        }
       });
     });
   }
