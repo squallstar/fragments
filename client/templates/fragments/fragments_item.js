@@ -7,6 +7,9 @@ Template.fragmentItem.helpers({
   },
   isAddingTag: function () {
     return Template.instance().isAddingTag.get();
+  },
+  currentTag: function () {
+    return Session.get(CURRENT_TAG_KEY);
   }
 });
 
@@ -103,6 +106,16 @@ Template.fragmentItem.events({
     setTimeout(function () {
       instance.$('[data-new-tag]').focus();
     }, 10);
+  },
+  'click .tag': function (event, template) {
+    if (template.isEditing.get()) {
+      return;
+    }
+
+    var currentTag = Session.get(CURRENT_TAG_KEY),
+        tag = $(event.target).text();
+
+    Session.set(CURRENT_TAG_KEY, currentTag !== tag ? tag : undefined);
   },
   'click .tag.can-be-removed': function (event) {
     event.preventDefault();

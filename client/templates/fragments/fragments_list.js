@@ -1,6 +1,6 @@
 const PAGE_SIZE = 15; // items per page
 const PREFETCH_HEIGHT = 350; // px
-const SCROLL_THROTTLE = 300; // ms
+const SCROLL_THROTTLE = 200; // ms
 const APPEAR_DELAY = 150; // ms
 const DISAPPEAR_DELAY = 450; // ms
 
@@ -171,12 +171,16 @@ Template.fragmentsList.onRendered(function () {
     insertElement: (node, next) => {
       var $node = $(node);
 
+      if (this.loaded.get()) {
+        $node.addClass('reduce-animations');
+      }
+
       $node.addClass('appearing').insertBefore(next);
 
       this.recollect();
 
       setTimeout(() => {
-        $node.removeClass('appearing');
+        $node.removeClass('appearing reduce-animations');
       }, !this.loaded.get() ? 0 : APPEAR_DELAY);
     },
     removeElement: (node) => {
