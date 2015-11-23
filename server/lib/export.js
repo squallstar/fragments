@@ -1,10 +1,17 @@
 Meteor.methods({
   exportData: function () {
-    check(Meteor.userId(), String);
+    var userId = Meteor.userId();
 
-    var collections = Collections.find({ user: Meteor.userId() }).fetch(),
+    check(userId, String);
+
+    var collections = Collections.find({ user: userId }).fetch(),
         collectionsIds = _.map(collections, (c) => { return c._id }),
-        fragments = Fragments.find({ 'collections._id': { $in: collectionsIds } }).fetch();
+        fragments = Fragments.find({
+          $or: [
+            { user: userId },
+            { 'collections._id': { $in: collectionsIds } }
+          ]
+        }).fetch();
 
     return {
       collections, fragments
