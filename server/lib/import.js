@@ -53,7 +53,9 @@ Meteor.methods({
 
       // Remap collections to new IDs
       fragment.collections = _.map(fragment.collections, function (collection) {
-        return Collections.shrink(userCollections[collection._id]);
+        if (userCollections[collection._id]) {
+          return Collections.shrink(userCollections[collection._id]);
+        }
       });
 
       Fragments.insert(_.extend(
