@@ -2,13 +2,19 @@
   <div class="box middle-box padded">
 
     <div class="form">
+      <h1>Account</h1>
+      <hr />
       <div class="group">
-        <a href="#" class="button primary" data-export>Export data</a>
+        <h3>Export your collections</h3>
+        <p>You can export all your collections and fragments at any time by clicking the button below.</p>
+        <a href="#" class="button primary" data-export>Export data to JSON</a>
       </div>
       <hr />
       <div class="group">
         <div class="input-file">
-          <label for="import_data" class="button primary">Import data
+          <h3>Import your collections</h3>
+          <p>Data which uses the Fragments schema can be imported into your user. We'll take care of creating all the collections that don't exist, and assign your Fragments to them.</p>
+          <label for="import_data" class="button primary">Import data from JSON
             <input type="file" id="import_data" name="file" accept="application/json, text/json" data-import />
           </label>
         </div>
