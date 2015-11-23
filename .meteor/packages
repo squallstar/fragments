@@ -14,6 +14,7 @@ tracker                 # Meteor's client-side reactive programming library
 standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
+coffeescript            # Coffeescript
 iron:router             # Application router
 check                   # Check whether a value matches a pattern
 audit-argument-checks   # Try to detect inadequate input sanitization
@@ -29,3 +30,4 @@ accounts-twitter        # Accounts service: log in with Twitter
 service-configuration   # Helpers for configuring account services
 meteorhacks:kadira      # Analytics and performances analysis
 meteorhacks:aggregate   # Support for Mongo aggregate operations
+differential:workers    # Workers

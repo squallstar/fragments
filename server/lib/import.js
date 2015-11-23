@@ -58,7 +58,7 @@ Meteor.methods({
         }
       });
 
-      Fragments.insert(_.extend(
+      let fragmentId = Fragments.insert(_.extend(
         _.pick(
           fragment,
           'url', 'title', 'created_at', 'fetched_at', 'updated_at', 'domain', 'provider_name',
@@ -66,6 +66,10 @@ Meteor.methods({
         ),
         { user: userId }
       ));
+
+      Job.push(new FetchFragmentJob({
+        fragmentId: fragmentId
+      }));
 
       importedStats.fragments++;
     });
