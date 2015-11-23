@@ -4,8 +4,8 @@
       <h1>Collection settings</h1>
       <hr />
       <div class="group">
-        <label>Collection name</label>
-        <input type="text" name="name" value={{collection.name}} placeholder="Collection name" />
+        <label for="f-name">Collection name</label>
+        <input id="f-name" type="text" name="name" value={{collection.name}} placeholder="Collection name" />
       </div>
       <div class="group">
         <label>Collection colour</label>
@@ -16,12 +16,23 @@
       <hr />
       <div class="group flex">
         <div class="description">
-          <label>Show in dashboard</label>
+          <label for="f-visible">Show in dashboard</label>
           <p>Choose whether this collection fragments will be shown under all collections.</p>
         </div>
         <div class="toggle">
-          <input id="show_in_dashboard" name="show_in_dashboard" type="checkbox" checked={{showInDashboard}} />
-          <label for="show_in_dashboard"></label>
+          <input id="f-is-visible" name="is_visible" type="checkbox" checked={{is_visible}} />
+          <label for="f-is-visible"></label>
+        </div>
+      </div>
+      <hr />
+      <div class="group flex">
+        <div class="description">
+          <label>Allow sharing</label>
+          <p>Choose whether this collection can be shared by copying its public URL.</p>
+        </div>
+        <div class="toggle">
+          <input id="f-is-public" name="public" type="checkbox" checked={{is_public}} />
+          <label for="f-is-public"></label>
         </div>
       </div>
       <hr />

@@ -14,6 +14,7 @@ Meteor.startup(function () {
   });
 
   Collections._ensureIndex({ user: 1 });
+  Collections._ensureIndex({ is_public: 1 });
 
   SearchHistory._ensureIndex({ user: 1 });
   SearchHistory._ensureIndex({ query: 1 });

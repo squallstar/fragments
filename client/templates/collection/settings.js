@@ -1,6 +1,6 @@
 Template.collectionSettings.helpers({
-  showInDashboard: function() {
-    return !this.collection.hidden;
+  is_visible: function() {
+    return !this.collection.is_hidden;
   }
 });
 
@@ -13,7 +13,8 @@ Template.collectionSettings.events({
     var attributes = {
       name: template.$('input[name="name"]').val().trim(),
       color: $('input[name="color"]:checked').val(),
-      hidden: !$('input[name="show_in_dashboard"]').is(':checked')
+      is_hidden: !$('input[name="is_visible"]').is(':checked'),
+      is_public: $('input[name="is_public"]').is(':checked')
     };
 
     Meteor.call('collectionUpdate', collection._id, attributes, (error) => {

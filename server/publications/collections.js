@@ -4,5 +4,11 @@ Meteor.publish('collections', function () {
 
 Meteor.publish('collection', function (id) {
   check(id, String);
-  return Collections.find(id);
+
+  var $conditions = [{ _id: id, is_public: true }];
+  if (this.userId) {
+    $conditions.push({ _id: id, user: this.userId });
+  }
+
+  return Collections.find({ $or: $conditions });
 });

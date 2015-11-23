@@ -37,7 +37,7 @@ Meteor.methods({
         let collectionId = Collections.insert(_.extend(
           _.pick(
             collection,
-            'name', 'slug', 'color', 'hidden'
+            'name', 'slug', 'color', 'is_hidden', 'is_public'
           ),
           { user: userId }
         ));
