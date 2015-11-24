@@ -58,6 +58,17 @@
       a {
         text-decoration: none;
       }
+
+      svg {
+        fill: rgba(0, 0, 0, 0.15);
+        vertical-align: middle;
+        width: 35px;
+        height: 25px;
+
+        &.icon-lock-on {
+          margin-top: -6px;
+        }
+      }
     }
   }
 

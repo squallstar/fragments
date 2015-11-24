@@ -6,6 +6,9 @@
         <h1>
           {{#if collection}}
             <a href={{pathFor route='collection' data=collection}}>{{collection.name}}</a>
+            {{#unless collection.is_public}}
+              {{> iconLockOn}}
+            {{/unless}}
           {{else}}
             <a href="/">Fragments</a>
           {{/if}}
