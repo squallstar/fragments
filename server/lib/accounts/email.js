@@ -1,3 +1,6 @@
+// Compile email templates
+SSR.compileTemplate('verifyEmail', Assets.getText('emails/verify.html'));
+
 Meteor.startup(function() {
   // Email SMTP setup
   if (Meteor.settings.emailSmtpUrl) {
@@ -17,8 +20,11 @@ Meteor.startup(function() {
     return 'Please confirm your Email address';
   };
 
-  Accounts.emailTemplates.verifyEmail.text = function (user, url) {
-    return 'Click on the link below to verify your address: ' + url;
+  Accounts.emailTemplates.verifyEmail.html = function (user, url) {
+    return SSR.render('verifyEmail', {
+      name: user.profile.name,
+      url: url
+    });
   };
 
   // Overrides the verify email url

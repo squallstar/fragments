@@ -61,6 +61,7 @@ meteorhacks:aggregate@1.3.0
 meteorhacks:collection-utils@1.2.0
 meteorhacks:kadira@2.26.3
 meteorhacks:meteorx@1.4.1
+meteorhacks:ssr@2.1.2
 minifiers@1.1.7
 minimongo@1.0.10
 mobile-experience@1.0.1
