@@ -1,5 +1,5 @@
 Template.collectionSettings.helpers({
-  is_visible: function() {
+  collectionIsVisible: function() {
     return !this.collection.is_hidden;
   }
 });
