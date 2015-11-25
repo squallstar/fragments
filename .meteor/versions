@@ -33,6 +33,7 @@ ejson@1.0.7
 email@1.0.8
 es5-shim@4.1.14
 fastclick@1.0.7
+fortawesome:fontawesome@4.4.0_1
 fourseven:scss@3.4.1
 geojson-utils@1.0.4
 google@1.1.7
@@ -95,6 +96,7 @@ srp@1.0.4
 standard-minifiers@1.0.2
 templating@1.1.5
 templating-tools@1.0.0
+themeteorchef:bert@2.1.0
 tracker@1.0.9
 twitter@1.1.5
 ui@1.0.8

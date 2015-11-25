@@ -1,7 +1,12 @@
 // Local Collection
 Notifications = new Mongo.Collection(null);
 
-const REMOVE_AFTER_SECONDS = 5;
+// Overrides Bert default values
+Bert.defaults = {
+  hideDelay: 4000,
+  style: 'growl-top-right',
+  type: 'default'
+};
 
 Notifications._enqueue = function (type, message, isSticky=false) {
   // Only one per type at a time
@@ -12,14 +17,14 @@ Notifications._enqueue = function (type, message, isSticky=false) {
   if (!isSticky) {
     setTimeout(() => {
       this.remove(id);
-    }, REMOVE_AFTER_SECONDS * 1000);
+    }, Bert.defaults.hideDelay * 1000);
   }
 
   return id;
 };
 
 Notifications.success = function (message) {
-  return this._enqueue('success', message);
+  return Bert.alert(message, 'success');
 };
 
 Notifications.progress = function (message) {
@@ -27,7 +32,7 @@ Notifications.progress = function (message) {
 };
 
 Notifications.error = function (message) {
-  return this._enqueue('error', message);
+  return Bert.alert(message, 'danger');
 };
 
 Notifications.clear = function () {
