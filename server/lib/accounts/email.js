@@ -1,7 +1,3 @@
-// Compile email templates
-SSR.compileTemplate('verifyEmail', Assets.getText('emails/verify-email.html'));
-SSR.compileTemplate('resetPassword', Assets.getText('emails/reset-password.html'));
-
 Meteor.startup(function() {
   // Email SMTP setup
   if (Meteor.settings.emailSmtpUrl) {
@@ -22,7 +18,7 @@ Meteor.startup(function() {
   };
 
   Accounts.emailTemplates.verifyEmail.html = function (user, url) {
-    return SSR.render('verifyEmail', {
+    return Meteor.renderEmail('verifyEmail', {
       name: user.profile.name,
       url: url
     });
@@ -38,7 +34,7 @@ Meteor.startup(function() {
   };
 
   Accounts.emailTemplates.resetPassword.html = function (user, url) {
-    return SSR.render('resetPassword', {
+    return Meteor.renderEmail('resetPassword', {
       name: user.profile.name,
       url: url
     });
