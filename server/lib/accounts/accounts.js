@@ -56,9 +56,4 @@ Meteor.startup(function() {
 
     return user;
   });
-
-  // Overrides the reset password url
-  Accounts.urls.resetPassword = function (token) {
-    return Router.url('reset_password', { token: token });
-  };
 });

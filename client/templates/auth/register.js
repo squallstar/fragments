@@ -11,7 +11,8 @@ Template.register.events({
     var name = template.$('input[name="name"]').val().trim(),
         email = template.$('input[type="email"]').val().trim(),
         password = template.$('input[name="password"]').val(),
-        confirmPassword = template.$('input[name="confirm_password"]').val();
+        confirmPassword = template.$('input[name="confirm_password"]').val(),
+        notification;
 
     if (!name) {
       return Notifications.error('Your name is required');
@@ -33,6 +34,8 @@ Template.register.events({
       return Notifications.error('The passwords confirmation does not match the password you have chosen.');
     }
 
+    notification = Notifications.progress('Please wait while we create your account.');
+
     Accounts.createUser({
       profile: {
         name: name
@@ -40,6 +43,8 @@ Template.register.events({
       email: email,
       password : password
     }, function (err) {
+      Notifications.remove(notification);
+
       if (err) {
         switch (err.error) {
           default:
