@@ -4,10 +4,17 @@
     display: flex;
     padding-top: 4rem;
     padding-bottom: 4rem;
+    align-items: center;
+    justify-content: center;
   }
 
   .brand {
     flex: 1;
+
+    a {
+      text-decoration: none;
+      font-size: 3rem;
+    }
   }
 
   .actions {
