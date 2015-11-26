@@ -1,4 +1,10 @@
 Meteor.publish('collections', function () {
+  if (!this.userId) {
+    return this.stop();
+  }
+
+  check(this.userId, String);
+
   return Collections.find({ user: this.userId });
 });
 

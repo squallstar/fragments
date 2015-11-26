@@ -16,6 +16,10 @@ Meteor.publish('fragments', function (options) {
   if (options.collection) {
     query['collections._id'] = options.collection;
   } else {
+    if (!this.userId) {
+      return this.stop();
+    }
+
     check(this.userId, String);
     query.user = this.userId;
 
