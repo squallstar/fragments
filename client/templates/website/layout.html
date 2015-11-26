@@ -1,0 +1,19 @@
+<template name="websiteLayout">
+  {{> fontLoader}}
+  <main id="website" role="main">
+    <header id="website-header">
+      <div class="row">
+        <div class="brand">
+          <h1>Fragments</h1>
+        </div>
+        <div class="actions">
+          <a href={{pathFor 'login'}} class="button primary">Log in</a>
+          <a href={{pathFor 'login'}} class="button">Sign up</a>
+        </div>
+      </div>
+    </header>
+    <div id="website-main">
+      {{> yield}}
+    </div>
+  </main>
+</template>
