@@ -1,0 +1,14 @@
+#website-header {
+
+  .row {
+    display: flex;
+  }
+
+  .brand {
+    flex: 1;
+  }
+
+  .actions {
+    flex: 0 1 auto;
+  }
+}
