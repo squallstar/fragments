@@ -10,7 +10,12 @@
             </ul>
           {{else}}
             <label for="body">
-              Save new link
+              Save new
+              {{#if isNote}}
+                note <i class="fa fa-file-text-o"></i>
+              {{else}}
+                link
+              {{/if}}
               {{#if currentCollection}}
                 under <strong>{{currentCollection.name}}</strong>
               {{/if}}

@@ -1,4 +1,5 @@
 Template.fragmentSubmit.onCreated(function() {
+  this.isNote = new ReactiveVar(false);
   Session.set('fragmentSubmitErrors', {});
 });
 
@@ -20,10 +21,17 @@ Template.fragmentSubmit.helpers({
   },
   currentCollection: function () {
     return Session.get(CURRENT_COLLECTION_KEY);
+  },
+  isNote: function () {
+    return Template.instance().isNote.get();
   }
 });
 
 Template.fragmentSubmit.events({
+  'keyup input': function (event, template) {
+    var text = $(event.target).val();
+    template.isNote.set(text.indexOf(' ') !== -1);
+  },
   'submit form': function (event, template) {
     event.preventDefault();
 
