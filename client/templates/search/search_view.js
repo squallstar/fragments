@@ -23,7 +23,7 @@ Template.searchView.events({
     event.preventDefault();
 
     Session.set(CURRENT_TAG_KEY, tag);
-    Router.go('/');
+    Router.go('home');
   }
 });
 

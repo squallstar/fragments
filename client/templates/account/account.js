@@ -47,7 +47,7 @@ Template.account.events({
         ].join(' '));
 
         // Go back to homepage
-        Router.go('/');
+        Router.go('home');
       });
     });
   }

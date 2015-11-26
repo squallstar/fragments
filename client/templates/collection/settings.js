@@ -33,7 +33,7 @@ Template.collectionSettings.events({
       }
 
       Notifications.success('The collection has been deleted');
-      Router.go('/');
+      Router.go('home');
     });
   }
 });
