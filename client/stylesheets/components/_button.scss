@@ -53,6 +53,10 @@
     background-color: darken($color-default, 10%);
   }
 
+  &.transparent {
+    background-color: transparent;
+  }
+
   &.primary {
     background-color: $color-primary;
     color: #FFF;
