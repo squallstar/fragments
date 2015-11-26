@@ -31,7 +31,6 @@ service-configuration   # Helpers for configuring account services
 meteorhacks:kadira      # Analytics and performances analysis
 meteorhacks:aggregate   # Support for Mongo aggregate operations
 meteorhacks:ssr         # Server-side rendering
-meteorhacks:fast-render # Server-side subscriptions rendering
 differential:workers    # Workers
 themeteorchef:bert      # Growl-style notifications
 lookback:seo            # SEO support for metadata
