@@ -27,6 +27,7 @@ Template.sidebarAddCollection.events({
       }
 
       Session.set(SIDEBAR_ADDING_COLLECTION, false);
+      Session.set(SIDEBAR_OPEN_KEY, false);
       Router.go('collection', { _id: id });
     });
   }
