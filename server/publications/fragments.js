@@ -21,18 +21,32 @@ Meteor.publish('fragments', function (options) {
       let [ input, action, value ] = result;
 
       switch (action) {
+        case 'from':
+        case 'to':
         case 'when':
-          let date;
+          let date, dayStartTs, dayEndTs;
 
+          // Create date range
           switch (value) {
             case 'today': date = moment(); break;
             case 'yesterday': date = moment().subtract(1, 'days'); break;
             default: date = moment(value, 'DD-MM-YYYY');
           }
 
-          query.created_at = {
-            $lte: Number(date.endOf('day').format('x')),
-            $gte: Number(date.startOf('day').format('x'))
+          // Converts range to timestamps
+          dayStartTs = Number(date.startOf('day').format('x'));
+          dayEndTs = Number(date.endOf('day').format('x'));
+
+          query.created_at = {};
+
+          // Sets "from" range
+          if (action === 'from' || action === 'when') {
+            query.created_at.$gte = dayStartTs;
+          }
+
+          // Sets "up to" range
+          if (action === 'to' || action === 'when') {
+            query.created_at.$lte = dayStartTs;
           }
 
           handled = true;
