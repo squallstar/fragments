@@ -158,5 +158,22 @@ Template.fragmentItem.events({
   'click .collections .name': function (event) {
     event.preventDefault();
     event.stopPropagation();
+  },
+  'click .date': function (event) {
+    event.preventDefault();
+    var createdAt = moment(this.created_at),
+        query;
+
+    if (createdAt.isSame(moment(), 'day')) {
+      query = 'today';
+    } else if (createdAt.isSame(moment().subtract(1, 'days'), 'day')) {
+      query = 'yesterday';
+    } else {
+      query = createdAt.format('DD-MM-YYYY');
+    }
+
+    Router.go('searchResults', {
+      text: 'when:' + query
+    });
   }
 });

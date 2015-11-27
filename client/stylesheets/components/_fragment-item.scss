@@ -180,8 +180,16 @@
         color: #2578EE;
         margin: 1rem 0 0.6rem;
 
+        i {
+          display: none;
+          vertical-align: middle;
+        }
+
         &:hover {
-          text-decoration: underline;
+
+          i {
+            display: inline;
+          }
         }
       }
 
@@ -190,6 +198,20 @@
         font-size: 1rem;
         text-decoration: none;
         color: #AAA;
+
+        i {
+          display: none;
+          vertical-align: middle;
+        }
+
+        &:hover {
+          color: #666;
+          cursor: pointer;
+
+          i {
+            display: inline;
+          }
+        }
       }
 
       .tags {
