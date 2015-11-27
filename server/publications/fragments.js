@@ -31,8 +31,8 @@ Meteor.publish('fragments', function (options) {
           }
 
           query.created_at = {
-            $lte: date.endOf('day').format('x'),
-            $gte: date.startOf('day').format('x')
+            $lte: Number(date.endOf('day').format('x')),
+            $gte: Number(date.startOf('day').format('x'))
           }
 
           handled = true;
