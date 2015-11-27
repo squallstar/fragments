@@ -2,6 +2,10 @@
   @extend .row;
   padding-top: $grid-side-padding / 2;
 
+  .with-modal & {
+    @include filter(blur(1px));
+  }
+
   @include below ($break-phone) {
     padding: 1rem;
   }

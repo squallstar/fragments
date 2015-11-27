@@ -34,6 +34,14 @@
   transform: $args;
 }
 
+@mixin filter($args...) {
+  -webkit-filter: $args;
+  -moz-filter: $args;
+  -ms-filter: $args;
+  -o-filter: $args;
+  filter: $args;
+}
+
 @mixin keyframes($animation-name) {
   @-webkit-keyframes $animation-name {
     @content;
