@@ -1,3 +1,6 @@
+// Grab email CSS
+const TEMPLATE_CSS = Assets.getText('emails/style.css');
+
 // Compile email templates
 SSR.compileTemplate('emailLayout', Assets.getText('emails/layout.html'));
 SSR.compileTemplate('verifyEmail', Assets.getText('emails/verify-email.html'));
@@ -10,12 +13,9 @@ Template.emailLayout.helpers({
   }
 });
 
-// Grab email CSS
-const templateCss = Assets.getText('emails/style.css');
-
 Meteor.renderEmail = function (templateName, data) {
   return SSR.render('emailLayout', {
-    css: templateCss,
+    css: TEMPLATE_CSS,
     template: templateName,
     data: data
   });

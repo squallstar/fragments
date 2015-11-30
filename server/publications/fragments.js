@@ -10,56 +10,11 @@ Meteor.publish('fragments', function (options) {
   var query = {};
 
   if (options.text) {
-    _.each(options.text.split(' '), (piece) => {
-      let result = piece.match(/([A-z]+):([A-z0-9\-]+)/),
-          handled = false;
+    let textQuery = AdvancedQueries.ParseTextQuery(options.text);
 
-      if (!result || result.length < 3) {
-        return;
-      }
-
-      let [ input, action, value ] = result;
-
-      switch (action) {
-        case 'from':
-        case 'to':
-        case 'when':
-          let date, dayStartTs, dayEndTs;
-
-          // Create date range
-          switch (value) {
-            case 'today': date = moment(); break;
-            case 'yesterday': date = moment().subtract(1, 'days'); break;
-            default: date = moment(value, 'DD-MM-YYYY');
-          }
-
-          // Converts range to timestamps
-          dayStartTs = Number(date.startOf('day').format('x'));
-          dayEndTs = Number(date.endOf('day').format('x'));
-
-          query.created_at = {};
-
-          // Sets "from" range
-          if (action === 'from' || action === 'when') {
-            query.created_at.$gte = dayStartTs;
-          }
-
-          // Sets "up to" range
-          if (action === 'to' || action === 'when') {
-            query.created_at.$lte = dayStartTs;
-          }
-
-          handled = true;
-      }
-
-      if (handled) {
-        options.text = options.text.replace(input, '');
-      }
-    });
-
-    options.text = options.text.trim();
-    if (options.text.length) {
-      query.$text = { $search: options.text };
+    if (textQuery) {
+      options.text = textQuery.filteredQuery;
+      query = _.extend(query, textQuery.results);
     }
   }
 

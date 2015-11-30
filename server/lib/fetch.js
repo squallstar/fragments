@@ -1,12 +1,14 @@
-const extractBaseUrl = 'http://api.embed.ly/1/extract';
+const EMBEDLY_BASE_URL = 'http://api.embed.ly/1/extract';
 
-const { embedlyApiKey } = Meteor.settings;
+const EMBEDLY_API_KEY = Meteor.settings.embedlyApiKey;
 
-const titleMaxLength = 100; // characters
-const descriptionMaxLength = 140; // characters
+const TITLE_MAX_LENGTH = 100; // characters
+const DESCRIPTION_MAX_LENGTH = 140; // characters
 
-if (!embedlyApiKey) {
-  throw new Error('embedlyApiKey not set');
+/* ------------------------------------------------------------ */
+
+if (!EMBEDLY_API_KEY) {
+  throw new Error('EMBEDLY_API_KEY not set');
 }
 
 Meteor.methods({
@@ -24,13 +26,14 @@ Meteor.methods({
   }
 });
 
+// Fetches the data from Embedly
 function fetchUrlSync(fragment) {
   var data = {};
 
   try {
-    result = Meteor.http.get(extractBaseUrl, {
+    result = Meteor.http.get(EMBEDLY_BASE_URL, {
       params: {
-        key: embedlyApiKey,
+        key: EMBEDLY_API_KEY,
         url: fragment.url
       }
     });
@@ -46,7 +49,6 @@ function fetchUrlSync(fragment) {
   }
 }
 
-// -------------------------------------------------------
 // Parse the content from Embedly
 function parseLinkContent (fragment, newData, item) {
   [
@@ -62,14 +64,14 @@ function parseLinkContent (fragment, newData, item) {
 
   // trim long titles
   if (item.title) {
-    newData.title = item.title.length > titleMaxLength ? item.title.substr(0, titleMaxLength) + '…' : item.title;
+    newData.title = item.title.length > TITLE_MAX_LENGTH ? item.title.substr(0, TITLE_MAX_LENGTH) + '…' : item.title;
   } else {
     newData.title = 'Untitled';
   }
 
   // trim long descriptions
   if (item.description) {
-    newData.description = item.description.length > descriptionMaxLength ? item.description.substr(0, descriptionMaxLength) + '…' : item.description;
+    newData.description = item.description.length > DESCRIPTION_MAX_LENGTH ? item.description.substr(0, DESCRIPTION_MAX_LENGTH) + '…' : item.description;
   }
 
   newData.images = [];
@@ -115,14 +117,13 @@ function parseLinkContent (fragment, newData, item) {
   newData.tags = _.uniq(newData.tags);
 }
 
-// -------------------------------------------------------
-// Helpers
-
+// Converts a string to HEX. e.g. 255 to FF
 function componentToHex (color) {
   var hex = color.toString(16);
   return hex.length === 1 ? '0' + hex : hex;
 }
 
+// Converts a color to HEX. e.g. [255,0,0] to #FF0000
 function rgbToHex (r, g, b) {
   return (componentToHex(r) + componentToHex(g) + componentToHex(b)).toUpperCase();
 }

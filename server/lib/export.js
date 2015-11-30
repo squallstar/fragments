@@ -1,4 +1,7 @@
 Meteor.methods({
+  /**
+   Exports collections and fragments for a user
+  */
   exportData: function () {
     var userId = Meteor.userId();
 
