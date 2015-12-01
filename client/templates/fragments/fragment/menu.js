@@ -1,8 +1,12 @@
 // Application Helper
 SetContextMenu = function (options) {
   if (!options || !options.event || !options.actions) {
+    delete Template.contextualMenu.source;
     return Session.set(CURRENT_CONTEXTUAL_MENU);
   }
+
+  // Store a reference to the Blaze instance that called this menu
+  Template.contextualMenu.source = options.template;
 
   Session.set(CURRENT_CONTEXTUAL_MENU, {
     position: {
@@ -24,9 +28,6 @@ Template.contextualMenu.helpers({
   },
   position: function () {
     return Template.instance().position.get();
-  },
-  isOpen: function () {
-    return Template.instance().isOpen.get();
   },
   actions: function () {
     return Template.instance().actions;
@@ -60,7 +61,16 @@ Template.contextualMenu.events({
     event.preventDefault();
     event.stopPropagation();
 
-    template.instance().isOpen.set(false);
+    let $node = $(Template.contextualMenu.source.firstNode),
+        eventName = $(event.target).data('event');
+
+    // Triggers the event on the caller
+    if ($node.length) {
+      $node.trigger(eventName);
+    }
+
+    // Closes the menu
+    template.isOpen.set(false);
     SetContextMenu();
   }
 });

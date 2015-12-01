@@ -41,11 +41,12 @@ Template.fragmentItem.events({
   'click .link': function (event) {
     event.stopPropagation();
   },
-  'contextmenu': function (event) {
+  'contextmenu': function (event, template) {
     event.preventDefault();
     event.stopPropagation();
 
     SetContextMenu({
+      template: template,
       event: event,
       actions: [
         { label: 'Edit', eventName: 'edit-fragment' },
@@ -53,7 +54,7 @@ Template.fragmentItem.events({
       ]
     });
   },
-  'click [data-edit]': function (event) {
+  'click [data-edit], edit-fragment': function (event) {
     var instance = Template.instance();
 
     event.preventDefault();
@@ -158,6 +159,8 @@ Template.fragmentItem.events({
 
     var fragmentId = instance.data._id;
 
+    $field.css('opacity', 0);
+
     Meteor.call('fragmentApplyChanges', fragmentId, 'addToSet', 'tags', tag, function () {
       if (event.keyCode) {
         $field.text('');
@@ -165,6 +168,8 @@ Template.fragmentItem.events({
         // This happens when the action was triggered by the "blur" event
         instance.isAddingTag.set(false);
       }
+
+      $field.css('opacity', 1);
     });
   },
   'click .collections .name': function (event) {
