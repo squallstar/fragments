@@ -45,16 +45,26 @@ Template.fragmentItem.events({
     event.preventDefault();
     event.stopPropagation();
 
+    let actions = [];
+
+    if (!template.isEditing.get()) {
+      actions.push({ label: 'Edit', eventName: 'edit' });
+    }
+
+    // TODO: only when collection is owned
+    actions.push({ label: 'Delete', eventName: 'delete', className: 'danger' });
+
+    if (!actions.length) {
+      return;
+    }
+
     SetContextMenu({
       template: template,
       event: event,
-      actions: [
-        { label: 'Edit', eventName: 'edit-fragment' },
-        { label: 'Delete', eventName: 'delete-fragment', className: 'danger' }
-      ]
+      actions: actions
     });
   },
-  'click [data-edit], edit-fragment': function (event) {
+  'edit': function (event) {
     var instance = Template.instance();
 
     event.preventDefault();
@@ -72,7 +82,7 @@ Template.fragmentItem.events({
       Session.set(MODAL_VISIBLE_KEY, false);
     }
   },
-  'click [data-delete]': function (event) {
+  'click [data-delete], delete': function (event) {
     event.preventDefault();
     event.stopPropagation();
     Session.set(MODAL_VISIBLE_KEY, false);

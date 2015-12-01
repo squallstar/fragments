@@ -1,6 +1,6 @@
 <template name="contextualMenu">
   {{#if isOpen}}
-    <div class="contextual-menu" style="top: {{position.top}}px; left: {{position.left}}px">
+    <div class="contextual-menu" style="top: {{positionY}}px; left: {{positionX}}px">
       <ul>
         {{#each actions}}
           <li class={{className}}>

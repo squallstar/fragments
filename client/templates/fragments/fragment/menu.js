@@ -10,8 +10,8 @@ SetContextMenu = function (options) {
 
   Session.set(CURRENT_CONTEXTUAL_MENU, {
     position: {
-      x: options.event.pageX,
-      y: options.event.pageY
+      x: options.event.pageX - 10,
+      y: options.event.pageY - 10
     },
     actions: options.actions
   });
@@ -26,8 +26,11 @@ Template.contextualMenu.helpers({
   isOpen: function () {
     return Template.instance().isOpen.get();
   },
-  position: function () {
-    return Template.instance().position.get();
+  positionX: function () {
+    return Template.instance().position.get().x;
+  },
+  positionY: function () {
+    return Template.instance().position.get().y;
   },
   actions: function () {
     return Template.instance().actions;
@@ -46,6 +49,7 @@ Template.contextualMenu.onCreated(function () {
     if (!menu) {
       return;
     }
+
 
     // Data
     this.actions = menu.actions;
