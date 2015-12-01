@@ -8,3 +8,4 @@ HIDE_SEARCH_BAR           = 'hide-search-bar';
 SIDEBAR_OPEN_KEY          = 'sidebar-is-open';
 SIDEBAR_ADDING_COLLECTION = 'sidebar-is-adding-collection';
 MODAL_VISIBLE_KEY         = 'modal-is-visible';
+CURRENT_CONTEXTUAL_MENU   = 'current-contextual-menu';

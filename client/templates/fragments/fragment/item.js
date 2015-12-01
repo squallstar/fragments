@@ -10,12 +10,6 @@ Template.fragmentItem.helpers({
   },
   currentTag: function () {
     return Session.get(CURRENT_TAG_KEY);
-  },
-  menuActions: function () {
-    return [
-      { label: 'Edit', event: 'edit-fragment' },
-      { label: 'Delete', event: 'delete-fragment', className: 'danger' }
-    ];
   }
 });
 
@@ -47,8 +41,17 @@ Template.fragmentItem.events({
   'click .link': function (event) {
     event.stopPropagation();
   },
-  'contextmenu': function (event, template) {
-    template.hasContextMenu.set(true);
+  'contextmenu': function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    SetContextMenu({
+      event: event,
+      actions: [
+        { label: 'Edit', eventName: 'edit-fragment' },
+        { label: 'Delete', eventName: 'delete-fragment', className: 'danger' }
+      ]
+    });
   },
   'click [data-edit]': function (event) {
     var instance = Template.instance();

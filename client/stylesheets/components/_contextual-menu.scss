@@ -1,0 +1,35 @@
+.contextual-menu {
+  position: absolute;
+  background-color: #FFF;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+  z-index: 100;
+
+  ul {
+
+    li {
+
+      a {
+        display: block;
+        padding: 1rem 1.3rem;
+        text-decoration: none;
+        font-weight: $medium;
+
+        &:hover {
+          background-color: #EFEFEF;
+        }
+      }
+
+      &.danger {
+
+        a {
+          color: $color-danger;
+
+          &:hover {
+            color: #FFF;
+            background-color: $color-danger;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<template name="contextualMenu">
+  {{#if isOpen}}
+    <div class="contextual-menu" style="top: {{position.top}}px; left: {{position.left}}px">
+      <ul>
+        {{#each actions}}
+          <li class={{className}}>
+            <a href="#" event={{event}}>{{label}}</a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  {{/if}}
+</template>
