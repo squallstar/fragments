@@ -48,11 +48,13 @@ Template.fragmentItem.events({
     let actions = [];
 
     if (!template.isEditing.get()) {
-      actions.push({ label: 'Edit', eventName: 'edit' });
+      actions.push({ label: 'Edit', eventName: 'edit', icon: 'pencil' });
+    } else {
+      actions.push({ label: 'Done editing', eventName: 'edit-close', icon: 'check' });
     }
 
     // TODO: only when collection is owned
-    actions.push({ label: 'Delete', eventName: 'delete', className: 'danger' });
+    actions.push({ label: 'Delete', eventName: 'delete', className: 'danger', icon: 'times' });
 
     if (!actions.length) {
       return;
@@ -64,10 +66,8 @@ Template.fragmentItem.events({
       actions: actions
     });
   },
-  'edit': function (event) {
+  'edit': function () {
     var instance = Template.instance();
-
-    event.preventDefault();
 
     if (instance.isEditing.get()) {
       return;
@@ -76,17 +76,17 @@ Template.fragmentItem.events({
     instance.isEditing.set(true);
     Session.set(MODAL_VISIBLE_KEY, true);
   },
+  'edit-close': function () {
+    Session.set(MODAL_VISIBLE_KEY, false);
+  },
   'keydown [data-save-on-return]': function (event) {
     if ([13].indexOf(event.keyCode) !== -1) {
       event.preventDefault();
       Session.set(MODAL_VISIBLE_KEY, false);
     }
   },
-  'click [data-delete], delete': function (event) {
-    event.preventDefault();
-    event.stopPropagation();
+  'delete': function () {
     Session.set(MODAL_VISIBLE_KEY, false);
-
     var fragmentId = Template.instance().data._id;
 
     // Wait for events to pop before destroying this item

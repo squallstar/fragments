@@ -17,6 +17,10 @@
         font-weight: $medium;
         font-size: 1.3rem;
 
+        i {
+          margin-right: 10px;
+        }
+
         &:hover {
           background-color: #EFEFEF;
         }

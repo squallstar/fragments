@@ -4,7 +4,9 @@
       <ul>
         {{#each actions}}
           <li class={{className}}>
-            <a href="#" data-event={{eventName}}>{{label}}</a>
+            <a href="#" data-event={{eventName}}>
+              {{#if icon}}<i class="fa fa-{{icon}}"></i>{{/if}}{{label}}
+            </a>
           </li>
         {{/each}}
       </ul>
