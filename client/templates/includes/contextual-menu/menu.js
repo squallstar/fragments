@@ -50,7 +50,6 @@ Template.contextualMenu.onCreated(function () {
       return;
     }
 
-
     // Data
     this.actions = menu.actions;
 
