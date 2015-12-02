@@ -10,8 +10,8 @@ SetContextMenu = function (options) {
 
   Session.set(CURRENT_CONTEXTUAL_MENU, {
     position: {
-      x: options.event.pageX - 10,
-      y: options.event.pageY - 10
+      x: options.event.pageX,
+      y: options.event.pageY
     },
     actions: options.actions
   });

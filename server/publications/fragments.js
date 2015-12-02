@@ -13,8 +13,7 @@ Meteor.publish('fragments', function (options) {
     let textQuery = AdvancedQueries.ParseTextQuery(options.text);
 
     if (textQuery) {
-      options.text = textQuery.filteredQuery;
-      query = _.extend(query, textQuery.results);
+      query = _.extend(query, textQuery);
     }
   }
 

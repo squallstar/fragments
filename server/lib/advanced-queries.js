@@ -38,7 +38,12 @@ AdvancedQueries.ParseTextQuery = function (textQuery) {
         switch (value) {
           case 'today': date = moment(); break;
           case 'yesterday': date = moment().subtract(1, 'days'); break;
-          default: date = moment(value, 'DD-MM-YYYY');
+          default:
+            date = moment(value, 'DD-MM-YYYY');
+        }
+
+        if (!date.isValid()) {
+          return;
         }
 
         // Converts range to timestamps
@@ -65,12 +70,13 @@ AdvancedQueries.ParseTextQuery = function (textQuery) {
     }
   });
 
+  if (textQuery) {
+    results.$text = { $search: textQuery.trim() };
+  }
+
   if (!_.keys(results)) {
     return;
   }
 
-  return {
-    filteredQuery: textQuery.trim(),
-    results: results
-  }
+  return results;
 };
