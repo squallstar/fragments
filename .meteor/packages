@@ -4,33 +4,35 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-base             # Packages every Meteor app needs to have
-mobile-experience       # Packages for a great mobile UX
-mongo                   # The database Meteor supports right now
-blaze-html-templates    # Compile .html files into Meteor Blaze views
-session                 # Client-side reactive dictionary for your app
-jquery                  # Helpful client-side library
-tracker                 # Meteor's client-side reactive programming library
-standard-minifiers      # JS/CSS minifiers run for production mode
-es5-shim                # ECMAScript 5 compatibility for older browsers.
-ecmascript              # Enable ECMAScript2015+ syntax in app code
-coffeescript            # Coffeescript
-iron:router             # Application router
-check                   # Check whether a value matches a pattern
-audit-argument-checks   # Try to detect inadequate input sanitization
-fourseven:scss          # Support for SCSS
-matb33:collection-hooks # Hooks when inserting/updating/etc data on Mongo
-reactive-var            # Reactive variables
-http                    # Making HTTP requests from the server
-momentjs:moment         # Datetime library
-accounts-base           # Accounts core
-accounts-password       # Accounts with password
-accounts-google         # Accounts service: log in with Google
-accounts-twitter        # Accounts service: log in with Twitter
-service-configuration   # Helpers for configuring account services
-meteorhacks:kadira      # Analytics and performances analysis
-meteorhacks:aggregate   # Support for Mongo aggregate operations
-meteorhacks:ssr         # Server-side rendering
-differential:workers    # Workers
-themeteorchef:bert      # Growl-style notifications
-lookback:seo            # SEO support for metadata
+meteor-base               # Packages every Meteor app needs to have
+mobile-experience         # Packages for a great mobile UX
+mongo                     # The database Meteor supports right now
+blaze-html-templates      # Compile .html files into Meteor Blaze views
+session                   # Client-side reactive dictionary for your app
+jquery                    # Helpful client-side library
+tracker                   # Meteor's client-side reactive programming library
+standard-minifiers        # JS/CSS minifiers run for production mode
+es5-shim                  # ECMAScript 5 compatibility for older browsers.
+ecmascript                # Enable ECMAScript2015+ syntax in app code
+coffeescript              # Coffeescript
+iron:router               # Application router
+check                     # Check whether a value matches a pattern
+audit-argument-checks     # Try to detect inadequate input sanitization
+fourseven:scss            # Support for SCSS
+matb33:collection-hooks   # Hooks when inserting/updating/etc data on Mongo
+reactive-var              # Reactive variables
+http                      # Making HTTP requests from the server
+momentjs:moment           # Datetime library
+accounts-base             # Accounts core
+accounts-password         # Accounts with password
+accounts-google           # Accounts service: log in with Google
+accounts-twitter          # Accounts service: log in with Twitter
+service-configuration     # Helpers for configuring account services
+meteorhacks:kadira        # Analytics and performances analysis
+meteorhacks:aggregate     # Support for Mongo aggregate operations
+meteorhacks:ssr           # Server-side rendering
+differential:workers      # Workers
+themeteorchef:bert        # Growl-style notifications
+lookback:seo              # SEO support for metadata
+sanjo:jasmine             # Jasmine test framework
+velocity:console-reporter # Console reporter for testing
