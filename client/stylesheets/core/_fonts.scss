@@ -21,3 +21,28 @@
   font-weight: 600;
   font-style: normal;
 }
+
+@font-face {
+    font-family: 'Maison Neue';
+    src: url("/assets/fonts/MaisonNeue-Light.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/MaisonNeue-Light.woff") format("woff"), url("/assets/fonts/MaisonNeue-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal
+}
+@font-face {
+    font-family: 'Maison Neue';
+    src: url("/assets/fonts/MaisonNeue-Book.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/MaisonNeue-Book.woff") format("woff"), url("/assets/fonts/MaisonNeue-Book.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal
+}
+@font-face {
+    font-family: 'Maison Neue';
+    src: url("/assets/fonts/MaisonNeue-Medium.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/MaisonNeue-Medium.woff") format("woff"), url("/assets/fonts/MaisonNeue-Medium.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal
+}
+@font-face {
+    font-family: 'Maison Neue';
+    src: url("/assets/fonts/MaisonNeue-Bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/MaisonNeue-Bold.woff") format("woff"), url("/assets/fonts/MaisonNeue-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal
+}
