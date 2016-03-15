@@ -45,10 +45,17 @@ Template.fragmentItem.events({
     event.preventDefault();
     event.stopPropagation();
 
-    let actions = [];
+    let actions = [],
+        userId = Meteor.userId(),
+        currentCollection;
 
-    if (!Meteor.userId()) {
-      return;
+    if (!userId) {
+      return; // user not logged in
+    }
+
+    currentCollection = Session.get(CURRENT_COLLECTION_KEY);
+    if (currentCollection && currentCollection.user !== userId) {
+      return; // collection not owned
     }
 
     if (!template.isEditing.get()) {
