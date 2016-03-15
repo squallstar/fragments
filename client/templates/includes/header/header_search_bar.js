@@ -9,6 +9,19 @@ Template.headerSearchBar.helpers({
   },
   currentCollection: function () {
     return Session.get(CURRENT_COLLECTION_KEY);
+  },
+  searchBarPlaceholder: function () {
+    var collection = Session.get(CURRENT_COLLECTION_KEY);
+
+    if (!collection) {
+      return 'Search';
+    }
+
+    if (collection.user !== Meteor.userId()) {
+      return 'Search this shared collection';
+    }
+
+    return 'Search this collection';
   }
 });
 

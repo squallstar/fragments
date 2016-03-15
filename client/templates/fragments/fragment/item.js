@@ -47,11 +47,17 @@ Template.fragmentItem.events({
 
     let actions = [];
 
+    if (!Meteor.userId()) {
+      return;
+    }
+
     if (!template.isEditing.get()) {
       actions.push({ label: 'Edit', eventName: 'edit', icon: 'pencil' });
     } else {
       actions.push({ label: 'Done editing', eventName: 'edit-close', icon: 'check' });
     }
+
+    actions.push({ label: 'Collections', eventName: 'collections', icon: 'hashtag' });
 
     // TODO: only when collection is owned
     actions.push({ label: 'Delete', eventName: 'delete', className: 'danger', icon: 'times' });
