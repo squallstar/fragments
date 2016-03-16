@@ -65,7 +65,13 @@ Template.contextualMenu.events({
     event.stopPropagation();
 
     let $node = $(Template.contextualMenu.source.firstNode),
-        eventName = $(event.target).data('event');
+        $target = $(event.target),
+        eventName = $target.data('event');
+
+    // No action when there's a sub menu
+    if ($target.parent('li').find('ul').length) {
+      return;
+    }
 
     // Triggers the event on the caller
     if ($node.length) {

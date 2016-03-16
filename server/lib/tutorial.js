@@ -65,7 +65,8 @@ Meteor.methods({
       title: ['Hey', displayName + '!'].join(' '),
       description: 'Welcome to Fragments! This is your very first fragment, displayed here as a tutorial card. To dismiss it, click here and find the cross icon in the top right of the card.',
       image: Meteor.absoluteUrl('/assets/img/tutorial/welcome.png'),
-      tags: ['Tutorial']
+      tags: ['Tutorial'],
+      collections: []
     });
 
     SearchHistory.insert({

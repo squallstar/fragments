@@ -89,14 +89,14 @@
                 left: 2px;
               }
             }
+          }
 
-            &.active {
+          &.active a {
 
-              span {
+            span {
 
-                &:before {
-                  opacity: 0;
-                }
+              &:before {
+                opacity: 0;
               }
             }
           }
