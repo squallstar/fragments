@@ -120,6 +120,15 @@
       left: 12px;
     }
   }
+
+  &:disabled {
+    cursor: progress;
+    background: #DDD;
+
+    &:hover {
+      background: #DDD;
+    }
+  }
 }
 
 input[type="submit"].button.block.big {

@@ -12,7 +12,12 @@ Template.register.events({
         email = template.$('input[type="email"]').val().trim(),
         password = template.$('input[name="password"]').val(),
         confirmPassword = template.$('input[name="confirm_password"]').val(),
+        $submitButton = template.$('input[type="submit"]'),
         notification;
+
+    if ($submitButton.is(':disabled')) {
+      return;
+    }
 
     if (!name) {
       return Notifications.error('Your name is required');
@@ -36,6 +41,8 @@ Template.register.events({
 
     notification = Notifications.progress('Please wait while we create your account.');
 
+    $submitButton.attr('disabled', true);
+
     Accounts.createUser({
       profile: {
         name: name
@@ -46,6 +53,8 @@ Template.register.events({
       Notifications.remove(notification);
 
       if (err) {
+        $submitButton.removeAttr('disabled');
+
         switch (err.error) {
           default:
             return Notifications.error(err.reason);
