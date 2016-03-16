@@ -1,6 +1,10 @@
 .contextual-menu {
   position: absolute;
-  z-index: 100;
+  z-index: 1;
+
+  .with-modal & {
+    z-index: 5;
+  }
 
   ul {
     background-color: #FFF;
