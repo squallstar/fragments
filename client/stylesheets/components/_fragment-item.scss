@@ -48,9 +48,13 @@
       right: 1.1rem;
       width: 18px;
       height: 20px;
-      opacity: 0.3;
+      opacity: 0.2;
       z-index: 1;
       display: none;
+
+      &:hover {
+        opacity: 0.6;
+      }
     }
 
     &:hover {
