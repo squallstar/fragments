@@ -42,6 +42,10 @@ Template.fragmentItem.events({
     event.stopPropagation();
   },
   'contextmenu': function (event, template) {
+    if ($(event.target).hasClass('link')) {
+      return; // allow right clicking the link
+    }
+
     event.preventDefault();
     event.stopPropagation();
 
