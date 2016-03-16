@@ -3,11 +3,7 @@
     <div class="contextual-menu" style="top: {{positionY}}px; left: {{positionX}}px">
       <ul>
         {{#each actions}}
-          <li class={{className}}>
-            <a href="#" data-event={{eventName}}>
-              {{#if icon}}<i class="fa fa-{{icon}}"></i>{{/if}}{{label}}
-            </a>
-          </li>
+          {{> menuAction}}
         {{/each}}
       </ul>
     </div>

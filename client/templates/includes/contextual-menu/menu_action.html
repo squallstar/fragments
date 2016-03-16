@@ -1,0 +1,17 @@
+<template name="menuAction">
+  <li class={{className}}>
+    <a href="#" data-event={{eventName}}>
+      {{#if icon}}<i class="fa fa-{{icon}}"></i>{{/if}}{{label}}
+      {{#if withCollections}}
+        <i class="fa fa-angle-right right"></i>
+      {{/if}}
+    </a>
+    {{#if withCollections}}
+      <ul class="collections">
+        {{#each collections}}
+          {{> menuCollection}}
+        {{/each}}
+      </ul>
+    {{/if}}
+  </li>
+</template>

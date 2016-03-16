@@ -1,14 +1,15 @@
 .contextual-menu {
   position: absolute;
-  background-color: #FFF;
-  box-shadow: 1px 1px 14px rgba(0,0,0,0.13);
-  border: 1px solid #DDD;
-  border-radius: 4px;
   z-index: 100;
 
   ul {
+    background-color: #FFF;
+    box-shadow: 1px 1px 14px rgba(0,0,0,0.13);
+    border: 1px solid #DDD;
+    border-radius: 4px;
 
     li {
+      position: relative;
 
       a {
         display: block;
@@ -18,11 +19,30 @@
         font-size: 1.3rem;
 
         i {
+          width: 15px;
           margin-right: 10px;
+
+          &.right {
+            margin-right: -10px;
+            margin-left: 30px;
+            opacity: 0.2;
+          }
         }
 
         &:hover {
           background-color: #EFEFEF;
+        }
+      }
+
+      &.danger {
+
+        a {
+          color: $color-danger;
+
+          &:hover {
+            color: #FFF;
+            background-color: $color-danger;
+          }
         }
       }
 
@@ -36,15 +56,57 @@
         border-bottom-right-radius: 4px;
       }
 
-      &.danger {
+      ul {
+        display: none;
+        position: absolute;
+        z-index: 101;
+        top: 0;
+        left: 100%;
+        margin-top: -10px;
+        margin-left: -35px;
 
-        a {
-          color: $color-danger;
+        li {
 
-          &:hover {
-            color: #FFF;
-            background-color: $color-danger;
+          a {
+            display: flex;
+
+            span {
+              position: relative;
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              margin-right: 10px;
+
+              &:before {
+                @include transition(opacity 0.5s);
+                content: " ";
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: #FFF;
+                position: absolute;
+                top: 2px;
+                left: 2px;
+              }
+            }
+
+            &.active {
+
+              span {
+
+                &:before {
+                  opacity: 0;
+                }
+              }
+            }
           }
+        }
+      }
+
+      &:hover {
+
+        ul {
+          display: block;
         }
       }
     }

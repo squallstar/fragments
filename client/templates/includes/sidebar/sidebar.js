@@ -27,7 +27,7 @@ Template.sidebar.events({
 });
 
 Template.sidebar.onCreated(function () {
-  this.collections = Collections.find({ user: Meteor.userId() }, { sort: { slug: 1 } });
+  this.collections = Meteor.ownedCollections();
 
   Tracker.autorun(function () {
     Session.set(MODAL_VISIBLE_KEY, Session.get(SIDEBAR_OPEN_KEY));

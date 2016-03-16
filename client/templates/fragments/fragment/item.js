@@ -64,7 +64,11 @@ Template.fragmentItem.events({
       actions.push({ label: 'Done editing', eventName: 'edit-close', icon: 'check' });
     }
 
-    actions.push({ label: 'Collections', eventName: 'collections', icon: 'hashtag' });
+    actions.push({
+      label: 'Collections',
+      eventName: 'collections',
+      icon: 'tags'
+    });
 
     // TODO: only when collection is owned
     actions.push({ label: 'Delete', eventName: 'delete', className: 'danger', icon: 'times' });
