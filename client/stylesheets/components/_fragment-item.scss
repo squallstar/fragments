@@ -42,10 +42,24 @@
     border-bottom: 1px solid #D8D8D8;
     box-shadow: 1px 1px 4px rgba(0,0,0,0.05);
 
+    .menu-handle {
+      position: absolute;
+      top: 1.6rem;
+      right: 1.1rem;
+      width: 18px;
+      height: 20px;
+      opacity: 0.3;
+      z-index: 1;
+      display: none;
+    }
+
     &:hover {
       box-shadow: 1px 1px 20px rgba(0,0,0,0.1);
       border-bottom-color: #CCC;
-      /*cursor: pointer;*/
+
+      .menu-handle {
+        display: block;
+      }
     }
 
     .images {
