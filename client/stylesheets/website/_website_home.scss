@@ -112,10 +112,23 @@
 
         .image {
           width: 240px;
-          height: 160px;
-          background-color: #EEE;
+          height: 100px;
+          background: no-repeat center;
           border-radius: 5px;
+          background-size: contain;
         }
+      }
+
+      &:nth-child(1) aside .image {
+        background-image: url(/assets/img/website/feature-expand.svg);
+      }
+
+      &:nth-child(2) aside .image {
+        background-image: url(/assets/img/website/feature-search.svg);
+      }
+
+      &:nth-child(3) aside .image {
+        background-image: url(/assets/img/website/feature-community.svg);
       }
     }
   }
