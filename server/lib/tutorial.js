@@ -47,7 +47,7 @@ Meteor.methods({
 
     insertFragment({
       title: 'Tag your fragments',
-      description: 'You can add as many tags as you want on each fragment, and filter your results by one or more. Click here to get started editing this card!',
+      description: 'You can add as many tags as you want on each fragment, and filter your results by one or more. Right click here to get started editing this card!',
       image: Meteor.absoluteUrl('/assets/img/tutorial/tags.jpg'),
       tags: ['Tutorial', 'Cute stuff'],
       collections: [interestingCollection, stuffCollection]
@@ -63,7 +63,7 @@ Meteor.methods({
 
     insertFragment({
       title: ['Hey', displayName + '!'].join(' '),
-      description: 'Welcome to Fragments! This is your very first fragment, displayed here as a tutorial card. To dismiss it, click here and find the cross icon in the top right of the card.',
+      description: 'Welcome to Fragments! This is your very first fragment, displayed here as a tutorial card. To dismiss it, right click here on select "Delete".',
       image: Meteor.absoluteUrl('/assets/img/tutorial/welcome.png'),
       tags: ['Tutorial'],
       collections: []
