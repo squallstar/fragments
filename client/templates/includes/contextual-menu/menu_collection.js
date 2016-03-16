@@ -25,7 +25,7 @@ Template.menuCollection.events({
         operation = isActive ? 'pull' : 'addToSet',
         fragmentId = Template.contextualMenu.source.data._id;
 
-    $(event.target).parent('li').toggleClass('active', !isActive);
+    $(event.target).closest('li').toggleClass('active', !isActive);
 
     Meteor.call(
       'fragmentApplyChanges',

@@ -64,6 +64,9 @@
         left: 100%;
         margin-top: -10px;
         margin-left: -35px;
+        min-width: 150px;
+        max-height: 300px;
+        overflow-y: auto;
 
         li {
 
