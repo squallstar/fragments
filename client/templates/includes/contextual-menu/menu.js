@@ -8,10 +8,24 @@ SetContextMenu = function (options) {
   // Store a reference to the Blaze instance that called this menu
   Template.contextualMenu.source = options.template;
 
+  var x = options.event.pageX,
+      y = options.event.pageY,
+      menuWidth = 170, // these are average values
+      menuHeight = 100;
+
+  // Make sure the menu is visible in the viewport
+  if (x + menuWidth >= window.innerWidth) {
+    x -= menuWidth;
+  }
+
+  if (y + menuHeight >= window.innerHeight) {
+    y -= menuHeight;
+  }
+
   Session.set(CURRENT_CONTEXTUAL_MENU, {
     position: {
-      x: options.event.pageX,
-      y: options.event.pageY
+      x: x,
+      y: y
     },
     actions: options.actions
   });
