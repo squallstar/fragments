@@ -200,8 +200,7 @@ Template.fragmentItem.events({
     });
   },
   'click .collections .name': function (event) {
-    event.preventDefault();
-    event.stopPropagation();
+    Session.set(MODAL_VISIBLE_KEY, false);
   },
   'click .date': function (event) {
     event.preventDefault();
