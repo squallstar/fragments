@@ -1,22 +1,24 @@
-# フラグメント [Work in progress]
+# Fragments
 
-メテオで構築。
+Collect and organise your articles into beautiful boards. Fragments is build with Meteor, so please refer to its official documentation about the development with such technology.
 
-## セットアップ
+## Development
 
-デフォルトの設定をコピーします。
+First, you have to copy the default `settings` file and put all your API keys in it.
 
 ```
 cp settings.example.json settings.json
 ```
 
-## 実行
+Then just run meteor as described here below.
+
+## Run
 
 ```
 $ meteor --settings settings.json
 ```
 
-## ビルド
+## Build for release
 
 ```
 $ meteor build path/to/dir
