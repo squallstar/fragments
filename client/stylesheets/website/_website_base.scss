@@ -10,9 +10,17 @@
     padding: 8rem 0;
     text-align: center;
 
+    @include below ($break-phone) {
+      padding: 4rem 0;
+    }
+
     h2 {
       font-size: 3rem;
       margin-bottom: 3rem;
+
+      @include below ($break-phone) {
+        font-size: 2.3rem;
+      }
     }
   }
 }

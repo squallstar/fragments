@@ -3,9 +3,17 @@
   padding: 8rem 0;
   text-align: center;
 
+  @include below ($break-phone) {
+    padding: 3rem 0;
+  }
+
   h3 {
     font-size: 2rem;
     color: #BBB;
+
+    @include below ($break-phone) {
+      font-size: 1.6rem;
+    }
 
     a {
       text-decoration: none;
