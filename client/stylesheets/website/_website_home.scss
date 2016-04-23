@@ -109,6 +109,10 @@
     background-color: #FAFAFA;
     padding: 8rem 0;
 
+    @include below ($break-phone) {
+      padding: 3rem 0;
+    }
+
     .feature {
       display: flex;
       align-items: center;
@@ -124,6 +128,11 @@
         width: 50%;
         padding-left: 9rem;
         padding-right: 7rem;
+
+        @include below ($break-phone) {
+          padding-left: 0;
+          padding-right: 0;
+        }
 
         h2 {
           font-size: 2rem;
