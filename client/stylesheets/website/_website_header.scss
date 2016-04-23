@@ -6,6 +6,11 @@
     padding-bottom: 4rem;
     align-items: center;
     justify-content: center;
+
+    @include below ($break-phone) {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
   }
 
   .brand {
@@ -19,5 +24,14 @@
 
   .actions {
     flex: 0 1 auto;
+
+
+
+    .transparent {
+
+      @include below ($break-phone) {
+        display: none;
+      }
+    }
   }
 }

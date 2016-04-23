@@ -9,9 +9,17 @@
   #teaser {
     padding-top: 3rem;
 
+    @include below ($break-phone) {
+      padding-top: 1rem;
+    }
+
     .row {
       display: flex;
       padding-bottom: 0;
+
+      @include below ($break-phone) {
+        flex-direction: column;
+      }
     }
 
     .content {
@@ -19,6 +27,11 @@
       max-width: 60%;
       align-self: flex-end;
       padding-bottom: 5rem;
+
+      @include below ($break-phone) {
+        max-width: none;
+        padding-bottom: 3rem;
+      }
 
       h1 {
         font-size: 4.2rem;
@@ -28,16 +41,28 @@
 
       p {
         margin-bottom: 5rem;
+
+        @include below ($break-phone) {
+          margin-bottom: 3rem;
+        }
       }
 
       a {
 
+        @include below ($break-phone) {
+          display: block;
+          text-align: center;
+        }
       }
     }
 
     aside {
       flex: 1;
       padding: 0 1rem 0 4rem;
+
+      @include below ($break-phone) {
+        padding: 0;
+      }
 
       .image {
         position: relative;
@@ -47,6 +72,10 @@
         border: 2px solid #E0E4E8;
         border-bottom: 0;
         overflow: hidden;
+
+        @include below ($break-phone) {
+          min-height: 250px;
+        }
 
         header {
           height: 40px;
