@@ -1,6 +1,6 @@
 const PAGE_SIZE = 15; // items per page
-const PREFETCH_HEIGHT = 350; // px
-const SCROLL_THROTTLE = 200; // ms
+const PREFETCH_HEIGHT = 450; // px
+const SCROLL_THROTTLE = 180; // ms
 const APPEAR_DELAY = 150; // ms
 const DISAPPEAR_DELAY = 450; // ms
 
