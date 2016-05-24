@@ -26,7 +26,7 @@ Template.fragmentsList.helpers({
   },
   // are there more fragments to show?
   isBusy: function () {
-    return Template.instance().isBusy.get();
+    return Template.instance().isBusy.get() || Session.get(APP_BUSY_KEY);
   },
   textSearch: function () {
     return Session.get(CURRENT_SEARCH_KEY);

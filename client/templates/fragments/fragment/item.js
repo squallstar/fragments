@@ -69,6 +69,12 @@ Template.fragmentItem.events({
     }
 
     actions.push({
+      label: 'Upload thumbnail',
+      eventName: 'thumbnail',
+      icon: 'picture-o'
+    });
+
+    actions.push({
       label: 'Collections',
       eventName: 'collections',
       icon: 'tags'
@@ -99,6 +105,32 @@ Template.fragmentItem.events({
   },
   'edit-close': function () {
     Session.set(MODAL_VISIBLE_KEY, false);
+  },
+  'thumbnail': function () {
+    var $form = $('<form style="display:none"><input type="file" accept="image/*" /></form>'),
+        $input = $form.find('input'),
+        fragmentId = Template.instance().data._id;
+
+    $input.on('change', function (event) {
+      var files = this.files;
+
+      Session.set(APP_BUSY_KEY, true);
+
+      S3.upload({
+        files: files,
+        path: 'u/' + Meteor.userId() + '/i'
+      }, function(error, result) {
+        if (!error && result) {
+          Meteor.call('fragmentThumbnailUploaded', fragmentId, result, function () {
+            Session.set(APP_BUSY_KEY, false);
+          });
+        } else {
+          Session.set(APP_BUSY_KEY, false);
+        }
+      });
+    });
+
+    $input.trigger('click');
   },
   'keydown [data-save-on-return]': function (event) {
     if ([13].indexOf(event.keyCode) !== -1) {

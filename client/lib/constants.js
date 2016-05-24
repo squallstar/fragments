@@ -1,4 +1,5 @@
 // Session keys
+APP_BUSY_KEY              = 'app-is-busy';
 USER_TOOLTIP_KEY          = 'user-tooltip';
 CURRENT_SEARCH_KEY        = 'current-search';
 CURRENT_TAG_KEY           = 'current-tag';
