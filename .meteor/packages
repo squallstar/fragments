@@ -37,3 +37,4 @@ lookback:seo              # SEO support for metadata
 sanjo:jasmine             # Jasmine test framework
 velocity:console-reporter # Console reporter for testing
 lepozepo:s3               # S3 file upload
+thinksoftware:image-resize-client # Client side image resizing

@@ -116,17 +116,26 @@ Template.fragmentItem.events({
 
       Session.set(APP_BUSY_KEY, true);
 
-      S3.upload({
-        files: files,
-        path: 'u/' + Meteor.userId() + '/i'
-      }, function(error, result) {
-        if (!error && result) {
-          Meteor.call('fragmentThumbnailUploaded', fragmentId, result, function () {
-            Session.set(APP_BUSY_KEY, false);
+      // https://github.com/thinksoftware/meteor-image-resize-client/issues/7
+      Resizer.resize(files[0], {
+        width: 800, height: 800, cropSquare: true
+      }, function(err, file) {
+        Resizer.resize(files[0], {
+          width: 400, height: 400, cropSquare: true
+        }, function(err, file) {
+          S3.upload({
+            files: [file],
+            path: 'u/' + Meteor.userId() + '/i'
+          }, function(error, result) {
+            if (!error && result) {
+              Meteor.call('fragmentThumbnailUploaded', fragmentId, result, function () {
+                Session.set(APP_BUSY_KEY, false);
+              });
+            } else {
+              Session.set(APP_BUSY_KEY, false);
+            }
           });
-        } else {
-          Session.set(APP_BUSY_KEY, false);
-        }
+        });
       });
     });
 
