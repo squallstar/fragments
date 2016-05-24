@@ -149,12 +149,18 @@ Template.fragmentItem.events({
   },
   'delete': function () {
     Session.set(MODAL_VISIBLE_KEY, false);
-    var fragmentId = Template.instance().data._id;
+    var fragment = Template.instance().data;
 
     // Wait for events to pop before destroying this item
     // https://github.com/meteor/meteor/issues/2981
     setTimeout(() => {
-      Meteor.call('fragmentDelete', fragmentId);
+      Meteor.call('fragmentDelete', fragment._id);
+
+      fragment.images.forEach(function (image) {
+        if (image.s3) {
+          S3.delete(image.s3.url);
+        }
+      });
     }, 0);
   },
   'click [data-next-thumbnail]': function (event) {
