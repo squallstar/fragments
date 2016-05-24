@@ -26,6 +26,7 @@
         i {
           width: 15px;
           margin-right: 10px;
+          pointer-events: none;
 
           &.right {
             margin-right: -10px;
