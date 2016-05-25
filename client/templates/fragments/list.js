@@ -1,4 +1,3 @@
-const PAGE_SIZE = 15; // items per page
 const PREFETCH_HEIGHT = 450; // px
 const SCROLL_THROTTLE = 180; // ms
 const APPEAR_DELAY = 150; // ms
@@ -7,26 +6,11 @@ const DISAPPEAR_DELAY = 450; // ms
 Template.fragmentsList.helpers({
   // the fragments cursor
   fragments: function () {
-    var instance = Template.instance();
-    var cursor = Template.instance().fragments();
-
-    cursor.observe({
-      changedAt: function () {
-        if (typeof instance.recollect === 'undefined') {
-          return;
-        }
-
-        setTimeout(function () {
-          instance.recollect();
-        }, 1);
-      }
-    });
-
-    return cursor;
+    return Template.instance().fragments;
   },
   // are there more fragments to show?
   isBusy: function () {
-    return Template.instance().isBusy.get() || Session.get(APP_BUSY_KEY);
+    return Session.get(APP_BUSY_KEY);
   },
   textSearch: function () {
     return Session.get(CURRENT_SEARCH_KEY);
@@ -35,7 +19,7 @@ Template.fragmentsList.helpers({
     return Session.get(CURRENT_COLLECTION_KEY);
   },
   isEmpty: function () {
-    return !Template.instance().fragments().count();
+    return !Template.instance().fragments.count();
   },
   displaySubmitForm: function () {
     // Don't display when fragments are filtered by a search
@@ -59,7 +43,7 @@ var onWindowScroll = function (event) {
       $list = instance.$masonry,
       listHeight = $list.height();
 
-  if (instance.isBusy.get()) {
+  if (Session.get(APP_BUSY_KEY)) {
     return;
   }
 
@@ -71,14 +55,12 @@ var onWindowScroll = function (event) {
     return;
   }
 
-  instance.isBusy.set(true);
-
   // get current value for limit, i.e. how many posts are currently displayed
-  var limit = instance.limit.get();
+  var limit = Session.get(CURRENT_LIMIT_KEY);
 
   // increase limit
   limit += PAGE_SIZE;
-  instance.limit.set(limit);
+  Session.set(CURRENT_LIMIT_KEY, limit);
 };
 
 var throttledScroll = _.throttle(onWindowScroll, SCROLL_THROTTLE);
@@ -88,55 +70,27 @@ Template.fragmentsList.onCreated(function () {
   // 1. Initialization
   var instance = this;
 
-  // initialize the reactive variables
-  instance.isBusy = new ReactiveVar(true);
-  instance.loaded = new ReactiveVar(0);
-  instance.limit = new ReactiveVar(PAGE_SIZE);
-
-  // 2. Autorun
-
-  // will re-run when the reactive variables changes
-  instance.autorun(function () {
-    var limit = instance.limit.get(),
-        textQuery = Session.get(CURRENT_SEARCH_KEY),
-        tag = Session.get(CURRENT_TAG_KEY),
-        collection = Session.get(CURRENT_COLLECTION_KEY),
-        options = {
-          sort: {
-            created_at: -1
-          },
-          limit: limit
-        };
-
-    if (textQuery) {
-      options.text = textQuery;
-    }
-
-    if (collection) {
-      options.collection = collection._id;
-    }
-
-    if (tag) {
-      options.tag = tag;
-    }
-
-    // subscribe to the posts publication
-    var subscription = instance.subscribe('fragments', options, function () {
-      instance.recollect();
-    });
-
-    // if subscription is ready, set limit to newLimit
-    if (subscription.ready()) {
-      instance.loaded.set(limit);
-      instance.isBusy.set(false);
-    }
-  });
+  // 2. Vars
+  Session.set(CURRENT_LIMIT_KEY, PAGE_SIZE);
 
   // 3. Cursor
+  instance.cursor = Cursors.fragments();
 
-  instance.fragments = function() {
-    return Fragments.find({}, { sort: { created_at: -1 }, limit: instance.loaded.get() });
-  }
+  instance.fragments = Fragments.find({}, {
+    sort: { created_at: -1 }
+  });
+
+  instance.fragments.observe({
+    changedAt: function () {
+      if (typeof instance.recollect === 'undefined') {
+        return;
+      }
+
+      setTimeout(function () {
+        instance.recollect();
+      }, 1);
+    }
+  });
 
   // 4. UI Events
   $(window).on('scroll', instance, throttledScroll);
@@ -171,7 +125,7 @@ Template.fragmentsList.onRendered(function () {
     insertElement: (node, next) => {
       var $node = $(node);
 
-      if (this.loaded.get()) {
+      if (Session.get(CURRENT_LIMIT_KEY)) {
         $node.addClass('reduce-animations');
       }
 
@@ -181,7 +135,7 @@ Template.fragmentsList.onRendered(function () {
 
       setTimeout(() => {
         $node.removeClass('appearing reduce-animations');
-      }, !this.loaded.get() ? 0 : APPEAR_DELAY);
+      }, !Session.get(CURRENT_LIMIT_KEY) ? 0 : APPEAR_DELAY);
     },
     removeElement: (node) => {
       var $node = $(node);
