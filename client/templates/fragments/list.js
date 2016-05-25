@@ -1,5 +1,5 @@
 const PREFETCH_HEIGHT = 450; // px
-const SCROLL_THROTTLE = 180; // ms
+const SCROLL_THROTTLE = 250; // ms
 const APPEAR_DELAY = 150; // ms
 const DISAPPEAR_DELAY = 450; // ms
 
