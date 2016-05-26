@@ -6,7 +6,7 @@ Template.menuAction.helpers({
   },
   collections: function () {
     if (this.eventName === EVENT_NAME) {
-      return Meteor.ownedCollections();
+      return Meteor.visibleCollections();
     }
   }
 });

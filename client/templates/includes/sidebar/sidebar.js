@@ -27,7 +27,7 @@ Template.sidebar.events({
 });
 
 Template.sidebar.onCreated(function () {
-  this.collections = Meteor.ownedCollections();
+  this.collections = Meteor.visibleCollections();
 
   Tracker.autorun(function () {
     Session.set(MODAL_VISIBLE_KEY, Session.get(SIDEBAR_OPEN_KEY));

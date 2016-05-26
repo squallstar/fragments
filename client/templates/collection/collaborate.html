@@ -1,0 +1,18 @@
+<template name="collectionCollaborate">
+  <div class="box middle-box padded margins message-box">
+    <img src="/assets/img/website/feature-community.svg" class="lead-icon small"/>
+    <form class="form">
+      {{#if collection}}
+        <h2>{{collection.name}}</h2>
+        <hr />
+        <p>Hey! <strong>{{owner.name}}</strong> would like to invite you to join the <strong style="color: {{collection.color}}">{{collection.name}}</strong> collection on Fragments.</p>
+        <hr />
+        <p>You will be able to contribute by <strong>adding your fragments</strong> as well as manage existing ones.</p>
+        <hr />
+        <div class="group">
+          <input type="submit" value="Join as a collaborator" class="button big block primary" style="background-color: {{collection.color}}" />
+        </div>
+      {{/if}}
+    </form>
+  </div>
+</template>

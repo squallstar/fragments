@@ -5,7 +5,12 @@ Meteor.publish('collections', function () {
 
   check(this.userId, String);
 
-  return Collections.find({ user: this.userId });
+  return Collections.find({
+    $or: [
+      { user: this.userId },
+      { 'collaborators._id': this.userId }
+    ]
+  });
 });
 
 Meteor.publish('collection', function (id) {

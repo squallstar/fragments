@@ -20,6 +20,10 @@
   .lead-icon {
     width: 220px;
     margin-bottom: 2.3rem;
+
+    &.small {
+      width: 140px;
+    }
   }
 
   h3 {
