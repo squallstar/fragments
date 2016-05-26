@@ -55,10 +55,18 @@ Meteor.publish('fragments', function (options) {
   }
 
   if (typeof query['collections._id'] === 'object') {
-    query = { $or: [
-      _.extend(_.omit(query, 'collections._id'), { user: this.userId }),
-      query
-    ]};
+    let textQuery = query.$text;
+
+    query = {
+      $or: [
+        _.extend(_.omit(query, ['collections._id', '$text']), { user: this.userId }),
+        _.omit(query, ['$text'])
+      ]
+    };
+
+    if (textQuery) {
+      query.$text = textQuery;
+    }
   }
 
   return Fragments.find(query, {
