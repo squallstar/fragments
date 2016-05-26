@@ -54,6 +54,13 @@ Meteor.publish('fragments', function (options) {
     query.tags = options.tag;
   }
 
+  if (query['collections._id']) {
+    query = { $or: [
+      _.extend(_.omit(query, 'collections._id'), { user: this.userId }),
+      query
+    ]};
+  }
+
   return Fragments.find(query, {
     sort: options.sort,
     limit: options.limit
