@@ -43,6 +43,17 @@
       }
     }
 
+    input.url {
+      display: block;
+      width: 100%;
+      border: 0;
+      padding: 0;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: underline;
+      margin-top: 5px;
+    }
+
     .input-file {
 
       label {

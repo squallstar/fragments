@@ -10,6 +10,9 @@ Template.fragmentItem.helpers({
   },
   currentTag: function () {
     return Session.get(CURRENT_TAG_KEY);
+  },
+  canDisplayCollection: function (collection) {
+    return !!Collections.findOne(collection._id);
   }
 });
 
@@ -58,8 +61,15 @@ Template.fragmentItem.events({
     }
 
     currentCollection = Session.get(CURRENT_COLLECTION_KEY);
-    if (currentCollection && currentCollection.user !== userId) {
-      return; // collection not owned
+
+    if (currentCollection) {
+      if (currentCollection.collaborators) {
+        if (!_.find(currentCollection.collaborators, (c) => { return c._id === userId; })) {
+          return;
+        }
+      } else if (currentCollection.user !== userId) {
+        return;
+      }
     }
 
     if (!template.isEditing.get()) {
@@ -156,11 +166,13 @@ Template.fragmentItem.events({
     setTimeout(() => {
       Meteor.call('fragmentDelete', fragment._id);
 
-      fragment.images.forEach(function (image) {
-        if (image.s3) {
-          S3.delete(image.s3.url);
-        }
-      });
+      if (fragment.images) {
+        fragment.images.forEach(function (image) {
+          if (image.s3) {
+            S3.delete(image.s3.url);
+          }
+        });
+      }
     }, 0);
   },
   'click [data-next-thumbnail]': function (event) {

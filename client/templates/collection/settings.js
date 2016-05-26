@@ -4,6 +4,12 @@ Template.collectionSettings.helpers({
   }
 });
 
+Template.collectionSettings.onCreated(function () {
+  if (!this.data.collection.collaboration_token) {
+    Meteor.call('generateCollaborationToken', this.data.collection._id);
+  }
+});
+
 Template.collectionSettings.events({
   'submit form': function (event, template) {
     event.preventDefault();
@@ -35,5 +41,8 @@ Template.collectionSettings.events({
       Notifications.success('The collection has been deleted');
       Router.go('home');
     });
+  },
+  'click input.url': function (event, template) {
+    $(event.currentTarget).select();
   }
 });

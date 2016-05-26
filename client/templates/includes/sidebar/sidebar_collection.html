@@ -3,7 +3,7 @@
     <a class="collection" href={{pathFor route='collection' data=this}} data-close>
       <span style="background-color:{{color}}"></span>
       <h4>{{name}}</h4>
-      {{> iconCog}}
+      {{#if isOwned}}{{> iconCog}}{{/if}}
     </a>
   </li>
 </template>

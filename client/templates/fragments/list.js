@@ -22,6 +22,8 @@ Template.fragmentsList.helpers({
     return !Template.instance().fragments.count();
   },
   displaySubmitForm: function () {
+    var userId = Meteor.userId();
+
     // Don't display when fragments are filtered by a search
     if (Session.get(CURRENT_SEARCH_KEY)) {
       return false;
@@ -29,8 +31,11 @@ Template.fragmentsList.helpers({
 
     var collection = Session.get(CURRENT_COLLECTION_KEY);
     if (collection) {
-      // Don't display when the user is not the owner of the current collection
-      return collection.user === Meteor.userId();
+      if (collection.collaborators) {
+        return _.find(collection.collaborators, (c) => { return c._id === userId });
+      }
+
+      return collection.user === userId;
     }
 
     return true;

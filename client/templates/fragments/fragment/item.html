@@ -41,7 +41,9 @@
       </div>
       <ul class="collections">
         {{#each collections}}
-          {{> fragmentItemCollection}}
+          {{#if canDisplayCollection this}}
+           {{> fragmentItemCollection}}
+          {{/if}}
         {{/each}}
       </ul>
     </div>
