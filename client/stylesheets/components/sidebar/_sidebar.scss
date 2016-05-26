@@ -56,12 +56,26 @@
           height: 100%;
         }
 
-        h4 {
-          @extend %ellipsis;
+        .content {
           flex: 1;
           height: 100%;
-          line-height: $height;
           padding-left: 1rem;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+
+          h4 {
+            @extend %ellipsis;
+            line-height: 1;
+
+          }
+
+          p {
+            @extend %ellipsis;
+            font-size: 10px;
+            margin: 4px 0 0 0;
+            line-height: 1;
+          }
         }
 
         svg {
@@ -76,6 +90,10 @@
           &.icon-cog {
             width: 16px;
             height: 16px;
+          }
+
+          &.icon-bin {
+            top: 12px;
           }
 
           &:hover {

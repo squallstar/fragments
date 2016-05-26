@@ -68,5 +68,16 @@ Meteor.methods({
     });
 
     return collection;
+  },
+  leaveCollaborationCollection: function (collectionId) {
+    check(collectionId, String);
+
+    Collections.update(collectionId, {
+      $pull: {
+        collaborators: {
+          '_id': Meteor.userId()
+        }
+      }
+    });
   }
 });

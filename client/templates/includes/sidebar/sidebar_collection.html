@@ -2,8 +2,23 @@
   <li class="{{#if isCurrent}}current{{/if}}">
     <a class="collection" href={{pathFor route='collection' data=this}} data-close>
       <span style="background-color:{{color}}"></span>
-      <h4>{{name}}</h4>
-      {{#if isOwned}}{{> iconCog}}{{/if}}
+      <div class="content">
+        <h4>{{name}}</h4>
+        {{#if hasCollaborators}}
+          <p>
+            {{#if equals hasCollaborators 2}}
+              {{firstCollaborator}} and you
+            {{else}}
+              <i class="fa fa-users"></i> {{hasCollaborators}} people
+            {{/if}}
+          </p>
+        {{/if}}
+      </div>
+      {{#if isOwned}}
+        {{> iconCog}}
+      {{else}}
+        {{> iconBin}}
+      {{/if}}
     </a>
   </li>
 </template>
