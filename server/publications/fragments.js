@@ -25,14 +25,28 @@ Meteor.publish('fragments', function (options) {
     }
 
     check(this.userId, String);
-    query.user = this.userId;
 
-    let collectionsIds = Collections
-      .find({ user: this.userId, is_hidden: true })
-      .map(function (collection) { return collection._id });
+    let collections = Collections.find({
+      $or: [
+        { user: this.userId },
+        { 'collaborators._id': this.userId }
+      ]
+    }, {
+      collaborators: 1, is_hidden: 1
+    }).fetch();
 
-    if (collectionsIds.length) {
-      query['collections._id'] = { $nin: collectionsIds };
+    if (collections.length) {
+      let collectionsIds = _
+        .reject(collections, (c) => { return c.is_hidden === true; })
+        .map((c) => { return c._id; });
+
+      if (collectionsIds.length) {
+        query['collections._id'] = { $in: collectionsIds };
+      }
+    }
+
+    if (!query['collections._id']) {
+      query.user = this.userId;
     }
   }
 

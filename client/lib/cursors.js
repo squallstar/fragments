@@ -12,10 +12,6 @@ setupFragmentsCursor = function () {
   Session.set(CURRENT_LIMIT_KEY, PAGE_SIZE);
 
   Deps.autorun(function () {
-    if (!Meteor.userId()) {
-      return;
-    }
-
     var limit = Session.get(CURRENT_LIMIT_KEY),
         textQuery = Session.get(CURRENT_SEARCH_KEY),
         tag = Session.get(CURRENT_TAG_KEY),
@@ -33,6 +29,8 @@ setupFragmentsCursor = function () {
 
     if (collection) {
       options.collection = collection._id;
+    } else if (!Meteor.userId()) {
+      return;
     }
 
     if (tag) {
