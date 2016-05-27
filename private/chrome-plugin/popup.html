@@ -1,0 +1,32 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Fragments</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 320px;
+        height: 450px;
+        background-color:  #EDEDED;
+      }
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+    </style>
+    <script type="text/javascript" src="popup.js"></script>
+  </head>
+  <body></body>
+</html>
+

@@ -1,0 +1,9 @@
+<template name="addFragmentPopup">
+  <div class="fragment-popup">
+    {{#if fragment}}
+      {{> fragmentItem fragment}}
+    {{else}}
+      {{> loading}}
+    {{/if}}
+  </div>
+</template>

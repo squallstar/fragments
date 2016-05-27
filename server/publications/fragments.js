@@ -1,5 +1,6 @@
 Meteor.publish('fragments', function (options) {
   check(options, {
+    _id: Match.Optional(String),
     sort: Match.Optional(Object),
     limit: Match.Optional(Number),
     text: Match.Optional(String),
@@ -15,6 +16,10 @@ Meteor.publish('fragments', function (options) {
     if (textQuery) {
       query = _.extend(query, textQuery);
     }
+  }
+
+  if (options._id) {
+    query['_id'] = options._id;
   }
 
   if (options.collection) {

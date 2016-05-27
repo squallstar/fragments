@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.fragment-popup {
+  padding: 10px 0;
+}
+
 .fragment-item {
   @include transition(top 0.2s, left 0.2s, opacity 0.5s, transform 0.2s);
   position: absolute;
