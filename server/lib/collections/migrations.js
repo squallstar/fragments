@@ -1,0 +1,1 @@
+Migrations = new Mongo.Collection('Migrations');

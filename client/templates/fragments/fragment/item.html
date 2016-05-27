@@ -23,6 +23,9 @@
         <h2 data-title data-save-on-return contenteditable={{isEditing}}>{{{title}}}</h2>
         <p data-description data-save-on-return contenteditable={{isEditing}}>{{{description}}}</p>
         <div class="tags">
+          {{#if owner}}
+            <div class="tag picture" style="background-image:url({{owner.picture}})"></div>
+          {{/if}}
           {{#each tags}}
             <a class="tag {{#if isEditing}}can-be-removed{{/if}}{{#if equals currentTag this}}current{{/if}}" href="#" data-value={{this}}>{{this}}{{#if isEditing}}<span>+</span>{{/if}}</a>
           {{/each}}

@@ -226,6 +226,14 @@
           @extend %tag;
           max-width: 80%;
 
+          &.picture {
+            width: 20px;
+            height: 20px;
+            background: no-repeat center;
+            background-size: cover;
+            border: 0;
+          }
+
           &.can-be-removed {
             position: relative;
             padding-right: 1.6rem;

@@ -13,6 +13,9 @@ Template.fragmentItem.helpers({
   },
   canDisplayCollection: function (collection) {
     return !!Collections.findOne(collection._id);
+  },
+  owner: function () {
+    return this.user._id !== Meteor.userId() ? this.user : null;
   }
 });
 

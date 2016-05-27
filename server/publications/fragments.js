@@ -59,7 +59,7 @@ Meteor.publish('fragments', function (options) {
 
     query = {
       $or: [
-        _.extend(_.omit(query, ['collections._id', '$text']), { user: this.userId }),
+        _.extend(_.omit(query, ['collections._id', '$text']), { 'user._id': this.userId }),
         _.omit(query, ['$text'])
       ]
     };
