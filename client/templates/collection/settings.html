@@ -39,8 +39,29 @@
       <div class="group">
         <div class="description">
           <label>Collaboration</label>
-          <p>The following url can be used to invite more people to contribute to this collection.<br /><input type="url" class="url" value={{urlFor route='collectionCollaborate' data=collection}} readonly />
+          <p>
+            The following url can be used to invite more people to contribute to this collection.<br /><input type="url" class="url" value={{urlFor route='collectionCollaborate' data=collection}} readonly />
           </p>
+          <table class="table">
+            {{#each collection.collaborators}}
+              <tr>
+                <td>
+                  <img class="thumbnail" src="{{picture}}" />
+                </td>
+                <td>
+                  <strong>{{name}}</strong>
+                </td>
+                <td>
+                  <span>{{role}}</span>
+                </td>
+                <td class="align-right">
+                  {{#unless equals role 'owner'}}
+                    <a href="#" class="button">Remove</a>
+                  {{/unless}}
+                </td>
+              </tr>
+            {{/each}}
+          </table>
         </div>
       </div>
       <hr />

@@ -115,4 +115,33 @@
       }
     }
   }
+
+  .table {
+    margin-top: 20px;
+
+    tr {
+      border-bottom: 1px solid #FAFAFA;
+      font-size: 12px;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      td {
+        padding: 5px 0;
+        vertical-align: middle;
+        line-height: 1;
+
+        &.align-right {
+          text-align: right;
+        }
+      }
+    }
+
+    .thumbnail {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  }
 }
