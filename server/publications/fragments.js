@@ -51,7 +51,7 @@ Meteor.publish('fragments', function (options) {
     }
 
     if (!query['collections._id']) {
-      query.user = this.userId;
+      query['user._id'] = this.userId;
     }
   }
 

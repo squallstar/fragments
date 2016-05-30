@@ -9,7 +9,11 @@ Meteor.methods({
 
     function insertFragment (data) {
       Fragments.insert({
-        user: user._id,
+        user: {
+          _id: user._id,
+          name: user.profile.name,
+          picture: user.profile.picture
+        },
         fetched_at: Date.now(),
         title: data.title,
         description: data.description,
