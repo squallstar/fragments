@@ -8,7 +8,8 @@ Meteor.publish('fragments', function (options) {
     collection: Match.Optional(String)
   });
 
-  var query = {};
+  var query = {},
+      collections;
 
   if (options.text) {
     let textQuery = AdvancedQueries.ParseTextQuery(options.text);
@@ -31,7 +32,7 @@ Meteor.publish('fragments', function (options) {
 
     check(this.userId, String);
 
-    let collections = Collections.find({
+    collections = Collections.find({
       $or: [
         { user: this.userId },
         { 'collaborators._id': this.userId }
@@ -71,8 +72,18 @@ Meteor.publish('fragments', function (options) {
 
     if (textQuery) {
       query.$text = textQuery;
+    } else if (collections.length) {
+      let hiddenCollectionsIds = _
+        .filter(collections, (c) => { return c.is_hidden === true; })
+        .map((c) => { return c._id; });
+
+      if (hiddenCollectionsIds.length) {
+        query.$or[0]['collections._id'] = { $nin: hiddenCollectionsIds };
+      }
     }
   }
+
+  console.log(JSON.stringify(query, null, 2));
 
   return Fragments.find(query, {
     sort: options.sort,
