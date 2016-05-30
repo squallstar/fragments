@@ -42,6 +42,13 @@ Template.collectionSettings.events({
       Router.go('home');
     });
   },
+  'click [data-remove-collaborator]': function (event, template) {
+    event.preventDefault();
+
+    var collaboratorId = $(event.currentTarget).closest('tr').data('collaborator-id');
+
+    Meteor.call('removeCollaborator', template.data.collection._id, collaboratorId);
+  },
   'click input.url': function (event, template) {
     $(event.currentTarget).select();
   }

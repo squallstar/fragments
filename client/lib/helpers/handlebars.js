@@ -6,7 +6,7 @@ Handlebars.registerHelper('equals', function (a, b) {
   return a === b;
 });
 
-Handlebars.registerHelper('hasMany', function (array, minItems) {
+Handlebars.registerHelper('hasMany', function (array) {
   return typeof array === 'object' && array.length > 1;
 });
 

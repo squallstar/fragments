@@ -79,5 +79,27 @@ Meteor.methods({
         }
       }
     });
+  },
+  removeCollaborator: function (collectionId, collaboratorId) {
+    check(collectionId, String);
+    check(collaboratorId, String);
+
+    var collection = Collections.findOne(collectionId);
+
+    if (!collection) {
+      throw new Meteor.Error(404, 'The collection does not exist.');
+    }
+
+    if (collection.user !== Meteor.userId()) {
+      throw new Meteor.Error(400, 'Only the owner of this collection can remove a collaborator.');
+    }
+
+    Collections.update(collectionId, {
+      $pull: {
+        collaborators: {
+          '_id': collaboratorId
+        }
+      }
+    });
   }
 });
