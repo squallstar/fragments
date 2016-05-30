@@ -57,3 +57,15 @@ Meteor.startup(function() {
     return user;
   });
 });
+
+Meteor.methods({
+  updateProfilePicture: function (imageUrl) {
+    check(imageUrl, String);
+
+    Meteor.users.update(Meteor.userId(), {
+      $set: {
+        'profile.picture': imageUrl
+      }
+    });
+  }
+})

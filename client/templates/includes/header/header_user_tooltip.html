@@ -1,9 +1,9 @@
 <template name="headerUserTooltip">
   <div class="user-tooltip">
     <div class="flex">
-      <div class="pic">
-        <img src="{{currentUser.profile.picture}}" />
-      </div>
+      <a class="pic" href="#" data-upload-pic>
+        <img data-propagate src="{{currentUser.profile.picture}}" />
+      </a>
       <div class="details">
         <h3>{{currentUser.profile.name}}</h3>
         <p>Hello world</p>

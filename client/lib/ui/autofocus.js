@@ -7,12 +7,18 @@ UI.setAutofocus = function (template, options) {
 
   template.events({
     'click': function (event) {
-      var href = $(event.currentTarget).attr('href');
+      var $target = $(event.currentTarget),
+          href = $target.attr('href');
+
       if (href && href.substr(0,1) === '/') {
         Session.set(options.sessionKey, false);
         Router.go(href);
       } else {
         event.stopPropagation();
+      }
+
+      if ($target.data('propagate') !== undefined) {
+        $target.closest('a').click();
       }
     }
   });
