@@ -14,7 +14,9 @@ Template.sidebarCollection.helpers({
       return;
     }
 
-    return this.collaborators[1].name.split(' ')[0];
+    var userId = Meteor.userId();
+
+    return _.find(this.collaborators, (c) => { return c._id !== userId }).name.split(' ')[0];
   }
 });
 
