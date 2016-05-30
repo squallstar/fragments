@@ -16,6 +16,10 @@
     z-index: 2;
   }
 
+  .with-modal & {
+    z-index: 1;
+  }
+
   .bar {
     content: "";
     display: inline;
@@ -27,23 +31,23 @@
   }
 
   .bar:nth-child(1) {
-    background-color: #f46e6c;
+    background-color: #a2cf27;
     @include animation('loading 2s linear infinite');
   }
 
   .bar:nth-child(2) {
-    background-color: #a2cf27;
+    background-color: #f46e6c;
     @include animation('loading 2s linear 1s infinite');
   }
 
   .bar:nth-child(3) {
     background-color: #55caf7;
-    @include animation('loading 2s linear 2s infinite');
+    @include animation('loading 2s linear 3s infinite');
   }
 
   .bar:nth-child(4) {
     background-color: #ffcb00;
-    @include animation('loading 2s linear 2s infinite');
+    @include animation('loading 2s linear 4s infinite');
   }
 
   @-webkit-keyframes loading {
