@@ -83,8 +83,6 @@ Meteor.publish('fragments', function (options) {
     }
   }
 
-  console.log(JSON.stringify(query, null, 2));
-
   return Fragments.find(query, {
     sort: options.sort,
     limit: options.limit

@@ -59,7 +59,7 @@ AdvancedQueries.ParseTextQuery = function (textQuery) {
 
         // Sets "up to" range
         if (action === 'to' || action === 'when') {
-          results.created_at.$lte = dayStartTs;
+          results.created_at.$lte = dayEndTs;
         }
 
         handled = true;
