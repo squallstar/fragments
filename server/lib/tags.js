@@ -28,7 +28,7 @@ Meteor.methods({
       { $unwind: '$tags' },
       { $group: { _id: '$tags', count: { $sum: 1 } } },
       { $sort: { sum: -1 } },
-      { $limit: 50 }
+      { $limit: 20 }
       // { $sort: { _id: 1 } }
     ]);
   }
