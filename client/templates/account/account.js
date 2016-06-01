@@ -60,12 +60,5 @@ Template.account.events({
         Router.go('home');
       });
     });
-  },
-  'click a[data-chrome-extension]': function (event) {
-    event.preventDefault();
-
-    if (chrome && chrome.webstore) {
-      chrome.webstore.install();
-    }
   }
 });
