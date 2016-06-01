@@ -5,12 +5,22 @@ Meteor.methods({
       collection: Match.Optional(String)
     });
 
-    var query = {
-      user: this.userId
-    };
+    var query = {};
 
     if (options.collection) {
       query['collections._id'] = options.collection;
+    } else {
+      let collections = Collections.find({
+        'collaborators._id': this.userId
+      }, {
+        collaborators: 1
+      }).fetch();
+
+      query.$or = [ { 'user._id': this.userId } ];
+
+      if (collections.length) {
+        query.$or.push({ 'collections._id': { $in: _.map(collections, (c) => { return c._id; }) } });
+      }
     }
 
     return Fragments.aggregate([
