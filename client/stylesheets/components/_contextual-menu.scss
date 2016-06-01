@@ -12,6 +12,7 @@
     border: 1px solid #DDD;
     border-radius: 4px;
     min-width: 170px;
+    max-width: 250px;
 
     li {
       position: relative;
@@ -97,6 +98,11 @@
                 top: 2px;
                 left: 2px;
               }
+            }
+
+            div {
+              @extend %ellipsis;
+              flex: 1;
             }
           }
 
