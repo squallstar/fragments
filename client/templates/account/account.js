@@ -1,3 +1,13 @@
+Template.account.helpers({
+  displayChromeExension: function () {
+    if (!chrome) {
+      return false;
+    }
+
+    return chrome && chrome.app ? !chrome.app.isInstalled : true;
+  }
+});
+
 Template.account.events({
   'click [data-export]': function (event) {
     event.preventDefault();
@@ -50,5 +60,12 @@ Template.account.events({
         Router.go('home');
       });
     });
+  },
+  'click a[data-chrome-extension]': function (event) {
+    event.preventDefault();
+
+    if (chrome && chrome.webstore) {
+      chrome.webstore.install();
+    }
   }
 });
