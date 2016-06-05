@@ -269,6 +269,70 @@
           }
         }
       }
+
+      .comments {
+        background: #FAFAFA;
+        padding: 10px 20px;
+        border-top: 1px solid #EEE;
+        border-bottom: 1px solid #EEE;
+        margin: 0 -20px;
+
+        > a {
+          font-size: 12px;
+          color: #999;
+          text-decoration: none;
+
+          span {
+            display: none;
+            color: #CCC;
+          }
+
+          &:hover {
+
+            span {
+              display: inline;
+            }
+          }
+        }
+
+        li {
+          display: flex;
+          margin-bottom: 10px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          aside {
+            margin-right: 10px;
+
+            img {
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+            }
+          }
+
+          .text {
+            flex: 1;
+
+            p {
+              margin: 0;
+              font-size: 12px;
+              padding-top: 1px;
+            }
+
+            input {
+              width: 100%;
+              border: 0;
+              background-color: transparent;
+              height: 20px;
+              line-height: 20px;
+              font-size: 12px;
+            }
+          }
+        }
+      }
     }
 
     .collections {

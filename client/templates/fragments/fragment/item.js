@@ -8,6 +8,20 @@ Template.fragmentItem.helpers({
   isAddingTag: function () {
     return Template.instance().isAddingTag.get();
   },
+  isShowingComments: function () {
+    return Template.instance().isShowingComments.get();
+  },
+  comments: function () {
+    var instance = Template.instance();
+
+    if (instance.isShowingComments.get()) {
+      return Comments.find({
+        fragment: instance.data._id
+      }, {
+        $sort: { created_at: 1 }
+      });
+    }
+  },
   currentTag: function () {
     return Session.get(CURRENT_TAG_KEY);
   },
@@ -22,6 +36,7 @@ Template.fragmentItem.helpers({
 Template.fragmentItem.onCreated(function () {
   this.isEditing = new ReactiveVar(false);
   this.isAddingTag = new ReactiveVar(false);
+  this.isShowingComments = new ReactiveVar(false);
 });
 
 Template.fragmentItem.onRendered(function () {
@@ -93,6 +108,20 @@ Template.fragmentItem.events({
       icon: 'tags'
     });
 
+    if (!template.isShowingComments.get()) {
+      actions.push({
+        label: 'Add comment',
+        eventName: 'comment',
+        icon: 'commenting'
+      });
+    } else {
+      actions.push({
+        label: 'Hide comments',
+        eventName: 'hide-comments',
+        icon: 'commenting-o'
+      });
+    }
+
     // TODO: only when collection is owned
     actions.push({ label: 'Delete', eventName: 'delete', className: 'danger', icon: 'times' });
 
@@ -153,6 +182,42 @@ Template.fragmentItem.events({
     });
 
     $input.trigger('click');
+  },
+  'comment, click a[data-show-comments]': function (event, template) {
+    event.preventDefault();
+
+    template.isShowingComments.set(true);
+
+    template.subscribe('fragmentComments', template.data._id, function () {
+      template.$('input[name="add-comment"]').focus();
+      Meteor.forceLayoutRecollect();
+    });
+  },
+  'hide-comments': function (event, template) {
+    template.isShowingComments.set(false);
+    Meteor.forceLayoutRecollect();
+  },
+  'keydown input[name="add-comment"]': function (event, template) {
+    if (event.keyCode !== 13) {
+      return;
+    }
+
+    event.preventDefault();
+
+    var $input = $(event.currentTarget),
+        text = $input.val();
+
+    if (!text) {
+      return $input.blur();
+    }
+
+    $input.prop('disabled', true);
+
+    Meteor.call('addFragmentComment', template.data._id, text, function () {
+      $input.val('');
+      $input.prop('disabled', false);
+      Meteor.forceLayoutRecollect();
+    });
   },
   'keydown [data-save-on-return]': function (event) {
     if ([13].indexOf(event.keyCode) !== -1) {

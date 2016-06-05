@@ -12,5 +12,6 @@ SIDEBAR_ADDING_COLLECTION = 'sidebar-is-adding-collection';
 MODAL_VISIBLE_KEY         = 'modal-is-visible';
 CURRENT_CONTEXTUAL_MENU   = 'current-contextual-menu';
 COLLABORATE_TOKEN         = 'collection-collaborate-token';
+FORCE_LAYOUT_RECOLLECT    = 'force-layout-recollect';
 
 PAGE_SIZE = 15; // items per page

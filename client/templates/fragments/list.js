@@ -85,6 +85,18 @@ Template.fragmentsList.onCreated(function () {
     sort: { created_at: -1 }
   });
 
+  this.autorun(function () {
+    if (Session.get(FORCE_LAYOUT_RECOLLECT)) {
+      setTimeout(function () {
+        instance.recollect();
+      }, 1);
+    }
+  });
+
+  Meteor.forceLayoutRecollect = function () {
+    Session.set(FORCE_LAYOUT_RECOLLECT, Date.now());
+  };
+
   instance.fragments.observe({
     changedAt: function () {
       if (typeof instance.recollect === 'undefined') {

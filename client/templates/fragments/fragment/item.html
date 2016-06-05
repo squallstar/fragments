@@ -37,6 +37,34 @@
             {{/if}}
           {{/if}}
         </div>
+        {{#if isShowingComments}}
+          <div class="comments">
+            <ul>
+              {{#each comments}}
+                <li>
+                  <aside>
+                    <img src={{user.picture}} />
+                  </aside>
+                  <div class="text"><p>{{text}}</p></div>
+                </li>
+              {{/each}}
+              <li class="add">
+                <aside>
+                  <img src={{user.picture}} />
+                </aside>
+                <div class="text">
+                  <input type="text" name="add-comment" placeholder="Write something..." />
+                </div>
+              </li>
+            </ul>
+          </div>
+        {{else}}
+          {{#if commentsCount}}
+            <div class="comments">
+              <a href="#" data-show-comments>{{commentsCount}} {{pluralize 'comment' commentsCount}} <i class="fa fa-commenting-o"></i> <span>(Show)</span></a>
+            </div>
+          {{/if}}
+        {{/if}}
         {{#if url}}
           <a class="link" href={{url}} target="_blank">{{domain}} <i class="fa fa-external-link"></i></a>
         {{/if}}

@@ -13,3 +13,7 @@ Handlebars.registerHelper('hasMany', function (array) {
 Handlebars.registerHelper('timeAgo', function (timestamp) {
   return moment(timestamp).fromNow();
 });
+
+Handlebars.registerHelper('pluralize', function (str, count) {
+  return str + (count !== 1 ? 's' : '');
+});
