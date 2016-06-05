@@ -275,7 +275,7 @@
         padding: 10px 20px;
         border-top: 1px solid #EEE;
         border-bottom: 1px solid #EEE;
-        margin: 0 -20px;
+        margin: 0 -20px 10px -20px;
 
         > a {
           font-size: 12px;
@@ -297,7 +297,7 @@
 
         li {
           display: flex;
-          margin-bottom: 10px;
+          margin-bottom: 12px;
 
           &:last-child {
             margin-bottom: 0;
@@ -320,6 +320,13 @@
               margin: 0;
               font-size: 12px;
               padding-top: 1px;
+            }
+
+            .time {
+              font-size: 10px;
+              margin-top: 3px;
+              line-height: 1;
+              color: #AAA;
             }
 
             input {

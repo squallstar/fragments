@@ -43,15 +43,18 @@
               {{#each comments}}
                 <li>
                   <aside>
-                    <img src={{user.picture}} />
+                    <img alt={{user.name}} src={{user.picture}} />
                   </aside>
-                  <div class="text"><p>{{text}}</p></div>
+                  <div class="text">
+                    <p>{{text}}</p>
+                    <div class="time">{{user.name}} &bull; {{timeAgo created_at}}</div>
+                  </div>
                 </li>
               {{/each}}
               {{#if currentUser}}
                 <li class="add">
                   <aside>
-                    <img src={{currentUser.profile.picture}} />
+                    <img alt={{currentUser.profile.name}} src={{currentUser.profile.picture}} />
                   </aside>
                   <div class="text">
                     <input type="text" name="add-comment" placeholder="Write something..." />

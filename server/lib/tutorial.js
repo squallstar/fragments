@@ -8,7 +8,7 @@ Meteor.methods({
     var displayName = user.profile.name ? user.profile.name.split(' ')[0] : '';
 
     function insertFragment (data) {
-      Fragments.insert({
+      return Fragments.insert({
         user: {
           _id: user._id,
           name: user.profile.name,
@@ -65,12 +65,22 @@ Meteor.methods({
       collections: [stuffCollection]
     });
 
-    insertFragment({
+    var fragmentId = insertFragment({
       title: ['Hey', displayName + '!'].join(' '),
       description: 'Welcome to Fragments! This is your very first fragment, displayed here as a tutorial card. To dismiss it, right click here on select "Delete".',
       image: Meteor.absoluteUrl('/assets/img/tutorial/welcome.png'),
       tags: ['Tutorial'],
       collections: []
+    });
+
+    Comments.insert({
+      fragment: fragmentId,
+      text: 'Glad you find me! Here\'s a comment, why don\'t you add one to try out how this works?',
+      user: {
+        _id: user._id,
+        name: 'Fragments',
+        picture: '/assets/img/logo.png'
+      }
     });
 
     SearchHistory.insert({
