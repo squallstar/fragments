@@ -16,6 +16,9 @@ Template.header.helpers({
     if (collection) {
       return COLOR_THEMES[collection.color];
     }
+  },
+  unreadNotificationsCount: function () {
+    return Counts.get('unread-notifications');
   }
 });
 

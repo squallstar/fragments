@@ -22,8 +22,12 @@
       <div class="right-section">
         <div>
           <div class="notifications">
-            <a href="#" class="handle">
-              <i class="fa fa-bell-o"></i>
+            <a href="#" class="handle {{#if unreadNotificationsCount}}unread{{/if}}">
+              {{#if unreadNotificationsCount}}
+              <span>{{unreadNotificationsCount}}</span>
+              {{else}}
+                <i class="fa fa-bell-o"></i>
+              {{/if}}
             </a>
           </div>
           <div class="user">
