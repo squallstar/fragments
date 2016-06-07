@@ -238,7 +238,7 @@
       }
 
       &.unread {
-        background-color: #E75853;
+        background-color: #F37463;
         color: #FFF;
 
         span {
@@ -249,7 +249,7 @@
         }
 
         &:hover {
-          background-color: darken(#E75853, 10%);
+          background-color: darken(#F37463, 5%);
         }
       }
 
