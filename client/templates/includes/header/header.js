@@ -2,6 +2,9 @@ Template.header.helpers({
   userTooltipIsOpen: function () {
     return Session.get(USER_TOOLTIP_KEY);
   },
+  notificationTooltipIsOpen: function () {
+    return Session.get(NOTIFICATION_TOOLTIP_KEY);
+  },
   hasSearchBar: function () {
     return Session.get(HIDE_SEARCH_BAR) !== true;
   },
@@ -27,9 +30,17 @@ Template.header.events({
     event.preventDefault();
     Session.set(USER_TOOLTIP_KEY, !Session.get(USER_TOOLTIP_KEY));
   },
-  'click [data-toggle-notifications]': function (event) {
+  'click [data-toggle-notifications]': function (event, template) {
+    var currentValue = Session.get(NOTIFICATION_TOOLTIP_KEY);
+
     event.preventDefault();
-    Meteor.call('markAllNotificationsAsRead');
+
+    if (!currentValue) {
+      template.subscribe('notifications');
+    }
+
+    Session.set(NOTIFICATION_TOOLTIP_KEY, !currentValue);
+    //Meteor.call('markAllNotificationsAsRead');
   },
   'click [data-nav-toggle]': function (event) {
     var $el = $(event.currentTarget);
