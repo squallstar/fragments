@@ -27,6 +27,10 @@ Template.header.events({
     event.preventDefault();
     Session.set(USER_TOOLTIP_KEY, !Session.get(USER_TOOLTIP_KEY));
   },
+  'click [data-toggle-notifications]': function (event) {
+    event.preventDefault();
+    Meteor.call('markAllNotificationsAsRead');
+  },
   'click [data-nav-toggle]': function (event) {
     var $el = $(event.currentTarget);
     event.preventDefault();
