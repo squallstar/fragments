@@ -31,16 +31,8 @@ Template.header.events({
     Session.set(USER_TOOLTIP_KEY, !Session.get(USER_TOOLTIP_KEY));
   },
   'click [data-toggle-notifications]': function (event, template) {
-    var currentValue = Session.get(NOTIFICATION_TOOLTIP_KEY);
-
     event.preventDefault();
-
-    if (!currentValue) {
-      template.subscribe('notifications');
-    }
-
-    Session.set(NOTIFICATION_TOOLTIP_KEY, !currentValue);
-    //Meteor.call('markAllNotificationsAsRead');
+    Session.set(NOTIFICATION_TOOLTIP_KEY, !Session.get(NOTIFICATION_TOOLTIP_KEY));
   },
   'click [data-nav-toggle]': function (event) {
     var $el = $(event.currentTarget);

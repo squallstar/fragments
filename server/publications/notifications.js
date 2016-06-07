@@ -10,7 +10,7 @@ Meteor.publish('unreadNotifications', function () {
 });
 
 Meteor.publish('notifications', function () {
-  Notifications.find({
+  return Notifications.find({
     user: this.userId
   }, {
     sort: { created_at: -1 },
