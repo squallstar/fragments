@@ -40,6 +40,7 @@
 
     > div {
       float: right;
+      display: flex;
     }
   }
 
@@ -162,7 +163,7 @@
 
   .user-tooltip {
     position: absolute;
-    top: -0.2rem;
+    top: 1rem;
     right: 0;
     background: #FFF;
     box-shadow: 0 0 5px rgba(0,0,0,0.15);
@@ -210,6 +211,33 @@
     .actions {
       background-color: #FAFAFA;
       border-top: 1px solid #EFEFEF;
+    }
+  }
+
+  .notifications {
+    position: relative;
+
+    .handle {
+      $size: 3.5rem;
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+      background-color: #EEE;
+      margin: 1.2rem 1.2rem 0 0;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: #AAA;
+      font-size: 14px;
+
+      &:hover {
+        background-color: #555;
+        color: #FFF;
+      }
+
+      i {
+        margin-top: 10px;
+      }
     }
   }
 
