@@ -4,6 +4,7 @@ Meteor.publish('unreadNotifications', function () {
   }
 
   Counts.publish(this, 'unread-notifications', Notifications.find({
-    user: this.userId
+    user: this.userId,
+    read_at: null
   }));
 })

@@ -20,4 +20,8 @@ Meteor.startup(function () {
 
   SearchHistory._ensureIndex({ user: 1 });
   SearchHistory._ensureIndex({ query: 1 });
+
+  Notifications._ensureIndex({ user: 1 });
+  Notifications._ensureIndex({ read_at: 1 });
+  Notifications._ensureIndex({ resource: 1 });
 });

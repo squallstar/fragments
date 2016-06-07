@@ -235,6 +235,22 @@
         color: #FFF;
       }
 
+      &.unread {
+        background-color: #E75853;
+        color: #FFF;
+
+        span {
+          font-weight: bold;
+          font-size: 15px;
+          padding-top: 10px;
+          display: block;
+        }
+
+        &:hover {
+          background-color: darken(#E75853, 10%);
+        }
+      }
+
       i {
         margin-top: 10px;
       }
