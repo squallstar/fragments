@@ -61,7 +61,7 @@ Template.fragmentSubmit.events({
 
     Meteor.call('fragmentInsert', fragment, function (error, fragmentId) {
       if (error) {
-        Notifications.error(error.reason);
+        Notification.error(error.reason);
       }
     });
   }

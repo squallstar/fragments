@@ -12,7 +12,7 @@ Template.login.events({
       return;
     }
 
-    Notifications.clear();
+    Notification.clear();
 
     Meteor.loginWithPassword(email, password, function (err) {
       if (err) {
@@ -26,7 +26,7 @@ Template.login.events({
             message = err.reason;
         }
 
-        return Notifications.error(message);
+        return Notification.error(message);
       }
 
       Router.go('home');
@@ -39,7 +39,7 @@ Template.login.events({
       requestPermissions: ['email']
     }, function (err) {
       if (err) {
-        Notifications.error(err);
+        Notification.error(err);
       }
     });
   },
@@ -50,7 +50,7 @@ Template.login.events({
       requestPermissions: ['email']
     }, function (err) {
       if (err) {
-        Notifications.error(err);
+        Notification.error(err);
       }
     });
   }

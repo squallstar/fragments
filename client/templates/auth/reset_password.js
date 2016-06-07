@@ -19,7 +19,7 @@ Template.reset_password.events({
     var email = template.$('input[type="email"]').val().trim();
 
     if (!email) {
-      return Notifications.error('You must type an email address');
+      return Notification.error('You must type an email address');
     }
 
     var emailHasBeenSent = Template.instance().emailHasBeenSent;
@@ -36,7 +36,7 @@ Template.reset_password.events({
             message = err.reason;
         }
 
-        return Notifications.error(message);
+        return Notification.error(message);
       }
 
       emailHasBeenSent.set(true);
@@ -48,15 +48,15 @@ Template.reset_password.events({
     var password = template.$('input[type="password"]').val();
 
     if (!password) {
-      return Notifications.error('You must type your new password');
+      return Notification.error('You must type your new password');
     }
 
     Accounts.resetPassword(template.data.token, password, (err) => {
       if (err) {
-        return Notifications.error(err.reason || err.message);
+        return Notification.error(err.reason || err.message);
       }
 
-      Notifications.success('Your password has been updated');
+      Notification.success('Your password has been updated');
 
       template.passwordHasBeenReset.set(true);
     });

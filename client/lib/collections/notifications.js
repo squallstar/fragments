@@ -1,5 +1,5 @@
 // Local Collection
-Notifications = new Mongo.Collection(null);
+Notification = new Mongo.Collection(null);
 
 // Overrides Bert default values
 Bert.defaults = {
@@ -8,7 +8,7 @@ Bert.defaults = {
   type: 'default'
 };
 
-Notifications._enqueue = function (type, message, isSticky=false) {
+Notification._enqueue = function (type, message, isSticky=false) {
   // Only one per type at a time
   this.remove({ type: type, sticky: false });
 
@@ -23,18 +23,18 @@ Notifications._enqueue = function (type, message, isSticky=false) {
   return id;
 };
 
-Notifications.success = function (message) {
+Notification.success = function (message) {
   return Bert.alert(message, 'success');
 };
 
-Notifications.progress = function (message) {
+Notification.progress = function (message) {
   return this._enqueue('progress', message, true);
 };
 
-Notifications.error = function (message) {
+Notification.error = function (message) {
   return Bert.alert(message, 'danger');
 };
 
-Notifications.clear = function () {
+Notification.clear = function () {
   this.remove({});
 };
