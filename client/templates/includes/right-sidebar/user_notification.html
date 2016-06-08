@@ -6,7 +6,33 @@
     <div class="content">
       <div class="text">
         {{#if equals type 'comment'}}
-        <p><strong>{{from.name}}</strong> commented on <strong>{{data.fragment.title}}</strong>: <i>"{{data.comment}}"</i></p>
+          <p><strong>{{from.name}}</strong> commented
+          {{#if fragment}}
+            on <strong>{{fragment.title}}</strong>
+          {{/if}}
+          <i>"{{data.comment}}"</i></p>
+        {{/if}}
+        {{#if equals type 'fragment-added'}}
+          <p>
+            <strong>{{from.name}}</strong> added a new fragment
+            {{#if fragment}}
+              under
+              {{#each fragment.collections}}
+                <span style="background-color:{{color}};">{{name}}</span>
+              {{/each}}
+            {{/if}}.
+          </p>
+          {{#if fragment}}
+            <div class="preview">
+              {{#if fragment.lead_image}}
+                <div class="img" style="background-image: url({{fragment.lead_image}})"></div>
+              {{/if}}
+              <div class="body">
+                <h3>{{fragment.title}}</h3>
+                <a href={{fragment.url}} target="_blank">{{fragment.domain}} <i class="fa fa-external-link"></i></a>
+              </div>
+            </div>
+          {{/if}}
         {{/if}}
       </div>
       <div class="time">

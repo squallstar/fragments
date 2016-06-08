@@ -43,7 +43,7 @@ Meteor.startup(function() {
 
     // Set up default avatar
     if (!user.profile.picture) {
-      user.profile.picture = Meteor.absoluteUrl('/assets/img/default-avatar.png');
+      user.profile.picture = Meteor.absoluteUrl('assets/img/default-avatar.png');
     }
 
     // Set up default name
@@ -86,6 +86,16 @@ Meteor.methods({
     }, {
       $set: {
         'user.picture': imageUrl
+      }
+    }, {
+      multi: true
+    });
+
+    Collections.update({
+      'collaborators._id': userId
+    }, {
+      $set: {
+        'collaborators.$.picture': imageUrl
       }
     }, {
       multi: true
