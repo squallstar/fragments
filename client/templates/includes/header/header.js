@@ -2,9 +2,6 @@ Template.header.helpers({
   userTooltipIsOpen: function () {
     return Session.get(USER_TOOLTIP_KEY);
   },
-  notificationTooltipIsOpen: function () {
-    return Session.get(NOTIFICATION_TOOLTIP_KEY);
-  },
   hasSearchBar: function () {
     return Session.get(HIDE_SEARCH_BAR) !== true;
   },
@@ -32,7 +29,7 @@ Template.header.events({
   },
   'click [data-toggle-notifications]': function (event, template) {
     event.preventDefault();
-    Session.set(NOTIFICATION_TOOLTIP_KEY, !Session.get(NOTIFICATION_TOOLTIP_KEY));
+    Session.set(RIGHT_SIDEBAR_OPEN_KEY, true);
   },
   'click [data-nav-toggle]': function (event) {
     var $el = $(event.currentTarget);

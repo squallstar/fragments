@@ -1,0 +1,20 @@
+<template name="userNotification">
+  <li class="{{#unless read_at}}unread{{/unless}}">
+    <div class="pic">
+      <img src={{from.picture}} alt={{from.name}} />
+    </div>
+    <div class="content">
+      <div class="text">
+        {{#if equals type 'comment'}}
+        <p><strong>{{from.name}}</strong> commented on <strong>{{data.fragment.title}}</strong>: <i>"{{data.comment}}"</i></p>
+        {{/if}}
+      </div>
+      <div class="time">
+        {{timeAgo created_at}}
+        {{#unless read_at}}
+          &bull; <a href="#">Mark as read <i class="fa fa-check"></i></a>
+        {{/unless}}
+      </div>
+    </div>
+  </li>
+</template>

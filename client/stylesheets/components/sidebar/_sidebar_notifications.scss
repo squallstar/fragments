@@ -1,0 +1,54 @@
+.sidebar-notifications {
+
+  ul {
+
+    li {
+      display: flex;
+      padding: 1rem;
+      border-bottom: 1px solid #EEE;
+
+      .pic {
+        margin-right: 1rem;
+
+        img {
+          width: 34px;
+          height: 34px;
+          border-radius: 50%;
+        }
+      }
+
+      .content {
+
+        p {
+          margin-top: -3px;
+          font-size: 12px;
+        }
+
+        .time {
+          font-size: 10px;
+          margin-top: 3px;
+          color: #AAA;
+
+          a {
+            color: #2578EE;
+            text-decoration: none;
+          }
+        }
+      }
+
+
+
+      &.unread {
+        background-color: #CBDFFC;
+        border-bottom-color: #bad3f8;
+
+        .content {
+
+          .time {
+            color: #888;
+          }
+        }
+      }
+    }
+  }
+}
