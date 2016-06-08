@@ -1,5 +1,5 @@
 Tracker.autorun(function () {
-  if (Meteor.user()) {
+  if (Meteor.userId()) {
     Meteor.subscribe('collections');
     Meteor.subscribe('unreadNotifications');
   }

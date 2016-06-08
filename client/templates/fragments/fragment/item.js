@@ -189,7 +189,9 @@ Template.fragmentItem.events({
     template.isShowingComments.set(true);
 
     template.subscribe('fragmentComments', template.data._id, function () {
-      template.$('input[name="add-comment"]').focus();
+      if (! ('ontouchstart' in window)) {
+        template.$('input[name="add-comment"]').focus();
+      }
       Meteor.forceLayoutRecollect();
     });
   },
