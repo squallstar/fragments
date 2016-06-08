@@ -60,12 +60,35 @@ Meteor.startup(function() {
 
 Meteor.methods({
   updateProfilePicture: function (imageUrl) {
+    var userId = Meteor.userId();
+
+    check(userId, String);
     check(imageUrl, String);
 
-    Meteor.users.update(Meteor.userId(), {
+    Meteor.users.update(userId, {
       $set: {
         'profile.picture': imageUrl
       }
+    });
+
+    Notifications.update({
+      'from._id': userId
+    }, {
+      $set: {
+        'from.picture': imageUrl
+      }
+    }, {
+      multi: true
+    });
+
+    Fragments.update({
+      'user._id': userId
+    }, {
+      $set: {
+        'user.picture': imageUrl
+      }
+    }, {
+      multi: true
     });
   }
 })
