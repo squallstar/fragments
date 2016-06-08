@@ -11,7 +11,7 @@ Template.rightSidebar.helpers({
     });
   },
   hasNotifications: function () {
-    return Notifications.count() > 0;
+    return Notifications.find().count() > 0;
   }
 });
 
