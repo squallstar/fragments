@@ -224,12 +224,12 @@
       width: $size;
       height: $size;
       border-radius: 50%;
-      background-color: #EEE;
+      background-color: rgba(0,0,0,0.06);
       margin: 1.2rem 1.2rem 0 0;
       display: block;
       text-align: center;
       text-decoration: none;
-      color: #AAA;
+      color: rgba(0,0,0,0.3);
       font-size: 14px;
 
       &:hover {
