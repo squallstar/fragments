@@ -20,6 +20,7 @@
     display: flex;
     flex: 0 1 auto;
     min-width: 30%;
+    max-width: 30%;
     padding-right: 1rem;
 
     @include below ($break-phone) {
@@ -52,6 +53,7 @@
     line-height: $header-height;
 
     h1 {
+      @extend %ellipsis;
       flex: 1;
       display: inline-block;
       font-size: 2.3rem;
@@ -218,6 +220,16 @@
     }
   }
 
+  .buttons {
+    margin-top: 14px;
+
+    a {
+      border: 1px solid rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.8);
+      background: transparent;
+    }
+  }
+
   .notifications {
     position: relative;
 
@@ -265,7 +277,7 @@
 
   &.theme-light {
 
-    h1 a, .nav-toggle {
+    h1, .nav-toggle {
       opacity: 0.5;
     }
 

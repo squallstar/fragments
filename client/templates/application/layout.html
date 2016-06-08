@@ -1,13 +1,16 @@
 <template name="layout">
   {{> fontLoader}}
 
-  <div id="container" class="{{#if withModal}}with-modal{{/if}} {{#if currentUser}}with-header{{/if}}">
+  <div id="container" class="{{#if withModal}}with-modal{{/if}} {{#if shouldDisplayHeader}}with-header{{/if}}">
     {{> notifications}}
     {{> modal}}
     {{> contextualMenu}}
 
-    {{#if currentUser}}
+    {{#if shouldDisplayHeader}}
       {{> header}}
+    {{/if}}
+
+    {{#if currentUser}}
       {{> sidebar}}
       {{> rightSidebar}}
     {{/if}}

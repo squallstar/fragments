@@ -3,7 +3,7 @@ Template.header.helpers({
     return Session.get(USER_TOOLTIP_KEY);
   },
   hasSearchBar: function () {
-    return Session.get(HIDE_SEARCH_BAR) !== true;
+    return Meteor.userId() && Session.get(HIDE_SEARCH_BAR) !== true;
   },
   hasBackArrow: function () {
     return Session.get(HAS_BACK_ARROW_KEY);
@@ -15,6 +15,25 @@ Template.header.helpers({
     var collection = Session.get(CURRENT_COLLECTION_KEY);
     if (collection) {
       return COLOR_THEMES[collection.color];
+    }
+  },
+  collectionOwner: function () {
+    var collection = Session.get(CURRENT_COLLECTION_KEY),
+        userId = Meteor.userId(),
+        owner;
+
+    if (collection && collection.collaborators) {
+      if (collection.user === userId) {
+        return;
+      }
+
+      owner = _.find(collection.collaborators, (c) => { return c._id === collection.user; });
+
+      if (userId && owner) {
+        owner.name = owner.name.split(' ')[0];
+      }
+
+      return owner;
     }
   },
   unreadNotificationsCount: function () {

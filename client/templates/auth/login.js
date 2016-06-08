@@ -1,6 +1,10 @@
 // UI Hooks
 UI.setErrors(Template.login);
 
+Template.login.onCreated(function () {
+  Session.set(CURRENT_COLLECTION_KEY, false);
+});
+
 Template.login.events({
   'submit form': function (event, template) {
     event.preventDefault();
