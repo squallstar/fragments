@@ -16,11 +16,12 @@
           <p>
             <strong>{{from.name}}</strong> added a new fragment
             {{#if fragment}}
+              {{#unless fragment.url}}(note){{/unless}}
               under
               {{#each fragment.collections}}
-                <span style="background-color:{{color}};">{{name}}</span>
+                <a class="collection" href="/collections/{{_id}}" style="background-color:{{color}};">{{name}}</a>
               {{/each}}
-            {{/if}}.
+            {{/if}}
           </p>
           {{#if fragment}}
             <div class="preview">
@@ -29,7 +30,9 @@
               {{/if}}
               <div class="body">
                 <h3>{{fragment.title}}</h3>
-                <a href={{fragment.url}} target="_blank">{{fragment.domain}} <i class="fa fa-external-link"></i></a>
+                {{#if fragment.url}}
+                  <a href={{fragment.url}} target="_blank">{{fragment.domain}} <i class="fa fa-external-link"></i></a>
+                {{/if}}
               </div>
             </div>
           {{/if}}

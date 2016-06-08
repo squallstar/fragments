@@ -19,6 +19,9 @@ Template.userNotification.onCreated(function () {
 });
 
 Template.userNotification.events({
+  'click .collection': function (event) {
+    Session.set(RIGHT_SIDEBAR_OPEN_KEY, false);
+  },
   'click .time a': function (event, template) {
     event.preventDefault();
     Meteor.call('markNotificationAsRead', template.data._id);
