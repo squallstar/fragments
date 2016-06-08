@@ -12,7 +12,7 @@
     @extend .flex;
 
     @include below ($break-phone) {
-      padding: 0 1.1rem;
+      padding-right: 1.1rem;
     }
   }
 
