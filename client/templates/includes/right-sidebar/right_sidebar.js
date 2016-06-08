@@ -9,6 +9,9 @@ Template.rightSidebar.helpers({
     return Notifications.find({}, {
       sort: { created_at: -1 }
     });
+  },
+  hasNotifications: function () {
+    return Notifications.count() > 0;
   }
 });
 

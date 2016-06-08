@@ -4,11 +4,16 @@
       <h1>Notifications</h1>
     </div>
     <div class="sidebar-notifications">
-      <ul>
-        {{#each notifications}}
-          {{> userNotification}}
-        {{/each}}
-      </ul>
+      {{#if hasNotifications}}
+        <ul>
+          {{#each notifications}}
+            {{> userNotification}}
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>You haven't got any notification.</p>
+        <p>Have you tried joining a <strong>collaborative collection</strong>?</p>
+      {{/if}}
     </div>
   </section>
 </template>
