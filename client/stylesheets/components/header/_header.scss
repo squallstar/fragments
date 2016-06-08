@@ -20,8 +20,11 @@
     display: flex;
     flex: 0 1 auto;
     min-width: 30%;
-    max-width: 30%;
     padding-right: 1rem;
+
+    .logged-in & {
+      max-width: 30%;
+    }
 
     @include below ($break-phone) {
       min-width: auto;

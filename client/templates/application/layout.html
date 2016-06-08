@@ -1,7 +1,7 @@
 <template name="layout">
   {{> fontLoader}}
 
-  <div id="container" class="{{#if withModal}}with-modal{{/if}} {{#if shouldDisplayHeader}}with-header{{/if}}">
+  <div id="container" class="{{#if withModal}}with-modal{{/if}} {{#if shouldDisplayHeader}}with-header{{/if}} {{#if currentUser}}logged-in{{/if}}">
     {{> notifications}}
     {{> modal}}
     {{> contextualMenu}}
