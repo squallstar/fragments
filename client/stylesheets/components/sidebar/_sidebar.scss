@@ -1,7 +1,7 @@
-#sidebar {
+.sidebar {
   $size: 250px;
 
-  @include transition(left 0.2s, visibility 0.5s);
+  @include transition(left 0.2s, right 0.2s, visibility 0.5s);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -16,6 +16,17 @@
   &.open {
     left: 0;
     visibility: visible;
+  }
+
+  &.sidebar-right {
+    background-color: #FFF;
+    left: auto;
+    right: -$size;
+
+    &.open {
+      left: auto;
+      right: 0;
+    }
   }
 
   .title {

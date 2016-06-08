@@ -101,5 +101,46 @@ Meteor.methods({
         }
       }
     });
+  },
+  getFragmentCollaborators: function (userId, fragmentId) {
+    var fragment, collections;
+
+    check(userId, String);
+    check(fragmentId, String);
+
+    fragment = Fragments.findOne(fragmentId, {
+      collections: 1,
+      title: 1,
+      user: 1
+    });
+
+    if (!fragment || !fragment.collections) {
+      return;
+    }
+
+    collections = Collections.find({
+      _id: { $in: _.map(fragment.collections, (c) => { return c._id; }) }
+    }, {
+      collaborators: 1
+    }).fetch();
+
+    if (!collections || !collections.length) {
+      return;
+    }
+
+    var collaborators = _.uniq([].concat.apply([], _.map(collections, (collection) => {
+      var collaborators = _.filter(collection.collaborators, (collaborator) => {
+        return collaborator._id !== userId;
+      });
+
+      return _.map(collaborators, (collaborator) => {
+        return collaborator._id;
+      });
+    })));
+
+    return {
+      collaborators: collaborators,
+      fragment: fragment
+    };
   }
 });

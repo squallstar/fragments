@@ -43,7 +43,7 @@ Meteor.startup(function() {
 
     // Set up default avatar
     if (!user.profile.picture) {
-      user.profile.picture = Meteor.absoluteUrl('/assets/img/default-avatar.png');
+      user.profile.picture = Meteor.absoluteUrl('assets/img/default-avatar.png');
     }
 
     // Set up default name
@@ -60,12 +60,45 @@ Meteor.startup(function() {
 
 Meteor.methods({
   updateProfilePicture: function (imageUrl) {
+    var userId = Meteor.userId();
+
+    check(userId, String);
     check(imageUrl, String);
 
-    Meteor.users.update(Meteor.userId(), {
+    Meteor.users.update(userId, {
       $set: {
         'profile.picture': imageUrl
       }
+    });
+
+    Notifications.update({
+      'from._id': userId
+    }, {
+      $set: {
+        'from.picture': imageUrl
+      }
+    }, {
+      multi: true
+    });
+
+    Fragments.update({
+      'user._id': userId
+    }, {
+      $set: {
+        'user.picture': imageUrl
+      }
+    }, {
+      multi: true
+    });
+
+    Collections.update({
+      'collaborators._id': userId
+    }, {
+      $set: {
+        'collaborators.$.picture': imageUrl
+      }
+    }, {
+      multi: true
     });
   }
 })

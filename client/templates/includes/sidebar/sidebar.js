@@ -1,5 +1,5 @@
 // UI Hooks
-UI.setScrollBoundaries(Template.sidebar, '#sidebar');
+UI.setScrollBoundaries(Template.sidebar, '#left-sidebar');
 
 Template.sidebar.helpers({
   isOpen: function () {

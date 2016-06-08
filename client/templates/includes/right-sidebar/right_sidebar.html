@@ -1,0 +1,19 @@
+<template name="rightSidebar">
+  <section id="right-sidebar" class="sidebar sidebar-right {{#if isOpen}}open{{/if}}">
+    <div class="title">
+      <h1>Notifications</h1>
+    </div>
+    <div class="sidebar-notifications">
+      {{#if hasNotifications}}
+        <ul>
+          {{#each notifications}}
+            {{> userNotification}}
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>You haven't got any notification.</p>
+        <p>Have you tried joining a <strong>collaborative collection</strong>?</p>
+      {{/if}}
+    </div>
+  </section>
+</template>

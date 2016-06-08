@@ -10,6 +10,10 @@
 
   .row {
     @extend .flex;
+
+    @include below ($break-phone) {
+      padding: 0 1.1rem;
+    }
   }
 
   .left-section {
@@ -40,6 +44,7 @@
 
     > div {
       float: right;
+      display: flex;
     }
   }
 
@@ -162,7 +167,7 @@
 
   .user-tooltip {
     position: absolute;
-    top: -0.2rem;
+    top: 1rem;
     right: 0;
     background: #FFF;
     box-shadow: 0 0 5px rgba(0,0,0,0.15);
@@ -210,6 +215,51 @@
     .actions {
       background-color: #FAFAFA;
       border-top: 1px solid #EFEFEF;
+    }
+  }
+
+  .notifications {
+    position: relative;
+
+    .handle {
+      @include transition(all, 0.2s);
+
+      $size: 3.5rem;
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+      background-color: rgba(0,0,0,0.06);
+      margin: 1.2rem 1.2rem 0 0;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: rgba(0,0,0,0.3);
+      font-size: 14px;
+
+      &:hover {
+        background-color: #555;
+        color: #FFF;
+      }
+
+      &.unread {
+        background-color: #F37463;
+        color: #FFF;
+
+        span {
+          font-weight: bold;
+          font-size: 15px;
+          padding-top: 10px;
+          display: block;
+        }
+
+        &:hover {
+          background-color: darken(#F37463, 5%);
+        }
+      }
+
+      i {
+        margin-top: 10px;
+      }
     }
   }
 

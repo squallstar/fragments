@@ -25,7 +25,7 @@ Template.collectionSettings.events({
 
     Meteor.call('collectionUpdate', collection._id, attributes, (error) => {
       if (error) {
-        return Notifications.error(error.reason);
+        return Notification.error(error.reason);
       }
 
       Router.go('collection', collection);
@@ -35,10 +35,10 @@ Template.collectionSettings.events({
     event.preventDefault();
     Meteor.call('collectionDelete', this.collection._id, function (error) {
       if (error) {
-        return Notifications.error(error.reason);
+        return Notification.error(error.reason);
       }
 
-      Notifications.success('The collection has been deleted');
+      Notification.success('The collection has been deleted');
       Router.go('home');
     });
   },

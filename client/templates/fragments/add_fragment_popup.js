@@ -9,7 +9,7 @@ Template.addFragmentPopup.onCreated(function () {
 
   Meteor.call('fragmentInsert', { url: this.data }, (error, fragmentId) => {
     if (error) {
-      return Notifications.error(error);
+      return Notification.error(error);
     }
 
     this.fragmentId.set(fragmentId);
@@ -18,6 +18,6 @@ Template.addFragmentPopup.onCreated(function () {
       _id: fragmentId
     });
 
-    Notifications.success(_.sample(['All done!', 'Saved!', 'Got it!']));
+    Notification.success(_.sample(['All done!', 'Saved!', 'Got it!']));
   });
 });

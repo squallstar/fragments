@@ -16,6 +16,9 @@ Template.header.helpers({
     if (collection) {
       return COLOR_THEMES[collection.color];
     }
+  },
+  unreadNotificationsCount: function () {
+    return Counts.get('unread-notifications');
   }
 });
 
@@ -23,6 +26,10 @@ Template.header.events({
   'click [data-toggle-tooltip]': function (event) {
     event.preventDefault();
     Session.set(USER_TOOLTIP_KEY, !Session.get(USER_TOOLTIP_KEY));
+  },
+  'click [data-toggle-notifications]': function (event, template) {
+    event.preventDefault();
+    Session.set(RIGHT_SIDEBAR_OPEN_KEY, true);
   },
   'click [data-nav-toggle]': function (event) {
     var $el = $(event.currentTarget);
