@@ -44,7 +44,10 @@ Meteor.startup(function () {
           },
           user: collaboratorId,
           type: 'fragment-added',
-          resource: fragment._id
+          resource: fragment._id,
+          data: {
+            url: fragment.url
+          }
         });
       });
     });

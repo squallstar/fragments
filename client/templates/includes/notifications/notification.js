@@ -7,6 +7,6 @@ Template.notification.helpers({
 Template.notification.events({
   'click [data-dismiss]': function (event) {
     event.preventDefault();
-    Notification.remove(this._id);
+    UINotification.remove(this._id);
   }
 });

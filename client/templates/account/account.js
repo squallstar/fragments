@@ -11,13 +11,13 @@ Template.account.helpers({
 Template.account.events({
   'click [data-export]': function (event) {
     event.preventDefault();
-    var notification = Notification.progress('Preparing your data...');
+    var notification = UINotification.progress('Preparing your data...');
 
     Meteor.call('exportData', function (err, data) {
-      Notification.remove(notification);
+      UINotification.remove(notification);
 
       if (err) {
-        return Notification.error(err);
+        return UINotification.error(err);
       }
 
       var str = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data));
@@ -35,21 +35,21 @@ Template.account.events({
       return;
     }
 
-    var notification = Notification.progress('Importing your data...');
+    var notification = UINotification.progress('Importing your data...');
 
     readFile(file, function (contents) {
-      Notification.remove(notification);
+      UINotification.remove(notification);
 
       if (!contents) {
-        return Notification.error('Could not parse file');
+        return UINotification.error('Could not parse file');
       }
 
       Meteor.call('importData', contents, function (err, imported) {
         if (err) {
-          return Notification.error(err.reason || err);
+          return UINotification.error(err.reason || err);
         }
 
-        Notification.success([
+        UINotification.success([
           imported.collections.toString(),
           'collections and',
           imported.fragments.toString(),

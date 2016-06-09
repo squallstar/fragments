@@ -24,11 +24,6 @@ Template.sidebar.events({
 Template.rightSidebar.onCreated(function () {
   Tracker.autorun(() => {
     var isOpen = Session.get(RIGHT_SIDEBAR_OPEN_KEY);
-
-    if (isOpen) {
-      this.subscribe('notifications');
-    }
-
     Session.set(MODAL_VISIBLE_KEY, isOpen);
   });
 });

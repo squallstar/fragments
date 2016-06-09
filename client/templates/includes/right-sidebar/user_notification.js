@@ -42,6 +42,8 @@ Template.userNotification.events({
       Session.set(CURRENT_COLLECTION_KEY, null);
       Session.set(CURRENT_TAG_KEY, null);
 
+      Meteor.call('markNotificationAsRead', fragment._id);
+
       Router.go('searchResults', data, opts);
     }
   }

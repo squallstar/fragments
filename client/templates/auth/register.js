@@ -20,26 +20,26 @@ Template.register.events({
     }
 
     if (!name) {
-      return Notification.error('Your name is required');
+      return UINotification.error('Your name is required');
     }
 
     if (!email) {
-      return Notification.error('Your email address is required');
+      return UINotification.error('Your email address is required');
     }
 
     if (!password) {
-      return Notification.error('You have to choose a password.');
+      return UINotification.error('You have to choose a password.');
     }
 
     if (password.length < USER_MIN_PASSWORD_LENGTH) {
-      return Notification.error('Your new password should be at least ' + USER_MIN_PASSWORD_LENGTH + ' chatacters.');
+      return UINotification.error('Your new password should be at least ' + USER_MIN_PASSWORD_LENGTH + ' chatacters.');
     }
 
     if (password !== confirmPassword) {
-      return Notification.error('The passwords confirmation does not match the password you have chosen.');
+      return UINotification.error('The passwords confirmation does not match the password you have chosen.');
     }
 
-    notification = Notification.progress('Please wait while we create your account.');
+    notification = UINotification.progress('Please wait while we create your account.');
 
     $submitButton.attr('disabled', true);
 
@@ -50,18 +50,18 @@ Template.register.events({
       email: email,
       password : password
     }, function (err) {
-      Notification.remove(notification);
+      UINotification.remove(notification);
 
       if (err) {
         $submitButton.removeAttr('disabled');
 
         switch (err.error) {
           default:
-            return Notification.error(err.reason);
+            return UINotification.error(err.reason);
         }
       }
 
-      Notification.success('Your new account has been created!');
+      UINotification.success('Your new account has been created!');
 
       Router.go('home');
     });

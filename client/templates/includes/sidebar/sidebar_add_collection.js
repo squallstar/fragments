@@ -18,12 +18,12 @@ Template.sidebarAddCollection.events({
     };
 
     if (!collection.name) {
-      return Notification.error('You need to specify a name for the collection.');
+      return UINotification.error('You need to specify a name for the collection.');
     }
 
     Meteor.call('collectionInsert', collection, function (err, id) {
       if (err) {
-        return Notification.error(err);
+        return UINotification.error(err);
       }
 
       Session.set(SIDEBAR_ADDING_COLLECTION, false);

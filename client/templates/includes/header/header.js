@@ -37,7 +37,7 @@ Template.header.helpers({
     }
   },
   unreadNotificationsCount: function () {
-    return Counts.get('unread-notifications');
+    return Notifications.find({ read_at: null }).count();
   }
 });
 
