@@ -12,10 +12,10 @@ Meteor.publish('fragments', function (options) {
       collections;
 
   if (options.text) {
-    let textQuery = AdvancedQueries.ParseTextQuery(options.text);
+    let result = AdvancedQueries.ParseTextQuery(options.text);
 
-    if (textQuery) {
-      query = _.extend(query, textQuery);
+    if (result) {
+      query = _.extend(query, result);
     }
   }
 

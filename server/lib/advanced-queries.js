@@ -29,6 +29,10 @@ AdvancedQueries.ParseTextQuery = function (textQuery) {
     let [ input, action, value ] = result;
 
     switch (action) {
+      case 'fragment':
+        results._id = value;
+        handled = true;
+        break;
       case 'from':
       case 'to':
       case 'when':

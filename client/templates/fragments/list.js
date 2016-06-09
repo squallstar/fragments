@@ -132,9 +132,17 @@ Template.fragmentsList.onRendered(function () {
     transitionDuration: 0
   });
 
-  this.recollect = function () {
+  this.recollect = () => {
     if (instance.$masonry) {
       instance.$masonry.masonry('reloadItems').masonry('layout');
+    }
+
+    if (this.data && this.data.revealFragmentComments) {
+      let fragmentId = this.data.revealFragmentComments;
+
+      setTimeout(() => {
+        instance.$('.fragment-item[data-id="' + fragmentId + '"] a[data-show-comments]').click();
+      }, 1000);
     }
   };
 
