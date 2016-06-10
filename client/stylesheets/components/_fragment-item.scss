@@ -37,6 +37,9 @@
     top: auto !important;
     left: auto !important;
     padding-top: 0;
+
+    // No animations
+    @include transition(none);
   }
 
   .wrapper {
