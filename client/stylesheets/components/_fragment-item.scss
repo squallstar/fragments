@@ -167,11 +167,19 @@
         font-size: 1.5rem;
         line-height: 1.4;
         margin-bottom: 0.5rem;
+
+        @include below ($break-phone) {
+          font-size: 1.6rem;
+        }
       }
 
       p {
         font-size: 1.2rem;
         line-height: 1.4;
+
+        @include below ($break-phone) {
+          font-size: 1.3rem;
+        }
       }
 
       .progress-bar {
@@ -187,6 +195,10 @@
         text-decoration: none;
         color: #2578EE;
         margin: 1rem 0 0.6rem;
+
+        @include below ($break-phone) {
+          font-size: 1.2rem;
+        }
 
         i {
           display: none;
@@ -206,6 +218,10 @@
         font-size: 1rem;
         text-decoration: none;
         color: #AAA;
+
+        @include below ($break-phone) {
+          font-size: 1.2rem;
+        }
 
         i {
           display: none;
@@ -281,9 +297,13 @@
         margin: 0 -20px 10px -20px;
 
         > a {
-          font-size: 12px;
+          font-size: 1.2rem;
           color: #999;
           text-decoration: none;
+
+          @include below ($break-phone) {
+            font-size: 1.3rem;
+          }
 
           span {
             display: none;
@@ -321,15 +341,23 @@
 
             p {
               margin: 0;
-              font-size: 12px;
+              font-size: 1.2rem;
               padding-top: 1px;
+
+              @include below ($break-phone) {
+                font-size: 1.3rem;
+              }
             }
 
             .time {
-              font-size: 10px;
+              font-size: 1rem;
               margin-top: 1px;
               line-height: 1.2;
               color: #AAA;
+
+              @include below ($break-phone) {
+                font-size: 1.1rem;
+              }
             }
 
             input {
@@ -412,6 +440,10 @@
 
         label {
           font-size: 1rem;
+
+          @include below ($break-phone) {
+            font-size: 1.2rem;
+          }
         }
       }
     }
