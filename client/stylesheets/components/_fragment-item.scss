@@ -249,12 +249,21 @@
           @extend %tag;
           max-width: 80%;
 
+          @include below ($break-phone) {
+            font-size: 1.2rem;
+          }
+
           &.picture {
             width: 20px;
             height: 20px;
             background: no-repeat center;
             background-size: cover;
             border: 0;
+
+            @include below ($break-phone) {
+              width: 22px;
+              height: 22px;
+            }
           }
 
           &.can-be-removed {
@@ -329,10 +338,19 @@
           aside {
             margin-right: 10px;
 
+            @include below ($break-phone) {
+              margin-right: 14px;
+            }
+
             img {
               width: 20px;
               height: 20px;
               border-radius: 50%;
+
+              @include below ($break-phone) {
+                width: 26px;
+                height: 26px;
+              }
             }
           }
 
@@ -346,6 +364,7 @@
 
               @include below ($break-phone) {
                 font-size: 1.3rem;
+                margin-top: -3px;
               }
             }
 
@@ -366,7 +385,12 @@
               background-color: transparent;
               height: 20px;
               line-height: 20px;
-              font-size: 12px;
+              font-size: 1.2rem;
+
+              @include below ($break-phone) {
+                font-size: 1.3rem;
+                margin-top: 3px;
+              }
             }
           }
         }
