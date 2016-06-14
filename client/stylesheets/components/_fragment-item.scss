@@ -51,16 +51,29 @@
 
     .menu-handle {
       position: absolute;
-      top: 1.6rem;
-      right: 1.1rem;
-      width: 18px;
-      height: 20px;
+      top: 1.5rem;
+      right: 1rem;
+      width: 22px;
+      height: 22px;
       opacity: 0.2;
       z-index: 1;
       display: none;
 
       &:hover {
         opacity: 0.6;
+      }
+
+      span {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        display: block;
+        background-color: #000;
+        margin: 2px auto 0;
+
+        &:first-child {
+          margin-top: 4px;
+        }
       }
     }
 
@@ -507,6 +520,22 @@
           .name {
             display: block;
           }
+        }
+      }
+    }
+  }
+
+  &.with-preview {
+
+    .wrapper {
+
+      .menu-handle {
+
+        span {
+          width: 5px;
+          height: 5px;
+          border: 1px solid rgba(255,255,255,1);
+          margin-top: 1px;
         }
       }
     }

@@ -1,7 +1,9 @@
 <template name="fragmentItem">
-  <div class="fragment-item {{#if isEditing}}in-modal{{/if}}" data-id={{_id}}>
+  <div class="fragment-item {{#if isEditing}}in-modal{{/if}} {{#if lead_image}}with-preview{{/if}}" data-id={{_id}}>
     <div class="wrapper">
-      <a href="#" class="menu-handle" data-menu>{{> iconDots}}</a>
+      {{#if currentUser}}
+        <a href="#" class="menu-handle" data-menu><span></span><span></span><span></span></a>
+      {{/if}}
       {{#if images}}
         <div class="images">
           {{#each images}}
