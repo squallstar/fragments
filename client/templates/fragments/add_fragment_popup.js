@@ -1,3 +1,5 @@
+// This is being used by the Chrome Plugin
+
 Template.addFragmentPopup.helpers({
   fragment: function () {
     return Fragments.findOne(Template.instance().fragmentId.get());
