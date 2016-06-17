@@ -39,3 +39,4 @@ velocity:console-reporter # Console reporter for testing
 lepozepo:s3               # S3 file upload
 thinksoftware:image-resize-client # Client side image resizing
 mantarayar:shortid        # Non-sequential unique id generator
+jparker:gravatar

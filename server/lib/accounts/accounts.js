@@ -40,6 +40,22 @@ Meteor.startup(function() {
       user.profile.picture = user.services.twitter.profile_image_url;
       user.profile.name = user.services.twitter.screenName;
     }
+    // Grap profile picture from gravatar
+    else {
+      var url = Gravatar.imageUrl(email, {
+        secure: true
+      });
+      var isGravatarUrl = true;
+      // Try to get picture if user doesn't have gravatar return 404
+      try {
+        HTTP.call('GET', url, {params: {d: 404}});
+      } catch (e) {
+        isGravatarUrl = false;
+      }
+      if (isGravatarUrl) {
+        user.profile.picture = url;
+      }
+    }
 
     // Set up default avatar
     if (!user.profile.picture) {
