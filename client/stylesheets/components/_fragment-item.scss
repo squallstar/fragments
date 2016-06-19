@@ -12,7 +12,7 @@
   top: 0;
   left: 0;
   padding: $grid-side-padding / 2;
-  width: 20%;
+  width: 12.5%;
 
   &.reduce-animations {
     @include transition(opacity 0.5s, transform 0.2s);
@@ -21,6 +21,14 @@
   &.appearing, &.removing {
     opacity: 0;
     transform: scale(0.4);
+  }
+
+  @include below (1900px) {
+    width: 16.666%;
+  }
+
+  @include below (1450px) {
+    width: 20%;
   }
 
   @include below (1150px) {
