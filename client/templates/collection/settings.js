@@ -33,6 +33,11 @@ Template.collectionSettings.events({
   },
   'click [data-delete]': function (event) {
     event.preventDefault();
+
+    if (!confirm('Are you sure you want to delete this collection?')) {
+      return;
+    }
+
     Meteor.call('collectionDelete', this.collection._id, function (error) {
       if (error) {
         return UINotification.error(error.reason);
@@ -44,6 +49,10 @@ Template.collectionSettings.events({
   },
   'click [data-remove-collaborator]': function (event, template) {
     event.preventDefault();
+
+    if (!confirm('Are you sure you want to remove this collaborator from accessing this collection?')) {
+      return;
+    }
 
     var collaboratorId = $(event.currentTarget).closest('tr').data('collaborator-id');
 

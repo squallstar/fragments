@@ -57,7 +57,7 @@
                   </td>
                   <td class="align-right">
                     {{#unless equals role 'owner'}}
-                      <a href="#" class="button" data-remove-collaborator onclick="return confirm('Are you sure you want to remove this collaborator from accessing this collection?')">Remove</a>
+                      <a href="#" class="button" data-remove-collaborator>Remove</a>
                     {{/unless}}
                   </td>
                 </tr>
@@ -69,7 +69,7 @@
       <hr />
       <div class="group">
         <input type="submit" class="button primary" value="Save changes"/>
-        <button class="button danger" data-delete onclick="return confirm('Are you sure?')">Delete collection</button>
+        <button class="button danger" data-delete>Delete collection</button>
       </div>
     </form>
   </div>

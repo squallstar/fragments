@@ -44,6 +44,10 @@
   margin-right: auto;
   max-width: 40%;
 
+  &:last-child {
+    margin-bottom: 4rem;
+  }
+
   @include below (1000px) {
     max-width: 400px;
   }
