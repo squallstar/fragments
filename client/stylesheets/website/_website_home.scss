@@ -114,31 +114,34 @@
     }
 
     .feature {
+      width: 100%;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 8rem;
+      margin-bottom: 3rem;
+
+      @include below ($break-phone) {
+        margin-bottom: 4rem;
+      }
 
       &:last-child {
         margin-bottom: 0;
       }
 
       .content {
-        flex: 1;
         width: 50%;
-        padding-left: 9rem;
-        padding-right: 7rem;
+        padding: 4rem;
 
         @include below ($break-phone) {
-          padding-left: 0;
-          padding-right: 0;
-          width: 60%;
-          flex: 0 1 auto;
+          width: 100%;
+          padding: 0;
         }
 
         h2 {
           font-size: 2rem;
           margin-bottom: 2rem;
+
+          @include below ($break-phone) {
+            margin-bottom: 1rem;
+          }
         }
 
         p {
@@ -148,17 +151,16 @@
 
       aside {
         flex: 1;
+        display: flex;
         width: 50%;
 
         @include below ($break-phone) {
-          display: flex;
-          justify-content: center;
-          width: 40%;
+          display: none;
         }
 
         .image {
-          width: 240px;
-          height: 100px;
+          width: 100%;
+          height: 100%;
           background: no-repeat center;
           background-size: contain;
 
@@ -169,15 +171,15 @@
       }
 
       &:nth-child(1) aside .image {
-        background-image: url(/assets/img/website/feature-expand.svg);
+        background-image: url(/assets/img/website/feature-links.png);
       }
 
       &:nth-child(2) aside .image {
-        background-image: url(/assets/img/website/feature-search.svg);
+        background-image: url(/assets/img/website/feature-search.png);
       }
 
       &:nth-child(3) aside .image {
-        background-image: url(/assets/img/website/feature-community.svg);
+        background-image: url(/assets/img/website/feature-collaborate.png);
       }
     }
   }
