@@ -102,11 +102,13 @@ Template.fragmentItem.events({
       icon: 'picture-o'
     });
 
-    actions.push({
-      label: 'Collections',
-      eventName: 'collections',
-      icon: 'tags'
-    });
+    if (Collections.find().count()) {
+      actions.push({
+        label: 'Collections',
+        eventName: 'collections',
+        icon: 'tags'
+      });
+    }
 
     if (!template.isShowingComments.get()) {
       actions.push({
