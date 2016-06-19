@@ -3,6 +3,26 @@ UI.setAutofocus(Template.headerUserTooltip, {
   sessionKey: USER_TOOLTIP_KEY
 });
 
+Template.headerUserTooltip.helpers({
+  rank: function () {
+    var count = Fragments.find().count();
+
+    if (!count) {
+      return false;
+    } else if (count < 4) {
+      return 'Bishop of Solitude';
+    } else if (count < 10) {
+      return 'Master of Silver';
+    } else if (count < 20) {
+      return 'Counselor of the Veil';
+    } else if (count < 50) {
+      return 'Baron of Toxins';
+    } else {
+      return 'Mother of Dragons';
+    }
+  }
+});
+
 Template.headerUserTooltip.events({
   'click a[data-upload-pic]' : function (event) {
     event.preventDefault();
