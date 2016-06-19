@@ -24,7 +24,7 @@ UINotification._enqueue = function (type, message, isSticky=false) {
 };
 
 UINotification.success = function (message) {
-  return Bert.alert(message, 'success');
+  return Bert.alert(message, typeof message === 'object' ? undefined : 'success');
 };
 
 UINotification.progress = function (message) {

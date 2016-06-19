@@ -234,7 +234,25 @@ Template.fragmentItem.events({
     // Wait for events to pop before destroying this item
     // https://github.com/meteor/meteor/issues/2981
     setTimeout(() => {
-      Meteor.call('fragmentDelete', fragment._id);
+      Meteor.call('fragmentDelete', fragment._id, function (err) {
+        if (err) {
+          return UINotification.error(err);
+        }
+
+        UINotification.success({
+          hideDelay: 5000,
+          type: 'info',
+          message: 'Deleted by mistake? <a href="#" data-undo>One-click Restore</a>',
+          icon: 'fa-trash-o'
+        });
+
+        window.setTimeout(function () {
+          $('.bert-content').one( 'click', (event) => {
+            event.preventDefault();
+            Meteor.call('fragmentUndo', fragment);
+          });
+        }, 300);
+      });
 
       if (fragment.images) {
         fragment.images.forEach(function (image) {

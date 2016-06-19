@@ -43,7 +43,7 @@ Template.login.events({
       requestPermissions: ['email']
     }, function (err) {
       if (err) {
-        UINotification.error(err);
+        UINotification.error(err.message || err);
       }
     });
   },
@@ -54,7 +54,7 @@ Template.login.events({
       requestPermissions: ['email']
     }, function (err) {
       if (err) {
-        UINotification.error(err);
+        UINotification.error(err.message || err);
       }
     });
   }
