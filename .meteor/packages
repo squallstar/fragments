@@ -11,7 +11,6 @@ blaze-html-templates      # Compile .html files into Meteor Blaze views
 session                   # Client-side reactive dictionary for your app
 jquery                    # Helpful client-side library
 tracker                   # Meteor's client-side reactive programming library
-standard-minifiers        # JS/CSS minifiers run for production mode
 es5-shim                  # ECMAScript 5 compatibility for older browsers.
 ecmascript                # Enable ECMAScript2015+ syntax in app code
 coffeescript              # Coffeescript
@@ -39,3 +38,5 @@ velocity:console-reporter # Console reporter for testing
 lepozepo:s3               # S3 file upload
 thinksoftware:image-resize-client # Client side image resizing
 mantarayar:shortid        # Non-sequential unique id generator
+standard-minifier-css     # Meteor CSS minifier
+standard-minifier-js      # Meteor JS minifier
