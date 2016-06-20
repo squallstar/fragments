@@ -3,7 +3,7 @@
   min-height: 100%;
 
   .row {
-    max-width: 960px;
+    max-width: 1120px;
   }
 
   .emotion {
@@ -17,6 +17,11 @@
     h2 {
       font-size: 3rem;
       margin-bottom: 3rem;
+
+      a {
+        text-decoration: none;
+        border-bottom: 1px dotted #AAA;
+      }
 
       @include below ($break-phone) {
         font-size: 2.3rem;

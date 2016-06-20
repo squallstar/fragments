@@ -25,12 +25,14 @@
   .actions {
     flex: 0 1 auto;
 
+    .button {
+      font-size: 1.3rem;
 
+      .transparent {
 
-    .transparent {
-
-      @include below ($break-phone) {
-        display: none;
+        @include below ($break-phone) {
+          display: none;
+        }
       }
     }
   }
