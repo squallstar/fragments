@@ -5,7 +5,6 @@
   "googleClientSecret": "your_google_secret_key",
   "twitterConsumerId": "your_twitter_consumer_id",
   "twitterConsumerSecret": "your_twitter_consumer_secret",
-  "kadiraKey": "your_kadira_key",
   "s3ClientId": "your_s3_client_id",
   "s3ClientSecret": "your_s3_client_secret",
   "s3BucketName": "your_s3_bucket_name",

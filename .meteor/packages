@@ -27,7 +27,6 @@ accounts-password         # Accounts with password
 accounts-google           # Accounts service: log in with Google
 accounts-twitter          # Accounts service: log in with Twitter
 service-configuration     # Helpers for configuring account services
-meteorhacks:kadira        # Analytics and performances analysis
 meteorhacks:aggregate     # Support for Mongo aggregate operations
 meteorhacks:ssr           # Server-side rendering
 differential:workers      # Workers
