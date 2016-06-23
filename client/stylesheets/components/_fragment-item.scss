@@ -71,6 +71,10 @@
         opacity: 0.6;
       }
 
+      .is-touch & {
+        display: block;
+      }
+
       span {
         width: 3px;
         height: 3px;
