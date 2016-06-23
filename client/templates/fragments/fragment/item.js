@@ -26,7 +26,7 @@ Template.fragmentItem.helpers({
     return Session.get(CURRENT_TAG_KEY);
   },
   canDisplayCollection: function (collection) {
-    return !!Collections.findOne(collection._id);
+    return collection && !!Collections.findOne(collection._id);
   },
   owner: function () {
     return this.user._id !== Meteor.userId() ? this.user : null;
