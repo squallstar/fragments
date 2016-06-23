@@ -9,23 +9,23 @@ Template.sidebarCollection.helpers({
   hasCollaborators: function () {
     return this.collaborators ? (this.collaborators.length > 1 ? this.collaborators.length : 0) : false;
   },
-  firstCollaborator: function () {
+  collaboratorsDescription: function () {
     if (!this.collaborators || this.collaborators.length < 2) {
       return;
     }
 
     var userId = Meteor.userId();
 
-    return _.find(this.collaborators, (c) => { return c._id !== userId }).name.split(' ')[0];
+    return _.map(
+      _.filter(this.collaborators, (c) => { return c._id !== userId }), (u) => {
+        return u.name.split(' ')[0];
+      }
+    ).join(', ');
   }
 });
 
 Template.sidebarCollection.events({
-  'click .icon-cog': function (event) {
-    event.preventDefault();
-    Router.go('collectionSettings', this);
-  },
-  'click .icon-bin': function (event) {
+  'click [data-leave-collection]': function (event) {
     event.preventDefault();
     event.stopPropagation();
 

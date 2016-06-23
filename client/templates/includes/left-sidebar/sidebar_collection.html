@@ -1,0 +1,28 @@
+<template name="sidebarCollection">
+  <li class="{{#if isCurrent}}current{{/if}}">
+    <div class="item collection">
+      <span style="background-color:{{color}}"></span>
+      <a class="content" href={{pathFor route='collection' data=this}} data-close>
+        <h4>{{name}}</h4>
+        {{#if hasCollaborators}}
+          <p>
+            {{#if between hasCollaborators 2 3}}
+              {{collaboratorsDescription}} and you
+            {{else}}
+              <i class="fa fa-users"></i> {{hasCollaborators}} people
+            {{/if}}
+          </p>
+        {{/if}}
+      </a>
+      {{#if isOwned}}
+        <a class="icon" href={{pathFor route='collectionSettings' data=this}} data-close>
+          <i class="fa fa-sliders"></i>
+        </a>
+      {{else}}
+        <a class="icon" href="#" data-close data-leave-collection>
+          <i class="fa fa-trash"></i>
+        </a>
+      {{/if}}
+    </div>
+  </li>
+</template>

@@ -54,11 +54,10 @@
       border-bottom: 1px solid #EEE;
       margin-bottom: -1px;
 
-      a {
+      .item {
         position: relative;
         display: flex;
         height: 100%;
-        text-decoration: none;
 
         span {
           @include transition(width 0.2s);
@@ -69,6 +68,7 @@
 
         .content {
           flex: 1;
+          text-decoration: none;
           height: 100%;
           padding-left: 1rem;
           display: flex;
@@ -78,7 +78,6 @@
           h4 {
             @extend %ellipsis;
             line-height: 1;
-
           }
 
           p {
@@ -89,44 +88,49 @@
           }
         }
 
-        svg {
-          display: none;
-          fill: rgba(0,0,0,0.2);
-          width: 20px;
-          height: 20px;
-          position: absolute;
-          top: 14px;
-          right: 8px;
+        .icon {
+          @include transition(background-color 0.2s);
+          width: 34px;
+          height: 100%;
+          text-align: center;
+          text-decoration: none;
 
-          &.icon-cog {
-            width: 16px;
-            height: 16px;
-          }
+          .fa {
+            @include transition(color 0.2s);
+            display: none;
+            color: #DEDEDE;
+            font-size: 1.6rem;
+            margin-top: 1.3rem;
 
-          &.icon-bin {
-            top: 12px;
+            &.fa-plus {
+              font-size: 1.5rem;
+              margin-top: 1.5rem;
+            }
           }
 
           &:hover {
-            fill: rgba(0,0,0,0.5);
+            background-color: #EFEFEF;
+
+            .fa {
+              color: #999;
+            }
           }
         }
 
         &.action {
 
-          svg {
-            display: block;
-          }
-
           h4 {
             color: #AAA;
           }
 
-          &:hover {
+          .icon {
 
-            svg {
-              fill: rgba(0,0,0,0.5);
+            .fa {
+              display: block;
             }
+          }
+
+          &:hover {
 
             h4 {
               color: #666;
@@ -136,19 +140,22 @@
 
         &:hover {
 
-          svg {
-            display: block;
+          .icon {
+
+            .fa {
+              display: block;
+            }
           }
         }
       }
 
-      &.current a.collection span, a:hover span {
+      &.current .collection span, .collection:hover span {
         width: 8px;
       }
 
       &.current {
 
-        a {
+        .content {
 
           h4 {
             font-weight: $bold;
