@@ -1,41 +1,37 @@
 # Meteor packages used by this project, one per line.
-# Check this file (and the other files in this directory) into your repository.
-#
-# 'meteor add' and 'meteor remove' will edit this file for you,
-# but you can also edit it by hand.
 
-meteor-base               # Packages every Meteor app needs to have
-mobile-experience         # Packages for a great mobile UX
-mongo                     # The database Meteor supports right now
-blaze-html-templates      # Compile .html files into Meteor Blaze views
-session                   # Client-side reactive dictionary for your app
-jquery                    # Helpful client-side library
-tracker                   # Meteor's client-side reactive programming library
-es5-shim                  # ECMAScript 5 compatibility for older browsers.
-ecmascript                # Enable ECMAScript2015+ syntax in app code
-coffeescript              # Coffeescript
-iron:router               # Application router
-check                     # Check whether a value matches a pattern
-audit-argument-checks     # Try to detect inadequate input sanitization
-fourseven:scss            # Support for SCSS
-matb33:collection-hooks   # Hooks when inserting/updating/etc data on Mongo
-reactive-var              # Reactive variables
-http                      # Making HTTP requests from the server
-momentjs:moment           # Datetime library
-accounts-base             # Accounts core
-accounts-password         # Accounts with password
-accounts-google           # Accounts service: log in with Google
-accounts-twitter          # Accounts service: log in with Twitter
-service-configuration     # Helpers for configuring account services
-meteorhacks:aggregate     # Support for Mongo aggregate operations
-meteorhacks:ssr           # Server-side rendering
-differential:workers      # Workers
-themeteorchef:bert        # Growl-style notifications
-lookback:seo              # SEO support for metadata
-sanjo:jasmine             # Jasmine test framework
-velocity:console-reporter # Console reporter for testing
-lepozepo:s3               # S3 file upload
+meteor-base@1.0.4                 # Packages every Meteor app needs to have
+mobile-experience@1.0.4           # Packages for a great mobile UX
+mongo@1.1.10                      # The database Meteor supports right now
+blaze-html-templates@1.0.4        # Compile .html files into Meteor Blaze views
+session@1.1.6                     # Client-side reactive dictionary for your app
+jquery@1.11.9                     # Helpful client-side library
+tracker@1.1.0                     # Meteor's client-side reactive programming library
+es5-shim@4.6.13                   # ECMAScript 5 compatibility for older browsers.
+ecmascript@0.5.7                  # Enable ECMAScript2015+ syntax in app code
+coffeescript@1.2.3                # Coffeescript
+iron:router                       # Application router
+check@1.2.3                       # Check whether a value matches a pattern
+audit-argument-checks@1.0.7       # Try to detect inadequate input sanitization
+fourseven:scss                    # Support for SCSS
+matb33:collection-hooks           # Hooks when inserting/updating/etc data on Mongo
+reactive-var@1.0.10               # Reactive variables
+http@1.2.8                        # Making HTTP requests from the server
+momentjs:moment                   # Datetime library
+accounts-base@1.2.9               # Accounts core
+accounts-password@1.2.12          # Accounts with password
+accounts-google@1.0.10            # Accounts service: log in with Google
+accounts-twitter@1.1.11           # Accounts service: log in with Twitter
+service-configuration@1.0.10      # Helpers for configuring account services
+meteorhacks:aggregate             # Support for Mongo aggregate operations
+meteorhacks:ssr                   # Server-side rendering
+differential:workers              # Workers
+themeteorchef:bert                # Growl-style notifications
+lookback:seo                      # SEO support for metadata
+sanjo:jasmine                     # Jasmine test framework
+velocity:console-reporter         # Console reporter for testing
+lepozepo:s3                       # S3 file upload
 thinksoftware:image-resize-client # Client side image resizing
-mantarayar:shortid        # Non-sequential unique id generator
-standard-minifier-css     # Meteor CSS minifier
-standard-minifier-js      # Meteor JS minifier
+mantarayar:shortid                # Non-sequential unique id generator
+standard-minifier-css@1.1.8       # Meteor CSS minifier
+standard-minifier-js@1.1.8        # Meteor JS minifier
