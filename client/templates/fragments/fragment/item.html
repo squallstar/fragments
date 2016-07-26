@@ -16,6 +16,12 @@
               {{/if}}
               <a href="#" data-remove-thumbnail>Remove preview</a>
             </div>
+          {{else}}
+            {{#if url}}
+              <a class="view-link" href="{{url}}" target="_blank" title="View {{domain}}">
+                <span><i class="fa fa-globe"></i></span>
+              </a>
+            {{/if}}
           {{/if}}
         </div>
       {{/if}}

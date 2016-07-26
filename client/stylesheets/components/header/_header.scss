@@ -91,11 +91,15 @@
   .search-bar {
     display: flex;
     margin: 10px 0;
-    background: #F5F5F5;
+    background-color: #F5F5F5;
     border-radius: 4px;
     height: 40px;
     white-space: nowrap;
     overflow: hidden;
+
+    @include below ($break-phone) {
+      background-color: transparent;
+    }
 
     .search-icon {
       fill: rgba(0,0,0,0.3);
@@ -296,6 +300,10 @@
 
     .search-bar {
       background-color: #FFF;
+
+      @include below ($break-phone) {
+        background-color: transparent;
+      }
     }
   }
 }
