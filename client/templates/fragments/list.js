@@ -1,5 +1,5 @@
 const PREFETCH_HEIGHT = 450; // px
-const SCROLL_THROTTLE = 250; // ms
+const SCROLL_THROTTLE = 200; // ms
 const APPEAR_DELAY = 150; // ms
 const DISAPPEAR_DELAY = 450; // ms
 
@@ -55,6 +55,13 @@ var onWindowScroll = function (event) {
   var offset = $window.scrollTop(),
       viewportHeight = $window.height(),
       contentHeight = parseInt($list.height() || $list.css('height'));
+
+  $list.find('.fragment-item').each(function () {
+    var top = parseInt(this.style.top);
+    var visibility = (offset - top) > 500 || top > (offset + viewportHeight + 500) ? 'hidden' : 'visible';
+
+    this.style.visibility = visibility;
+  });
 
   if (offset < (contentHeight - viewportHeight - PREFETCH_HEIGHT)) {
     return;
