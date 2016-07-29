@@ -55,6 +55,7 @@
       margin-bottom: -1px;
 
       .item {
+        @include transition(background-color 0.2s);
         position: relative;
         display: flex;
         height: 100%;
@@ -62,11 +63,12 @@
         span {
           @include transition(width 0.2s);
           flex: 0 1 auto;
-          width: 4px;
+          width: 6px;
           height: 100%;
         }
 
         .content {
+          @include transition(opacity 0.2s);
           flex: 1;
           text-decoration: none;
           height: 100%;
@@ -98,7 +100,7 @@
           .fa {
             @include transition(color 0.2s);
             display: none;
-            color: #DEDEDE;
+            color: rgba(0,0,0,0.3);
             font-size: 1.6rem;
             margin-top: 1.3rem;
 
@@ -109,10 +111,9 @@
           }
 
           &:hover {
-            background-color: #EFEFEF;
 
             .fa {
-              color: #999;
+              color: rgba(0,0,0,0.8);
             }
           }
         }
@@ -150,7 +151,7 @@
       }
 
       &.current .collection span, .collection:hover span {
-        width: 8px;
+        width: 12px;
       }
 
       &.current {
