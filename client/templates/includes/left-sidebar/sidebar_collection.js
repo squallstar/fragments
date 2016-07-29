@@ -29,6 +29,10 @@ Template.sidebarCollection.events({
     var $el = $(event.target),
         color = $el.find('> span').css('background-color');
 
+    if ($el.closest('li').hasClass('current')) {
+      return;
+    }
+
     if (color) {
       $el.css('background-color', shadeColor(rgb2hex(color), 0.8));
     }

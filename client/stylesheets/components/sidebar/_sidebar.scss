@@ -55,7 +55,7 @@
       margin-bottom: -1px;
 
       .item {
-        @include transition(background-color 0.2s);
+        @include transition(background-color 0.4s);
         position: relative;
         display: flex;
         height: 100%;

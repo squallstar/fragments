@@ -30,6 +30,8 @@ Template.userNotification.events({
   'click li': function (event, template) {
     var fragment = template.fragment.get();
 
+    Meteor.call('markNotificationAsRead', template.data._id);
+
     if (fragment) {
       let data = { text: 'fragment:' + fragment._id },
           opts = {};
@@ -41,8 +43,6 @@ Template.userNotification.events({
       Session.set(RIGHT_SIDEBAR_OPEN_KEY, false);
       Session.set(CURRENT_COLLECTION_KEY, null);
       Session.set(CURRENT_TAG_KEY, null);
-
-      Meteor.call('markNotificationAsRead', fragment._id);
 
       Router.go('searchResults', data, opts);
     }
