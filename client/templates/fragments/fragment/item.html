@@ -1,95 +1,121 @@
 <template name="fragmentItem">
-  <div class="fragment-item {{#if isEditing}}in-modal{{/if}} {{#if lead_image}}with-preview{{/if}}" data-id={{_id}}>
-    <div class="wrapper">
-      {{#if currentUser}}
-        <a href="#" class="menu-handle" data-menu><span></span><span></span><span></span></a>
-      {{/if}}
-      {{#if images}}
-        <div class="images">
-          {{#each images}}
-            <div class="img {{#if equals ../lead_image url}}lead{{/if}}" data-url={{url}}, style="{{#if equals ../lead_image url}}background-image:url({{url}}){{/if}}"></div>
-          {{/each}}
-          {{#if isEditing}}
-            <div class="actions">
-              {{#if hasMany images}}
-                <a href="#" data-next-thumbnail>Next image</a>
-              {{/if}}
-              <a href="#" data-remove-thumbnail>Remove preview</a>
-            </div>
-          {{else}}
-            {{#if url}}
-              <a class="view-link" href="{{url}}" target="_blank" title="View {{domain}}">
-                <span><i class="fa fa-globe"></i></span>
-              </a>
-            {{/if}}
-          {{/if}}
-        </div>
-      {{/if}}
-      <div class="content">
-        {{#if isFetching}}{{> progressBar}}{{/if}}
-
-        <h2 data-title data-save-on-return contenteditable={{isEditing}}>{{{title}}}</h2>
-        <p data-description data-save-on-return contenteditable={{isEditing}}>{{{description}}}</p>
-        <div class="tags">
-          {{#if owner}}
-            <div class="tag picture" style="background-image:url({{owner.picture}})"></div>
-          {{/if}}
-          {{#each tags}}
-            <a class="tag {{#if isEditing}}can-be-removed{{/if}}{{#if equals currentTag this}}current{{/if}}" href="#" data-value={{this}}>{{this}}{{#if isEditing}}<span>+</span>{{/if}}</a>
-          {{/each}}
-          {{#if isAddingTag}}
-            <span class="tag" data-new-tag contenteditable=true></span>
-          {{else}}
+  {{#unless isListView}}
+    <div class="fragment-item {{#if isEditing}}in-modal{{/if}} {{#if lead_image}}with-preview{{/if}}" data-id={{_id}}>
+      <div class="wrapper">
+        {{#if currentUser}}
+          <a href="#" class="menu-handle" data-menu><span></span><span></span><span></span></a>
+        {{/if}}
+        {{#if images}}
+          <div class="images">
+            {{#each images}}
+              <div class="img {{#if equals ../lead_image url}}lead{{/if}}" data-url={{url}}, style="{{#if equals ../lead_image url}}background-image:url({{url}}){{/if}}"></div>
+            {{/each}}
             {{#if isEditing}}
-              <a href="#" class="tag" data-add-tag>+ Tag</a>
+              <div class="actions">
+                {{#if hasMany images}}
+                  <a href="#" data-next-thumbnail>Next image</a>
+                {{/if}}
+                <a href="#" data-remove-thumbnail>Remove preview</a>
+              </div>
+            {{else}}
+              {{#if url}}
+                <a class="view-link" href="{{url}}" target="_blank" title="View {{domain}}">
+                  <span><i class="fa fa-globe"></i></span>
+                </a>
+              {{/if}}
+            {{/if}}
+          </div>
+        {{/if}}
+        <div class="content">
+          {{#if isFetching}}{{> progressBar}}{{/if}}
+
+          <h2 data-title data-save-on-return contenteditable={{isEditing}}>{{{title}}}</h2>
+          <p data-description data-save-on-return contenteditable={{isEditing}}>{{{description}}}</p>
+          <div class="tags">
+            {{#if owner}}
+              <div class="tag picture" style="background-image:url({{owner.picture}})"></div>
+            {{/if}}
+            {{#each tags}}
+              <a class="tag {{#if isEditing}}can-be-removed{{/if}}{{#if equals currentTag this}}current{{/if}}" href="#" data-value={{this}}>{{this}}{{#if isEditing}}<span>+</span>{{/if}}</a>
+            {{/each}}
+            {{#if isAddingTag}}
+              <span class="tag" data-new-tag contenteditable=true></span>
+            {{else}}
+              {{#if isEditing}}
+                <a href="#" class="tag" data-add-tag>+ Tag</a>
+              {{/if}}
+            {{/if}}
+          </div>
+          {{#if isShowingComments}}
+            <div class="comments">
+              <ul>
+                {{#each comments}}
+                  <li>
+                    <aside>
+                      <img alt={{user.name}} src={{user.picture}} />
+                    </aside>
+                    <div class="text">
+                      <p>{{text}}</p>
+                      <div class="time">{{user.name}} &bull; {{timeAgo created_at}}</div>
+                    </div>
+                  </li>
+                {{/each}}
+                {{#if currentUser}}
+                  <li class="add">
+                    <aside>
+                      <img alt={{currentUser.profile.name}} src={{currentUser.profile.picture}} />
+                    </aside>
+                    <div class="text">
+                      <input type="text" name="add-comment" placeholder="Write something..." />
+                    </div>
+                  </li>
+                {{/if}}
+              </ul>
+            </div>
+          {{else}}
+            {{#if commentsCount}}
+              <div class="comments">
+                <a href="#" data-show-comments>{{commentsCount}} {{pluralize 'comment' commentsCount}} <i class="fa fa-commenting-o"></i> <span>(Show)</span></a>
+              </div>
             {{/if}}
           {{/if}}
+          {{#if url}}
+            <a class="link" href={{url}} target="_blank">{{domain}} <i class="fa fa-external-link"></i></a>
+          {{/if}}
+          <div class="date">{{timeAgo created_at}} <i class="fa fa-clock-o"></i></div>
         </div>
-        {{#if isShowingComments}}
-          <div class="comments">
-            <ul>
-              {{#each comments}}
-                <li>
-                  <aside>
-                    <img alt={{user.name}} src={{user.picture}} />
-                  </aside>
-                  <div class="text">
-                    <p>{{text}}</p>
-                    <div class="time">{{user.name}} &bull; {{timeAgo created_at}}</div>
-                  </div>
-                </li>
-              {{/each}}
-              {{#if currentUser}}
-                <li class="add">
-                  <aside>
-                    <img alt={{currentUser.profile.name}} src={{currentUser.profile.picture}} />
-                  </aside>
-                  <div class="text">
-                    <input type="text" name="add-comment" placeholder="Write something..." />
-                  </div>
-                </li>
-              {{/if}}
-            </ul>
-          </div>
-        {{else}}
-          {{#if commentsCount}}
-            <div class="comments">
-              <a href="#" data-show-comments>{{commentsCount}} {{pluralize 'comment' commentsCount}} <i class="fa fa-commenting-o"></i> <span>(Show)</span></a>
-            </div>
-          {{/if}}
-        {{/if}}
-        {{#if url}}
-          <a class="link" href={{url}} target="_blank">{{domain}} <i class="fa fa-external-link"></i></a>
-        {{/if}}
-        <div class="date">{{timeAgo created_at}} <i class="fa fa-clock-o"></i></div>
+        <ul class="collections">
+          {{#each collections}}
+            {{#if canDisplayCollection this}}
+             {{> fragmentItemCollection}}
+            {{/if}}
+          {{/each}}
+        </ul>
       </div>
-      <ul class="collections">
-        {{#each collections}}
-          {{#if canDisplayCollection this}}
-           {{> fragmentItemCollection}}
-          {{/if}}
-        {{/each}}
-      </ul>
     </div>
-  </div>
+  {{else}}
+    <tr class="fragment-row" data-id={{_id}}>
+      <td>
+        <h2 data-title data-save-on-return contenteditable={{isEditing}}>{{{title}}}</h2>
+        {{#if url}}
+          <a class="link" href={{url}} target="_blank">{{domain}}</a>
+        {{/if}}
+        <span class="time">{{timeAgo created_at}}</span>
+      </td>
+      <td>
+        {{#each tags}}
+          <a class="tag {{#if isEditing}}can-be-removed{{/if}}{{#if equals currentTag this}}current{{/if}}" href="#" data-value={{this}}>{{this}}{{#if isEditing}}<span>+</span>{{/if}}</a>
+        {{/each}}
+      </td>
+      <td>
+        <ul class="collections">
+          {{#each collections}}
+            {{#if canDisplayCollection this}}
+             {{> fragmentItemCollection}}
+            {{/if}}
+          {{/each}}
+        </ul>
+      </td>
+    </tr>
+  {{/unless}}
 </template>

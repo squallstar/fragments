@@ -1,4 +1,7 @@
 Template.fragmentItem.helpers({
+  isListView: function () {
+    return Session.get(LIST_VIEW_MODE) === 'list';
+  },
   isFetching: function () {
     return this.fetched_at === null;
   },
@@ -72,7 +75,8 @@ Template.fragmentItem.events({
 
     let actions = [],
         userId = Meteor.userId(),
-        currentCollection;
+        currentCollection,
+        isListView = Session.get(LIST_VIEW_MODE) === 'list';
 
     if (!userId) {
       return; // user not logged in
@@ -90,17 +94,19 @@ Template.fragmentItem.events({
       }
     }
 
-    if (!template.isEditing.get()) {
-      actions.push({ label: 'Edit', eventName: 'edit', icon: 'pencil' });
-    } else {
-      actions.push({ label: 'Done editing', eventName: 'edit-close', icon: 'check' });
-    }
+    if (!isListView) {
+      if (!template.isEditing.get()) {
+        actions.push({ label: 'Edit', eventName: 'edit', icon: 'pencil' });
+      } else {
+        actions.push({ label: 'Done editing', eventName: 'edit-close', icon: 'check' });
+      }
 
-    actions.push({
-      label: 'Upload thumbnail',
-      eventName: 'thumbnail',
-      icon: 'picture-o'
-    });
+      actions.push({
+        label: 'Upload thumbnail',
+        eventName: 'thumbnail',
+        icon: 'picture-o'
+      });
+    }
 
     if (Collections.find().count()) {
       actions.push({
@@ -110,18 +116,20 @@ Template.fragmentItem.events({
       });
     }
 
-    if (!template.isShowingComments.get()) {
-      actions.push({
-        label: 'Add comment',
-        eventName: 'comment',
-        icon: 'commenting'
-      });
-    } else {
-      actions.push({
-        label: 'Hide comments',
-        eventName: 'hide-comments',
-        icon: 'commenting-o'
-      });
+    if (!isListView) {
+      if (!template.isShowingComments.get()) {
+        actions.push({
+          label: 'Add comment',
+          eventName: 'comment',
+          icon: 'commenting'
+        });
+      } else {
+        actions.push({
+          label: 'Hide comments',
+          eventName: 'hide-comments',
+          icon: 'commenting-o'
+        });
+      }
     }
 
     // TODO: only when collection is owned
@@ -232,6 +240,8 @@ Template.fragmentItem.events({
   'delete': function () {
     Session.set(MODAL_VISIBLE_KEY, false);
     var fragment = Template.instance().data;
+
+    console.log(fragment)
 
     // Wait for events to pop before destroying this item
     // https://github.com/meteor/meteor/issues/2981

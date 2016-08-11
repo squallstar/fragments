@@ -12,7 +12,14 @@
       {{/if}}
     {{/if}}
   {{/if}}
-  <div class="fragments-list stretch-half">
+  <div class="fragments-list {{#if isListView}}list-view{{/if}}">
+    {{#if isListView}}
+      <thead>
+        <th>Title &amp; URL</th>
+        <th>Tags</th>
+        <th>Collections</th>
+      </thead>
+    {{/if}}
     {{#if displaySubmitForm}}{{> fragmentSubmit }}{{/if}}
     {{#each fragments}}
       {{> fragmentItem}}

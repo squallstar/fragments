@@ -1,35 +1,45 @@
 <template name="fragmentSubmit">
-  <div class="fragment-item submit">
-    <div class="wrapper">
-      <div class="content">
-        <form>
-          <input type="text" name="url" placeholder="e.g. example.org" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" />
-          {{#if currentTag}}
-            <ul class="tags">
-              <li class="tag">+ {{currentTag}}</li>
-            </ul>
-          {{else}}
-            <label for="body">
-              Save new
-              {{#if isNote}}
-                note <i class="fa fa-file-text-o"></i>
-              {{else}}
-                link
-              {{/if}}
-              {{#if currentCollection}}
-                under <strong>{{currentCollection.name}}</strong>
-              {{/if}}
-            </label>
-          {{/if}}
-        </form>
+  {{#unless isListView}}
+    <div class="fragment-item submit">
+      <div class="wrapper">
+        <div class="content">
+          <form>
+            <input type="text" name="url" placeholder="e.g. example.org" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" />
+            {{#if currentTag}}
+              <ul class="tags">
+                <li class="tag">+ {{currentTag}}</li>
+              </ul>
+            {{else}}
+              <label for="body">
+                Save new
+                {{#if isNote}}
+                  note <i class="fa fa-file-text-o"></i>
+                {{else}}
+                  link
+                {{/if}}
+                {{#if currentCollection}}
+                  under <strong>{{currentCollection.name}}</strong>
+                {{/if}}
+              </label>
+            {{/if}}
+          </form>
+        </div>
+        {{#if currentCollection}}
+        <ul class="collections">
+          {{#with currentCollection}}
+            {{> fragmentItemCollection}}
+          {{/with}}
+        </ul>
+        {{/if}}
       </div>
-      {{#if currentCollection}}
-      <ul class="collections">
-        {{#with currentCollection}}
-          {{> fragmentItemCollection}}
-        {{/with}}
-      </ul>
-      {{/if}}
     </div>
-  </div>
+  {{else}}
+    <tr class="fragment-row">
+      <td colspan="4">
+        <form>
+          <input type="text" name="url" placeholder="Type a new URL here" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        </form>
+      </td>
+    </tr>
+  {{/unless}}
 </template>

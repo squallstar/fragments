@@ -14,5 +14,6 @@ MODAL_VISIBLE_KEY         = 'modal-is-visible';
 CURRENT_CONTEXTUAL_MENU   = 'current-contextual-menu';
 COLLABORATE_TOKEN         = 'collection-collaborate-token';
 FORCE_LAYOUT_RECOLLECT    = 'force-layout-recollect';
+LIST_VIEW_MODE            = 'layout-list-view';
 
 PAGE_SIZE = 15; // items per page

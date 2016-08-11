@@ -10,6 +10,9 @@ Template.fragmentSubmit.onRendered(function () {
 });
 
 Template.fragmentSubmit.helpers({
+  isListView: function () {
+    return Session.get(LIST_VIEW_MODE) === 'list';
+  },
   errorMessage: function(field) {
     return Session.get('fragmentSubmitErrors')[field];
   },

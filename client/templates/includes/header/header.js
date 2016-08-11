@@ -17,6 +17,9 @@ Template.header.helpers({
       return COLOR_THEMES[collection.color];
     }
   },
+  isListView: function () {
+    return Session.get(LIST_VIEW_MODE) === 'list';
+  },
   collectionOwner: function () {
     var collection = Session.get(CURRENT_COLLECTION_KEY),
         userId = Meteor.userId(),
@@ -60,6 +63,10 @@ Template.header.events({
     } else {
       Session.set(SIDEBAR_OPEN_KEY, true);
     }
+  },
+  'click [data-mode]': function (event) {
+    event.preventDefault();
+    Session.set(LIST_VIEW_MODE, $(event.currentTarget).data('mode'));
   }
 });
 

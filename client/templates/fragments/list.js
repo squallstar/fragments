@@ -21,6 +21,9 @@ Template.fragmentsList.helpers({
   isEmpty: function () {
     return !Template.instance().fragments.count();
   },
+  isListView: function () {
+    return Session.get(LIST_VIEW_MODE) === 'list';
+  },
   displaySubmitForm: function () {
     var userId = Meteor.userId();
 

@@ -25,6 +25,11 @@
       </div>
       <div class="right-section">
         <div>
+          <div class="display-toggle">
+            <a href="#" class="{{#unless isListView}}active{{/unless}}" data-mode="grid">Grid</a>
+            <a href="#" class="{{#if isListView}}active{{/if}}" data-mode="list">List</a>
+          </div>
+          <div class="spacer"></div>
           {{#if currentUser}}
             <div class="notifications">
               <a href="#" data-toggle-notifications class="handle {{#if unreadNotificationsCount}}unread{{/if}}">
