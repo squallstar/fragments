@@ -119,6 +119,44 @@ Template.fragmentsList.onDestroyed(function () {
   $(window).off('scroll', throttledScroll);
 });
 
+Template.fragmentsList.events({
+  'drag, dragstart, dragend, dragover, dragenter, dragleave, drop': function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  },
+  'dragover, dragenter': function (event) {
+    $(event.delegateTarget).addClass('dragging');
+  },
+  'dragleave, dragend, drop': function (event) {
+    $(event.delegateTarget).removeClass('dragging');
+  },
+  'drop': function (event) {
+    var file = event.originalEvent.dataTransfer.files[0];
+    if (!file) {
+      return;
+    }
+
+    Session.set(APP_BUSY_KEY, true);
+
+    S3.upload({
+      files: [file],
+      path: 'u/' + Meteor.userId() + '/f'
+    }, function(error, result) {
+      if (!error && result) {
+        Session.set(APP_BUSY_KEY, false);
+        Meteor.call('fragmentInsert', {
+          title: file.name,
+          url: result.secure_url
+        }, (error, fragmentId) => {
+          Session.set(APP_BUSY_KEY, false);
+        });
+      } else {
+        Session.set(APP_BUSY_KEY, false);
+      }
+    });
+  }
+})
+
 Template.fragmentsList.onRendered(function () {
   // setup masonry
   var selector = '.fragments-list',
