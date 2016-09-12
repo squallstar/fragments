@@ -3,6 +3,8 @@ const SCROLL_THROTTLE = 250; // ms
 const APPEAR_DELAY = 150; // ms
 const DISAPPEAR_DELAY = 450; // ms
 
+const MAX_FILE_SIZE = 10; // Mb
+
 Template.fragmentsList.helpers({
   // the fragments cursor
   fragments: function () {
@@ -134,6 +136,12 @@ Template.fragmentsList.events({
     var file = event.originalEvent.dataTransfer.files[0];
     if (!file) {
       return;
+    }
+
+    var mbSize = Math.round(file.size / 1048576);
+
+    if (mbSize > MAX_FILE_SIZE) {
+      return alert('Uploading files is limited to ' + MAX_FILE_SIZE + 'Mb. You uploaded a ' + mbSize + 'Mb file.');
     }
 
     Session.set(APP_BUSY_KEY, true);
