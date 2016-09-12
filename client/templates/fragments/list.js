@@ -145,8 +145,19 @@ Template.fragmentsList.events({
       if (!error && result) {
         Session.set(APP_BUSY_KEY, false);
         Meteor.call('fragmentInsert', {
-          title: file.name,
-          url: result.secure_url
+          title: file.name.replace(/\.([A-z]{3,4})$/, ''),
+          url: result.secure_url,
+          domain: 'fragments.me',
+          lead_image: result.secure_url,
+          images: [{
+            url: result.secure_url,
+            color: undefined,
+            s3: {
+              url: result.relative_url
+            }
+          }],
+          tags: ['Files'],
+          fetched_at: Date.now()
         }, (error, fragmentId) => {
           Session.set(APP_BUSY_KEY, false);
         });
