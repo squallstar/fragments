@@ -313,7 +313,7 @@ Template.fragmentItem.events({
   'click .tag.can-be-removed': function (event) {
     event.preventDefault();
     event.stopPropagation();
-    var tag = $(event.currentTarget).data('value');
+    var tag = $(event.currentTarget).data('value').toString();
     var fragmentId = Template.instance().data._id;
 
     Meteor.call('fragmentApplyChanges', fragmentId, 'pull', 'tags', tag);
