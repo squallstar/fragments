@@ -48,7 +48,7 @@ Meteor.startup(function() {
 
     // Set up default name
     if (!user.profile.name) {
-      user.profile.name = user.emails[0].address;
+      user.profile.name = user.emails ? user.emails[0].address : 'User';
     }
 
     // Creates some basic stuff for the user, like sample collections and cards
