@@ -11,6 +11,10 @@ Template.fragmentItem.helpers({
   isShowingComments: function () {
     return Template.instance().isShowingComments.get();
   },
+  isArchived: function () {
+    var archived = Template.instance().data.archived;
+    return archived && archived.indexOf(Meteor.userId()) !== -1;
+  },
   comments: function () {
     var instance = Template.instance();
 
