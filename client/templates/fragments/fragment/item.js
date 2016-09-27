@@ -129,8 +129,12 @@ Template.fragmentItem.events({
       (!fragment.archived || fragment.archived.indexOf(Meteor.userId()) === -1)
       && fragment.collections && fragment.collections.length
     ) {
+      let collectionsLabel = fragment.collections.length === 1
+        ? fragment.collections[0].name
+        : `${fragment.collections.length} collections`;
+
       actions.push({
-        label: 'Archive',
+        label: `Archive to ${collectionsLabel}`,
         eventName: 'archive',
         icon: 'check'
       });
