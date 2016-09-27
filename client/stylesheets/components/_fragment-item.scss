@@ -290,8 +290,11 @@
         }
 
         i {
-          display: none;
           vertical-align: middle;
+
+          &:first-of-type {
+            display: none;
+          }
         }
 
         &:hover {

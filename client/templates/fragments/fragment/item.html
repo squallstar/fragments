@@ -81,7 +81,10 @@
         {{#if url}}
           <a class="link" href={{url}} target="_blank">{{domain}} <i class="fa fa-external-link"></i></a>
         {{/if}}
-        <div class="date">{{timeAgo created_at}} <i class="fa fa-clock-o"></i></div>
+        <div class="date">
+          {{timeAgo created_at}} <i class="fa fa-clock-o"></i>
+          {{#if archived}} - <strong>Archived</strong> <i class="fa fa-check"></i>{{/if}}
+        </div>
       </div>
       <ul class="collections">
         {{#each collections}}

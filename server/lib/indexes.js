@@ -3,6 +3,7 @@ Meteor.startup(function () {
   Fragments._ensureIndex({ created_at: 1 });
   Fragments._ensureIndex({ user: 1 });
   Fragments._ensureIndex({ tags: 1 });
+  Fragments._ensureIndex({ archived: 1 });
   Fragments._ensureIndex({ 'collections._id': 1 });
   Fragments._ensureIndex({
     title: 'text',

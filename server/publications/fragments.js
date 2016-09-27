@@ -83,6 +83,12 @@ Meteor.publish('fragments', function (options) {
     }
   }
 
+  if (!query.$text && query.$or) {
+    query.$or.forEach(($or) => {
+      $or['archived'] = { $ne: this.userId };
+    });
+  }
+
   return Fragments.find(query, {
     sort: options.sort,
     limit: options.limit

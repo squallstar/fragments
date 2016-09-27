@@ -72,6 +72,7 @@ Template.fragmentItem.events({
 
     let actions = [],
         userId = Meteor.userId(),
+        fragment = template.data,
         currentCollection;
 
     if (!userId) {
@@ -121,6 +122,17 @@ Template.fragmentItem.events({
         label: 'Hide comments',
         eventName: 'hide-comments',
         icon: 'commenting-o'
+      });
+    }
+
+    if (
+      (!fragment.archived || fragment.archived.indexOf(Meteor.userId()) === -1)
+      && fragment.collections && fragment.collections.length
+    ) {
+      actions.push({
+        label: 'Archive',
+        eventName: 'archive',
+        icon: 'check'
       });
     }
 
@@ -184,6 +196,9 @@ Template.fragmentItem.events({
     });
 
     $input.trigger('click');
+  },
+  'archive': function (event, template) {
+    Meteor.call('fragmentArchive', template.data._id);
   },
   'comment, click a[data-show-comments]': function (event, template) {
     event.preventDefault();
