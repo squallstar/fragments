@@ -5,7 +5,11 @@
       <hr />
       <div class="group">
         <label for="f-name">Collection name</label>
-        <input id="f-name" type="text" name="name" value={{collection.name}} placeholder="Collection name" />
+        <input id="f-name" type="text" name="name" value={{collection.name}} placeholder="Collection name" maxlength="32" />
+      </div>
+      <div class="group">
+        <label for="f-description">Collection description</label>
+        <input id="f-description" type="text" name="description" value={{collection.description}} maxlength="32" />
       </div>
       <div class="group">
         <label>Collection colour</label>

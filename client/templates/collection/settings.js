@@ -18,6 +18,7 @@ Template.collectionSettings.events({
 
     var attributes = {
       name: template.$('input[name="name"]').val().trim(),
+      description: template.$('input[name="description"]').val().trim(),
       color: $('input[name="color"]:checked').val(),
       is_hidden: !$('input[name="is_visible"]').is(':checked'),
       is_public: $('input[name="is_public"]').is(':checked')

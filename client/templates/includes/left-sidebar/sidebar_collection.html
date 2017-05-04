@@ -7,11 +7,15 @@
         {{#if hasCollaborators}}
           <p>
             {{#if between hasCollaborators 2 3}}
-              {{collaboratorsDescription}} and you
+              <i class="fa fa-users"></i> {{collaboratorsDescription}} and you
             {{else}}
               <i class="fa fa-users"></i> {{hasCollaborators}} people
             {{/if}}
           </p>
+        {{else}}
+          {{#if description}}
+            <p><i class="fa fa-commenting-o"></i> {{description}}</p>
+          {{/if}}
         {{/if}}
       </a>
       {{#if isOwned}}
