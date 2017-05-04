@@ -139,4 +139,12 @@
       }
     }
   }
+
+  &.left {
+
+    ul li ul {
+      left: auto;
+      right: 95%;
+    }
+  }
 }

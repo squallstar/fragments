@@ -1,5 +1,5 @@
 <template name="contextualMenu">
-  <div class="contextual-menu {{#if isOpen}}open{{/if}}" style="top: {{positionY}}px; left: {{positionX}}px">
+  <div class="contextual-menu {{#if isOpen}}open{{/if}} {{#if isLeftSide}}left{{/if}}" style="top: {{positionY}}px; left: {{positionX}}px">
     <ul>
       {{#each actions}}
         {{> menuAction}}
