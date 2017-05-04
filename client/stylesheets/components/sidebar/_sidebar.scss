@@ -80,6 +80,7 @@
           h4 {
             @extend %ellipsis;
             line-height: 1;
+            max-width: 200px;
           }
 
           p {
@@ -87,6 +88,7 @@
             font-size: 1rem;
             margin: 4px 0 0 0;
             line-height: 1;
+            max-width: 200px;
           }
         }
 

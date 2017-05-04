@@ -11,6 +11,9 @@
             {{else}}
               <i class="fa fa-users"></i> {{hasCollaborators}} people
             {{/if}}
+            {{#if description}}
+              - <i class="fa fa-commenting-o"></i> {{description}}
+            {{/if}}
           </p>
         {{else}}
           {{#if description}}
