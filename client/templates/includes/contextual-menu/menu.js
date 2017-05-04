@@ -47,25 +47,29 @@ Template.contextualMenu.helpers({
     return Template.instance().position.get().y;
   },
   actions: function () {
-    return Template.instance().actions;
+    return Template.instance().actions.list();
   }
 });
 
 Template.contextualMenu.onCreated(function () {
   this.isOpen = new ReactiveVar(false);
   this.position = new ReactiveVar({ x: 0, y: 0 });
+  this.actions = new ReactiveArray();
 
   this.autorun(() => {
     this.isOpen.set(false);
 
     let menu = Session.get(CURRENT_CONTEXTUAL_MENU);
 
-    if (!menu) {
+    if (!menu || !menu.actions.length) {
       return;
     }
 
     // Data
-    this.actions = menu.actions;
+    this.actions.clear();
+    menu.actions.forEach((action) => {
+      this.actions.push(action);
+    });
 
     // Update reactive vars
     this.position.set(menu.position);

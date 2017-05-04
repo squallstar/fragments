@@ -16,10 +16,11 @@ audit-argument-checks@1.0.7       # Try to detect inadequate input sanitization
 fourseven:scss                    # Support for SCSS
 matb33:collection-hooks           # Hooks when inserting/updating/etc data on Mongo
 reactive-var@1.0.10               # Reactive variables
+manuel:reactivearray              # Reactive arrays
 http@1.2.9                        # Making HTTP requests from the server
 momentjs:moment                   # Datetime library
-accounts-base@1.2.11               # Accounts core
-accounts-password@1.3.0          # Accounts with password
+accounts-base@1.2.11              # Accounts core
+accounts-password@1.3.0           # Accounts with password
 accounts-google@1.0.10            # Accounts service: log in with Google
 accounts-twitter@1.1.11           # Accounts service: log in with Twitter
 service-configuration@1.0.10      # Helpers for configuring account services
@@ -35,4 +36,4 @@ thinksoftware:image-resize-client # Client side image resizing
 mantarayar:shortid                # Non-sequential unique id generator
 standard-minifier-css@1.2.0       # Meteor CSS minifier
 standard-minifier-js@1.2.0        # Meteor JS minifier
-shell-server
+shell-server                      # Shell server

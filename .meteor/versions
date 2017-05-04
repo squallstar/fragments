@@ -60,6 +60,7 @@ localstorage@1.0.11
 logging@1.1.15
 lookback:seo@1.1.0
 mantarayar:shortid@0.1.1
+manuel:reactivearray@1.0.5
 matb33:collection-hooks@0.8.4
 meteor@1.2.17
 meteor-base@1.0.4
