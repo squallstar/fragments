@@ -1,11 +1,9 @@
 <template name="contextualMenu">
-  {{#if isOpen}}
-    <div class="contextual-menu" style="top: {{positionY}}px; left: {{positionX}}px">
-      <ul>
-        {{#each actions}}
-          {{> menuAction}}
-        {{/each}}
-      </ul>
-    </div>
-  {{/if}}
+  <div class="contextual-menu {{#if isOpen}}open{{/if}}" style="top: {{positionY}}px; left: {{positionX}}px">
+    <ul>
+      {{#each actions}}
+        {{> menuAction}}
+      {{/each}}
+    </ul>
+  </div>
 </template>
