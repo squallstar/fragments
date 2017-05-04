@@ -53,7 +53,6 @@ Template.header.events({
   'click [data-nav-toggle]': function (event) {
     var $el = $(event.currentTarget);
     event.preventDefault();
-    event.stopPropagation();
 
     if (Session.get(HAS_BACK_ARROW_KEY)) {
       history.back();
