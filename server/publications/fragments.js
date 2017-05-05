@@ -8,6 +8,11 @@ Meteor.publish('fragments', function (options) {
     collection: Match.Optional(String)
   });
 
+  // When in search mode, we remove all local fragments
+  if (options.limit === 0) {
+    return this.stop();
+  }
+
   var query = {},
       collections;
 
