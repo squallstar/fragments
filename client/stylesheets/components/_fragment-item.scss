@@ -317,7 +317,7 @@
         .tag {
           @extend %tag;
           max-width: 80%;
-          background-color: rgba(255,255,255,0.3);
+          background-color: rgba(255,255,255,0.5);
 
           @include below ($break-phone) {
             font-size: 1.2rem;

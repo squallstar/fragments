@@ -40,7 +40,7 @@ Template.fragmentItem.helpers({
       return false;
     }
 
-    return shadeColor(rgb2hex(this.collections[0].color), 0.75);
+    return shadeColor(rgb2hex(this.collections[0].color), 0.4);
   }
 });
 
