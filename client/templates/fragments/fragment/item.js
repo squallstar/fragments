@@ -34,6 +34,13 @@ Template.fragmentItem.helpers({
   },
   owner: function () {
     return this.user._id !== Meteor.userId() ? this.user : null;
+  },
+  fragmentColor: function () {
+    if (this.lead_image || !this.collections || !this.collections.length || Session.get(CURRENT_COLLECTION_KEY)) {
+      return false;
+    }
+
+    return shadeColor(rgb2hex(this.collections[0].color), 0.6);
   }
 });
 

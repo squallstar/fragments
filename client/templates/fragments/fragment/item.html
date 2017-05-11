@@ -1,6 +1,6 @@
 <template name="fragmentItem">
   <div class="fragment-item {{#if isEditing}}in-modal{{/if}} {{#if lead_image}}with-preview{{/if}}" data-id={{_id}}>
-    <div class="wrapper">
+    <div class="wrapper" style="{{#if fragmentColor}}background: linear-gradient({{fragmentColor}}, #FFF);{{/if}}">
       {{#if currentUser}}
         <a href="#" class="menu-handle" data-menu><span></span><span></span><span></span></a>
       {{/if}}
