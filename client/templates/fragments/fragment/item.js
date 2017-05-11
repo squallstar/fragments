@@ -36,7 +36,7 @@ Template.fragmentItem.helpers({
     return this.user._id !== Meteor.userId() ? this.user : null;
   },
   fragmentColor: function () {
-    if (this.lead_image || !this.collections || !this.collections.length || Session.get(CURRENT_COLLECTION_KEY)) {
+    if (!this.collections || !this.collections.length || Session.get(CURRENT_COLLECTION_KEY)) {
       return false;
     }
 
