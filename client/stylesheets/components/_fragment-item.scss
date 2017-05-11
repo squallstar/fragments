@@ -222,8 +222,8 @@
           left: -6px;
           width: 5px;
           height: 100%;
-          background-color: #FAFAFA;
-          border-left: 1px solid #EEE;
+          background-color: rgba(0,0,0,0.03);
+          border-left: 1px solid rgba(0,0,0,0.1);
           opacity: 0;
         }
       }
@@ -557,7 +557,7 @@
         }
 
         h2, p {
-          background-color: #FAFAFA;
+          background-color: rgba(0,0,0,0.03);
 
           &:before {
             opacity: 1;
