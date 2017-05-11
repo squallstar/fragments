@@ -35,8 +35,9 @@ Template.fragmentItem.helpers({
   owner: function () {
     return this.user._id !== Meteor.userId() ? this.user : null;
   },
+  // only for notes
   fragmentColor: function () {
-    if (!this.collections || !this.collections.length || Session.get(CURRENT_COLLECTION_KEY)) {
+    if (this.url || !this.collections || !this.collections.length || Session.get(CURRENT_COLLECTION_KEY)) {
       return false;
     }
 
