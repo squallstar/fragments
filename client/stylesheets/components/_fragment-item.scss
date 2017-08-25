@@ -61,11 +61,43 @@
     border-bottom: 1px solid #D8D8D8;
     box-shadow: 1px 1px 4px rgba(0,0,0,0.05);
 
+    $pinHandleDefaultRight: 3rem;
+
+    .pin-handle {
+      position: absolute;
+      display: none;
+      text-decoration: none;
+      align-items: center;
+      justify-content: center;
+      top: 1.4rem;
+      right: $pinHandleDefaultRight;
+      width: 18px;
+      height: 22px;
+      opacity: 0.2;
+      z-index: 1;
+
+      &:hover {
+        opacity: 0.6;
+      }
+
+      &.pinned {
+        color: #e6e306;
+        display: flex;
+        opacity: 1;
+        right: 1.5rem;
+      }
+
+      .is-touch & {
+        display: flex;
+        right: $pinHandleDefaultRight;
+      }
+    }
+
     .menu-handle {
       position: absolute;
       top: 1.5rem;
       right: 1rem;
-      width: 22px;
+      width: 20px;
       height: 22px;
       opacity: 0.2;
       z-index: 1;
@@ -99,6 +131,11 @@
 
       .menu-handle {
         display: block;
+      }
+
+      .pin-handle {
+        display: flex;
+        right: $pinHandleDefaultRight;
       }
     }
 

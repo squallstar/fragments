@@ -3,6 +3,7 @@
     <div class="wrapper" style="{{#if fragmentColor}}background: linear-gradient({{fragmentColor}}, #FFF);{{/if}}">
       {{#if currentUser}}
         <a href="#" class="menu-handle" data-menu><span></span><span></span><span></span></a>
+        <a href="#" class="pin-handle {{#if pinned_at}}pinned{{/if}}"><i class="fa fa-star{{#unless pinned_at}}-o{{/unless}}"></i></a>
       {{/if}}
       {{#if images}}
         <div class="images">

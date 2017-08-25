@@ -84,7 +84,7 @@ Template.fragmentsList.onCreated(function () {
   instance.cursor = Cursors.fragments();
 
   instance.fragments = Fragments.find({}, {
-    sort: { created_at: -1 }
+    sort: { pinned_at: -1, created_at: -1 }
   });
 
   this.autorun(function () {

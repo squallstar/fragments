@@ -216,6 +216,14 @@ Template.fragmentItem.events({
   'archive': function (event, template) {
     Meteor.call('fragmentArchive', template.data._id);
   },
+  'click .pin-handle': function (event, template) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    SetContextMenu();
+
+    Meteor.call('fragmentTogglePin', template.data._id);
+  },
   'comment, click a[data-show-comments]': function (event, template) {
     event.preventDefault();
 

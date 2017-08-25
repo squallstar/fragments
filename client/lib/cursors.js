@@ -17,9 +17,7 @@ setupFragmentsCursor = function () {
         tag = Session.get(CURRENT_TAG_KEY),
         collection = Session.get(CURRENT_COLLECTION_KEY),
         options = {
-          sort: {
-            created_at: -1
-          },
+          sort: { pinned_at: -1, created_at: -1 },
           limit: limit
         };
 
