@@ -31,6 +31,11 @@ setupFragmentsCursor = function () {
       return;
     }
 
+    if (Session.get(FAVOURITES_ONLY)) {
+      options.favourited = true;
+      options.sort = { pinned_at: -1 };
+    }
+
     if (tag) {
       options.tag = tag;
     }

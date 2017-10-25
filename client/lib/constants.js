@@ -7,6 +7,7 @@ CURRENT_TAG_KEY           = 'current-tag';
 CURRENT_COLLECTION_KEY    = 'current-collection';
 HAS_BACK_ARROW_KEY        = 'has-back-arrow';
 HIDE_SEARCH_BAR           = 'hide-search-bar';
+FAVOURITES_ONLY           = 'favourites-only';
 SIDEBAR_OPEN_KEY          = 'sidebar-is-open';
 SIDEBAR_ADDING_COLLECTION = 'sidebar-is-adding-collection';
 RIGHT_SIDEBAR_OPEN_KEY    = 'right-sidebar-is-open';

@@ -5,7 +5,8 @@ Meteor.publish('fragments', function (options) {
     limit: Match.Optional(Number),
     text: Match.Optional(String),
     tag: Match.Optional(String),
-    collection: Match.Optional(String)
+    collection: Match.Optional(String),
+    favourited: Match.Optional(Boolean)
   });
 
   // When in search mode, we remove all local fragments
@@ -63,6 +64,10 @@ Meteor.publish('fragments', function (options) {
 
   if (options.tag) {
     query.tags = options.tag;
+  }
+
+  if (options.favourited) {
+    query.pinned_at = { $ne: null };
   }
 
   if (typeof query['collections._id'] === 'object') {

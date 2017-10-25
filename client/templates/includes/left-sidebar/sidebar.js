@@ -8,8 +8,11 @@ Template.sidebar.helpers({
   collections: function () {
     return Template.instance().collections;
   },
-  hasActiveCollection: function () {
-    return Session.get(CURRENT_COLLECTION_KEY);
+  isAllCollections: function () {
+    return !Session.get(CURRENT_COLLECTION_KEY) && !Session.get(FAVOURITES_ONLY);
+  },
+  isFavourites: function () {
+    return Session.get(FAVOURITES_ONLY);
   },
   isAddingNewCollection: function () {
     return Session.get(SIDEBAR_ADDING_COLLECTION);

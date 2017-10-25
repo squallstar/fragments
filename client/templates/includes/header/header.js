@@ -17,6 +17,10 @@ Template.header.helpers({
       return COLOR_THEMES[collection.color];
     }
   },
+  favourites: function() {
+    console.log('f', Session.get(FAVOURITES_ONLY))
+    return Session.get(FAVOURITES_ONLY);
+  },
   collectionOwner: function () {
     var collection = Session.get(CURRENT_COLLECTION_KEY),
         userId = Meteor.userId(),

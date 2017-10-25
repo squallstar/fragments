@@ -4,11 +4,19 @@
       <h1>Fragments</h1>
     </div>
     <ul class="nav-list">
-      <li class="{{#unless hasActiveCollection}}current{{/unless}}">
+      <li class="all {{#if isAllCollections}}current{{/if}}">
         <div class="item">
           <span></span>
           <a class="content" href={{pathFor 'home'}} data-close>
-            <h4>All collections</h4>
+            <h4><i class="fa fa-globe"></i> All collections</h4>
+          </a>
+        </div>
+      </li>
+      <li class="favourites {{#if isFavourites}}current{{/if}}">
+        <div class="item">
+          <span></span>
+          <a class="content" href={{pathFor 'home' query='favourites=1'}} data-close>
+            <h4><i class="fa fa-star"></i> All favourites</h4>
           </a>
         </div>
       </li>
