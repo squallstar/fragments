@@ -2,6 +2,8 @@
 
 Collect and organise your articles into beautiful boards. Fragments is build with Meteor, so please refer to its official documentation about the development with such technology.
 
+[https://fragments.me](https://fragments.me)
+
 ## Development
 
 First, you have to copy the default `settings` file and put all your API keys in it.
