@@ -10,6 +10,8 @@ Meteor.methods({
       return;
     }
 
+    var leadImageUpdated;
+
     fragment.images.forEach(function (image, idx) {
       if (!image.url || idx > 4) {
         return;
@@ -56,6 +58,7 @@ Meteor.methods({
 
         if (fragment.lead_image === image.original_url) {
           fragment.lead_image = image.url;
+          leadImageUpdated = true;
 
           // Update straight away
           Fragments.update(fragmentId, {
@@ -71,10 +74,23 @@ Meteor.methods({
       }
     });
 
+    // Remove images that couldn't be downloaded
+    fragment.images = fragment.images.filter(function (image) {
+      return image.downloadError !== true;
+    });
+
+    // Make sure lead image is up to date with first available image (unless previously set)
+    if (!leadImageUpdated && fragment.images.length) {
+      fragment.lead_image = fragment.images[0].url;
+    }
+
     Fragments.update(fragmentId, {
       $set: {
+        lead_image: fragment.lead_image,
         images: fragment.images
       }
     });
+
+    console.log('Finished to download images for Fragment #' + fragmentId);
   }
 });
