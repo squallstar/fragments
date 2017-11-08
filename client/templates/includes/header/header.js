@@ -18,7 +18,6 @@ Template.header.helpers({
     }
   },
   favourites: function() {
-    console.log('f', Session.get(FAVOURITES_ONLY))
     return Session.get(FAVOURITES_ONLY);
   },
   collectionOwner: function () {

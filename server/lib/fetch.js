@@ -22,6 +22,12 @@ Meteor.methods({
 
     if (data) {
       Fragments.update(fragment._id, { $set: data });
+
+      if (Array.isArray(data.images) && data.images.length) {
+        Job.push(new DownloadImagesJob({
+          fragmentId: fragmentId
+        }));
+      }
     }
   }
 });
