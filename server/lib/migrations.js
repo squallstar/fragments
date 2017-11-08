@@ -1,4 +1,4 @@
-const CURRENT_VERSION = 1;
+const CURRENT_VERSION = 2;
 
 var migrations = {
   1: function () {
@@ -18,6 +18,15 @@ var migrations = {
           }
         }
       })
+    });
+  },
+  2: function () {
+    Fragments.find().forEach(function (fragment) {
+      if (Array.isArray(fragment.images) && fragment.images.length) {
+        Job.push(new DownloadImagesJob({
+          fragmentId: fragment._id
+        }));
+      }
     });
   }
 };

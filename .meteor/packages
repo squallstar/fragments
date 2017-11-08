@@ -31,9 +31,11 @@ themeteorchef:bert                # Growl-style notifications
 lookback:seo                      # SEO support for metadata
 sanjo:jasmine                     # Jasmine test framework
 velocity:console-reporter         # Console reporter for testing
-lepozepo:s3                       # S3 file upload
+lepozepo:s3                       # S3 client-side file upload
+peerlibrary:aws-sdk               # Server-side AWS SDK
 thinksoftware:image-resize-client # Client side image resizing
 mantarayar:shortid                # Non-sequential unique id generator
 standard-minifier-css@1.2.0       # Meteor CSS minifier
 standard-minifier-js@1.2.0        # Meteor JS minifier
 shell-server                      # Shell server
+cfs:graphicsmagick                # Resize images
