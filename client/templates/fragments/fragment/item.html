@@ -2,8 +2,10 @@
   <div class="fragment-item {{#if isEditing}}in-modal{{/if}} {{#if lead_image}}with-preview{{/if}}" data-id={{_id}}>
     <div class="wrapper" style="{{#if fragmentColor}}background: linear-gradient({{fragmentColor}}, #FFF);{{/if}}">
       {{#if currentUser}}
-        <a href="#" class="menu-handle" data-menu><span></span><span></span><span></span></a>
-        <a href="#" class="pin-handle {{#if pinned_at}}pinned{{/if}}"><i class="fa fa-star{{#unless pinned_at}}-o{{/unless}}"></i></a>
+        <div class="handles">
+          <a href="#" class="menu-handle" data-menu><i class="fa fa-sliders"></i></a>
+          <a href="#" class="pin-handle {{#if pinned_at}}pinned{{/if}}" data-pin><i class="fa fa-star{{#unless pinned_at}}-o{{/unless}}"></i></a>
+        </div>
       {{/if}}
       {{#if images}}
         <div class="images">

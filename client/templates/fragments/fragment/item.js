@@ -216,7 +216,7 @@ Template.fragmentItem.events({
   'archive': function (event, template) {
     Meteor.call('fragmentArchive', template.data._id);
   },
-  'click .pin-handle': function (event, template) {
+  'click [data-pin]': function (event, template) {
     event.preventDefault();
     event.stopPropagation();
 

@@ -61,81 +61,56 @@
     border-bottom: 1px solid #D8D8D8;
     box-shadow: 1px 1px 4px rgba(0,0,0,0.05);
 
-    $pinHandleDefaultRight: 3rem;
-
-    .pin-handle {
-      position: absolute;
-      display: none;
-      text-decoration: none;
-      align-items: center;
-      justify-content: center;
-      top: 1.4rem;
-      right: $pinHandleDefaultRight;
-      width: 18px;
-      height: 22px;
-      opacity: 0.2;
-      z-index: 1;
-
-      &:hover {
-        opacity: 0.6;
-      }
-
-      &.pinned {
-        color: #e6e306;
-        display: flex;
-        opacity: 1;
-        right: 1.5rem;
-      }
-
-      .is-touch & {
-        display: flex;
-        right: $pinHandleDefaultRight;
-      }
-    }
-
-    .menu-handle {
+    .handles {
       position: absolute;
       top: 1.5rem;
-      right: 1rem;
-      width: 20px;
-      height: 22px;
-      opacity: 0.2;
+      right: 1.5rem;
       z-index: 1;
-      display: none;
-
-      &:hover {
-        opacity: 0.6;
-      }
+      display: flex;
 
       .is-touch & {
-        display: block;
+        top: 0.5rem;
       }
 
-      span {
-        width: 3px;
-        height: 3px;
+      a {
+        @include transition(opacity 0.2s);
+        opacity: 0;
+        width: 2rem;
+        height: 2rem;
+        background: #FFF;
+        color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
         border-radius: 50%;
-        display: block;
-        background-color: #000;
-        margin: 2px auto 0;
+        font-size: 1.2rem;
+
+        .is-touch & {
+          opacity: 0.5;
+        }
 
         &:first-child {
-          margin-top: 4px;
+          margin-right: 0.3rem;
+        }
+
+        &.pinned {
+          color: #ffe615;
+          opacity: 0.5;
+          background-color: #000;
         }
       }
     }
 
     &:hover {
-      box-shadow: 1px 1px 20px rgba(0,0,0,0.1);
-      border-bottom-color: #CCC;
 
-      .menu-handle {
-        display: block;
-      }
+      .handles a {
+        opacity: 0.5;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
 
-      .pin-handle {
-        display: flex;
-        right: $pinHandleDefaultRight;
+        &:hover {
+          opacity: 1.0;
+        }
       }
     }
 
@@ -623,14 +598,8 @@
 
     .wrapper {
 
-      .menu-handle {
+      .handle {
 
-        span {
-          width: 5px;
-          height: 5px;
-          border: 1px solid rgba(255,255,255,1);
-          margin-top: 1px;
-        }
       }
     }
   }
