@@ -46,7 +46,8 @@ Template.addFragmentPopup.events({
       collections: collections
     }, function () {
       template.collectionsSaved.set(true);
-      window.close();
+
+      UINotification.success(_.sample(['All done!', 'Saved!', 'Got it!']));
     });
   }
 });
@@ -66,7 +67,5 @@ Template.addFragmentPopup.onCreated(function () {
     Meteor.subscribe('fragments', {
       _id: fragmentId
     });
-
-    UINotification.success(_.sample(['All done!', 'Saved!', 'Got it!']));
   });
 });
