@@ -1,10 +1,36 @@
 <!-- This is being used by the Chrome plugin -->
 <template name="addFragmentPopup">
   <div class="fragment-popup">
-    {{#if fragment}}
-      {{> fragmentItem fragment}}
+    {{#unless collectionsSaved}}
+      <div class="collections">
+        {{#if fragmentId}}
+          <div class="head">
+            <h1>Saved! Wanna tag it?</h1>
+            {{#if hasSelectedCollections}}
+              <a class="button primary" href="#" data-save>Save <i class="fa fa-check"></i></a>
+            {{/if}}
+          </div>
+          <ul>
+            {{#each collections}}
+              <li class="{{#if isSelected this}}selected{{/if}}">
+                <a href="#" style="background-color:{{color}}" class="name">
+                  <span class="check"><i class="fa fa-check"></i></span><span class="text">{{name}}</span>
+                </a>
+              </li>
+            {{/each}}
+          </ul>
+        {{else}}
+          <div class="head">
+            <h1>Saving... Please wait.</h1>
+          </div>
+        {{/if}}
+      </div>
     {{else}}
-      {{> loading}}
-    {{/if}}
+      {{#if fragment}}
+        {{> fragmentItem fragment}}
+      {{else}}
+        {{> loading}}
+      {{/if}}
+    {{/unless}}
   </div>
 </template>

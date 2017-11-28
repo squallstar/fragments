@@ -7,7 +7,90 @@
 }
 
 .fragment-popup {
-  padding: 10px 0;
+  padding: 1rem 0;
+
+  .collections {
+    $head-height: 4.5rem;
+
+    padding: $head-height 1rem 0;
+
+    .head {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      height: $head-height;
+      background-color: #FFF;
+      align-items: center;
+      padding: 0 1rem;
+
+      h1 {
+        font-size: 2.2rem;
+        flex: 1;
+      }
+    }
+
+    ul {
+
+      li {
+        a {
+          display: flex;
+          margin-bottom: 0.6rem;
+          border-radius: 4px;
+          text-decoration: none;
+          font-size: 1.3rem;
+          align-items: center;
+
+          .check {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #FFF;
+            height: 30px;
+            width: 3rem;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+
+            i {
+              opacity: 0.1;
+            }
+          }
+
+          .text {
+            padding: 0 1rem;
+            flex: 1;
+            opacity: 0.8;
+          }
+
+          &:hover {
+            .check {
+              i {
+                opacity: 0.6;
+              }
+            }
+          }
+        }
+
+        &.selected {
+
+          a {
+
+            .check {
+              i {
+                opacity: 1;
+              }
+            }
+
+            .text {
+              font-weight: bold;
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .fragment-item {
