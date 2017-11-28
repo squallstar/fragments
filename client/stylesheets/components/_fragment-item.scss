@@ -9,6 +9,10 @@
 .fragment-popup {
   padding: 1rem 0;
 
+  .menu-handle {
+    display: none !important;
+  }
+
   > .collections {
     $head-height: 4.5rem;
 
