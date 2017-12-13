@@ -94,12 +94,22 @@
 
         .bg {
           position: absolute;
-          background: url(/assets/img/website/hero-app.jpg) no-repeat top left;
-          background-size: cover;
           width: 100%;
           height: 100%;
           top: 40px;
           left: 0;
+
+          &.static {
+            z-index: 1;
+            background: url(/assets/img/website/hero-app.jpg) no-repeat top left;
+            background-size: cover;
+          }
+
+          &.animated {
+            background: url(/assets/img/website/hero-app.gif) no-repeat top left;
+            background-size: cover;
+            z-index: 2;
+          }
         }
       }
     }
