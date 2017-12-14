@@ -100,5 +100,17 @@ Meteor.methods({
     }, {
       multi: true
     });
+  },
+  setOnboardingStage: function (stage) {
+    var userId = Meteor.userId();
+
+    check(stage, Number);
+    check(userId, String);
+
+    Meteor.users.update(userId, {
+      $set: {
+        'profile.onboarding': stage
+      }
+    });
   }
 })

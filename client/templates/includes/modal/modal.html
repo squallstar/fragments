@@ -1,3 +1,15 @@
 <template name="modal">
-  <div id="modal"></div>
+  <div id="modal">
+    {{#if showOnboarding}}
+      <div class="onboarding">
+        <img src="/assets/img/website/feature-search.png" />
+        <h1>What's new?</h1>
+        <p>You know what's new here on Fragments? Well, a bunch of things but we recently <strong>revamped our search engine</strong> to get you more relevant results based on your queries.</p>
+        <hr />
+        <p>Furthermore, our shiny <a href="https://chrome.google.com/webstore/detail/fragmentsme/fjpkkjpkebpfcfdhabnccoeefbolmkcp" target="_blank"><strong>Chrome Extension</strong></a> now lets you select in which collections your fragments should be saved to!</p>
+        <hr />
+        <a href="#" class="button block primary big" data-dismiss>Dismiss</a>
+      </div>
+    {{/if}}
+  </div>
 </template>

@@ -9,9 +9,42 @@
   z-index: 3;
   opacity: 0;
   visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .with-modal & {
     opacity: 1;
     visibility: visible;
+  }
+
+  .onboarding {
+    max-width: 36rem;
+    margin: 1rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 22px rgba(0, 0, 0, 0.3);
+    background: white;
+    padding: 2rem;
+    text-align: center;
+
+    img {
+      width: 26rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      text-align: left;
+      font-size: 1.4rem;
+
+      a {
+        color: $color-primary;
+        text-decoration: none;
+        border-bottom: 1px dotted $color-primary;
+      }
+    }
   }
 }
