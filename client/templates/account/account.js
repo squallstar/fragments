@@ -5,6 +5,9 @@ Template.account.helpers({
     }
 
     return chrome && chrome.app ? !chrome.app.isInstalled : true;
+  },
+  displayAndroidExension: function () {
+    return navigator.userAgent.toLowerCase().indexOf('android') > -1;
   }
 });
 

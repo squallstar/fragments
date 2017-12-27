@@ -27,6 +27,14 @@
           <button onclick="chrome.webstore.install()" class="button primary"><i class="fa fa-chrome"></i> Install extension</button>
         </div>
       {{/if}}
+      {{#if displayAndroidExension}}
+        <hr />
+        <div class="group">
+          <h3>Android "Save to fragments" extension</h3>
+          <p>You can install the Android extension by clicking the button below to download the APK. You will need to allow installing apps from unknown sources to continue. This can be disabled once you have installed the extension.</p>
+          <a class="button primary" href="/assets/misc/fragments.apk" alt="Download Fragments app"><i class="fa fa-android"></i> Download .apk</button>
+        </div>
+      {{/if}}
     </div>
   </div>
 </template>
