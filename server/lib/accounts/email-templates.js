@@ -5,6 +5,7 @@ const TEMPLATE_CSS = Assets.getText('emails/style.css');
 SSR.compileTemplate('emailLayout', Assets.getText('emails/layout.html'));
 SSR.compileTemplate('verifyEmail', Assets.getText('emails/verify-email.html'));
 SSR.compileTemplate('resetPassword', Assets.getText('emails/reset-password.html'));
+SSR.compileTemplate('shareFragment', Assets.getText('emails/share-fragment.html'));
 
 // Email base layout helpers
 Template.emailLayout.helpers({

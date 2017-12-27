@@ -9,7 +9,7 @@ jquery@1.11.9                     # Helpful client-side library
 tracker@1.1.0                     # Meteor's client-side reactive programming library
 es5-shim@4.6.14                   # ECMAScript 5 compatibility for older browsers.
 ecmascript@0.5.8                  # Enable ECMAScript2015+ syntax in app code
-coffeescript@1.2.4_1                # Coffeescript
+coffeescript@1.2.4_1              # Coffeescript
 iron:router                       # Application router
 check@1.2.3                       # Check whether a value matches a pattern
 audit-argument-checks@1.0.7       # Try to detect inadequate input sanitization
@@ -39,3 +39,4 @@ standard-minifier-css@1.2.0       # Meteor CSS minifier
 standard-minifier-js@1.2.0        # Meteor JS minifier
 shell-server                      # Shell server
 cfs:graphicsmagick                # Resize images
+email                             # Send emails

@@ -123,6 +123,12 @@ Template.fragmentItem.events({
       });
     }
 
+    actions.push({
+      label: 'Share by email',
+      eventName: 'share',
+      icon: 'paper-plane'
+    });
+
     if (!template.isShowingComments.get()) {
       actions.push({
         label: 'Add comment',
@@ -239,6 +245,10 @@ Template.fragmentItem.events({
   'hide-comments': function (event, template) {
     template.isShowingComments.set(false);
     Meteor.forceLayoutRecollect();
+  },
+  'share': function (event, template) {
+    Session.set(MODAL_SHARE, template.data._id);
+    Session.set(MODAL_VISIBLE_KEY, true);
   },
   'keydown input[name="add-comment"]': function (event, template) {
     if (event.keyCode !== 13) {

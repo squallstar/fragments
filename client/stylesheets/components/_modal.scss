@@ -18,7 +18,7 @@
     visibility: visible;
   }
 
-  .onboarding {
+  .modal-content {
     max-width: 36rem;
     margin: 1rem;
     border-radius: 5px;
@@ -26,6 +26,28 @@
     background: white;
     padding: 2rem;
     text-align: center;
+
+    .preview {
+      background: #EEE;
+      padding: 2rem;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      a {
+        @extend %ellipsis;
+        color: $color-primary;
+        font-size: 1.2rem;
+      }
+    }
+
+    .form {
+      position: relative;
+    }
 
     img {
       width: 26rem;

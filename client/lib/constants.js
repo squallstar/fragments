@@ -12,6 +12,7 @@ SIDEBAR_OPEN_KEY          = 'sidebar-is-open';
 SIDEBAR_ADDING_COLLECTION = 'sidebar-is-adding-collection';
 RIGHT_SIDEBAR_OPEN_KEY    = 'right-sidebar-is-open';
 MODAL_VISIBLE_KEY         = 'modal-is-visible';
+MODAL_SHARE               = 'modal-share-visible';
 CURRENT_CONTEXTUAL_MENU   = 'current-contextual-menu';
 COLLABORATE_TOKEN         = 'collection-collaborate-token';
 FORCE_LAYOUT_RECOLLECT    = 'force-layout-recollect';
