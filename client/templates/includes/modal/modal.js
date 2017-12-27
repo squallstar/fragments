@@ -1,3 +1,5 @@
+const ONBOARDING_VERSION = 2;
+
 Template.modal.helpers({
   showOnboarding: function () {
     return Template.instance().showOnboarding.get();
@@ -49,7 +51,7 @@ Template.modal.events({
   'click [data-dismiss]': function (event, template) {
     Session.set(MODAL_VISIBLE_KEY, false);
 
-    Meteor.call('setOnboardingStage', 1, function () {
+    Meteor.call('setOnboardingStage', ONBOARDING_VERSION, function () {
       template.showOnboarding.set(false);
     })
   }
@@ -66,7 +68,7 @@ Template.modal.onRendered(function () {
   Tracker.autorun(function () {
     if (Meteor.user()) {
       setTimeout(function () {
-        if (!Meteor.user().profile.onboarding) {
+        if (Meteor.user().profile.onboarding !== ONBOARDING_VERSION) {
           template.showOnboarding.set(true);
           Session.set(MODAL_VISIBLE_KEY, true);
         }
