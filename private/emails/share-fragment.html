@@ -1,7 +1,12 @@
-<p>Hi! {{from}} has shared this link from <a alt="Shared from Fragments.me" href="https://fragments.me">Fragments.me</a> to you:</p>
-{{#if image}}
-  <p><a alt="{{title}}" href="{{url}}"><img alt="{{title}}" src="{{image}}" /></a></p>
-{{/if}}
-<h1>{{title}}</h1>
-<p>{{description}}</p>
-<p><a alt="{{title}}" href="{{url}}">{{url}}</a></p>
+<p>Hi! <strong>{{from}}</strong> has shared this link from <a alt="Shared from Fragments.me" href="https://fragments.me">Fragments.me</a> to you:</p>
+<div id="blockcontent">
+  {{#if image}}
+    <a alt="{{title}}" href="{{url}}"><img alt="{{title}}" src="{{image}}" /></a>
+  {{/if}}
+  <div id="padded">
+    <h1>{{title}}</h1>
+    <p>{{description}}</p>
+    <p><a alt="{{title}}" href="{{url}}">{{url}}</a></p>
+  </div>
+</div>
+<p>This email and any files transmitted with it are confidential and intended solely for the use of the individual or entity to which they are addressed. If you have received this email in error please notify us.</p>

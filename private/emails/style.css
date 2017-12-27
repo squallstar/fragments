@@ -1,3 +1,37 @@
 body {
   font-family: sans-serif;
 }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #DFDFDF;
+  margin: 1em 0;
+  padding: 0;
+}
+
+#email {
+  border-radius: 5px;
+  background-color: #EFEFEF;
+  padding: 20px;
+}
+
+#blockcontent {
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #D8D8D8;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
+  margin: 20px 0;
+  max-width: 440px;
+}
+
+#padded {
+  padding: 10px 20px;
+}
+
+#blockcontent img {
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
