@@ -36,7 +36,10 @@ Template.modal.events({
     event.preventDefault();
     template.isBusy.set(true);
 
-    Meteor.call('shareFragment', Session.get(MODAL_SHARE), template.$('input[type="email"]').val(), function (err) {
+    var email = template.$('input[type="email"]').val();
+    var message = template.$('input[type="text"]').val();
+
+    Meteor.call('shareFragment', Session.get(MODAL_SHARE), email, message, function (err) {
       template.isBusy.set(false);
 
       if (err) {

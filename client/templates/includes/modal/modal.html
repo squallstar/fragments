@@ -20,10 +20,18 @@
           </div>
           <hr />
         {{/if}}
-        <p>Please type the email address of the recipient that should receive your fragment.<br /><br /></p>
         <form class="form" data-share>
+          <p>Please type the email address of the recipient that should receive your fragment.<br /><br /></p>
           <div class="group">
             <input type="email" required placeholder="Email address" disabled="{{#if busy}}disabled{{/if}}" />
+          </div>
+          <hr />
+          <p>Please type a message to be included in the email we send:
+            <br />
+            <br />
+          </p>
+          <div class="group">
+            <input type="text" required placeholder="Message" disabled="{{#if busy}}disabled{{/if}}" />
           </div>
           <hr />
           {{#if busy}}
