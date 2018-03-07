@@ -1,6 +1,9 @@
 Template.collectionSettings.helpers({
   collectionIsVisible: function() {
     return !this.collection.is_hidden;
+  },
+  insertFragmentApiUrl: function () {
+    return `${location.origin}/add-fragment/${this.collection.collaboration_token}?source=ExampleService&url=http://example.org`;
   }
 });
 

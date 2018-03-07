@@ -43,15 +43,19 @@
       }
     }
 
-    input.url {
+    input.url, textarea.url {
       display: block;
       width: 100%;
-      border: 0;
-      padding: 0;
-      font-size: 13px;
-      font-weight: 600;
-      text-decoration: underline;
+      border: 1px solid #DDD;
+      border-radius: 4px;
+      font-size: 12px;
       margin-top: 5px;
+      line-height: 1.5;
+      resize: none;
+      text-decoration: dashed;
+      background: #EFEFEF;
+      padding: 4px 5px 3px;
+      font-family: monospace;
     }
 
     .input-file {

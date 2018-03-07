@@ -87,6 +87,7 @@
         <div class="date">
           {{timeAgo created_at}} <i class="fa fa-clock-o"></i>
           {{#if isArchived}} - <strong>Archived</strong> <i class="fa fa-check"></i>{{/if}}
+          {{#if source}} - Added via <strong>{{source}}</strong> <i class="fa fa-globe"></i>{{/if}}
         </div>
       </div>
       <ul class="collections">
