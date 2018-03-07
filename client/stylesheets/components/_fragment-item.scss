@@ -307,7 +307,7 @@
 
     .content {
       position: relative;
-      padding: 2rem;
+      padding: 2rem 2rem 1.6rem;
 
       h2, p {
         @include transition(background 0.2s);
@@ -385,6 +385,7 @@
         font-size: 1rem;
         text-decoration: none;
         color: #AAA;
+        line-height: 1.5;
 
         @include below ($break-phone) {
           font-size: 1.2rem;
