@@ -7,6 +7,9 @@ Template.headerSearchBar.helpers({
   currentTag: function () {
     return Session.get(CURRENT_TAG_KEY);
   },
+  currentCollaborator: function () {
+    return Session.get(CURRENT_COLLABORATOR_KEY);
+  },
   currentCollection: function () {
     return Session.get(CURRENT_COLLECTION_KEY);
   },
@@ -54,6 +57,10 @@ Template.headerSearchBar.events({
   'click [data-remove-tag]': function (event) {
     event.preventDefault();
     Session.set(CURRENT_TAG_KEY, undefined);
+  },
+  'click [data-remove-collaborator]': function (event) {
+    event.preventDefault();
+    Session.set(CURRENT_COLLABORATOR_KEY, undefined);
   },
   'click [data-clear-search]': function (event) {
     event.preventDefault();

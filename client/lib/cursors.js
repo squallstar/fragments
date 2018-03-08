@@ -15,6 +15,7 @@ setupFragmentsCursor = function () {
     var limit = Session.get(CURRENT_LIMIT_KEY),
         textQuery = Session.get(CURRENT_SEARCH_KEY),
         tag = Session.get(CURRENT_TAG_KEY),
+        collaborator = Session.get(CURRENT_COLLABORATOR_KEY),
         collection = Session.get(CURRENT_COLLECTION_KEY),
         options = {
           sort: { created_at: -1 },
@@ -38,6 +39,10 @@ setupFragmentsCursor = function () {
 
     if (tag) {
       options.tag = tag;
+    }
+
+    if (collaborator) {
+      options.userId = collaborator.match(/data-collaborator="(.+)"/, '')[1];
     }
 
     Session.set(APP_BUSY_KEY, true);

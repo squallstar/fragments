@@ -8,6 +8,11 @@
         <a href="#" data-remove-tag>{{currentTag}} {{> iconDelete}}</a>
       </div>
     {{/if}}
+    {{#if currentCollaborator}}
+      <div class="collaborator">
+        <a href="#" data-remove-collaborator>{{{currentCollaborator}}} {{> iconDelete}}</a>
+      </div>
+    {{/if}}
     <div class="input">
       <input type="text" placeholder={{searchBarPlaceholder}} value={{currentSearch}} />
     </div>

@@ -432,10 +432,18 @@
             background-size: cover;
             border: 0;
 
+            img {
+              display: none;
+            }
+
             @include below ($break-phone) {
               width: 22px;
               height: 22px;
             }
+          }
+
+          &.collaborator {
+            text-indent: -9999px;
           }
 
           &.can-be-removed {

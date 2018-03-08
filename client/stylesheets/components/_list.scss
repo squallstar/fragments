@@ -73,8 +73,11 @@ ul.list {
   }
 }
 
-.tags-list {
+.tags-list, .collaborators-list {
   padding: 1rem 1rem 0.5rem;
+}
+
+.tags-list {
 
   .tags {
 
@@ -88,6 +91,18 @@ ul.list {
         background-color: #BBB;
         color: #FFF;
       }
+    }
+  }
+}
+
+.collaborators-list {
+
+  .collaborators {
+    display: flex;
+
+    a {
+      @extend %collaborator;
+      margin-bottom: 1rem;
     }
   }
 }

@@ -10,7 +10,28 @@ Template.searchView.helpers({
   },
   collection: function () {
     return Session.get(CURRENT_COLLECTION_KEY);
-  }
+  },
+  collaborators: function () {
+    var collaborators = [];
+    var collections = Collections.find().fetch().forEach(function (collection) {
+      if (Array.isArray(collection.collaborators)) {
+        collaborators = collaborators.concat(collection.collaborators);
+      }
+    });
+
+    collaborators = _.uniq(collaborators, function (person) {
+      return person._id;
+    });
+
+    // Don't display when there's only us
+    if (collaborators.length === 1) {
+      return [];
+    }
+
+    return _.sortBy(collaborators, function (person) {
+      return person.name;
+    });
+  } 
 });
 
 Template.searchView.events({
@@ -23,6 +44,13 @@ Template.searchView.events({
     event.preventDefault();
 
     Session.set(CURRENT_TAG_KEY, tag);
+    Router.goToRelevant();
+  },
+  'click .collaborators a': function (event) {
+    var person = $(event.currentTarget).html();
+    event.preventDefault();
+
+    Session.set(CURRENT_COLLABORATOR_KEY, person);
     Router.goToRelevant();
   }
 });

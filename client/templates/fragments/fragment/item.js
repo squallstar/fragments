@@ -350,7 +350,9 @@ Template.fragmentItem.events({
       instance.$('[data-new-tag]').focus();
     }, 10);
   },
-  'click .tag': function (event, template) {
+  'click [data-tag]': function (event, template) {
+    event.preventDefault();
+
     if (template.isEditing.get()) {
       return;
     }
@@ -360,7 +362,19 @@ Template.fragmentItem.events({
 
     Session.set(CURRENT_TAG_KEY, currentTag !== tag ? tag : undefined);
   },
-  'click .tag.can-be-removed': function (event) {
+  'click [data-collaborator]': function (event, template) {
+    event.preventDefault();
+
+    if (template.isEditing.get()) {
+      return;
+    }
+
+    var currentCollaborator = Session.get(CURRENT_COLLABORATOR_KEY),
+        collaborator = $(event.target).html();
+
+    Session.set(CURRENT_COLLABORATOR_KEY, currentCollaborator !== collaborator ? collaborator : undefined);
+  },
+  'click [data-tag].can-be-removed': function (event) {
     event.preventDefault();
     event.stopPropagation();
     var tag = $(event.currentTarget).data('value').toString();

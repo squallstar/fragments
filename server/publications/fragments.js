@@ -6,7 +6,8 @@ Meteor.publish('fragments', function (options) {
     text: Match.Optional(String),
     tag: Match.Optional(String),
     collection: Match.Optional(String),
-    favourited: Match.Optional(Boolean)
+    favourited: Match.Optional(Boolean),
+    userId: Match.Optional(String)
   });
 
   // When in search mode, we remove all local fragments
@@ -66,6 +67,10 @@ Meteor.publish('fragments', function (options) {
     query.tags = options.tag;
   }
 
+  if (options.userId && query['collections._id']) {
+    query['user._id'] = options.userId;
+  }
+
   if (options.favourited) {
     query.pinned_at = { $ne: null };
   }
@@ -73,12 +78,18 @@ Meteor.publish('fragments', function (options) {
   if (typeof query['collections._id'] === 'object') {
     let textQuery = query.$text;
 
-    query = {
-      $or: [
-        _.extend(_.omit(query, ['collections._id', '$text']), { 'user._id': this.userId }),
-        _.omit(query, ['$text'])
-      ]
-    };
+    const textOmittedQuery = _.omit(query, ['$text']);
+
+    if (options.userId && query['user._id'] === options.userId) {
+      query = { $or: [textOmittedQuery] };
+    } else {
+      query = {
+        $or: [
+          _.extend(_.omit(query, ['collections._id', '$text']), { 'user._id': this.userId }),
+          textOmittedQuery
+        ]
+      };
+    }
 
     if (textQuery) {
       query.$text = textQuery;

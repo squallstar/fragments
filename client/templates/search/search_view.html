@@ -27,6 +27,17 @@
       </div>
     {{/if}}
   {{/if}}
+  {{#if collaborators.length}}
+    <div class="box middle-box collaborators-list">
+      <h3>Filter by person</h3>
+      <p>Click on the thumbnail of a collaborator (or yourself) to filter by fragments added by that person.</p>
+      <div class="collaborators">
+        {{#each collaborators}}
+          <a href="#"><img src="{{picture}}" data-collaborator="{{_id}}"/> {{name}}</a>
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
   <div class="box middle-box">
     <ul class="list">
       <li>

@@ -4,6 +4,7 @@ USER_TOOLTIP_KEY          = 'user-tooltip';
 CURRENT_SEARCH_KEY        = 'current-search';
 CURRENT_LIMIT_KEY         = 'current-limit';
 CURRENT_TAG_KEY           = 'current-tag';
+CURRENT_COLLABORATOR_KEY  = 'current-collaborator';
 CURRENT_COLLECTION_KEY    = 'current-collection';
 HAS_BACK_ARROW_KEY        = 'has-back-arrow';
 HIDE_SEARCH_BAR           = 'hide-search-bar';
