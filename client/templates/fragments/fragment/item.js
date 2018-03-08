@@ -152,7 +152,7 @@ Template.fragmentItem.events({
         : `${fragment.collections.length} collections`;
 
       actions.push({
-        label: `Archive to ${collectionsLabel}`,
+        label: Session.get('CURRENT_COLLECTION_KEY') ? 'Archive' : `Archive to ${collectionsLabel}`,
         eventName: 'archive',
         icon: 'check'
       });
