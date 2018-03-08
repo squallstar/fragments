@@ -93,7 +93,7 @@ Meteor.publish('fragments', function (options) {
 
     if (textQuery) {
       query.$text = textQuery;
-    } else if (collections.length) {
+    } else if (collections.length && !options.userId) {
       let hiddenCollectionsIds = _
         .filter(collections, (c) => { return c.is_hidden === true; })
         .map((c) => { return c._id; });
