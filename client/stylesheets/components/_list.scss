@@ -99,6 +99,7 @@ ul.list {
 
   .collaborators {
     display: flex;
+    flex-wrap: wrap;
 
     a {
       @extend %collaborator;
