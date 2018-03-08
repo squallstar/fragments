@@ -35,7 +35,7 @@
         <p data-description data-save-on-return contenteditable={{isEditing}}>{{{description}}}</p>
         <div class="tags">
           {{#if owner}}
-            <a data-collaborator href="#" class="tag picture collaborator" style="background-image:url({{owner.picture}})"><img src="{{owner.picture}}" data-collaborator="{{owner.id}}"/> {{owner.name}}</a>
+            <a data-collaborator href="#" class="tag picture collaborator" style="background-image:url({{owner.picture}})"><img src="{{owner.picture}}" data-collaborator="{{owner._id}}"/> {{owner.name}}</a>
           {{/if}}
           {{#each tags}}
             <a data-tag class="tag {{#if isEditing}}can-be-removed{{/if}}{{#if equals currentTag this}}current{{/if}}" href="#" data-value={{this}}>{{this}}{{#if isEditing}}<span>+</span>{{/if}}</a>
