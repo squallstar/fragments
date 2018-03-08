@@ -110,7 +110,8 @@ Meteor.publish('fragments', function (options) {
     });
   }
 
-  console.log('PUBLICATIONS:FRAGMENTS', JSON.stringify({ options, query }));
+  // enable for debugging
+  // console.log('PUBLICATIONS:FRAGMENTS', JSON.stringify({ options, query }));
 
   return Fragments.find(query, {
     sort: options.sort,
