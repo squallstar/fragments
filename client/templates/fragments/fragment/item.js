@@ -158,8 +158,9 @@ Template.fragmentItem.events({
       });
     }
 
-    // TODO: only when collection is owned
-    actions.push({ label: 'Delete', eventName: 'delete', className: 'danger', icon: 'times' });
+    if (fragment.user._id === Meteor.userId()) {
+      actions.push({ label: 'Delete', eventName: 'delete', className: 'danger', icon: 'times' });
+    }
 
     if (!actions.length) {
       return;
