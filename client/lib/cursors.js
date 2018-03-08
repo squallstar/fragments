@@ -42,7 +42,10 @@ setupFragmentsCursor = function () {
     }
 
     if (collaborator) {
-      options.userId = collaborator.match(/data-collaborator="(.+)"/, '')[1];
+      collaborator = collaborator.match(/data-collaborator="(.+)"/, '');
+      if (collaborator && collaborator.length > 1) {
+        options.userId = collaborator[1];
+      }
     }
 
     Session.set(APP_BUSY_KEY, true);
