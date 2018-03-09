@@ -49,9 +49,12 @@ Meteor.publish('fragments', function (options) {
     }).fetch();
 
     if (collections.length) {
-      let collectionsIds = _
-        .reject(collections, (c) => { return c.is_hidden === true; })
-        .map((c) => { return c._id; });
+      // Don't filter by "not hidden" when it's a filter by a collaborator
+      let filteredCollections = options.userId
+        ? collections
+        : _.reject(collections, (c) => { return c.is_hidden === true; });
+
+      let collectionsIds = filteredCollections.map((c) => { return c._id; });
 
       if (collectionsIds.length) {
         query['collections._id'] = { $in: collectionsIds };
