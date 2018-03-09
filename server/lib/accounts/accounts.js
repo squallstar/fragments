@@ -101,6 +101,27 @@ Meteor.methods({
       multi: true
     });
   },
+  resyncCollaborationDetails: function () {
+    Meteor.users.find().forEach(function (user) {
+      const name = user.profile.name;
+      const picture = user.profile.picture;
+
+      if (!name || !picture) {
+        return;
+      }
+
+      Collections.update({
+        'collaborators._id': user._id
+      }, {
+        $set: {
+          'collaborators.$.name': name,
+          'collaborators.$.picture': picture
+        }
+      }, {
+        multi: true
+      });
+    });
+  },
   setOnboardingStage: function (stage) {
     var userId = Meteor.userId();
 
@@ -113,4 +134,8 @@ Meteor.methods({
       }
     });
   }
-})
+});
+
+Meteor.startup(function () {
+  Meteor.call('resyncCollaborationDetails');
+});
