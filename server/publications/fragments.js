@@ -49,8 +49,9 @@ Meteor.publish('fragments', function (options) {
     }).fetch();
 
     if (collections.length) {
-      // Don't filter by "not hidden" when it's a filter by a collaborator
-      let filteredCollections = options.userId
+      // Don't filter by "not hidden" when it's a filter by a collaborator or tag or text
+      // to max out the results
+      let filteredCollections = options.userId || options.tag || options.text
         ? collections
         : _.reject(collections, (c) => { return c.is_hidden === true; });
 
