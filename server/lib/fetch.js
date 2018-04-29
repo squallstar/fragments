@@ -1,15 +1,9 @@
-const EMBEDLY_BASE_URL = 'http://api.embed.ly/1/extract';
-
-const EMBEDLY_API_KEY = Meteor.settings.embedlyApiKey;
+const API_BASE_URL = 'https://api.microlink.io/';
 
 const TITLE_MAX_LENGTH = 100; // characters
 const DESCRIPTION_MAX_LENGTH = 140; // characters
 
 /* ------------------------------------------------------------ */
-
-if (!EMBEDLY_API_KEY) {
-  throw new Error('EMBEDLY_API_KEY not set');
-}
 
 Meteor.methods({
   fragmentFetch: function (fragmentId) {
@@ -32,19 +26,18 @@ Meteor.methods({
   }
 });
 
-// Fetches the data from Embedly
+// Fetches the data from Microlink.io
 function fetchUrlSync(fragment) {
   var data = {};
 
   try {
-    result = Meteor.http.get(EMBEDLY_BASE_URL, {
-      params: {
-        key: EMBEDLY_API_KEY,
-        url: fragment.url
-      }
-    });
+    result = Meteor.http.get(API_BASE_URL + '?url=' + encodeURIComponent(fragment.url));
 
-    parseLinkContent(fragment, data, result.data);
+    if (result.data.status !== 'success') {
+      throw new Error(result.data);
+    }
+
+    parseLinkContent(fragment, data, result.data.data);
   }
   catch (err) {
     data.title = 'Not found';
@@ -55,18 +48,16 @@ function fetchUrlSync(fragment) {
   }
 }
 
-// Parse the content from Embedly
+// Parse the content from Microlink.io
 function parseLinkContent (fragment, newData, item) {
   [
     'url',
     'provider_name'
   ].forEach(function (field) {
-    newData[field] = item[field];
+    if (item[field]) {
+      newData[field] = item[field];
+    }
   });
-
-  if (item.provider_display) {
-    newData.domain = item.provider_display.replace(/^www\./, '');
-  }
 
   // trim long titles
   if (item.title) {
@@ -80,56 +71,39 @@ function parseLinkContent (fragment, newData, item) {
     newData.description = item.description.length > DESCRIPTION_MAX_LENGTH ? item.description.substr(0, DESCRIPTION_MAX_LENGTH) + '…' : item.description;
   }
 
+  newData.domain = newData.url.replace(/^https?:\/\//, '').split('/')[0];
+
+  newData.tags = fragment.tags || [];
+
+  if (item.publisher) {
+    newData.provider_name = item.publisher;
+    newData.tags.push(item.publisher);
+  }
+
+  if (item.author) {
+    newData.provider_name = (newData.provider_name || '') + '(' + item.author + ')';
+    newData.tags.push(item.author);
+  }
+
+  newData.tags = _.uniq(newData.tags);
+
+  if (item.logo) {
+    newData.logo = item.logo;
+  }
+
   newData.images = [];
 
-  item.images.forEach(function (image) {
-    if (newData.images.length >= 6) {
-      return;
-    }
+  var image = item.image;
 
-    if (image.width < 200 || image.height < 200) {
-      return;
-    }
-
-    var firstColor = image.colors && image.colors.length ? image.colors[0] : null;
-
+  if (image && image.url && image.width > 200 && image.height > 200) {
     newData.images.push({
       url: image.url,
       width: image.width,
-      height: image.height,
-      color: firstColor ? rgbToHex(firstColor.color[0], firstColor.color[1], firstColor.color[2]) : undefined
+      height: image.height
     });
-  });
+  }
 
   if (newData.images && newData.images.length) {
     newData.lead_image = newData.images[0].url;
   }
-
-  newData.tags = fragment.tags || [];
-
-  item.entities.forEach(function (entity) {
-    if (newData.tags.length >= 6) {
-      return;
-    }
-
-    newData.tags.push(entity.name);
-
-    // Temporarily removed to use the above condition
-    // if (entity.count > 1) {
-    //   newData.tags.push(entity.name);
-    // }
-  });
-
-  newData.tags = _.uniq(newData.tags);
-}
-
-// Converts a string to HEX. e.g. 255 to FF
-function componentToHex (color) {
-  var hex = color.toString(16);
-  return hex.length === 1 ? '0' + hex : hex;
-}
-
-// Converts a color to HEX. e.g. [255,0,0] to #FF0000
-function rgbToHex (r, g, b) {
-  return (componentToHex(r) + componentToHex(g) + componentToHex(b)).toUpperCase();
 }
