@@ -1,0 +1,16 @@
+{
+  "short_name": "Fragments",
+  "name": "Fragments",
+  "icons": [
+    {
+      "src": "/assets/img/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/fragments",
+  "background_color": "#FFF",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#2b5379"
+}
