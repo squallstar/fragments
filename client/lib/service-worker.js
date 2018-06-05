@@ -7,3 +7,8 @@ Meteor.startup(function () {
       });
   }
 });
+
+window.addEventListener('beforeinstallprompt', function (e) {
+  e.preventDefault();
+  e.prompt();
+});
