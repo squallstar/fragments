@@ -13,6 +13,11 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   overflow-y: auto;
 
+  @include below ($break-phone) {
+    left: -300px;
+    width: -300px;
+  }
+
   &.open {
     left: 0;
     visibility: visible;
@@ -49,10 +54,13 @@
   ul.nav-list {
 
     li {
-      $height: 47px;
-      height: $height;
+      height: 47px;
       border-bottom: 1px solid #EEE;
       margin-bottom: -1px;
+
+      @include below ($break-phone) {
+        height: 55px;
+      }
 
       .item {
         @include transition(background-color 0.4s);
@@ -81,6 +89,10 @@
             @extend %ellipsis;
             line-height: 1;
             max-width: 200px;
+
+            @include below ($break-phone) {
+              font-size: 1.8rem;
+            }
           }
 
           p {
@@ -106,9 +118,17 @@
             font-size: 1.6rem;
             margin-top: 1.3rem;
 
+            @include below ($break-phone) {
+              margin-top: 1.8rem;
+            }
+
             &.fa-plus {
               font-size: 1.5rem;
               margin-top: 1.5rem;
+
+              @include below ($break-phone) {
+                margin-top: 1.9rem;
+              }
             }
           }
 

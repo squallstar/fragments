@@ -176,7 +176,8 @@
         font-size: 1.2rem;
 
         .is-touch & {
-          opacity: 0.5;
+          opacity: 1;
+          background: rgba(255, 255, 255, 0.5);
         }
 
         &:first-child {
@@ -187,6 +188,16 @@
           color: #ffe615;
           opacity: 0.5;
           background-color: #000;
+        }
+
+        @include below ($break-phone) {
+          width: 3.6rem;
+          height: 3.6rem;
+          font-size: 1.7rem;
+
+          &:first-child {
+            margin-right: 0.6rem;
+          }
         }
       }
     }
@@ -211,7 +222,7 @@
       overflow: hidden;
 
       @include below ($break-phone) {
-        height: 190px;
+        height: 220px;
       }
 
       .img {
@@ -336,7 +347,7 @@
         margin-bottom: 0.5rem;
 
         @include below ($break-phone) {
-          font-size: 1.6rem;
+          font-size: 1.9rem;
         }
       }
 
@@ -345,7 +356,7 @@
         line-height: 1.4;
 
         @include below ($break-phone) {
-          font-size: 1.3rem;
+          font-size: 1.5rem;
         }
       }
 
