@@ -6,6 +6,18 @@
     margin: 0;
   }
 
+  .mark-all {
+    font-size: 13px;
+    padding: 1rem 1.3rem;
+    display: block;
+    text-decoration: none;
+    background-color: #EEE;
+
+    &:hover {
+      background-color: darken(#CBDFFC, 10%);
+    }
+  }
+
   ul {
 
     li {

@@ -5,6 +5,9 @@
     </div>
     <div class="sidebar-notifications">
       {{#if hasNotifications}}
+        {{#if hasUnreadNotifications}}
+          <a href="#" class="mark-all" data-mark-all>Mark all as read <i class="fa fa-check-circle"></i></a>
+        {{/if}}
         <ul>
           {{#each notifications}}
             {{> userNotification}}

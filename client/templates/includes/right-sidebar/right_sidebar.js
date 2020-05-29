@@ -12,12 +12,22 @@ Template.rightSidebar.helpers({
   },
   hasNotifications: function () {
     return Notifications.find().count() > 0;
+  },
+  hasUnreadNotifications: function () {
+    return Notifications.find({ read_at: null }).count() > 1;
   }
 });
 
 Template.sidebar.events({
   'click [data-close]': function () {
     Session.set(RIGHT_SIDEBAR_OPEN_KEY, false);
+  }
+});
+
+Template.rightSidebar.events({
+  'click [data-mark-all]': function (event) {
+    event.preventDefault();
+    Meteor.call('markAllNotificationsAsRead');
   }
 });
 
