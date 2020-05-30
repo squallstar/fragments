@@ -15,16 +15,20 @@ Template.headerSearchBar.helpers({
   },
   searchBarPlaceholder: function () {
     var collection = Session.get(CURRENT_COLLECTION_KEY);
+    var count = Counts.get('fragmentsCount');
+    var savedDescription = count > 0
+      ? (count === 1 ? ' (1 fragment saved)' : (' through ' + count + ' saved fragments'))
+      : '';
 
     if (!collection) {
-      return 'Search';
+      return 'Search' + savedDescription;
     }
 
     if (collection.user !== Meteor.userId()) {
-      return 'Search this shared collection';
+      return 'Search this shared collection' + savedDescription;
     }
 
-    return 'Search this collection';
+    return 'Search this collection' + savedDescription;
   }
 });
 

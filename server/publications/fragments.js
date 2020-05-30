@@ -117,6 +117,8 @@ Meteor.publish('fragments', function (options) {
   // enable for debugging
   // console.log('PUBLICATIONS:FRAGMENTS', JSON.stringify({ options, query }));
 
+  Counts.publish(this, 'fragmentsCount', Fragments.find(query));
+
   return Fragments.find(query, {
     sort: options.sort,
     limit: options.limit

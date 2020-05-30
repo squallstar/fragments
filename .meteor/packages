@@ -2,28 +2,27 @@
 
 meteor-base@1.0.4                 # Packages every Meteor app needs to have
 mobile-experience@1.0.4           # Packages for a great mobile UX
-mongo@1.1.12                      # The database Meteor supports right now
+mongo@1.1.24                      # The database Meteor supports right now
 blaze-html-templates@1.0.4        # Compile .html files into Meteor Blaze views
-session@1.1.6                     # Client-side reactive dictionary for your app
-jquery@1.11.9                     # Helpful client-side library
-tracker@1.1.0                     # Meteor's client-side reactive programming library
-es5-shim@4.6.14                   # ECMAScript 5 compatibility for older browsers.
-ecmascript@0.5.8                  # Enable ECMAScript2015+ syntax in app code
-coffeescript@1.2.4_1              # Coffeescript
+session@1.1.7                     # Client-side reactive dictionary for your app
+jquery@1.11.10                     # Helpful client-side library
+tracker@1.1.3                     # Meteor's client-side reactive programming library
+es5-shim@4.6.15                   # ECMAScript 5 compatibility for older browsers.
+ecmascript@0.7.3                  # Enable ECMAScript2015+ syntax in app code
 iron:router                       # Application router
-check@1.2.3                       # Check whether a value matches a pattern
+check@1.2.5                       # Check whether a value matches a pattern
 audit-argument-checks@1.0.7       # Try to detect inadequate input sanitization
 fourseven:scss                    # Support for SCSS
 matb33:collection-hooks           # Hooks when inserting/updating/etc data on Mongo
-reactive-var@1.0.10               # Reactive variables
+reactive-var@1.0.11               # Reactive variables
 manuel:reactivearray              # Reactive arrays
-http@1.2.9                        # Making HTTP requests from the server
+http@1.2.12                        # Making HTTP requests from the server
 momentjs:moment                   # Datetime library
-accounts-base@1.2.11              # Accounts core
-accounts-password@1.3.0           # Accounts with password
-accounts-google@1.0.10            # Accounts service: log in with Google
-accounts-twitter@1.1.11           # Accounts service: log in with Twitter
-service-configuration@1.0.10      # Helpers for configuring account services
+accounts-base@1.2.17              # Accounts core
+accounts-password@1.3.6           # Accounts with password
+accounts-google@1.1.2            # Accounts service: log in with Google
+accounts-twitter@1.2.1           # Accounts service: log in with Twitter
+service-configuration@1.0.11      # Helpers for configuring account services
 meteorhacks:aggregate             # Support for Mongo aggregate operations
 meteorhacks:ssr                   # Server-side rendering
 differential:workers              # Workers
@@ -35,8 +34,11 @@ lepozepo:s3                       # S3 client-side file upload
 peerlibrary:aws-sdk               # Server-side AWS SDK
 thinksoftware:image-resize-client # Client side image resizing
 mantarayar:shortid                # Non-sequential unique id generator
-standard-minifier-css@1.2.0       # Meteor CSS minifier
-standard-minifier-js@1.2.0        # Meteor JS minifier
-shell-server                      # Shell server
+standard-minifier-css@1.3.4       # Meteor CSS minifier
+standard-minifier-js@2.0.0        # Meteor JS minifier
+shell-server@0.2.3                      # Shell server
 cfs:graphicsmagick                # Resize images
-email                             # Send emails
+email@1.2.1                             # Send emails
+google-config-ui
+twitter-config-ui
+tmeasday:publish-counts           # Publish counts
