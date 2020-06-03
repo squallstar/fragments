@@ -5,4 +5,8 @@
   @include below ($break-phone) {
     padding: 1rem;
   }
+
+  .sidebar-pinned & {
+    padding-left: 25rem + $grid-side-padding * 2;
+  }
 }

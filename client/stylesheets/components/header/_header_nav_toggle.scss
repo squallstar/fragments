@@ -10,6 +10,10 @@
     width: 2em;
     height: 2em;
     margin: 1.8rem 1rem 0 0;
+
+    .sidebar-pinned & {
+      display: none;
+    }
   }
 
   .nav-toggle span {

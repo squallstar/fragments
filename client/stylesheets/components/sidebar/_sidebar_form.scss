@@ -4,6 +4,10 @@
   border-top: 1px solid #DDD;
   border-bottom: 1px solid #DDD;
 
+  .sidebar-pinned & {
+    background-color: transparent;
+  }
+
   .group {
     margin-bottom: 1.5rem;
 

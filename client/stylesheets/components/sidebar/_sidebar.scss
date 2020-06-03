@@ -35,6 +35,7 @@
   }
 
   .title {
+    position: relative;
     height: $header-height;
     padding-left: 1.2rem;
     border-bottom: 1px solid #EEE;
@@ -43,6 +44,24 @@
       font-size: 2.3rem;
       height: 100%;
       line-height: $header-height;
+    }
+
+    .toggle-pinned {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 44px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      text-decoration: none;
+      opacity: 0.3;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 
@@ -186,6 +205,86 @@
 
           &:hover {
             cursor: default;
+          }
+        }
+      }
+    }
+  }
+}
+
+#left-sidebar {
+  &::-webkit-scrollbar { width: 0 !important };
+
+  .sidebar-pinned & {
+    background-color: transparent;
+    top: $header-height;
+    left: $grid-side-padding;
+    box-shadow: none;
+    border-right: 1px solid #DFDFDF;
+    padding-right: $grid-side-padding;
+
+    .title {
+      display: none;
+    }
+
+    ul.nav-list {
+      margin-top: $grid-side-padding;
+
+      li {
+        margin-bottom: 0px;
+        border-bottom: 0;
+
+        .item {
+          position: relative;
+          height: 42px;
+          border-radius: 5px;
+
+          span {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            border-radius: 5px;
+            opacity: 0.3;
+          }
+
+          .content {
+            $size: 0;
+
+            position: absolute;
+            left: $size;
+            top: $size;
+            bottom: $size;
+            right: $size;
+            height: auto;
+            opacity: 0.5;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 5px;
+          }
+
+          .icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            .fa {
+              margin-top: 1.3rem;
+            }
+          }
+        }
+
+        &.current, &:hover {
+          .item {
+            background-color: #fff;
+
+            .content {
+              border: 1px solid transparent;
+            }
+
+            span {
+              opacity: 1;
+            }
           }
         }
       }

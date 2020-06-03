@@ -2,6 +2,9 @@
   <section id="left-sidebar" class="sidebar {{#if isOpen}}open{{/if}}">
     <div class="title">
       <h1>Fragments</h1>
+      <a href="#" title="Pin sidebar to the left" class="toggle-pinned" data-pin>
+        <i class="fa fa-toggle-right"></i>
+      </a>
     </div>
     <ul class="nav-list">
       <li class="all {{#if isAllCollections}}current{{/if}}">
@@ -23,6 +26,20 @@
       {{#each collections}}
         {{> sidebarCollection}}
       {{/each}}
+
+      {{#if sidebarIsPinned}}
+        <li>
+          <div class="item action">
+            <span></span>
+            <a href="#" class="content" data-pin>
+              <h4>Hide sidebar</h4>
+            </a>
+            <a class="icon" href="#" data-pin>
+              <i class="fa fa-toggle-left"></i>
+            </a>
+          </div>
+        </li>
+      {{/if}}
       {{#unless isAddingNewCollection}}
         <li>
           <div class="item action">
