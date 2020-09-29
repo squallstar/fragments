@@ -238,15 +238,18 @@
           position: relative;
           height: 42px;
           border-radius: 5px;
+          background-color: #FFF;
 
           span {
-            width: 100%;
+            width: 8px;
             position: absolute;
             left: 0;
             top: 0;
             height: 100%;
-            border-radius: 5px;
-            opacity: 0.3;
+            opacity: 1;
+            z-index: 1;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
           }
 
           .content {
@@ -258,9 +261,10 @@
             bottom: $size;
             right: $size;
             height: auto;
-            opacity: 0.5;
+            opacity: 1;
             border: 1px solid rgba(0,0,0,0.1);
             border-radius: 5px;
+            background-color: #FFF;
           }
 
           .icon {
@@ -284,6 +288,21 @@
 
             span {
               opacity: 1;
+            }
+          }
+        }
+
+        &.current {
+          .item {
+            span {
+              width: 100%;
+              z-index: 0;
+              border-radius: 5px;
+            }
+
+            .content {
+              background-color: transparent;
+              border: 1px solid rgba(0,0,0,0.1);
             }
           }
         }
